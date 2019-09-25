@@ -11,28 +11,25 @@
 -- 
 --
 ---------------------------------------------------------
+
+
+
+
+⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠸⡆⠹⡀⣠⢤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⡧⢤⡄⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⡧⢄⣹⣅⣜⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⢹⠚⠃⠀⠀⠀⠀⠀
+⠀⣀⠴⢒⣉⡹⣶⣤⣀⡉⠉⠒⠒⠒⠤⠤⣀⣀⣀⠇⠀⠀⢸⠠⣄⠀⠀⠀⠀⠀
+⠀⠈⠉⠁⠀⠀⠀⠉⠒⠯⣟⣲⠦⣤⣀⡀⠀⠀⠈⠉⠉⠉⠛⠒⠻⢥⣀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⣲⡬⠭⠿⢷⣦⣤⢄⣀⠀⠀⠚⠛⠛⠓⢦⡀
+⠀⠀⠀⠀⠀⠀⠀⢀⣀⠤⠴⠚⠉⠁⠀⠀⠀⠀⣀⣉⡽⣕⣯⡉⠉⠉⠑⢒⣒⡾
+⠀⠀⣀⡠⠴⠒⠉⠉⠀⢀⣀⣀⠤⡤⢶⣶⣋⠉⠉⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀
+⣖⣉⣁⣠⠤⠶⡶⡶⢍⡉⠀⠀⠀⠙⠒⠯⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠁⠀⠀⠀⠀⠑⢦⣯⠇
+
+
 */
 
 
-
-/*
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⠞⠉⢉⣭⣿⣿⠿⣳⣤⠴⠖⠛⣛⣿⣿⡷⠖⣶⣤⡀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⣼⠁⢀⣶⢻⡟⠿⠋⣴⠿⢻⣧⡴⠟⠋⠿⠛⠠⠾⢛⣵⣿⠀⠀⠀⠀
-⣼⣿⡿⢶⣄⠀⢀⡇⢀⡿⠁⠈⠀⠀⣀⣉⣀⠘⣿⠀⠀⣀⣀⠀⠀⠀⠛⡹⠋⠀⠀⠀⠀
-⣭⣤⡈⢑⣼⣻⣿⣧⡌⠁⠀⢀⣴⠟⠋⠉⠉⠛⣿⣴⠟⠋⠙⠻⣦⡰⣞⠁⢀⣤⣦⣤⠀
-⠀⠀⣰⢫⣾⠋⣽⠟⠑⠛⢠⡟⠁⠀⠀⠀⠀⠀⠈⢻⡄⠀⠀⠀⠘⣷⡈⠻⣍⠤⢤⣌⣀
-⢀⡞⣡⡌⠁⠀⠀⠀⠀⢀⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⢿⡀⠀⠀⠀⠸⣇⠀⢾⣷⢤⣬⣉
-⡞⣼⣿⣤⣄⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⣿⠀⠸⣿⣇⠈⠻
-⢰⣿⡿⢹⠃⠀⣠⠤⠶⣼⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⣿⠀⠀⣿⠛⡄⠀
-⠈⠉⠁⠀⠀⠀⡟⡀⠀⠈⡗⠲⠶⠦⢤⣤⣤⣄⣀⣀⣸⣧⣤⣤⠤⠤⣿⣀⡀⠉⣼⡇⠀
-⣿⣴⣴⡆⠀⠀⠻⣄⠀⠀⠡⠀⠀⠀⠈⠛⠋⠀⠀⠀⡈⠀⠻⠟⠀⢀⠋⠉⠙⢷⡿⡇⠀
-⣻⡿⠏⠁⠀⠀⢠⡟⠀⠀⠀⠣⡀⠀⠀⠀⠀⠀⢀⣄⠀⠀⠀⠀⢀⠈⠀⢀⣀⡾⣴⠃⠀
-⢿⠛⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠈⠢⠄⣀⠠⠼⣁⠀⡱⠤⠤⠐⠁⠀⠀⣸⠋⢻⡟⠀⠀
-⠈⢧⣀⣤⣶⡄⠘⣆⠀⠀⠀⠀⠀⠀⠀⢀⣤⠖⠛⠻⣄⠀⠀⠀⢀⣠⡾⠋⢀⡞⠀⠀⠀
-⠀⠀⠻⣿⣿⡇⠀⠈⠓⢦⣤⣤⣤⡤⠞⠉⠀⠀⠀⠀⠈⠛⠒⠚⢩⡅⣠⡴⠋⠀⠀⠀⠀
-⠀⠀⠀⠈⠻⢧⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣻⠿⠋⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠉⠓⠶⣤⣄⣀⡀⠀⠀⠀⠀⠀⢀⣀⣠⡴⠖⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
-*/
 
 
 
@@ -66,34 +63,17 @@ DROP TABLE IF EXISTS enroll;
 */
 
 
-CREATE TABLE tc (
+
+CREATE TABLE admin_account (
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
-name VARCHAR(128) NOT NULL,
-credit_card_num VARCHAR(18) NOT NULL,
-valid_till VARCHAR(4) NOT NULL,
-credit_card_name VARCHAR(30) NOT NULL,
-cvv VARCHAR(3) NOT NULL,
 email VARCHAR(128) UNIQUE NOT NULL,
-avatar_path VARCHAR(1024) NOT NULL DEFAULT 'default.png',
-last_login DATE,
-date_registered DATE NOT NULL,
-status VARCHAR(128) NOT NULL DEFAULT 'active'
+last_login DATE
 );
 
-/*
----
----
---https://www.regular-expressions.info/creditcard.html
----
----
----
--- one {FK} only 
----
-*/
 
 
-CREATE TABLE tutor (
+CREATE TABLE account (
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
 name VARCHAR(128) NOT NULL,
@@ -103,28 +83,55 @@ avatar_path VARCHAR(1024) NOT NULL DEFAULT 'default.png',
 last_login DATE,
 date_registered DATE NOT NULL,
 status VARCHAR(128) NOT NULL DEFAULT 'active',
+account_type VARCHAR(20) NOT NULL DEFAULT 'student'
+);
+
+/*
+account_type = {student , tc or tutor}
+*/
+
+
+/*
+--https://www.regular-expressions.info/creditcard.html
+---
+---
+-- one {FK} only 
+---
+*/
+
+
+CREATE TABLE tc (
+id int AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(128) NOT NULL PRIMARY KEY,
+credit_card_num VARCHAR(18) NOT NULL,
+valid_till VARCHAR(4) NOT NULL,
+credit_card_name VARCHAR(30) NOT NULL,
+cvv VARCHAR(3) NOT NULL
+);
+
+
+CREATE TABLE tutor (
+id int AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(128) NOT NULL PRIMARY KEY,
 tc_owner VARCHAR(128) NOT NULL,
+FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE,
 FOREIGN KEY (tc_owner) REFERENCES tc(username) ON DELETE CASCADE
 );
 
 
 CREATE TABLE student (
-username VARCHAR(128) NOT NULL PRIMARY KEY,
-password VARCHAR(128) NOT NULL,
-name VARCHAR(128) NOT NULL,
-about_me VARCHAR(1024) NOT NULL DEFAULT '',
-email VARCHAR(128) UNIQUE NOT NULL,
-avatar_path VARCHAR(1024) NOT NULL DEFAULT 'default.png',
+id int AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(128) NOT NULL,
 last_login DATE,
 date_registered DATE NOT NULL,
-status VARCHAR(128) NOT NULL DEFAULT 'active'
+status VARCHAR(128) NOT NULL DEFAULT 'active',
+FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE
 );
 
 /*
-----
-----
 ---- NOTE THIS !!!
----- I employed a dirty trick on this table  
+---- I employed a dirty trick on this table  :) 
+---- Notice no {FK}
 */
 
 CREATE TABLE message (
@@ -146,11 +153,6 @@ REFERENCES account(username),
 */
 
 
-
-
-
-
-
 CREATE TABLE module (
 id int AUTO_INCREMENT PRIMARY KEY,
 description VARCHAR(128) NOT NULL,
@@ -167,11 +169,6 @@ student VARCHAR(128) NOT NULL REFERENCES student(username),
 mod_id int NOT NULL REFERENCES module(id), 
 datetimestamp DATETIME DEFAULT now() NOT NULL
 );
-
-
-
-
-
 
 
 
@@ -197,27 +194,6 @@ comment VARCHAR(256)
 -------------------------------
 */
 
-
-CREATE TABLE account (
-username VARCHAR(128) NOT NULL PRIMARY KEY,
-password VARCHAR(128) NOT NULL,
-name VARCHAR(128) NOT NULL,
-about_me VARCHAR(1024) NOT NULL DEFAULT '',
-email VARCHAR(128) UNIQUE NOT NULL,
-avatar_path VARCHAR(1024) NOT NULL DEFAULT 'default.png',
-last_login DATE,
-date_registered DATE NOT NULL,
-status VARCHAR(128) NOT NULL DEFAULT 'active'
-);
-
-
-
-CREATE TABLE admin_account (
-username VARCHAR(128) NOT NULL PRIMARY KEY,
-password VARCHAR(128) NOT NULL,
-email VARCHAR(128) UNIQUE NOT NULL,
-last_login DATE
-);
 
 CREATE TABLE thread (
 id int AUTO_INCREMENT PRIMARY KEY,
