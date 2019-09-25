@@ -10,8 +10,6 @@
 	  $confirmnewpass = $_POST['confirmnewpass']; 
 	  $thisuser = $_SESSION['login_user'];
 	  
-	  
-	  
 	  $sql = "SELECT username FROM account WHERE username = '$thisuser' and password = '$oldpass';";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_assoc($result);
@@ -27,10 +25,6 @@
 	  //echo $thisuser;
 	  echo "<br>";
 	  
-	  
-	  
-	  
-	  
       
 	  // If result matched $myusername and $mypassword, table row must be 1 row
       if($count == 1) {
@@ -44,20 +38,9 @@
 		  //if ($db->query($sqlupdate) === TRUE) 	  {    } 
 		  //else 	  {    echo "Error updating record: " . $db->error; }  
 	  
-	  
-	  
 		$result002 = mysqli_query($db, $sqlupdate);
 		if (!$result002) { echo "An error occurred.\n";}
 		else{	echo "Password updated successfully <br>"; 	}
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 	  
 	  }
 	  
