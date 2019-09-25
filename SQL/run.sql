@@ -1,3 +1,4 @@
+/*
 ---------------------------------------------------------
 -- HELLO
 -- Please check if your SQL Table Names
@@ -10,6 +11,33 @@
 -- 
 --
 ---------------------------------------------------------
+*/
+
+
+
+/*
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⠞⠉⢉⣭⣿⣿⠿⣳⣤⠴⠖⠛⣛⣿⣿⡷⠖⣶⣤⡀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣼⠁⢀⣶⢻⡟⠿⠋⣴⠿⢻⣧⡴⠟⠋⠿⠛⠠⠾⢛⣵⣿⠀⠀⠀⠀
+⣼⣿⡿⢶⣄⠀⢀⡇⢀⡿⠁⠈⠀⠀⣀⣉⣀⠘⣿⠀⠀⣀⣀⠀⠀⠀⠛⡹⠋⠀⠀⠀⠀
+⣭⣤⡈⢑⣼⣻⣿⣧⡌⠁⠀⢀⣴⠟⠋⠉⠉⠛⣿⣴⠟⠋⠙⠻⣦⡰⣞⠁⢀⣤⣦⣤⠀
+⠀⠀⣰⢫⣾⠋⣽⠟⠑⠛⢠⡟⠁⠀⠀⠀⠀⠀⠈⢻⡄⠀⠀⠀⠘⣷⡈⠻⣍⠤⢤⣌⣀
+⢀⡞⣡⡌⠁⠀⠀⠀⠀⢀⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⢿⡀⠀⠀⠀⠸⣇⠀⢾⣷⢤⣬⣉
+⡞⣼⣿⣤⣄⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⣿⠀⠸⣿⣇⠈⠻
+⢰⣿⡿⢹⠃⠀⣠⠤⠶⣼⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⣿⠀⠀⣿⠛⡄⠀
+⠈⠉⠁⠀⠀⠀⡟⡀⠀⠈⡗⠲⠶⠦⢤⣤⣤⣄⣀⣀⣸⣧⣤⣤⠤⠤⣿⣀⡀⠉⣼⡇⠀
+⣿⣴⣴⡆⠀⠀⠻⣄⠀⠀⠡⠀⠀⠀⠈⠛⠋⠀⠀⠀⡈⠀⠻⠟⠀⢀⠋⠉⠙⢷⡿⡇⠀
+⣻⡿⠏⠁⠀⠀⢠⡟⠀⠀⠀⠣⡀⠀⠀⠀⠀⠀⢀⣄⠀⠀⠀⠀⢀⠈⠀⢀⣀⡾⣴⠃⠀
+⢿⠛⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠈⠢⠄⣀⠠⠼⣁⠀⡱⠤⠤⠐⠁⠀⠀⣸⠋⢻⡟⠀⠀
+⠈⢧⣀⣤⣶⡄⠘⣆⠀⠀⠀⠀⠀⠀⠀⢀⣤⠖⠛⠻⣄⠀⠀⠀⢀⣠⡾⠋⢀⡞⠀⠀⠀
+⠀⠀⠻⣿⣿⡇⠀⠈⠓⢦⣤⣤⣤⡤⠞⠉⠀⠀⠀⠀⠈⠛⠒⠚⢩⡅⣠⡴⠋⠀⠀⠀⠀
+⠀⠀⠀⠈⠻⢧⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣻⠿⠋⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠉⠓⠶⣤⣄⣀⡀⠀⠀⠀⠀⠀⢀⣀⣠⡴⠖⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
+*/
+
+
+
+
+
 
 
 DROP TABLE IF EXISTS announcement;
@@ -22,17 +50,22 @@ DROP TABLE IF EXISTS message;
 DROP TABLE IF EXISTS bid;
 DROP TABLE IF EXISTS task;
 DROP TABLE IF EXISTS admin_account;
-DROP TABLE IF EXISTS tc;
 DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS tc;
 DROP TABLE IF EXISTS module;
 DROP TABLE IF EXISTS account;
-DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS enroll;
+
+/*
 --
 --
 -- TC
 --
 --
+*/
+
+
 CREATE TABLE tc (
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
@@ -40,21 +73,26 @@ name VARCHAR(128) NOT NULL,
 credit_card_num VARCHAR(18) NOT NULL,
 valid_till VARCHAR(4) NOT NULL,
 credit_card_name VARCHAR(30) NOT NULL,
-cvv VARCHAR(30) NOT NULL,
+cvv VARCHAR(3) NOT NULL,
 email VARCHAR(128) UNIQUE NOT NULL,
 avatar_path VARCHAR(1024) NOT NULL DEFAULT 'default.png',
 last_login DATE,
 date_registered DATE NOT NULL,
 status VARCHAR(128) NOT NULL DEFAULT 'active'
 );
---
---
+
+/*
+---
+---
 --https://www.regular-expressions.info/creditcard.html
---
---
---
+---
+---
+---
 -- one {FK} only 
--- 
+---
+*/
+
+
 CREATE TABLE tutor (
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
@@ -69,8 +107,6 @@ tc_owner VARCHAR(128) NOT NULL,
 FOREIGN KEY (tc_owner) REFERENCES tc(username) ON DELETE CASCADE
 );
 
----
----
 
 CREATE TABLE student (
 username VARCHAR(128) NOT NULL PRIMARY KEY,
@@ -84,10 +120,13 @@ date_registered DATE NOT NULL,
 status VARCHAR(128) NOT NULL DEFAULT 'active'
 );
 
---
---
--- NOTE THIS !!!
--- I employed a dirty trick on this table  
+/*
+----
+----
+---- NOTE THIS !!!
+---- I employed a dirty trick on this table  
+*/
+
 CREATE TABLE message (
 id int AUTO_INCREMENT PRIMARY KEY,
 body VARCHAR(256) NOT NULL,
@@ -96,10 +135,12 @@ receiver VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 read_flag BOOLEAN NOT NULL DEFAULT FALSE
 );
+
+/*
 --- I am not gonna link this to any table FYI
 --- Don't worry, it still works
 --- removed below
-/*
+
 REFERENCES account(username),
 REFERENCES account(username),
 */
@@ -133,10 +174,6 @@ datetimestamp DATETIME DEFAULT now() NOT NULL
 
 
 
----------------------------------------------------------
----------------------------------------------------------
-
-
 
 CREATE TABLE complain (
 id int AUTO_INCREMENT PRIMARY KEY,
@@ -153,11 +190,14 @@ comment VARCHAR(256)
 
 
 
-
+/*
 -------------------------------
 -- Do not remove these yet
 -- thanks 
 -------------------------------
+*/
+
+
 CREATE TABLE account (
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
@@ -195,7 +235,7 @@ datetimestamp DATETIME DEFAULT now() NOT NULL,
 body VARCHAR(256) NOT NULL,
 threadid int,
 FOREIGN KEY (threadid) REFERENCES thread(id)
-) ;
+);
 
 CREATE TABLE announcement (
 id int AUTO_INCREMENT PRIMARY KEY,
