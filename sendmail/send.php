@@ -1,6 +1,11 @@
 <?php
 require_once './vendor/autoload.php';
  
+ 
+ // SAMPLE
+ // http://localhost/pets/sendmail/send.php?username=lalalala&email=nottynottyowl@gmail.com
+ 
+ 
 try {
 	
 	$username = $_GET["username"];
