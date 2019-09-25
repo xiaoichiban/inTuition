@@ -128,6 +128,28 @@ status VARCHAR(128) NOT NULL DEFAULT 'active',
 FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE
 );
 
+
+
+INSERT INTO account
+(username, password, name, about_me, email, last_login, date_registered, status)
+VALUES
+('alice', 'password', 'alice', 'about me 0', 'alice@gmail.com', '1111-11-11', '1111-11-11', 'active'),
+('bob', 'password', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11', '1111-11-11', 'active');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 ---- NOTE THIS !!!
 ---- I employed a dirty trick on this table  :) 
@@ -219,14 +241,6 @@ datetimestamp DATETIME DEFAULT now() NOT NULL,
 topic VARCHAR(64) NOT NULL,
 body VARCHAR(256) NOT NULL );
 
-INSERT INTO account
-(username, password, name, about_me, email, last_login, date_registered,
-status)
-VALUES
-('alice', 'password', 'alice', 'about me 0', 'alice@gmail.com', '1111-11-11',
-'1111-11-11', 'active'),
-('bob', 'password', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11',
-'1111-11-11', 'active');
 
 INSERT INTO admin_account
 VALUES ('admin', 'password', 'admin@gmail.com', '1111-11-11');
