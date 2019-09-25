@@ -102,7 +102,7 @@ account_type = {student , tc or tutor}
 
 CREATE TABLE tc (
 id int AUTO_INCREMENT PRIMARY KEY,
-username VARCHAR(128) NOT NULL PRIMARY KEY,
+username VARCHAR(128) NOT NULL UNIQUE,
 credit_card_num VARCHAR(18) NOT NULL,
 valid_till VARCHAR(4) NOT NULL,
 credit_card_name VARCHAR(30) NOT NULL,
@@ -112,7 +112,7 @@ cvv VARCHAR(3) NOT NULL
 
 CREATE TABLE tutor (
 id int AUTO_INCREMENT PRIMARY KEY,
-username VARCHAR(128) NOT NULL PRIMARY KEY,
+username VARCHAR(128) NOT NULL UNIQUE,
 tc_owner VARCHAR(128) NOT NULL,
 FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE,
 FOREIGN KEY (tc_owner) REFERENCES tc(username) ON DELETE CASCADE
@@ -121,7 +121,7 @@ FOREIGN KEY (tc_owner) REFERENCES tc(username) ON DELETE CASCADE
 
 CREATE TABLE student (
 id int AUTO_INCREMENT PRIMARY KEY,
-username VARCHAR(128) NOT NULL,
+username VARCHAR(128) NOT NULL UNIQUE,
 last_login DATE,
 date_registered DATE NOT NULL,
 status VARCHAR(128) NOT NULL DEFAULT 'active',
