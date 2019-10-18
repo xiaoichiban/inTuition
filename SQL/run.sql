@@ -177,6 +177,7 @@ REFERENCES account(username),
 
 CREATE TABLE module (
 id int AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(128) NOT NULL,
 description VARCHAR(128) NOT NULL,
 tc    VARCHAR(128) NOT NULL REFERENCES tc(username), 
 tutor VARCHAR(128) NOT NULL REFERENCES tutor(username), 
