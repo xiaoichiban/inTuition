@@ -4,7 +4,7 @@
   </head>
   <body>
     <a href="">My Tutors</a>
-    <a href="viewmodules.php">My Modules</a>
+    <a href="viewtcmodules.php">My Modules</a>
     <a href="">Chat</a>
     <a href="">My Profile</a>
   </body>
