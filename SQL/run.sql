@@ -131,13 +131,12 @@ FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE
 
 
 INSERT INTO account
-(username, password, name, about_me, email, last_login, date_registered, status)
+(username, password, name, about_me, email, last_login, date_registered, status, account_type)
 VALUES
-('alice', 'password', 'alice', 'about me 0', 'alice@gmail.com', '1111-11-11', '1111-11-11', 'active'),
-('bob', 'password', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11', '1111-11-11', 'active');
-
-
-
+('alice', 'password', 'alice', 'about me 0', 'alice@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
+('bob', 'password', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
+('brightkids', 'password', 'brightkids', 'best tuition center', 'brightkids@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
+('danny', 'password', 'danny', 'I very lepak', 'danny@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
 
 
 
@@ -177,9 +176,10 @@ REFERENCES account(username),
 
 CREATE TABLE module (
 id int AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(128) NOT NULL,
 description VARCHAR(128) NOT NULL,
-tc    VARCHAR(128) NOT NULL REFERENCES tc(username), 
-tutor VARCHAR(128) NOT NULL REFERENCES tutor(username), 
+tc    VARCHAR(128) NOT NULL REFERENCES account(username), 
+tutor VARCHAR(128) NOT NULL REFERENCES account(username), 
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 status VARCHAR(16) NOT NULL DEFAULT 'active'
 );
@@ -187,7 +187,7 @@ status VARCHAR(16) NOT NULL DEFAULT 'active'
 
 CREATE TABLE enroll (
 id int AUTO_INCREMENT PRIMARY KEY,
-student VARCHAR(128) NOT NULL REFERENCES student(username), 
+student VARCHAR(128) NOT NULL REFERENCES account(username), 
 mod_id int NOT NULL REFERENCES module(id), 
 datetimestamp DATETIME DEFAULT now() NOT NULL
 );
@@ -204,7 +204,11 @@ status VARCHAR(128) NOT NULL DEFAULT 'new',
 comment VARCHAR(256)
 );
 
+INSERT INTO module (name, description, tc, tutor, status) VALUES 
+('IS2103', 'This is a killer module', 'brightkids', 'danny', 'active');
 
+INSERT INTO enroll (student, mod_id) VALUES 
+('alice', '1');
 
 
 
