@@ -8,6 +8,11 @@
 <br><br><br>
 
 <form action="createModuleProcess.php" method="post">
+  <b>Name</b>
+  <br>
+  <input type="text" name="name" size="48">
+  <br>
+  <br><br><br>
   <b>Description</b>
   <br>
   <textarea rows="4" cols="50" name="description"></textarea>

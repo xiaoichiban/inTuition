@@ -4,6 +4,7 @@
   include 'session.php';
 
   $tc = $_SESSION['login_user'];
+  $name = mysqli_real_escape_string($db, $_POST['name']);
   $description = mysqli_real_escape_string($db, $_POST['description']);
   $tutor = mysqli_real_escape_string($db, $_POST['tutor']);
   $status = mysqli_real_escape_string($db, $_POST['status']).strtolower();
@@ -12,8 +13,8 @@
     $status = 'active';
   }
 
-  $sql = "INSERT INTO module (description, tc, tutor, datetimestamp, status)
-  VALUES ('$description', '$tc', '$tutor', 'NOW()', '$status')";
+  $sql = "INSERT INTO module (name, description, tc, tutor, datetimestamp, status)
+  VALUES ('$name','$description', '$tc', '$tutor', 'NOW()', '$status')";
 
   if ($db->query($sql) === TRUE) {
       echo $description . " created successfully!";
