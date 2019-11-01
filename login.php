@@ -84,10 +84,7 @@
 			header("location: ./tutor/welcome.php");
 		 }
 		 else {
-			 
-			 
-			//header("location: welcome.php");
-			 
+			header("location: loginFailed.php");
 		 }
 		 
 		 
