@@ -110,7 +110,7 @@ credit_card_num VARCHAR(18) NOT NULL,
 valid_till VARCHAR(4) NOT NULL,
 credit_card_name VARCHAR(30) NOT NULL,
 cvv VARCHAR(3) NOT NULL,
-FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE,
+FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE
 );
 
 
