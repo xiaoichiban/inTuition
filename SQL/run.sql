@@ -8,24 +8,24 @@
 ---------------------------------------------------------
 -- https://mariadb.com/kb/en/library/reserved-words/
 ---------------------------------------------------------
-              _                 __                 
-      __.--**"""**--...__..--**""""*-.            
-    .'                                `-.         
-  .'                         _           \        
- /                         .'        .    \   _._ 
+              _                 __
+      __.--**"""**--...__..--**""""*-.
+    .'                                `-.
+  .'                         _           \
+ /                         .'        .    \   _._
 :                         :          :`*.  :-'.' ;
-;    `                    ;          `.) \   /.-' 
-:     `                             ; ' -*   ;    
-\      :.    \           :       :  :        :    
- \     ; `.   `.         ;     ` |  '        /     
- |         `.            `. -*"*\; /        :     
- |    :     /`-.           `.    \/`.'  _    `.   
- :    ;    :    `*-.__.-*""":`.   \ ;  'o` `. /   A 
+;    `                    ;          `.) \   /.-'
+:     `                             ; ' -*   ;
+\      :.    \           :       :  :        :
+ \     ; `.   `.         ;     ` |  '        /
+ |         `.            `. -*"*\; /        :
+ |    :     /`-.           `.    \/`.'  _    `.
+ :    ;    :    `*-.__.-*""":`.   \ ;  'o` `. /   A
  \     ;   ;                ;  \   ;:       ;:   //
-  |  | |                       /`  | ,      `*-*'/ 
-  `  : :  :                /  /    | : .    ._.-'  
-   \  \ ,  \              :   `.   :  \ \   .'     
-    :  *:   ;             :    |`*-'   `*+-*       
+  |  | |                       /`  | ,      `*-*'/
+  `  : :  :                /  /    | : .    ._.-'
+   \  \ ,  \              :   `.   :  \ \   .'
+    :  *:   ;             :    |`*-'   `*+-*
     `**-*`""               *---*
 
 
@@ -217,9 +217,9 @@ CREATE TABLE module (
 id int AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(128) NOT NULL,
 description VARCHAR(128) NOT NULL,
-class_day VARCHAR(128) NOT NULL,
-class_startTime TIME NOT NULL,
-class_endTime TIME NOT NULL,
+class_day INT NOT NULL,
+class_startTime VARCHAR(128) NOT NULL,
+class_endTime VARCHAR(128) NOT NULL,
 tc    VARCHAR(128) NOT NULL,
 tutor VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
