@@ -158,21 +158,28 @@ optiona VARCHAR(128) NOT NULL,
 optionb VARCHAR(128) NOT NULL,
 optionc VARCHAR(128) NOT NULL,
 optiond VARCHAR(128) NOT NULL,
-answer VARCHAR(128) NOT NULL
+answer VARCHAR(128) NOT NULL, 
+quizid int NOT NULL, 
+FOREIGN KEY (quizid) REFERENCES quiz(id)
 );
 
 
 CREATE TABLE quiz (
 id int AUTO_INCREMENT PRIMARY KEY,
 quiztitle VARCHAR(128) NOT NULL,
-questionid int NOT NULL REFERENCES question(id),
-moduleid int NOT NULL REFERENCES module(id)
+questionid int NOT NULL,
+moduleid int NOT NULL,
+FOREIGN KEY (questionid) REFERENCES question(id), 
+FOREIGN KEY (moduleid) REFERENCES module(id)
 );
+
 
 CREATE TABLE attempts (
 id int AUTO_INCREMENT PRIMARY KEY,
-quizid int NOT NULL REFERENCES quiz(id),
-student int NOT NULL REFERENCES student(username)
+quizid int NOT NULL,
+student int NOT NULL,
+FOREIGN KEY (quizid) REFERENCES quiz(id), 
+FOREIGN KEY (student) REFERENCES account(username)
 );
 
 
