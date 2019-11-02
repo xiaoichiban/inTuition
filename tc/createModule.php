@@ -18,6 +18,21 @@
   <textarea rows="4" cols="50" name="description"></textarea>
   <br>
   <br><br><br>
+  <b>Class Day</b>
+  <br>
+  <input type="text" name="day" size="48">
+  <br>
+  <br><br><br>
+  <b>Class Start Time</b>
+  <br>
+  <input type="text" name="start" size="48">
+  <br>
+  <br><br><br>
+  <b>Class End Time</b>
+  <br>
+  <input type="text" name="end" size="48">
+  <br>
+  <br><br><br>
   <b>Module Tutor</b>
   <br>
   <input type="text" name="tutor" size="48">
