@@ -1,5 +1,5 @@
 <?php
-include('../session.php');
+include('session.php');
 $thisuser = $_SESSION['login_user'];
 $date = date('Y-m-d');
 $module_id = $_GET['module_id'];
@@ -30,13 +30,13 @@ $result1 = mysqli_query($db, $sql1);
 while ($row1 = mysqli_fetch_row($result1)) {
   $acctype = $row1[0];
   if ($acctype == 'tc'){
-    echo "<h3><a href = 'tcModuleManagement.php'>Back</a></h3>";
+    echo "<h3><a href = 'viewtcmodules.php'>Back</a></h3>";
   }
   else if ($acctype == 'tutor'){
-    echo "<h3><a href = '../tutor/viewtutormodules.php'>Back</a></h3>";
+    echo "<h3><a href = 'viewtutormodules.php'>Back</a></h3>";
   }
   else{
-    echo "<h3><a href = '../student/viewstudentmodules.php'>Back</a></h3>";
+    echo "<h3><a href = 'viewstudentmodules.php'>Back</a></h3>";
   }
 }
 ?>
