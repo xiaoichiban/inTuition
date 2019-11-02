@@ -8,24 +8,24 @@
 ---------------------------------------------------------
 -- https://mariadb.com/kb/en/library/reserved-words/
 ---------------------------------------------------------
-              _                 __                 
-      __.--**"""**--...__..--**""""*-.            
-    .'                                `-.         
-  .'                         _           \        
- /                         .'        .    \   _._ 
+              _                 __
+      __.--**"""**--...__..--**""""*-.
+    .'                                `-.
+  .'                         _           \
+ /                         .'        .    \   _._
 :                         :          :`*.  :-'.' ;
-;    `                    ;          `.) \   /.-' 
-:     `                             ; ' -*   ;    
-\      :.    \           :       :  :        :    
- \     ; `.   `.         ;     ` |  '        /     
- |         `.            `. -*"*\; /        :     
- |    :     /`-.           `.    \/`.'  _    `.   
- :    ;    :    `*-.__.-*""":`.   \ ;  'o` `. /   A 
+;    `                    ;          `.) \   /.-'
+:     `                             ; ' -*   ;
+\      :.    \           :       :  :        :
+ \     ; `.   `.         ;     ` |  '        /
+ |         `.            `. -*"*\; /        :
+ |    :     /`-.           `.    \/`.'  _    `.
+ :    ;    :    `*-.__.-*""":`.   \ ;  'o` `. /   A
  \     ;   ;                ;  \   ;:       ;:   //
-  |  | |                       /`  | ,      `*-*'/ 
-  `  : :  :                /  /    | : .    ._.-'  
-   \  \ ,  \              :   `.   :  \ \   .'     
-    :  *:   ;             :    |`*-'   `*+-*       
+  |  | |                       /`  | ,      `*-*'/
+  `  : :  :                /  /    | : .    ._.-'
+   \  \ ,  \              :   `.   :  \ \   .'
+    :  *:   ;             :    |`*-'   `*+-*
     `**-*`""               *---*
 
 
@@ -65,6 +65,7 @@ DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS attempts;
 DROP TABLE IF EXISTS quiz;
 DROP TABLE IF EXISTS video;
+<<<<<<< HEAD
 
 
 DROP TABLE IF EXISTS tutor;
@@ -72,6 +73,8 @@ DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS tc;
 
 /*DELETE FROM module;*/
+=======
+>>>>>>> 2762c841cdcff68965e278e70f63fe8c0c05600d
 DROP TABLE IF EXISTS module;
 
 /*DELETE FROM account;*/
@@ -226,9 +229,9 @@ CREATE TABLE module (
 id int AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(128) NOT NULL,
 description VARCHAR(128) NOT NULL,
-class_day VARCHAR(128) NOT NULL,
-class_startTime TIME NOT NULL,
-class_endTime TIME NOT NULL,
+class_day INT NOT NULL,
+class_startTime VARCHAR(128) NOT NULL,
+class_endTime VARCHAR(128) NOT NULL,
 tc    VARCHAR(128) NOT NULL,
 tutor VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
