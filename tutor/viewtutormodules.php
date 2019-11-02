@@ -38,6 +38,7 @@ include 'session.php';
           <th>". $row[3]."</th>
           <th>". $row[4]."</th>
           <th>". $row[8]."</th>
+          <th>". $row[5]."</th>
           </tr></table>";
         }
       }
