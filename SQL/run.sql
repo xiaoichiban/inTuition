@@ -224,7 +224,6 @@ INSERT INTO enroll (student, mod_id) VALUES
 CREATE TABLE quiz (
 id int AUTO_INCREMENT PRIMARY KEY,
 quiztitle VARCHAR(128) NOT NULL,
-questionid int NOT NULL,
 moduleid int NOT NULL
 );
 
