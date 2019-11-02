@@ -40,12 +40,8 @@
 DROP TABLE IF EXISTS announcement;
 DROP TABLE IF EXISTS reply;
 DROP TABLE IF EXISTS thread;
-DROP TABLE IF EXISTS flag;
-DROP TABLE IF EXISTS tag;
 DROP TABLE IF EXISTS complain;
 DROP TABLE IF EXISTS message;
-DROP TABLE IF EXISTS bid;
-DROP TABLE IF EXISTS task;
 DROP TABLE IF EXISTS admin_account;
 DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
@@ -132,10 +128,10 @@ FOREIGN KEY (username) REFERENCES account(username)
 INSERT INTO account
 (username, password, name, about_me, email, last_login, date_registered, status, account_type)
 VALUES
-('alice', 'password', 'alice', 'about me 0', 'alice@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
-('bob', 'password', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
-('brightkids', 'password', 'brightkids', 'best tuition center', 'brightkids@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
-('danny', 'password', 'danny', 'I very lepak', 'danny@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
+('alice', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'alice', 'about me 0', 'alice@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
+('bob', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
+('brightkids', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'brightkids', 'best tuition center', 'brightkids@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
+('danny', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'danny', 'I very lepak', 'danny@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
 
 
 
@@ -223,6 +219,7 @@ CREATE TABLE enroll (
 id int AUTO_INCREMENT PRIMARY KEY,
 student VARCHAR(128) NOT NULL,
 mod_id int NOT NULL REFERENCES module(id),
+status VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 FOREIGN KEY (student) REFERENCES account(username)
 );
@@ -241,7 +238,7 @@ FOREIGN KEY (complainer) REFERENCES account(username)
 );
 
 INSERT INTO module
-(id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status)
+(name, description, class_day, class_startTime, class_endTime, tc, tutor, status)
 VALUES
 ('IS2103', 'This is a killer module', '1', '1400', '1600',
 'brightkids', 'danny', 'active'),

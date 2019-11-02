@@ -42,7 +42,7 @@ include 'config.php';
 		
            $query = "INSERT INTO account (username, name, password, email, 
 											date_registered , last_login, account_type ) 
-      	    	  VALUES ('$username', '$name', '$password',  '$email',  '$date' ,  '$date' , 'tc');";
+      	    VALUES ('$username', '$name', '$password',  '$email',  '$date' ,  '$date' , 'tc');";
 			
 			// echo $query;
 			
