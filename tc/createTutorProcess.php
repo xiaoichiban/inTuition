@@ -15,7 +15,7 @@
 ('$username', '$password', '$name', '$email', '$status')";
 
   if ($db->query($sql) === TRUE) {
-echo $username . " account created successfully!";
+      echo $username . " account created successfully!";
       $sql = "INSERT INTO tutor (username, tc_owner) VALUES ('$name', '$tc')";
       if ($db->query($sql) === TRUE) {
         echo $username . " tutor created successfully!";
