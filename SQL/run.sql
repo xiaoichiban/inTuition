@@ -12,10 +12,18 @@
 --
 ---------------------------------------------------------
 
+⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀        
+⠀⠀⠀⠸⡆⠹⡀⣠⢤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⡧⢤⡄⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⡧⢄⣹⣅⣜⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⢹⠚⠃⠀⠀⠀⠀⠀
+⠀⣀⠴⢒⣉⡹⣶⣤⣀⡉⠉⠒⠒⠒⠤⠤⣀⣀⣀⠇⠀⠀⢸⠠⣄⠀⠀⠀⠀⠀
+⠀⠈⠉⠁⠀⠀⠀⠉⠒⠯⣟⣲⠦⣤⣀⡀⠀⠀⠈⠉⠉⠉⠛⠒⠻⢥⣀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⣲⡬⠭⠿⢷⣦⣤⢄⣀⠀⠀⠚⠛⠛⠓⢦⡀
+⠀⠀⠀⠀⠀⠀⠀⢀⣀⠤⠴⠚⠉⠁⠀⠀⠀⠀⣀⣉⡽⣕⣯⡉⠉⠉⠑⢒⣒⡾
+⠀⠀⣀⡠⠴⠒⠉⠉⠀⢀⣀⣀⠤⡤⢶⣶⣋⠉⠉⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀
+⣖⣉⣁⣠⠤⠶⡶⡶⢍⡉⠀⠀⠀⠙⠒⠯⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠁⠀⠀⠀⠀⠑⢦⣯⠇
 
-
-
-⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀        
 ⠀⠀⠀⠸⡆⠹⡀⣠⢤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⡧⢤⡄⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⡧⢄⣹⣅⣜⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⢹⠚⠃⠀⠀⠀⠀⠀
 ⠀⣀⠴⢒⣉⡹⣶⣤⣀⡉⠉⠒⠒⠒⠤⠤⣀⣀⣀⠇⠀⠀⢸⠠⣄⠀⠀⠀⠀⠀
@@ -28,11 +36,6 @@
 
 
 */
-
-
-
-
-
 
 
 
@@ -50,11 +53,11 @@ DROP TABLE IF EXISTS admin_account;
 DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS tc;
-DROP TABLE IF EXISTS module;
 DROP TABLE IF EXISTS enroll;
 DROP TABLE IF EXISTS question;
-DROP TABLE IF EXISTS quiz;
 DROP TABLE IF EXISTS attempts;
+DROP TABLE IF EXISTS quiz;
+DROP TABLE IF EXISTS module;
 DROP TABLE IF EXISTS account;
 
 /*
@@ -68,6 +71,7 @@ DROP TABLE IF EXISTS account;
 
 
 CREATE TABLE admin_account (
+user_id int AUTO_INCREMENT UNIQUE,
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
 email VARCHAR(128) UNIQUE NOT NULL,
@@ -77,6 +81,7 @@ last_login DATE
 
 
 CREATE TABLE account (
+user_id int AUTO_INCREMENT UNIQUE,
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
 name VARCHAR(128) NOT NULL,
@@ -151,62 +156,9 @@ INSERT INTO tutor (username,tc_owner) VALUES ('danny' , 'brightkids');
 
 
 
-CREATE TABLE question (
-id int AUTO_INCREMENT PRIMARY KEY,
-questiontitle VARCHAR(128) NOT NULL,
-optiona VARCHAR(128) NOT NULL,
-optionb VARCHAR(128) NOT NULL,
-optionc VARCHAR(128) NOT NULL,
-optiond VARCHAR(128) NOT NULL,
-answer VARCHAR(128) NOT NULL, 
-quizid int NOT NULL, 
-FOREIGN KEY (quizid) REFERENCES quiz(id)
-);
-
-
-CREATE TABLE quiz (
-id int AUTO_INCREMENT PRIMARY KEY,
-quiztitle VARCHAR(128) NOT NULL,
-questionid int NOT NULL,
-moduleid int NOT NULL,
-FOREIGN KEY (questionid) REFERENCES question(id), 
-FOREIGN KEY (moduleid) REFERENCES module(id)
-);
-
-
-CREATE TABLE attempts (
-id int AUTO_INCREMENT PRIMARY KEY,
-quizid int NOT NULL,
-student int NOT NULL,
-FOREIGN KEY (quizid) REFERENCES quiz(id), 
-FOREIGN KEY (student) REFERENCES account(username)
-);
 
 
 
-/*
----- NOTE THIS !!!
----- I employed a dirty trick on this table  :)
----- Notice no {FK}
-*/
-
-CREATE TABLE message (
-id int AUTO_INCREMENT PRIMARY KEY,
-body VARCHAR(256) NOT NULL,
-sender VARCHAR(128) NOT NULL,
-receiver VARCHAR(128) NOT NULL,
-datetimestamp DATETIME DEFAULT now() NOT NULL,
-read_flag BOOLEAN NOT NULL DEFAULT FALSE
-);
-
-/*
---- I am not gonna link this to any table FYI
---- Don't worry, it still works
---- removed below
-
-REFERENCES account(username),
-REFERENCES account(username),
-*/
 
 
 CREATE TABLE module (
@@ -259,6 +211,98 @@ INSERT INTO enroll (student, mod_id) VALUES
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE quiz (
+id int AUTO_INCREMENT PRIMARY KEY,
+quiztitle VARCHAR(128) NOT NULL,
+questionid int NOT NULL,
+moduleid int NOT NULL
+);
+
+
+CREATE TABLE question (
+id int AUTO_INCREMENT PRIMARY KEY,
+questiontitle VARCHAR(128) NOT NULL,
+optiona VARCHAR(128) NOT NULL,
+optionb VARCHAR(128) NOT NULL,
+optionc VARCHAR(128) NOT NULL,
+optiond VARCHAR(128) NOT NULL,
+answer VARCHAR(128) NOT NULL, 
+quizid int NOT NULL, 
+FOREIGN KEY (quizid) REFERENCES quiz(id)
+);
+
+
+
+
+
+CREATE TABLE attempts (
+id int AUTO_INCREMENT PRIMARY KEY,
+quizid int NOT NULL,
+student VARCHAR(128) NOT NULL,
+FOREIGN KEY (quizid) REFERENCES quiz(id), 
+FOREIGN KEY (student) REFERENCES account(username)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+---- NOTE THIS !!!
+---- I employed a dirty trick on this table  :)
+---- Notice no {FK}
+*/
+
+CREATE TABLE message (
+id int AUTO_INCREMENT PRIMARY KEY,
+body VARCHAR(256) NOT NULL,
+sender VARCHAR(128) NOT NULL,
+receiver VARCHAR(128) NOT NULL,
+datetimestamp DATETIME DEFAULT now() NOT NULL,
+read_flag BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+/*
+--- I am not gonna link this to any table FYI
+--- Don't worry, it still works
+--- removed below
+
+REFERENCES account(username),
+REFERENCES account(username),
+*/
+
+
+
+
+
 /*
 -------------------------------
 -- Do not remove these yet
@@ -293,7 +337,7 @@ body VARCHAR(256) NOT NULL );
 
 
 INSERT INTO admin_account
-VALUES ('admin', 'password', 'admin@gmail.com', '1111-11-11');
+VALUES ('1' , 'admin', 'password', 'admin@gmail.com', '1111-11-11');
 
 INSERT INTO message (sender, receiver, read_flag, body) VALUES
 ('alice','bob', 'f' , 'hello'),
