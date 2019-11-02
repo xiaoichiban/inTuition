@@ -139,13 +139,28 @@ VALUES
 ('danny', 'password', 'danny', 'I very lepak', 'danny@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
 
 
+CREATE TABLE question (
+id int AUTO_INCREMENT PRIMARY KEY,
+questiontitle VARCHAR(128) NOT NULL, 
+optiona VARCHAR(128) NOT NULL, 
+optionb VARCHAR(128) NOT NULL, 
+optionc VARCHAR(128) NOT NULL, 
+optiond VARCHAR(128) NOT NULL, 
+answer VARCHAR(128) NOT NULL
+);
 
 
+CREATE TABLE quiz (
+id int AUTO_INCREMENT PRIMARY KEY,
+questionid int NOT NULL REFERENCES question(id),
+moduleid int NOT NULL REFERENCES module(id)
+);
 
-
-
-
-
+CREATE TABLE attempts (
+id int AUTO_INCREMENT PRIMARY KEY,
+quizid int NOT NULL REFERENCES quiz(id),
+student int NOT NULL REFERENCES student(username)
+);
 
 
 
