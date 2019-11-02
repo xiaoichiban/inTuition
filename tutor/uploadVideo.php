@@ -23,10 +23,12 @@
 	<br/>
 	<input type="text"  id="vidname" name="vidname" maxlength="20" class="form-control" required> </input>
 
-	
-	<label for="body">Video Description</label>
 	<br/>
-	<input type="text"  id="body" name="body" maxlength="50" class="form-control" required> </input>
+	<br/>
+	
+	<label for="videscript">Video Description</label>
+	<br/>
+	<input type="text"  id="videscript" name="videscript" maxlength="50" class="form-control" required> </input>
 
 	<br/>
 	<br/>

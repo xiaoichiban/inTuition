@@ -52,20 +52,29 @@
 
 
 
+DROP TABLE IF EXISTS admin_account;
 DROP TABLE IF EXISTS announcement;
 DROP TABLE IF EXISTS reply;
 DROP TABLE IF EXISTS thread;
 DROP TABLE IF EXISTS complain;
 DROP TABLE IF EXISTS message;
-DROP TABLE IF EXISTS admin_account;
-DROP TABLE IF EXISTS tutor;
-DROP TABLE IF EXISTS student;
-DROP TABLE IF EXISTS tc;
+
+
 DROP TABLE IF EXISTS enroll;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS attempts;
 DROP TABLE IF EXISTS quiz;
+DROP TABLE IF EXISTS video;
+
+
+DROP TABLE IF EXISTS tutor;
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS tc;
+
+/*DELETE FROM module;*/
 DROP TABLE IF EXISTS module;
+
+/*DELETE FROM account;*/
 DROP TABLE IF EXISTS account;
 
 /*
@@ -224,8 +233,8 @@ tc    VARCHAR(128) NOT NULL,
 tutor VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 status VARCHAR(16) NOT NULL DEFAULT 'active' ,
-FOREIGN KEY (tc) REFERENCES account(username) ,
-FOREIGN KEY (tutor) REFERENCES account(username)
+FOREIGN KEY (tc) REFERENCES account(username) ON DELETE CASCADE ,
+FOREIGN KEY (tutor) REFERENCES account(username) ON DELETE CASCADE
 );
 
 
@@ -253,16 +262,10 @@ mod_id int NOT NULL,
 name VARCHAR(128) NOT NULL,
 description VARCHAR(128) NOT NULL,
 filename VARCHAR(128) NOT NULL,
+subtitles VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 FOREIGN KEY (mod_id) REFERENCES module(id)
 );
-
-
-
-
-
-
-
 
 
 CREATE TABLE complain (
@@ -290,8 +293,17 @@ VALUES
 
 
 
-INSERT INTO enroll (student, mod_id, status) VALUES
-('alice', '1', 'accepted');
+
+INSERT INTO video
+(mod_id, name, description, filename, subtitles)
+VALUES
+('1', 'lecture_1', 'watch and learn', '1572629571.mp4', 'blank.vtt'),
+('2', 'devs of google', 'we love to dev software', 'devstories.webm', 'devstories-en.vtt');
+
+
+
+INSERT INTO enroll (student, mod_id, status) 
+VALUES ('alice', '1', 'accepted');
 
 
 

@@ -29,11 +29,28 @@ echo "
 ?>
 
 
+<br/>
+
 <video controls style="width:640px;height:360px;" poster="poster.png">
   <source src="video/devstories.webm"  type='video/webm;codecs="vp8, vorbis"' />
   <track src="video/devstories-en.vtt" label="English subtitles" 
          kind="subtitles" srclang="en" default></track>
 </video>
+
+
+<br/>
+
+
+
+
+
+<video controls style="width:640px;height:360px;" poster="poster.png">
+  <source src="video/devstories.webm"  type='video/webm;codecs="vp8, vorbis"' />
+  <track src="video/blank.vtt" label="English subtitles" 
+         kind="subtitles" srclang="en" default></track>
+</video>
+
+
 
 
 <br/>

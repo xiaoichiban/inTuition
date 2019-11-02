@@ -2,6 +2,10 @@
 
 // include('layout.php');
 
+
+include('config.php');
+
+
 $target_dir = "video/";
 
 
@@ -11,12 +15,6 @@ $uploadOk = 1;
 $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
-$microTimeNow = round(microtime(true));
-
-
-//$target_file_subs = $target_dir . basename($_FILES["subsToUpload"]["name"]);
-$newsubsfilename = './video/$microTimeNow.vtt';
-move_uploaded_file($_FILES["subsToUpload"]["tmp_name"], $newsubsfilename);
 
 
 
@@ -30,7 +28,7 @@ move_uploaded_file($_FILES["subsToUpload"]["tmp_name"], $newsubsfilename);
 
 // 5 * 1024 * 1024; //5MB
 
-if ($_FILES["fileToUpload"]["size"] > (10*1024*1024)  ) {
+if ($_FILES["fileToUpload"]["size"] > (17*1024*1024)  ) {
     echo "<h3 align='center'>Sorry, your video file is too large at ".$_FILES["fileToUpload"]["size"]."</h3>";
     $uploadOk = 0;
 }
@@ -50,13 +48,35 @@ if ($uploadOk == 0) {
 } 
 
 
+
+
+
+$microTimeNow = round(microtime(true));
+
+//$target_file_subs = $target_dir . basename($_FILES["subsToUpload"]["name"]);
+$newsubsfilename = "./video/".$microTimeNow.".vtt";
+
+if( move_uploaded_file($_FILES["subsToUpload"]["tmp_name"], $newsubsfilename)  == TRUE ){
+	$newsubsfilename = $microTimeNow.".vtt";
+}
+else {
+	$newsubsfilename = "blank.vtt";
+}
+
+
+
+
+
+
+
+
 if ($uploadOk == 1) {
 	
 	$extension = explode(".", $_FILES["fileToUpload"]["name"]);
-	$newfilename = "./video/$microTimeNow.".end($extension);
-	$smallfilename = round(microtime(true)) . '.' . end($extension);
+	$newfilename = "./video/".$microTimeNow.".".end($extension);
+	$smallfilename = $microTimeNow.".".end($extension);
 	
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $newfilename)) {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $newfilename) == TRUE) {
 		
 
 		
@@ -66,43 +86,40 @@ if ($uploadOk == 1) {
 		
 		// SQL PART
 		
-		/*
-		$thisusername = $_SESSION['username'];
-		$thisuserid = $_SESSION['user_id'];
-		$thistweetbody = $_POST["body"];
-		$thistweetcat  = $_POST["category"];
-		$url1  = $_POST["url1"];
-		$url2  = $_POST["url2"];
+		
+		//$thisusername = $_SESSION['username'];
+		//$thisuserid = $_SESSION['user_id'];
+		// $smallfilename
+		// $newsubsfilename
+		$vidname  = $_POST["vidname"];
+		$videscript  = $_POST["videscript"];
 		
 		
-		if ($url1=='' ||$url1 == null ){
-			$url1 = './uploads/blank.png';
-		}
-		
-		if ($url2=='' ||$url2 == null ){
-			$url2 = './uploads/blank.png';
-		}
-		
-		
-		$sql = "INSERT INTO tweet (user_id, username, tweetbody, category, photo , url1 , url2)
-				VALUES ('$thisuserid', '$thisusername', '$thistweetbody' , '$thistweetcat' ,'$smallfilename' , '$url1' , '$url2' )";
+		$sql = "
+		INSERT INTO video (mod_id, name, description, filename, subtitles)
+		VALUES ('1', '$vidname', '$videscript' , '$smallfilename' , '$newsubsfilename' )";
+
 
 		if ($db->query($sql) === TRUE) {
 			echo "New record created successfully";
-		} else {
+		} 
+		else {
 			echo "Error: " . $sql . "<br>" . $db->error;
 		}
-		*/
+		
 		
 		echo "</div>";
 		
 		
     } 
 	else {
-        echo "<h3 align='center'>Sorry, there was an error uploading your file. Please try again. </h3>";
+		
+		echo " error code = <b>". $_FILES['fileToUpload']['error'] ."</b>";
+        echo "<h3 align='center' style='color:red'>
+		Sorry, there was an error uploading your file. Please try again. </h3>";
     }
 	
-	echo "<br/><br/>
+	echo "
 	<div align='center'>
 	<h3>You will be redirected in <div id='counter'>5</h3>
 	<script>
