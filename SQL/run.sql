@@ -110,7 +110,7 @@ credit_card_num VARCHAR(18) NOT NULL,
 valid_till VARCHAR(4) NOT NULL,
 credit_card_name VARCHAR(30) NOT NULL,
 cvv VARCHAR(3) NOT NULL,
-FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE
+FOREIGN KEY (username) REFERENCES account(username)
 );
 
 
@@ -136,9 +136,6 @@ VALUES
 ('brightkids', 'password', 'brightkids', 'best tuition center', 'brightkids@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
 ('danny', 'password', 'danny', 'I very lepak', 'danny@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
 
-INSERT INTO tc(username, credit_card_num, valid_till, credit_card_name, cvv)
-VALUES
-('brightkids', '0000000000000000', '0724', 'Smartest', '666');
 
 
 
