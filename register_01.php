@@ -118,7 +118,7 @@
 	
 	
 	<div>
-      <input type="text" name="name" id="name" placeholder="Name" value=""  required >
+      <input type="text" name="name_field" id="name_field" placeholder="Name" value=""  required >
   	</div>
 	
 	
@@ -145,6 +145,8 @@
 	  id = "credit_card_num"
 	  placeholder="credit card num" 
 	  value=""  
+	  maxlength="16"
+	  pattern="\d*"
 	  required >
   	</div>
 	
@@ -152,13 +154,29 @@
 	
 	 <div >
       <input 
-	  type="number" 
+	  type="text" 
 	  name="valid_till" 
 	  id = "valid_till"
 	  placeholder="valid till (MM/YY)" 
 	  value=""  
+	  maxlength="4"
+	  pattern="\d*"
 	  required >
   	</div>
+	
+	<div >
+      <input 
+	  type="text" 
+	  name="cvv" 
+	  id = "cvv"
+	  placeholder="CVV" 
+	  value=""  
+	  maxlength="3"
+	  pattern="\d*"
+	  required >
+  	</div>
+	
+	
 	
 	
 	

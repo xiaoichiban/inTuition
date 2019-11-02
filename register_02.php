@@ -12,7 +12,7 @@ include 'config.php';
   	$date = date("Y-m-d");
 	
 	
-	$name = $_POST['name'];
+	$name = $_POST['name_field'];
 	
 	$credit_card_num = $_POST['credit_card_num'];
 	$valid_till = $_POST['valid_till'];

@@ -117,7 +117,7 @@
 	
 		
 	<div>
-      <input type="text" name="name" id="name" placeholder="Name" value=""  required >
+      <input type="text" name="name_field" id="name_field" placeholder="Name" value=""  required >
   	</div>
 	
   	<div >

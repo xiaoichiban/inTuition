@@ -10,7 +10,7 @@ include 'config.php';
   	$password = $_POST['password'];
 	
 	
-  	$name = $_POST['name'];
+  	$name = $_POST['name_field'];
 	
 	$confirm_password = $_POST['confirm_password'];
   	$date = date("Y-m-d");
