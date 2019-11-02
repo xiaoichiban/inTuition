@@ -10,16 +10,17 @@ $loginlast = $_SESSION['last_login'];
 
 
 	    
-<?php include("topheader.php"); ?>
+<?php 
+// include("topheader.php"); 
+?>
 
 
+<body>
 	
 	
-
-    <body>
-	
-	
-	<?php include("topbody.php"); ?>
+<?php 
+//include("topbody.php"); 
+?>
 
 		
 		
