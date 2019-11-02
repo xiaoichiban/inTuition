@@ -16,13 +16,16 @@
 
 <table border='1'>
   <tr>
-    <th width='10%'>Module ID</th>
-    <th width='30%'>Name</th>
-    <th width='30%'>Description</th>
-    <th width='30%'>Tution Centre</th>
-    <th  width='15%'>Tutor</th>
-    <th  width='10%'>Status</th>
-    <th  width='20%'>Details</th>
+    <th>Module ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Tution Day</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Tution Centre</th>
+    <th>Tutor</th>
+    <th>Status</th>
+    <th>Details</th>
   </tr>
 
   <!-- Search for active module method-->
@@ -47,8 +50,11 @@
       echo"<td>"; echo "$row[2]"; echo"</td>";
       echo"<td>"; echo "$row[3]"; echo"</td>";
       echo"<td>"; echo "$row[4]"; echo"</td>";
+      echo"<td>"; echo "$row[5]"; echo"</td>";
       echo"<td>"; echo "$row[6]"; echo"</td>";
-      echo"<td>"; echo "<a href='viewmodule.php?id=$thisID'> View Module </a>"; echo"</td>";
+      echo"<td>"; echo "$row[7]"; echo"</td>";
+      echo"<td>"; echo "$row[9]"; echo"</td>";
+      echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
       echo"</tr>";
       }
     }
@@ -66,8 +72,11 @@
       echo"<td>"; echo "$row[2]"; echo"</td>";
       echo"<td>"; echo "$row[3]"; echo"</td>";
       echo"<td>"; echo "$row[4]"; echo"</td>";
+      echo"<td>"; echo "$row[5]"; echo"</td>";
       echo"<td>"; echo "$row[6]"; echo"</td>";
-      echo"<td>"; echo "<a href='viewmodule.php?id=$thisID'> View Module </a>"; echo"</td>";
+      echo"<td>"; echo "$row[7]"; echo"</td>";
+      echo"<td>"; echo "$row[9]"; echo"</td>";
+      echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
       echo"</tr>";
       }
     }
