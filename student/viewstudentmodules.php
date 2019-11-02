@@ -24,7 +24,8 @@ include 'session.php';
         "<th>description</th>" .
         "<th>offered by</th>" .
         "<th>tutored by</th>" .
-        "<th>enrolled</th></tr>";
+        "<th>enrolled</th>" .
+        "<th>status</th></tr>";
         while ($row = mysqli_fetch_row($result2)) {
           $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
           $module_row = mysqli_fetch_row($module_details);
@@ -37,8 +38,8 @@ include 'session.php';
           <th>". $row[2]."</th>
           <th>". $row[3]."</th>
           <th>". $row[4]."</th>
-          <th>". $enroll_row[3]."</th>
-          </tr>";
+          <th>". $enroll_row[4]."</th>
+          <th>". $enroll_row[3]."</th></tr>";
         }
         echo "</table>";
       }
