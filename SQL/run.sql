@@ -51,11 +51,11 @@ DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS tc;
 DROP TABLE IF EXISTS module;
-DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS enroll;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS quiz;
 DROP TABLE IF EXISTS attempts;
+DROP TABLE IF EXISTS account;
 
 /*
 --
@@ -117,21 +117,15 @@ CREATE TABLE tutor (
 id int AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(128) NOT NULL UNIQUE,
 tc_owner VARCHAR(128) NOT NULL,
-FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE,
-FOREIGN KEY (tc_owner) REFERENCES tc(username) ON DELETE CASCADE
+FOREIGN KEY (username) REFERENCES account(username),
+FOREIGN KEY (tc_owner) REFERENCES tc(username)
 );
-
 
 CREATE TABLE student (
 id int AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(128) NOT NULL UNIQUE,
-last_login DATE,
-date_registered DATE NOT NULL,
-status VARCHAR(128) NOT NULL DEFAULT 'active',
-FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE
+FOREIGN KEY (username) REFERENCES account(username)
 );
-
-
 
 INSERT INTO account
 (username, password, name, about_me, email, last_login, date_registered, status, account_type)
@@ -140,6 +134,20 @@ VALUES
 ('bob', 'password', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
 ('brightkids', 'password', 'brightkids', 'best tuition center', 'brightkids@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
 ('danny', 'password', 'danny', 'I very lepak', 'danny@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
+
+
+
+
+INSERT INTO student (username) VALUES ('alice');
+INSERT INTO student (username) VALUES ('bob');
+
+INSERT INTO tc (username, credit_card_num, valid_till, credit_card_name, cvv) 
+VALUES ('brightkids' , '12345678912345' , '1220' , 'DR Danny Poo' , '123');
+
+
+INSERT INTO tutor (username,tc_owner) VALUES ('danny' , 'brightkids');
+
+
 
 
 CREATE TABLE question (
@@ -199,18 +207,22 @@ description VARCHAR(128) NOT NULL,
 class_day VARCHAR(128) NOT NULL,
 class_startTime TIME NOT NULL,
 class_endTime TIME NOT NULL,
-tc    VARCHAR(128) NOT NULL REFERENCES account(username),
-tutor VARCHAR(128) NOT NULL REFERENCES account(username),
+tc    VARCHAR(128) NOT NULL,
+tutor VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
-status VARCHAR(16) NOT NULL DEFAULT 'active'
+status VARCHAR(16) NOT NULL DEFAULT 'active' ,
+FOREIGN KEY (tc) REFERENCES account(username) , 
+FOREIGN KEY (tutor) REFERENCES account(username)
+
 );
 
 
 CREATE TABLE enroll (
 id int AUTO_INCREMENT PRIMARY KEY,
-student VARCHAR(128) NOT NULL REFERENCES account(username),
+student VARCHAR(128) NOT NULL,
 mod_id int NOT NULL REFERENCES module(id),
-datetimestamp DATETIME DEFAULT now() NOT NULL
+datetimestamp DATETIME DEFAULT now() NOT NULL, 
+FOREIGN KEY (student) REFERENCES account(username)
 );
 
 
@@ -219,14 +231,18 @@ CREATE TABLE complain (
 id int AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(128) NOT NULL,
 content VARCHAR(256) NOT NULL,
-complainer VARCHAR(128) NOT NULL REFERENCES account(username),
+complainer VARCHAR(128) NOT NULL,
 datetimestamp DATETIME NOT NULL DEFAULT now(),
 status VARCHAR(128) NOT NULL DEFAULT 'new',
-comment VARCHAR(256)
+comment VARCHAR(256),
+FOREIGN KEY (complainer) REFERENCES account(username)
 );
 
-INSERT INTO module (id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status) VALUES
-(1, 'IS2103', 'This is a killer module', 'Monday', '14:00:00', '16:00:00', 'brightkids', 'danny', '2019-10-19 01:19:42', 'active');
+INSERT INTO module 
+(id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status) 
+VALUES
+(1, 'IS2103', 'This is a killer module', 'Monday', '14:00:00', '16:00:00', 
+'brightkids', 'danny', '2019-10-19 01:19:42', 'active');
 
 INSERT INTO enroll (student, mod_id) VALUES
 ('alice', '1');
