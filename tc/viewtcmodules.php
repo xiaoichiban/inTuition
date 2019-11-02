@@ -1,6 +1,6 @@
 <?php
-include '../config.php';
-include '../session.php';
+include 'config.php';
+include 'session.php';
 ?>
 <html>
   <head>
@@ -41,12 +41,11 @@ include '../session.php';
           <th>". $row[4]."</th>
           <th>". $enroll_row[0]."</th>
           <th>". $row[5] ."</th>
-          <th>". $row[6] ."</th>
           </tr></table>";
         }
       }
 
-    }+
+    }
 
     echo "<h3><a href = 'tcdashboard.php'>Back</a></h3>";
      ?>

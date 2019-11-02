@@ -48,7 +48,7 @@
       echo"<td>"; echo "$row[3]"; echo"</td>";
       echo"<td>"; echo "$row[4]"; echo"</td>";
       echo"<td>"; echo "$row[6]"; echo"</td>";
-      echo"<td>"; echo "<a href='viewmodule.php?id=$thisID'> View Module </a>"; echo"</td>";
+      echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
       echo"</tr>";
       }
     }
@@ -67,7 +67,7 @@
       echo"<td>"; echo "$row[3]"; echo"</td>";
       echo"<td>"; echo "$row[4]"; echo"</td>";
       echo"<td>"; echo "$row[6]"; echo"</td>";
-      echo"<td>"; echo "<a href='viewmodule.php?id=$thisID'> View Module </a>"; echo"</td>";
+      echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
       echo"</tr>";
       }
     }

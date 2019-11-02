@@ -15,7 +15,7 @@ include 'session.php';
     while ($row1 = mysqli_fetch_row($result1)) {
       $acctype = $row1[0];
       if ($acctype == "tutor"){
-        $sql2 = "SELECT * FROM module WHERE tc = '$username';";
+        $sql2 = "SELECT * FROM module WHERE tutor = '$username';";
         $result2 = mysqli_query($db, $sql2);
         echo "<table style='width:100%' border='1'>" .
         "<tr><th></th>" .
@@ -37,14 +37,14 @@ include 'session.php';
           <th>". $row[2]."</th>
           <th>". $row[3]."</th>
           <th>". $row[4]."</th>
-          <th>". $enroll_row[3]."</th>
+          <th>". $row[8]."</th>
           </tr></table>";
         }
       }
 
-    }+
+    }
 
-    echo "<h3><a href = 'studentdashboard.php'>Back</a></h3>";
+    echo "<h3><a href = 'tutordashboard.php'>Back</a></h3>";
      ?>
   </body>
 </html>
