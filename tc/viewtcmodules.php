@@ -1,6 +1,6 @@
 <?php
-include '../config.php';
-include '../session.php';
+include 'config.php';
+include 'session.php';
 ?>
 <html>
   <head>
@@ -20,13 +20,14 @@ include '../session.php';
 
         echo "<table style='width:100%' border='1'>" .
         "<tr><th></th>" .
-        "<th>module_id</th>" .
-        "<th>module_name</th>" .
-        "<th>description</th>" .
-        "<th>tutored by</th>" .
-        "<th>number of students</th>" .
-        "<th>created</th>" .
-        "<th>status</th></tr>";
+        "<th>Module ID</th>" .
+        "<th>Module Name</th>" .
+        "<th>Description</th>" .
+        "<th>TimeSlot</th>" .
+        "<th>Tutored by</th>" .
+        "<th>Number of students</th>" .
+        "<th>Created</th>" .
+        "<th>Status</th></tr>";
         while ($row = mysqli_fetch_row($result2)) {
           $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
           $module_row = mysqli_fetch_row($module_details);
@@ -37,16 +38,15 @@ include '../session.php';
           <th>". $row[0]."</th>
           <th>". $row[1]."</th>
           <th>". $row[2]."</th>
-          <th>". $row[3]."</th>
-          <th>". $row[4]."</th>
+          <th>". $row[3]. " - " . $row[4]. " to ". $row[5]."</th>
+          <th>". $row[7] ."</th>
           <th>". $enroll_row[0]."</th>
-          <th>". $row[5] ."</th>
-          <th>". $row[6] ."</th>
+          <th>". $row[8] ."</th>
+          <th>". $row[9] ."</th>
           </tr></table>";
         }
       }
-
-    }+
+    }
 
     echo "<h3><a href = 'tcdashboard.php'>Back</a></h3>";
      ?>
