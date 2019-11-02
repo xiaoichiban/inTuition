@@ -80,6 +80,7 @@ CREATE TABLE account (
 user_id int AUTO_INCREMENT UNIQUE,
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
+last_seen DATETIME NOT NULL DEFAULT now(),
 name VARCHAR(128) NOT NULL,
 about_me VARCHAR(1024) NOT NULL DEFAULT '',
 email VARCHAR(128) UNIQUE NOT NULL,
@@ -178,6 +179,7 @@ CREATE TABLE enroll (
 id int AUTO_INCREMENT PRIMARY KEY,
 student VARCHAR(128) NOT NULL,
 mod_id int NOT NULL REFERENCES module(id),
+status VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 FOREIGN KEY (student) REFERENCES account(username)
 );
@@ -196,13 +198,20 @@ FOREIGN KEY (complainer) REFERENCES account(username)
 );
 
 INSERT INTO module
-(id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status)
+(name, description, class_day, class_startTime, class_endTime, tc, tutor, status)
 VALUES
-(1, 'IS2103', 'This is a killer module', '1', '1400', '1600', 
-'brightkids', 'danny', '2019-10-19 01:19:42', 'active');
+('IS2103', 'This is a killer module', '1', '1400', '1600',
+'brightkids', 'danny', 'active'),
+('IS2103', 'This is NOT a killer module', '5', '1000', '1200',
+'brightkids', 'danny', 'active'),
+('IS3103', 'This is a module that wastes time', '2', '2000', '2300',
+'brightkids', 'danny', 'active'),
+('IS3103', 'This is an online module', '0', '0900', '1800',
+'brightkids', 'danny', 'active');
 
-INSERT INTO enroll (student, mod_id) VALUES
-('alice', '1');
+
+INSERT INTO enroll (student, mod_id, status) VALUES
+('alice', '1', 'accepted');
 
 
 
