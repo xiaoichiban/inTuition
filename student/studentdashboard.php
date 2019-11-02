@@ -7,5 +7,6 @@
     <a href="viewstudentmodules.php">My Modules</a>
     <a href="">Chat</a>
     <a href="">My Profile</a>
+    <a href="viewtimetable.php">My Timetable</a>
   </body>
 </html>

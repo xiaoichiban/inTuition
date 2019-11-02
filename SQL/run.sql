@@ -12,7 +12,7 @@
 --
 ---------------------------------------------------------
 
-⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀        
+⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠸⡆⠹⡀⣠⢤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⡧⢤⡄⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⡧⢄⣹⣅⣜⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⢹⠚⠃⠀⠀⠀⠀⠀
 ⠀⣀⠴⢒⣉⡹⣶⣤⣀⡉⠉⠒⠒⠒⠤⠤⣀⣀⣀⠇⠀⠀⢸⠠⣄⠀⠀⠀⠀⠀
@@ -23,7 +23,7 @@
 ⣖⣉⣁⣠⠤⠶⡶⡶⢍⡉⠀⠀⠀⠙⠒⠯⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠁⠀⠀⠀⠀⠑⢦⣯⠇
 
-⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀        
+⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠸⡆⠹⡀⣠⢤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⡧⢤⡄⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⡧⢄⣹⣅⣜⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⢹⠚⠃⠀⠀⠀⠀⠀
 ⠀⣀⠴⢒⣉⡹⣶⣤⣀⡉⠉⠒⠒⠒⠤⠤⣀⣀⣀⠇⠀⠀⢸⠠⣄⠀⠀⠀⠀⠀
@@ -147,7 +147,7 @@ VALUES
 INSERT INTO student (username) VALUES ('alice');
 INSERT INTO student (username) VALUES ('bob');
 
-INSERT INTO tc (username, credit_card_num, valid_till, credit_card_name, cvv) 
+INSERT INTO tc (username, credit_card_num, valid_till, credit_card_name, cvv)
 VALUES ('brightkids' , '12345678912345' , '1220' , 'DR Danny Poo' , '123');
 
 
@@ -165,14 +165,14 @@ CREATE TABLE module (
 id int AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(128) NOT NULL,
 description VARCHAR(128) NOT NULL,
-class_day VARCHAR(128) NOT NULL,
-class_startTime TIME NOT NULL,
-class_endTime TIME NOT NULL,
+class_day int NOT NULL,
+class_startTime VARCHAR(4) NOT NULL,
+class_endTime VARCHAR(4) NOT NULL,
 tc    VARCHAR(128) NOT NULL,
 tutor VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 status VARCHAR(16) NOT NULL DEFAULT 'active' ,
-FOREIGN KEY (tc) REFERENCES account(username) , 
+FOREIGN KEY (tc) REFERENCES account(username) ,
 FOREIGN KEY (tutor) REFERENCES account(username)
 
 );
@@ -182,7 +182,7 @@ CREATE TABLE enroll (
 id int AUTO_INCREMENT PRIMARY KEY,
 student VARCHAR(128) NOT NULL,
 mod_id int NOT NULL REFERENCES module(id),
-datetimestamp DATETIME DEFAULT now() NOT NULL, 
+datetimestamp DATETIME DEFAULT now() NOT NULL,
 FOREIGN KEY (student) REFERENCES account(username)
 );
 
@@ -199,10 +199,10 @@ comment VARCHAR(256),
 FOREIGN KEY (complainer) REFERENCES account(username)
 );
 
-INSERT INTO module 
-(id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status) 
+INSERT INTO module
+(id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status)
 VALUES
-(1, 'IS2103', 'This is a killer module', 'Monday', '14:00:00', '16:00:00', 
+(1, 'IS2103', 'This is a killer module', '1', '1400', '1600', 
 'brightkids', 'danny', '2019-10-19 01:19:42', 'active');
 
 INSERT INTO enroll (student, mod_id) VALUES
@@ -240,8 +240,8 @@ optiona VARCHAR(128) NOT NULL,
 optionb VARCHAR(128) NOT NULL,
 optionc VARCHAR(128) NOT NULL,
 optiond VARCHAR(128) NOT NULL,
-answer VARCHAR(128) NOT NULL, 
-quizid int NOT NULL, 
+answer VARCHAR(128) NOT NULL,
+quizid int NOT NULL,
 FOREIGN KEY (quizid) REFERENCES quiz(id)
 );
 
@@ -253,7 +253,7 @@ CREATE TABLE attempts (
 id int AUTO_INCREMENT PRIMARY KEY,
 quizid int NOT NULL,
 student VARCHAR(128) NOT NULL,
-FOREIGN KEY (quizid) REFERENCES quiz(id), 
+FOREIGN KEY (quizid) REFERENCES quiz(id),
 FOREIGN KEY (student) REFERENCES account(username)
 );
 
