@@ -8,7 +8,7 @@
 ---------------------------------------------------------
 -- https://mariadb.com/kb/en/library/reserved-words/
 ---------------------------------------------------------
--- 
+--
 --
 ---------------------------------------------------------
 
@@ -98,7 +98,7 @@ account_type = {student , tc or tutor}
 --https://www.regular-expressions.info/creditcard.html
 ---
 ---
--- one {FK} only 
+-- one {FK} only
 ---
 */
 
@@ -144,11 +144,11 @@ VALUES
 
 CREATE TABLE question (
 id int AUTO_INCREMENT PRIMARY KEY,
-questiontitle VARCHAR(128) NOT NULL, 
-optiona VARCHAR(128) NOT NULL, 
-optionb VARCHAR(128) NOT NULL, 
-optionc VARCHAR(128) NOT NULL, 
-optiond VARCHAR(128) NOT NULL, 
+questiontitle VARCHAR(128) NOT NULL,
+optiona VARCHAR(128) NOT NULL,
+optionb VARCHAR(128) NOT NULL,
+optionc VARCHAR(128) NOT NULL,
+optiond VARCHAR(128) NOT NULL,
 answer VARCHAR(128) NOT NULL
 );
 
@@ -169,15 +169,15 @@ student int NOT NULL REFERENCES student(username)
 
 /*
 ---- NOTE THIS !!!
----- I employed a dirty trick on this table  :) 
+---- I employed a dirty trick on this table  :)
 ---- Notice no {FK}
 */
 
 CREATE TABLE message (
 id int AUTO_INCREMENT PRIMARY KEY,
 body VARCHAR(256) NOT NULL,
-sender VARCHAR(128) NOT NULL, 
-receiver VARCHAR(128) NOT NULL, 
+sender VARCHAR(128) NOT NULL,
+receiver VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 read_flag BOOLEAN NOT NULL DEFAULT FALSE
 );
@@ -196,8 +196,11 @@ CREATE TABLE module (
 id int AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(128) NOT NULL,
 description VARCHAR(128) NOT NULL,
-tc    VARCHAR(128) NOT NULL REFERENCES account(username), 
-tutor VARCHAR(128) NOT NULL REFERENCES account(username), 
+class_day VARCHAR(128) NOT NULL,
+class_startTime TIME NOT NULL,
+class_endTime TIME NOT NULL,
+tc    VARCHAR(128) NOT NULL REFERENCES account(username),
+tutor VARCHAR(128) NOT NULL REFERENCES account(username),
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 status VARCHAR(16) NOT NULL DEFAULT 'active'
 );
@@ -205,8 +208,8 @@ status VARCHAR(16) NOT NULL DEFAULT 'active'
 
 CREATE TABLE enroll (
 id int AUTO_INCREMENT PRIMARY KEY,
-student VARCHAR(128) NOT NULL REFERENCES account(username), 
-mod_id int NOT NULL REFERENCES module(id), 
+student VARCHAR(128) NOT NULL REFERENCES account(username),
+mod_id int NOT NULL REFERENCES module(id),
 datetimestamp DATETIME DEFAULT now() NOT NULL
 );
 
@@ -222,10 +225,10 @@ status VARCHAR(128) NOT NULL DEFAULT 'new',
 comment VARCHAR(256)
 );
 
-INSERT INTO module (name, description, tc, tutor, status) VALUES 
-('IS2103', 'This is a killer module', 'brightkids', 'danny', 'active');
+INSERT INTO module (id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status) VALUES
+(1, 'IS2103', 'This is a killer module', 'Monday', '14:00:00', '16:00:00', 'brightkids', 'danny', '2019-10-19 01:19:42', 'active');
 
-INSERT INTO enroll (student, mod_id) VALUES 
+INSERT INTO enroll (student, mod_id) VALUES
 ('alice', '1');
 
 
@@ -234,7 +237,7 @@ INSERT INTO enroll (student, mod_id) VALUES
 /*
 -------------------------------
 -- Do not remove these yet
--- thanks 
+-- thanks
 -------------------------------
 */
 
@@ -286,8 +289,8 @@ VALUES
 
 
 
-INSERT INTO complain (title, content, complainer) 
+INSERT INTO complain (title, content, complainer)
 VALUES ('slow', 'everything is too slow', 'bob');
 
-INSERT INTO complain (title, content, complainer) 
+INSERT INTO complain (title, content, complainer)
 VALUES ('slow', 'everything is too slow', 'alice');
