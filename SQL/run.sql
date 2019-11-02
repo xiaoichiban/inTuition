@@ -12,16 +12,8 @@
 --
 ---------------------------------------------------------
 
-⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠸⡆⠹⡀⣠⢤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⡧⢤⡄⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⡧⢄⣹⣅⣜⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⢹⠚⠃⠀⠀⠀⠀⠀
-⠀⣀⠴⢒⣉⡹⣶⣤⣀⡉⠉⠒⠒⠒⠤⠤⣀⣀⣀⠇⠀⠀⢸⠠⣄⠀⠀⠀⠀⠀
-⠀⠈⠉⠁⠀⠀⠀⠉⠒⠯⣟⣲⠦⣤⣀⡀⠀⠀⠈⠉⠉⠉⠛⠒⠻⢥⣀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⣲⡬⠭⠿⢷⣦⣤⢄⣀⠀⠀⠚⠛⠛⠓⢦⡀
-⠀⠀⠀⠀⠀⠀⠀⢀⣀⠤⠴⠚⠉⠁⠀⠀⠀⠀⣀⣉⡽⣕⣯⡉⠉⠉⠑⢒⣒⡾
-⠀⠀⣀⡠⠴⠒⠉⠉⠀⢀⣀⣀⠤⡤⢶⣶⣋⠉⠉⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀
-⣖⣉⣁⣠⠤⠶⡶⡶⢍⡉⠀⠀⠀⠙⠒⠯⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠁⠀⠀⠀⠀⠑⢦⣯⠇
+
+
 
 ⠀⠀⠀⣖⠲⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⡇⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠸⡆⠹⡀⣠⢤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⡧⢤⡄⠀⠀⠀⠀⠀
@@ -40,20 +32,29 @@
 
 
 
+
+
+
+
+
 DROP TABLE IF EXISTS announcement;
 DROP TABLE IF EXISTS reply;
 DROP TABLE IF EXISTS thread;
+DROP TABLE IF EXISTS flag;
+DROP TABLE IF EXISTS tag;
 DROP TABLE IF EXISTS complain;
 DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS bid;
+DROP TABLE IF EXISTS task;
 DROP TABLE IF EXISTS admin_account;
 DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS tc;
+DROP TABLE IF EXISTS module;
 DROP TABLE IF EXISTS enroll;
 DROP TABLE IF EXISTS question;
-DROP TABLE IF EXISTS attempts;
 DROP TABLE IF EXISTS quiz;
-DROP TABLE IF EXISTS module;
+DROP TABLE IF EXISTS attempts;
 DROP TABLE IF EXISTS account;
 
 /*
@@ -67,7 +68,6 @@ DROP TABLE IF EXISTS account;
 
 
 CREATE TABLE admin_account (
-user_id int AUTO_INCREMENT UNIQUE,
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
 email VARCHAR(128) UNIQUE NOT NULL,
@@ -77,10 +77,8 @@ last_login DATE
 
 
 CREATE TABLE account (
-user_id int AUTO_INCREMENT UNIQUE,
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
-last_seen DATETIME NOT NULL DEFAULT now(),
 name VARCHAR(128) NOT NULL,
 about_me VARCHAR(1024) NOT NULL DEFAULT '',
 email VARCHAR(128) UNIQUE NOT NULL,
@@ -112,7 +110,7 @@ credit_card_num VARCHAR(18) NOT NULL,
 valid_till VARCHAR(4) NOT NULL,
 credit_card_name VARCHAR(30) NOT NULL,
 cvv VARCHAR(3) NOT NULL,
-FOREIGN KEY (username) REFERENCES account(username)
+FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE
 );
 
 
@@ -140,7 +138,6 @@ VALUES
 
 
 
-
 INSERT INTO student (username) VALUES ('alice');
 INSERT INTO student (username) VALUES ('bob');
 
@@ -153,90 +150,6 @@ INSERT INTO tutor (username,tc_owner) VALUES ('danny' , 'brightkids');
 
 
 
-
-
-
-
-
-CREATE TABLE module (
-id int AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(128) NOT NULL,
-description VARCHAR(128) NOT NULL,
-class_day int NOT NULL,
-class_startTime VARCHAR(4) NOT NULL,
-class_endTime VARCHAR(4) NOT NULL,
-tc    VARCHAR(128) NOT NULL,
-tutor VARCHAR(128) NOT NULL,
-datetimestamp DATETIME DEFAULT now() NOT NULL,
-status VARCHAR(16) NOT NULL DEFAULT 'active' ,
-FOREIGN KEY (tc) REFERENCES account(username) ,
-FOREIGN KEY (tutor) REFERENCES account(username)
-
-);
-
-
-CREATE TABLE enroll (
-id int AUTO_INCREMENT PRIMARY KEY,
-student VARCHAR(128) NOT NULL,
-mod_id int NOT NULL REFERENCES module(id),
-status VARCHAR(128) NOT NULL,
-datetimestamp DATETIME DEFAULT now() NOT NULL,
-FOREIGN KEY (student) REFERENCES account(username)
-);
-
-
-
-CREATE TABLE complain (
-id int AUTO_INCREMENT PRIMARY KEY,
-title VARCHAR(128) NOT NULL,
-content VARCHAR(256) NOT NULL,
-complainer VARCHAR(128) NOT NULL,
-datetimestamp DATETIME NOT NULL DEFAULT now(),
-status VARCHAR(128) NOT NULL DEFAULT 'new',
-comment VARCHAR(256),
-FOREIGN KEY (complainer) REFERENCES account(username)
-);
-
-INSERT INTO module
-(name, description, class_day, class_startTime, class_endTime, tc, tutor, status)
-VALUES
-('IS2103', 'This is a killer module', '1', '1400', '1600',
-'brightkids', 'danny', 'active'),
-('IS2103', 'This is NOT a killer module', '5', '1000', '1200',
-'brightkids', 'danny', 'active'),
-('IS3103', 'This is a module that wastes time', '2', '2000', '2300',
-'brightkids', 'danny', 'active'),
-('IS3103', 'This is an online module', '0', '0900', '1800',
-'brightkids', 'danny', 'active');
-
-
-INSERT INTO enroll (student, mod_id, status) VALUES
-('alice', '1', 'accepted');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CREATE TABLE quiz (
-id int AUTO_INCREMENT PRIMARY KEY,
-quiztitle VARCHAR(128) NOT NULL,
-moduleid int NOT NULL
-);
-
-
 CREATE TABLE question (
 id int AUTO_INCREMENT PRIMARY KEY,
 questiontitle VARCHAR(128) NOT NULL,
@@ -244,38 +157,22 @@ optiona VARCHAR(128) NOT NULL,
 optionb VARCHAR(128) NOT NULL,
 optionc VARCHAR(128) NOT NULL,
 optiond VARCHAR(128) NOT NULL,
-answer VARCHAR(128) NOT NULL,
-quizid int NOT NULL,
-FOREIGN KEY (quizid) REFERENCES quiz(id)
+answer VARCHAR(128) NOT NULL
 );
 
 
-
-
+CREATE TABLE quiz (
+id int AUTO_INCREMENT PRIMARY KEY,
+quiztitle VARCHAR(128) NOT NULL,
+questionid int NOT NULL REFERENCES question(id),
+moduleid int NOT NULL REFERENCES module(id)
+);
 
 CREATE TABLE attempts (
 id int AUTO_INCREMENT PRIMARY KEY,
-quizid int NOT NULL,
-student VARCHAR(128) NOT NULL,
-FOREIGN KEY (quizid) REFERENCES quiz(id),
-FOREIGN KEY (student) REFERENCES account(username)
+quizid int NOT NULL REFERENCES quiz(id),
+student int NOT NULL REFERENCES student(username)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -303,6 +200,53 @@ REFERENCES account(username),
 REFERENCES account(username),
 */
 
+
+CREATE TABLE module (
+id int AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(128) NOT NULL,
+description VARCHAR(128) NOT NULL,
+class_day VARCHAR(128) NOT NULL,
+class_startTime TIME NOT NULL,
+class_endTime TIME NOT NULL,
+tc    VARCHAR(128) NOT NULL,
+tutor VARCHAR(128) NOT NULL,
+datetimestamp DATETIME DEFAULT now() NOT NULL,
+status VARCHAR(16) NOT NULL DEFAULT 'active' ,
+FOREIGN KEY (tc) REFERENCES account(username) ,
+FOREIGN KEY (tutor) REFERENCES account(username)
+
+);
+
+
+CREATE TABLE enroll (
+id int AUTO_INCREMENT PRIMARY KEY,
+student VARCHAR(128) NOT NULL,
+mod_id int NOT NULL REFERENCES module(id),
+datetimestamp DATETIME DEFAULT now() NOT NULL,
+FOREIGN KEY (student) REFERENCES account(username)
+);
+
+
+
+CREATE TABLE complain (
+id int AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(128) NOT NULL,
+content VARCHAR(256) NOT NULL,
+complainer VARCHAR(128) NOT NULL,
+datetimestamp DATETIME NOT NULL DEFAULT now(),
+status VARCHAR(128) NOT NULL DEFAULT 'new',
+comment VARCHAR(256),
+FOREIGN KEY (complainer) REFERENCES account(username)
+);
+
+INSERT INTO module
+(id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status)
+VALUES
+(1, 'IS2103', 'This is a killer module', 'Monday', '14:00:00', '16:00:00',
+'brightkids', 'danny', '2019-10-19 01:19:42', 'active');
+
+INSERT INTO enroll (student, mod_id) VALUES
+('alice', '1');
 
 
 
@@ -341,12 +285,12 @@ body VARCHAR(256) NOT NULL );
 
 
 INSERT INTO admin_account
-VALUES ('1' , 'admin', 'password', 'admin@gmail.com', '1111-11-11');
+VALUES ('admin', 'password', 'admin@gmail.com', '1111-11-11');
 
 INSERT INTO message (sender, receiver, read_flag, body) VALUES
-('alice','bob', false , 'hello'),
-('alice','bob', false , 'hello'),
-('alice','bob', false , 'hello');
+('alice','bob', 'f' , 'hello'),
+('alice','bob', 'f' , 'hello'),
+('alice','bob', 'f' , 'hello');
 
 INSERT INTO announcement ( topic, body) VALUES
 ('Happy New Year!', 'Admins would like to wish everybody a happy new year!!'),
