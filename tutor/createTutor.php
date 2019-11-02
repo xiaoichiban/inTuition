@@ -10,7 +10,7 @@
 <form action="createTutorProcess.php" method="post">
   <b>Tutor Username</b>
   <br>
-  <textarea rows="4" cols="50" name="username"></textarea>
+  <input type="text" name="username" size="48"></input>
   <br>
   <input type="submit" value="Create"/>
 </form>

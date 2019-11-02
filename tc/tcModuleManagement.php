@@ -27,8 +27,8 @@
 
   <!-- Search for active module method-->
   <?php
-    include 'config.php';
-    include 'session.php';
+    include '../config.php';
+    include '../session.php';
     $tc = $_SESSION['login_user'];
 
     if(isset($_GET['search']) != "") {

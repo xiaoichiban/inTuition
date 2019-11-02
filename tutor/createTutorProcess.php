@@ -5,16 +5,12 @@
 
   $tc = $_SESSION['login_user'];
   $username = mysqli_real_escape_string($db, $_POST['username']).strtolower();
+  // $tc_owner = mysqli_real_escape_string($db, $_POST['tc']);
 
-  if($status === "") {
-    $status = 'active';
-  }
-
-  $sql = "INSERT INTO tutor (username, tc_owner)
-  VALUES ('$username', '$tc')";
+  $sql = "INSERT INTO tutor (username, tc_owner) VALUES ('$username', '$tc')";
 
   if ($db->query($sql) === TRUE) {
-      echo $description . " created successfully!";
+      echo $username . " created successfully!";
   } else {
       echo "Error: " . $sql . "<br>" . $db->error;
   }
