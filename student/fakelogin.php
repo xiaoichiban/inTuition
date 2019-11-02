@@ -6,10 +6,10 @@ session_start();
 
 
 
-$_SESSION['user_id'] = "4";
-$_SESSION['username'] = "danny";
-$_SESSION['login_user'] = "danny";
-$_SESSION['login_details_id'] = "danny";
+$_SESSION['user_id'] = "1";
+$_SESSION['username'] = "alice";
+$_SESSION['login_user'] = "alice";
+$_SESSION['login_details_id'] = "alice";
 
 echo "Fake Login success ! <br/>";
 echo $_SESSION['user_id']."<br/>";
