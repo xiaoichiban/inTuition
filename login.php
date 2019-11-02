@@ -18,18 +18,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		return;
 	  }
 
-	
-	$query = "SELECT * FROM account WHERE username = :username";
-	$statement = $connect->prepare($query);
-	$statement->execute( array(	':username' => $_POST["username"] ) );	
-	$count = $statement->rowCount();
+	$thisUSERNAME = $_POST['username'];
+	$sql  = "SELECT * FROM account WHERE username = '$thisUSERNAME';";
+	$result = mysqli_query($db, $sql);
+	$count = mysqli_num_rows($result);
 	
 	
 	if($count > 0)
 	{
-		$result = $statement->fetchAll();
-		foreach($result as $row)
-		{
+		$row = mysqli_fetch_assoc($result);
+		
+		echo "   ".$_POST["password"];
+		echo "   ".$row["password"];
+		
 			// Password correct
 			if(password_verify($_POST["password"], $row["password"]) == true)
 			{	
@@ -101,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				echo "<h3 align='center'><font color='red'>LOGIN (Password) FAILED</font></h3>";
 				echo "<h3 align='center'><a href='login.html' > BACK </a></h3>";
 			}
-		}
+		
 	}
  
 	  
