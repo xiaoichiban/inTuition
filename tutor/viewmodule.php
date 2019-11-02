@@ -39,4 +39,6 @@ while ($row1 = mysqli_fetch_row($result1)) {
     echo "<h3><a href = 'viewstudentmodules.php'>Back</a></h3>";
   }
 }
+
+echo "<h3><a href = 'createQuiz.php?module_id=". $module_id ."'>Create quiz</a></h3>";
 ?>
