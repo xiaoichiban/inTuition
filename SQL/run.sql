@@ -43,12 +43,8 @@
 DROP TABLE IF EXISTS announcement;
 DROP TABLE IF EXISTS reply;
 DROP TABLE IF EXISTS thread;
-DROP TABLE IF EXISTS flag;
-DROP TABLE IF EXISTS tag;
 DROP TABLE IF EXISTS complain;
 DROP TABLE IF EXISTS message;
-DROP TABLE IF EXISTS bid;
-DROP TABLE IF EXISTS task;
 DROP TABLE IF EXISTS admin_account;
 DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
@@ -340,9 +336,9 @@ INSERT INTO admin_account
 VALUES ('1' , 'admin', 'password', 'admin@gmail.com', '1111-11-11');
 
 INSERT INTO message (sender, receiver, read_flag, body) VALUES
-('alice','bob', 'f' , 'hello'),
-('alice','bob', 'f' , 'hello'),
-('alice','bob', 'f' , 'hello');
+('alice','bob', false , 'hello'),
+('alice','bob', false , 'hello'),
+('alice','bob', false , 'hello');
 
 INSERT INTO announcement ( topic, body) VALUES
 ('Happy New Year!', 'Admins would like to wish everybody a happy new year!!'),
