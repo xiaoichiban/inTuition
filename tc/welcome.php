@@ -1,31 +1,31 @@
 <?php
-include('session.php');
+include('../session.php');
 $thisuser = $_SESSION['login_user'];
 $loginlast = $_SESSION['last_login'];
 ?>
 
 <!DOCTYPE html>
 <html>
-    
 
 
-	    
-<?php include("topheader.php"); ?>
 
 
-	
-	
+<?php include("../topheader.php"); ?>
+
+
+
+
 
     <body>
-	
-	
-	<?php include("topbody.php"); ?>
 
-		
-		
-		
-		
-		
+
+	<?php include("../topbody.php"); ?>
+
+
+
+
+
+
         <div class="header">
             <?php
             $username = $_SESSION['login_user'];
@@ -76,4 +76,4 @@ $loginlast = $_SESSION['last_login'];
             </div>
         </div>
     </body>
-</html> 
+</html>
