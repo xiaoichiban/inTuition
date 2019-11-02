@@ -75,13 +75,13 @@
 		 echo $_SESSION['account_type']."  ";
 		 
 		 if ($account_type == "student"){
-			header("location: ./student/welcome.php");
+			header("location: ./student/studentdashboard.php");
 		 }
 		 else if ($account_type == "tc"){
-			header("location: ./tc/welcome.php");
+			header("location: ./tc/tcdashboard.php");
 		 }
 		 else if ($account_type == "tutor") {
-			header("location: ./tutor/welcome.php");
+			header("location: ./tutor/tutordashboard.php");
 		 }
 		 else {
 			header("location: loginFailed.php");
