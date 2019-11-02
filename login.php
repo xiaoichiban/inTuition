@@ -1,4 +1,45 @@
 <?php
+
+
+/*
+
+         _nnnn_                      
+        dGGGGMMb     ,"""""""""""""".
+       @p~qp~~qMb    | Linux Rules! |
+       M|@||@) M|   _;..............'
+       @,----.JM| -'
+      JS^\__/  qKL
+     dZP        qKRb
+    dZP          qKKb
+   fZP            SMMb
+   HZM            MMMM
+   FqM            MMMM
+ __| ".        |\dS"qML
+ |    `.       | `' \Zq
+_)      \.___.,|     .'
+\____   )MMMMMM|   .'
+     `-'       `--' hjm
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // mysqli_();
 include("config.php");
 session_start();
@@ -93,12 +134,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				
 				
 				
-			}
-			// Password failed
-			else { 
-				echo "<h3 align='center'><font color='red'>LOGIN (Password) FAILED</font></h3>";
-				echo "<h3 align='center'><a href='login.html' > BACK </a></h3>";
-			}
+	}
+	// End of IF
+	
+	// Start of ELSE
+	// Password failed
+	else { 
+		echo "<h3 align='center'><font color='red'>LOGIN (Password) FAILED</font></h3>";
+		echo "<h3 align='center'><a href='login.html' > BACK </a></h3>";
+	}
 		
 	}
  

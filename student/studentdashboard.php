@@ -3,10 +3,28 @@
     <title>Dashboard</title>
   </head>
   <body>
-    <a href="searchmodules.php">Search Modules</a>
-    <a href="viewstudentmodules.php">My Modules</a>
-    <a href="">Chat</a>
-    <a href="">My Profile</a>
-    <a href="viewtimetable.php">My Timetable</a>
+  <center>
+    <p><a href="searchmodules.php">Search Modules</a></p>
+    <p><a href="viewstudentmodules.php">My Modules</a></p>
+    <p><a href="">Chat</a></p>
+    <p><a href="">My Profile</a></p>
+    <p><a href="viewtimetable.php">My Timetable</a></p>
+	
+	<br/>
+	
+	
+	
+<?php
+session_start();
+echo "Logged in As:<br/>";
+echo "user_id=".$_SESSION['user_id']."<br/>";
+echo "username=".$_SESSION['username']."<br/>";
+echo "login_user=".$_SESSION['login_user']."<br/>";
+?>  
+	
+	
+	
+	
+	</center>
   </body>
 </html>

@@ -182,6 +182,23 @@ FOREIGN KEY (student) REFERENCES account(username)
 
 
 
+
+
+CREATE TABLE video (
+id int AUTO_INCREMENT PRIMARY KEY,
+mod_id int NOT NULL,
+name VARCHAR(128) NOT NULL,
+description VARCHAR(128) NOT NULL,
+filename VARCHAR(128) NOT NULL,
+datetimestamp DATETIME DEFAULT now() NOT NULL,
+FOREIGN KEY (mod_id) REFERENCES module(id)
+);
+
+
+
+
+
+
 CREATE TABLE complain (
 id int AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(128) NOT NULL,
