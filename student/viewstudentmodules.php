@@ -38,8 +38,9 @@ include 'session.php';
           <th>". $row[3]."</th>
           <th>". $row[4]."</th>
           <th>". $enroll_row[3]."</th>
-          </tr></table>";
+          </tr>";
         }
+        echo "</table>";
       }
 
     }

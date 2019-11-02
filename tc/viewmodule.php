@@ -25,18 +25,5 @@ else {
   "</table>";
 }
 
-$sql1 = "SELECT account_type FROM account WHERE username = '$thisuser';";
-$result1 = mysqli_query($db, $sql1);
-while ($row1 = mysqli_fetch_row($result1)) {
-  $acctype = $row1[0];
-  if ($acctype == 'tc'){
     echo "<h3><a href = 'tcModuleManagement.php'>Back</a></h3>";
-  }
-  else if ($acctype == 'tutor'){
-    echo "<h3><a href = '../tutor/viewtutormodules.php'>Back</a></h3>";
-  }
-  else{
-    echo "<h3><a href = '../student/viewstudentmodules.php'>Back</a></h3>";
-  }
-}
 ?>
