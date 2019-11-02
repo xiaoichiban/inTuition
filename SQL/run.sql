@@ -65,7 +65,6 @@ DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS attempts;
 DROP TABLE IF EXISTS quiz;
 DROP TABLE IF EXISTS video;
-<<<<<<< HEAD
 
 
 DROP TABLE IF EXISTS tutor;
@@ -73,8 +72,6 @@ DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS tc;
 
 /*DELETE FROM module;*/
-=======
->>>>>>> 2762c841cdcff68965e278e70f63fe8c0c05600d
 DROP TABLE IF EXISTS module;
 
 /*DELETE FROM account;*/
