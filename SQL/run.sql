@@ -243,12 +243,19 @@ FOREIGN KEY (complainer) REFERENCES account(username)
 INSERT INTO module
 (id, name, description, class_day, class_startTime, class_endTime, tc, tutor, datetimestamp, status)
 VALUES
-(1, 'IS2103', 'This is a killer module', 'Monday', '14:00:00', '16:00:00',
-'brightkids', 'danny', '2019-10-19 01:19:42', 'active');
+('IS2103', 'This is a killer module', '1', '1400', '1600',
+'brightkids', 'danny', 'active'),
+('IS2103', 'This is NOT a killer module', '5', '1000', '1200',
+'brightkids', 'danny', 'active'),
+('IS3103', 'This is a module that wastes time', '2', '2000', '2300',
+'brightkids', 'danny', 'active'),
+('IS3103', 'This is an online module', '0', '0900', '1800',
+'brightkids', 'danny', 'active');
 
-INSERT INTO enroll (student, mod_id) VALUES
-('alice', '1');
 
+
+INSERT INTO enroll (student, mod_id, status) VALUES
+('alice', '1', 'accepted');
 
 
 
@@ -289,9 +296,9 @@ INSERT INTO admin_account
 VALUES ('admin', 'password', 'admin@gmail.com', '1111-11-11');
 
 INSERT INTO message (sender, receiver, read_flag, body) VALUES
-('alice','bob', 'f' , 'hello'),
-('alice','bob', 'f' , 'hello'),
-('alice','bob', 'f' , 'hello');
+('alice','bob', false , 'hello'),
+('alice','bob', false , 'hello !!! '),
+('alice','bob', false , 'hello kkkkk');
 
 INSERT INTO announcement ( topic, body) VALUES
 ('Happy New Year!', 'Admins would like to wish everybody a happy new year!!'),
