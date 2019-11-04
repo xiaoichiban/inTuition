@@ -9,6 +9,7 @@
     <p><a href="">Chat</a></p>
     <p><a href="">My Profile</a></p>
     <p><a href="viewtimetable.php">My Timetable</a></p>
+    <p><a href="logout.php">Logout</a></p>
 	
 	<br/>
 	

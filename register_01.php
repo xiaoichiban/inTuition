@@ -100,6 +100,9 @@
 
 
 <body style='background-image: url("https://previews.123rf.com/images/elovich/elovich1704/elovich170400326/75383397-craft-paper-texture-rustic-vintage-background.jpg");'>
+  
+  
+  
   <form method="post" action="register_02.php" id="register_form">
   	<h1>Register @ InTuition As Tuition Center</h1>
 	
@@ -127,6 +130,38 @@
   	</div>
 	
 	
+	
+	
+	
+		
+	<div >
+      <input type="text" name="address" id="address" placeholder="address" value=""  required >
+  	</div>
+	
+	
+	
+	
+	
+	<div >
+      <input type="number" name="postal" id="postal" 
+	  placeholder="postal" 
+	  maxlength="6"
+	  value=""  required >
+  	</div>
+	
+	
+	<div >
+      <input type="number" name="longitude" id="longitude" placeholder="longitude" min="0" step="0.0000001" value="1.2958919"  required >
+  	</div>
+	
+	<div >
+      <input type="number" name="latitude" id="latitude" placeholder="latitude" min="0" step="0.0000001" value="103.7805317"  required >
+  	</div>
+	
+	<br/>
+	<br/>
+	
+	
   	<div>
   		<input type="password"  placeholder="Password" name="password" id="password" onkeyup="check();" required>
   	</div>
@@ -135,6 +170,11 @@
   		<input type="password"  placeholder="Confirm Password" name="confirm_password" id="confirm_password" onkeyup="check();" required>
 		<span id="message"></span>
   	</div>
+	
+	
+	
+	<br/>
+	<br/>
 	
 	
 	
@@ -191,6 +231,8 @@
   	</div>
 
 	
+	<br/>
+	<br/>
 	
   	<div>
   		<button type="submit" name="registerButton" id="reg_btn">Register</button>
