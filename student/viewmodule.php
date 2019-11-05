@@ -14,6 +14,7 @@ else if ($row[6] == 'inactive'){
   echo "module is no longer active";
 }
 else {
+  echo "<h3>Module details</h3>";
   echo
   "<table style='width:100%' border='1'>" .
   "<tr><th>module_id</th><th>" . $row[0] . "</th></tr>" .
@@ -39,4 +40,18 @@ while ($row1 = mysqli_fetch_row($result1)) {
     echo "<h3><a href = 'viewstudentmodules.php'>Back</a></h3>";
   }
 }
+
+
+echo "<h3>Available quizzes</h3>";
+$sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id';";
+    $result2 = mysqli_query($db, $sql2);
+    while ($row1 = mysqli_fetch_row($result2)) {
+      echo "<table style='width:60%' border='1'>" .
+        "<tr><th></th>" .
+        "<th>Quiz title</th>" ;
+      echo "<tr>
+        <th><a href = 'viewquiz.php?quizid=".$row1[0]."'>View</a></th>
+        <th>". $row1[1]."</th></tr>";
+    }
+    echo "</table>";
 ?>
