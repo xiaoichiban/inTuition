@@ -180,33 +180,6 @@ INSERT INTO tutor (username,tc_owner) VALUES ('danny' , 'brightkids');
 
 
 
-
-CREATE TABLE question (
-id int AUTO_INCREMENT PRIMARY KEY,
-questiontitle VARCHAR(128) NOT NULL,
-optiona VARCHAR(128) NOT NULL,
-optionb VARCHAR(128) NOT NULL,
-optionc VARCHAR(128) NOT NULL,
-optiond VARCHAR(128) NOT NULL,
-answer VARCHAR(128) NOT NULL
-);
-
-
-CREATE TABLE quiz (
-id int AUTO_INCREMENT PRIMARY KEY,
-quiztitle VARCHAR(128) NOT NULL,
-questionid int NOT NULL REFERENCES question(id),
-moduleid int NOT NULL REFERENCES module(id)
-);
-
-CREATE TABLE attempts (
-id int AUTO_INCREMENT PRIMARY KEY,
-quizid int NOT NULL REFERENCES quiz(id),
-student int NOT NULL REFERENCES student(username)
-);
-
-
-
 /*
 ---- NOTE THIS !!!
 ---- I employed a dirty trick on this table  :)
@@ -384,3 +357,36 @@ VALUES ('slow', 'everything is too slow', 'bob');
 
 INSERT INTO complain (title, content, complainer)
 VALUES ('slow', 'everything is too slow', 'alice');
+
+
+CREATE TABLE quiz (
+id int AUTO_INCREMENT PRIMARY KEY,
+quiztitle VARCHAR(128) NOT NULL,
+moduleid int NOT NULL,
+FOREIGN KEY (moduleid) REFERENCES module(id)
+);
+
+
+CREATE TABLE question (
+id int AUTO_INCREMENT PRIMARY KEY,
+questiontitle VARCHAR(128) NOT NULL,
+optiona VARCHAR(128) NOT NULL,
+optionb VARCHAR(128) NOT NULL,
+optionc VARCHAR(128) NOT NULL,
+optiond VARCHAR(128) NOT NULL,
+answer VARCHAR(128) NOT NULL, 
+quizid int NOT NULL, 
+FOREIGN KEY (quizid) REFERENCES quiz(id)
+);
+
+CREATE TABLE attempts (
+id int AUTO_INCREMENT PRIMARY KEY,
+attemptedans VARCHAR(128) NOT NULL,
+quizid int NOT NULL,
+questionid int NOT NULL,
+student VARCHAR(128) NOT NULL,
+FOREIGN KEY (quizid) REFERENCES quiz(id),
+FOREIGN KEY (questionid) REFERENCES question(id),
+FOREIGN KEY (student) REFERENCES student(username)
+);
+
