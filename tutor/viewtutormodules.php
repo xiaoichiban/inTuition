@@ -31,9 +31,9 @@ include 'session.php';
           $enroll_details = mysqli_query($db, "SELECT COUNT(*) FROM enroll e WHERE e.mod_id = '$row[0]'");
           $enroll_row = mysqli_fetch_row($enroll_details);
           echo "
-		  <a href = 'viewmodule.php?module_id=".$row[0]."'>
+		  
 		  <tr>
-          <th>View</th>
+          <th><a href = 'viewmodule.php?module_id=".$row[0]."'>View</a></th>
           <th>". $row[0]."</th>
           <th>". $row[1]."</th>
           <th>". $row[2]."</th>

@@ -46,6 +46,9 @@ echo "<h3><a href = 'createQuiz.php?module_id=". $module_id ."'>Create quiz</a><
 echo "<h3>Available quizzes</h3>";
 $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id';";
     $result2 = mysqli_query($db, $sql2);
+    if (mysqli_fetch_row($result2) == 0) {
+      echo "<h3>There are no quizzes for this module.</h3>";
+    }
     while ($row1 = mysqli_fetch_row($result2)) {
       echo "<table style='width:60%' border='1'>" .
         "<tr><th></th>" .
