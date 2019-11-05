@@ -257,10 +257,11 @@ FOREIGN KEY (tutor) REFERENCES account(username) ON DELETE CASCADE
 CREATE TABLE enroll (
 id int AUTO_INCREMENT PRIMARY KEY,
 student VARCHAR(128) NOT NULL,
-mod_id int NOT NULL REFERENCES module(id),
+mod_id int NOT NULL,
 status VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
-FOREIGN KEY (student) REFERENCES account(username)
+FOREIGN KEY (student) REFERENCES account(username),
+FOREIGN KEY (mod_id) REFERENCES module(id)
 );
 
 
@@ -312,8 +313,14 @@ VALUES
 
 
 
-INSERT INTO enroll (student, mod_id, status) 
+INSERT INTO enroll (student, mod_id, status)
 VALUES ('alice', '1', 'accepted');
+INSERT INTO enroll (student, mod_id, status)
+VALUES ('bob', '1', 'pending');
+INSERT INTO enroll (student, mod_id, status)
+VALUES ('alice', '2', 'pending');
+INSERT INTO enroll (student, mod_id, status)
+VALUES ('bob', '2', 'pending');
 
 
 
