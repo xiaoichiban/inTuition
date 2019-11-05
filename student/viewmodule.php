@@ -1,6 +1,6 @@
 <?php
 include('session.php');
-$thisuser = $_SESSION['login_user'];
+$username = $_SESSION['login_user'];
 $date = date('Y-m-d');
 $module_id = $_GET['module_id'];
 
@@ -24,34 +24,22 @@ else {
   "<tr><th>tutored by</th><th>" . $row[4] . "</th></tr>" .
   "<tr><th>number of students</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id';"))[0] . "</th></tr>" .
   "</table>";
-}
 
-$sql1 = "SELECT account_type FROM account WHERE username = '$thisuser';";
-$result1 = mysqli_query($db, $sql1);
-while ($row1 = mysqli_fetch_row($result1)) {
-  $acctype = $row1[0];
-  if ($acctype == 'tc'){
-    echo "<h3><a href = 'viewtcmodules.php'>Back</a></h3>";
-  }
-  else if ($acctype == 'tutor'){
-    echo "<h3><a href = 'viewtutormodules.php'>Back</a></h3>";
+  $sql3 = "SELECT * FROM enroll WHERE mod_id = '$module_id' AND student = '$username'";
+  $result3 = mysqli_query($db, $sql3);
+  $row3 = mysqli_fetch_row($result3);
+  if (mysqli_num_rows($result3) != 1) {
+    echo "invalid module $module_id";
   }
   else{
-    echo "<h3><a href = 'viewstudentmodules.php'>Back</a></h3>";
+    if ($row3[3] == 'pending'){
+      $confirm="return confirm('Are you sure?');";
+      echo"<form action = 'deregistermoduleprocessing.php?module_id=$row3[2]' method = 'post' onSubmit='$confirm'>
+      <input type = 'submit' value = ' Deregister ' />
+      </form>";
+    }
   }
+
 }
 
-
-echo "<h3>Available quizzes</h3>";
-$sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id';";
-    $result2 = mysqli_query($db, $sql2);
-    while ($row1 = mysqli_fetch_row($result2)) {
-      echo "<table style='width:60%' border='1'>" .
-        "<tr><th></th>" .
-        "<th>Quiz title</th>" ;
-      echo "<tr>
-        <th><a href = 'viewquiz.php?quizid=".$row1[0]."'>View</a></th>
-        <th>". $row1[1]."</th></tr>";
-    }
-    echo "</table>";
 ?>

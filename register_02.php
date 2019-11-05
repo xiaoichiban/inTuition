@@ -9,6 +9,13 @@ include 'config.php';
   	$email = $_POST['email'];
   	$password = $_POST['password'];
 	$confirm_password = $_POST['confirm_password'];
+	
+	
+	$address = $_POST['address'];
+	$postal = $_POST['postal'];
+	$longitude = $_POST['longitude'];
+	$latitude = $_POST['latitude'];
+	
   	$date = date("Y-m-d");
 	
 	
@@ -40,21 +47,16 @@ include 'config.php';
 		
 		   $password = password_hash($password, PASSWORD_DEFAULT);
 		
-           $query = "INSERT INTO account (username, name, password, email, 
-											date_registered , last_login, account_type ) 
-      	    VALUES ('$username', '$name', '$password',  '$email',  '$date' ,  '$date' , 'tc');";
-			
-			// echo $query;
-			
-           $results = mysqli_query($db, $query);
+$query = "INSERT INTO account (username, name, password, email, date_registered , last_login, account_type) 
+VALUES ('$username', '$name', '$password',  '$email',  '$date' ,  '$date' , 'tc');";
+// echo $query;
+$results = mysqli_query($db, $query);
 		   
 		   
-		   $query77 = "INSERT INTO tc (username, credit_card_num, valid_till, credit_card_name  , cvv) 
-      	    	  VALUES ('$username', '$credit_card_num',  '$valid_till',  '$credit_card_name' , '$cvv');";
-			
-			// echo $query;
-			
-           $results77 = mysqli_query($db, $query77);
+$query77 = "INSERT INTO tc (username, credit_card_num, valid_till, credit_card_name, cvv, address, postal, longitude, latitude) 
+VALUES ('$username', '$credit_card_num', '$valid_till', '$credit_card_name', '$cvv', '$address', '$postal', '$longitude', '$latitude');";
+// echo $query;
+$results77 = mysqli_query($db, $query77);
 		   
 		   
 		   

@@ -25,5 +25,25 @@ else {
   "</table>";
 }
 
+$sql = "SELECT * FROM enroll WHERE mod_id = '$module_id' AND status = 'accepted' ORDER BY student";
+$result = mysqli_query($db, $sql);
+$row = mysqli_fetch_row($result);
+
+echo
+"<form method='post' action='removeStudentProcess.php'>
+  <table style='width:100%' border='1'>
+    <tr>
+    <th>Student name</th>
+    <th>Date of Enrollment</th>
+    <th></th>
+    <tr/>" .
+  "<tr><th>" . $row[1] . "</th>" .
+  "<th>" . $row[4] . "</th>" .
+  "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$row[1]'>
+  <input type='submit' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
+</table>
+</form>";
+
+
     echo "<h3><a href = 'tcModuleManagement.php'>Back</a></h3>";
 ?>

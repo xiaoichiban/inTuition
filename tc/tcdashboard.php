@@ -7,11 +7,34 @@ include '../session.php';
   <head>
     <title>Dashboard</title>
   </head>
-  <body>
-    <a href="tcTutorManagement.php">My Tutors</a>
-    <a href="tcModuleManagement.php">My Modules</a>
-    <a href="">Chat</a>
-    <a href="">My Profile</a>
+
+
+<body>
+  
+  
+<p><a href="tcTutorManagement.php">My Tutors</a></p>
+
+<p><a href="tcModuleManagement.php">My Modules</a></p>
+
+<p><a href="">Chat (i think no need chat ah >> coz teacher already have chat) </a></p>
+
+<p><a href="">My Profile</a></p>
+	
+
+<p>  <a href="logout.php">Logout</a></p>
+
+
+
+<?php
+session_start();
+echo "Logged in As:<br/>";
+echo "user_id=".$_SESSION['user_id']."<br/>";
+echo "username=".$_SESSION['username']."<br/>";
+echo "login_user=".$_SESSION['login_user']."<br/>";
+?>  
+	
+	
+	
   </body>
 </html>
 

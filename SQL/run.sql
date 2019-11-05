@@ -8,10 +8,25 @@
 ---------------------------------------------------------
 -- https://mariadb.com/kb/en/library/reserved-words/
 ---------------------------------------------------------
---
---
----------------------------------------------------------
-
+              _                 __
+      __.--**"""**--...__..--**""""*-.
+    .'                                `-.
+  .'                         _           \
+ /                         .'        .    \   _._
+:                         :          :`*.  :-'.' ;
+;    `                    ;          `.) \   /.-'
+:     `                             ; ' -*   ;
+\      :.    \           :       :  :        :
+ \     ; `.   `.         ;     ` |  '        /
+ |         `.            `. -*"*\; /        :
+ |    :     /`-.           `.    \/`.'  _    `.
+ :    ;    :    `*-.__.-*""":`.   \ ;  'o` `. /   A
+ \     ;   ;                ;  \   ;:       ;:   //
+  |  | |                       /`  | ,      `*-*'/
+  `  : :  :                /  /    | : .    ._.-'
+   \  \ ,  \              :   `.   :  \ \   .'
+    :  *:   ;             :    |`*-'   `*+-*
+    `**-*`""               *---*
 
 
 
@@ -37,20 +52,30 @@
 
 
 
+DROP TABLE IF EXISTS admin_account;
 DROP TABLE IF EXISTS announcement;
 DROP TABLE IF EXISTS reply;
 DROP TABLE IF EXISTS thread;
 DROP TABLE IF EXISTS complain;
 DROP TABLE IF EXISTS message;
-DROP TABLE IF EXISTS admin_account;
-DROP TABLE IF EXISTS tutor;
-DROP TABLE IF EXISTS student;
-DROP TABLE IF EXISTS tc;
+
+
 DROP TABLE IF EXISTS enroll;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS attempts;
 DROP TABLE IF EXISTS quiz;
+DROP TABLE IF EXISTS video;
+DROP TABLE IF EXISTS markers;
+
+
+DROP TABLE IF EXISTS tutor;
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS tc;
+
+/*DELETE FROM module;*/
 DROP TABLE IF EXISTS module;
+
+/*DELETE FROM account;*/
 DROP TABLE IF EXISTS account;
 
 /*
@@ -73,6 +98,7 @@ last_login DATE
 
 
 CREATE TABLE account (
+id int AUTO_INCREMENT UNIQUE,
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
 name VARCHAR(128) NOT NULL,
@@ -101,14 +127,22 @@ account_type = {student , tc or tutor}
 
 
 CREATE TABLE tc (
-id int AUTO_INCREMENT PRIMARY KEY,
+id INT AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(128) NOT NULL UNIQUE,
 credit_card_num VARCHAR(18) NOT NULL,
 valid_till VARCHAR(4) NOT NULL,
 credit_card_name VARCHAR(30) NOT NULL,
 cvv VARCHAR(3) NOT NULL,
+postal VARCHAR(20) NOT NULL DEFAULT '119077',
+address VARCHAR(128) NOT NULL DEFAULT '119077',
+longitude VARCHAR(20) NOT NULL DEFAULT '1.2958919',
+latitude VARCHAR(20) NOT NULL DEFAULT '103.7805317',
 FOREIGN KEY (username) REFERENCES account(username) ON DELETE CASCADE
 );
+
+
+
+
 
 
 CREATE TABLE tutor (
@@ -202,28 +236,47 @@ CREATE TABLE module (
 id int AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(128) NOT NULL,
 description VARCHAR(128) NOT NULL,
-class_day VARCHAR(128) NOT NULL,
-class_startTime TIME NOT NULL,
-class_endTime TIME NOT NULL,
+class_day INT NOT NULL,
+class_startTime VARCHAR(128) NOT NULL,
+class_endTime VARCHAR(128) NOT NULL,
 tc    VARCHAR(128) NOT NULL,
 tutor VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
 status VARCHAR(16) NOT NULL DEFAULT 'active' ,
-FOREIGN KEY (tc) REFERENCES account(username) ,
-FOREIGN KEY (tutor) REFERENCES account(username)
-
+FOREIGN KEY (tc) REFERENCES account(username) ON DELETE CASCADE ,
+FOREIGN KEY (tutor) REFERENCES account(username) ON DELETE CASCADE
 );
+
+
+
+
+
+
 
 
 CREATE TABLE enroll (
 id int AUTO_INCREMENT PRIMARY KEY,
 student VARCHAR(128) NOT NULL,
-mod_id int NOT NULL REFERENCES module(id),
+mod_id int NOT NULL,
 status VARCHAR(128) NOT NULL,
 datetimestamp DATETIME DEFAULT now() NOT NULL,
-FOREIGN KEY (student) REFERENCES account(username)
+FOREIGN KEY (student) REFERENCES account(username),
+FOREIGN KEY (mod_id) REFERENCES module(id)
 );
 
+
+
+
+CREATE TABLE video (
+id int AUTO_INCREMENT PRIMARY KEY,
+mod_id int NOT NULL,
+name VARCHAR(128) NOT NULL,
+description VARCHAR(128) NOT NULL,
+filename VARCHAR(128) NOT NULL,
+subtitles VARCHAR(128) NOT NULL,
+datetimestamp DATETIME DEFAULT now() NOT NULL,
+FOREIGN KEY (mod_id) REFERENCES module(id)
+);
 
 
 CREATE TABLE complain (
@@ -251,8 +304,23 @@ VALUES
 
 
 
-INSERT INTO enroll (student, mod_id, status) VALUES
-('alice', '1', 'accepted');
+
+INSERT INTO video
+(mod_id, name, description, filename, subtitles)
+VALUES
+('1', 'lecture_1', 'watch and learn', '1572629571.mp4', 'blank.vtt'),
+('2', 'devs of google', 'we love to dev software', 'devstories.webm', 'devstories-en.vtt');
+
+
+
+INSERT INTO enroll (student, mod_id, status)
+VALUES ('alice', '1', 'accepted');
+INSERT INTO enroll (student, mod_id, status)
+VALUES ('bob', '1', 'pending');
+INSERT INTO enroll (student, mod_id, status)
+VALUES ('alice', '2', 'pending');
+INSERT INTO enroll (student, mod_id, status)
+VALUES ('bob', '2', 'pending');
 
 
 

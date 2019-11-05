@@ -19,26 +19,20 @@
 
 <form action="uploadVideoProcess.php" method="post" enctype="multipart/form-data">
     
-	<label for="body">Video Description</label>
+	<label for="vidname">Video name</label>
 	<br/>
-	<br/>
-	<textarea rows="3" cols="30" id="body" name="body" maxlength="50" class="form-control" required> </textarea>
+	<input type="text"  id="vidname" name="vidname" maxlength="20" class="form-control" required> </input>
 
-	
 	<br/>
 	<br/>
 	
-    <label for="category" >Category</label>
-	<select id="category" name="category" class="form-control"  required>
-      <option>general</option>
-      <option>trollpost</option>
-      <option>serious</option>
-      <option>banter</option>
-      <option>jokes</option>
-    </select>
+	<label for="videscript">Video Description</label>
+	<br/>
+	<input type="text"  id="videscript" name="videscript" maxlength="50" class="form-control" required> </input>
+
+	<br/>
+	<br/>
 	
-	<br/>
-	<br/>
 
 	
   	
@@ -53,7 +47,25 @@
 	</div>	
 			
 	<br/>
-	<br/><br/>
+	<br/>
+	
+	
+	
+	
+	
+	
+	
+	<br/>
+	<br/>
+	
+	
+	
+	
+	
+	
+	
+	
+	<br/>
 	
 	
 	
@@ -66,13 +78,7 @@
 	<br/>
 	
 	
-	
-	
-	
-	
-	<div class="form-group">
-	<input type="url" class="form-control" name="url1" id="url1" placeholder="insert url of image (optional)" maxlength="190">	
-	</div>	
+
 	
 
 	<br/>
