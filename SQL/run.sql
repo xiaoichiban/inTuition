@@ -65,6 +65,7 @@ DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS attempts;
 DROP TABLE IF EXISTS quiz;
 DROP TABLE IF EXISTS video;
+DROP TABLE IF EXISTS file;
 DROP TABLE IF EXISTS markers;
 
 
@@ -251,6 +252,16 @@ datetimestamp DATETIME DEFAULT now() NOT NULL,
 FOREIGN KEY (mod_id) REFERENCES module(id)
 );
 
+CREATE TABLE file (
+id int AUTO_INCREMENT PRIMARY KEY,
+mod_id int NOT NULL,
+name VARCHAR(128) NOT NULL,
+description VARCHAR(128) NOT NULL,
+filename VARCHAR(128) NOT NULL,
+datetimestamp DATETIME DEFAULT now() NOT NULL,
+FOREIGN KEY (mod_id) REFERENCES module(id)
+);
+
 
 CREATE TABLE complain (
 id int AUTO_INCREMENT PRIMARY KEY,
@@ -283,6 +294,11 @@ INSERT INTO video
 VALUES
 ('1', 'lecture_1', 'watch and learn', '1572629571.mp4', 'blank.vtt'),
 ('2', 'devs of google', 'we love to dev software', 'devstories.webm', 'devstories-en.vtt');
+
+INSERT INTO file
+(mod_id, name, description, filename)
+VALUES
+('1', 'lecture_1', 'Introduction', '1573020648.pdf');
 
 
 
@@ -374,8 +390,8 @@ optiona VARCHAR(128) NOT NULL,
 optionb VARCHAR(128) NOT NULL,
 optionc VARCHAR(128) NOT NULL,
 optiond VARCHAR(128) NOT NULL,
-answer VARCHAR(128) NOT NULL, 
-quizid int NOT NULL, 
+answer VARCHAR(128) NOT NULL,
+quizid int NOT NULL,
 FOREIGN KEY (quizid) REFERENCES quiz(id)
 );
 
@@ -389,4 +405,3 @@ FOREIGN KEY (quizid) REFERENCES quiz(id),
 FOREIGN KEY (questionid) REFERENCES question(id),
 FOREIGN KEY (student) REFERENCES student(username)
 );
-
