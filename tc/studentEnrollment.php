@@ -6,9 +6,8 @@ $tc = $_SESSION['login_user'];
 ?>
 
 <?php
-$sql = "SELECT * FROM enroll WHERE status ='pending' ORDER BY mod_id, student";
+$sql = "SELECT * FROM enroll WHERE status ='pending' ORDER BY mod_id, student;";
 $result = mysqli_query($db, $sql);
-$row = mysqli_fetch_row($result);
 if (mysqli_num_rows($result) < 1) {
   echo "No Outstanding Student Enrollment";
 }

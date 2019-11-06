@@ -76,6 +76,8 @@ DROP TABLE IF EXISTS tc;
 /*DELETE FROM module;*/
 DROP TABLE IF EXISTS module;
 
+DROP TABLE IF EXISTS notification;
+
 /*DELETE FROM account;*/
 DROP TABLE IF EXISTS account;
 
@@ -272,6 +274,17 @@ datetimestamp DATETIME NOT NULL DEFAULT now(),
 status VARCHAR(128) NOT NULL DEFAULT 'new',
 comment VARCHAR(256),
 FOREIGN KEY (complainer) REFERENCES account(username)
+);
+
+CREATE TABLE notification (
+id int AUTO_INCREMENT PRIMARY KEY,
+content VARCHAR(128) NOT NULL,
+sender VARCHAR(128) NOT NULL,
+receiver VARCHAR(128) NOT NULL,
+datetimestamp DATETIME NOT NULL DEFAULT now(),
+isRead BOOLEAN NOT NULL DEFAULT FALSE,
+FOREIGN KEY (sender) REFERENCES account(username),
+FOREIGN KEY (receiver) REFERENCES account(username)
 );
 
 INSERT INTO module

@@ -21,7 +21,7 @@ else {
   "<tr><th>description</th><th>" . $row[2] . "</th></tr>" .
   "<tr><th>offered by</th><th>" . $row[3] . "</th></tr>" .
   "<tr><th>tutored by</th><th>" . $row[4] . "</th></tr>" .
-  "<tr><th>number of students</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id';"))[0] . "</th></tr>" .
+  "<tr><th>number of students</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id' AND status = 'accepted';"))[0] . "</th></tr>" .
   "</table>";
 }
 
