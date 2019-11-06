@@ -30,8 +30,8 @@ if (mysqli_num_rows($result) > 0){
   $sql1 = "SELECT COUNT(*) FROM notification WHERE receiver='$username' and isRead = '0' GROUP BY receiver;";
   $result1 = mysqli_query($db,$sql1);
   $row1 = mysqli_fetch_row($result1);
+  echo "Notifications(".$row1[0].")";
   while ($row = mysqli_fetch_row($result)){
-    echo "Notifications(".$row1[0].")";
     echo "<h5>" . $row[1] . "</h5>";
     $tempstore[] = $row[0];
   }
