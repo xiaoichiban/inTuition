@@ -22,5 +22,5 @@
   } else {
       echo "Error: " . $sql . "<br>" . $db->error;
   }
-
+  echo "<h3><a href = 'viewquiz.php?quizid=". $quizid ."'>Back</a></h3>";
 ?>

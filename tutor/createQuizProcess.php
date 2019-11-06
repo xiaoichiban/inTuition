@@ -27,4 +27,6 @@
       echo "Error: " . $sql . "<br>" . $db->error;
   }
 
+  header('Location: viewModule.php?module_id=' . $module_id);
+
 ?>
