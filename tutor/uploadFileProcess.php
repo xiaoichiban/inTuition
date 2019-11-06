@@ -1,4 +1,11 @@
 <?php
+
+include '../config.php';
+
+$mod_id = isset( $_POST['mod_id']);
+$name = isset( $_POST['name']);
+$description = isset( $_POST['descrption']);
+
 $target_dir = "upload/";
 $temp = explode(".", $_FILES["fileToUpload"]["name"]);
 $newfilename = round(microtime(true)) . '.' . end($temp);
@@ -29,7 +36,14 @@ if(isset($_POST["submit"])) {
   // if everything is ok, try to upload file
   } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-          echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+          $sql = "INSERT INTO file (mod_id, name, description, filename) VALUES ('$mod_id', '$name' , '$description', '$newfilename')";
+          if ($db->query($sql) === TRUE) {
+            echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            header('Location: fileUploadedList.php?mod_id=' . $mod_id . '');
+          }
+          else {
+              echo "Sorry, there was an error uploading your file.";
+          }
       } else {
           echo "Sorry, there was an error uploading your file.";
       }

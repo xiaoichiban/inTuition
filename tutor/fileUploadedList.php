@@ -31,9 +31,21 @@ while ($row = mysqli_fetch_assoc($result2)) {
   <th><a href = 'deleteFile.php?mod_id=".$row['mod_id']."&filename=".$row['filename']."'>Remove</a></th>
   </tr>";
 }
-echo "</table>";
+echo "</table><br/><br/>";
 
-echo "<h3><a href = 'viewmodule.php?module_id=".$mod_id."'>Back</a></h3>";
+?>
 
+<form action="uploadFileProcess.php" method="post" enctype="multipart/form-data">
+    File Name:
+    <input type="text" name="name"><br/>
+    File Description:
+    <input type="text" name="description"><br/>
+    Select PDF File to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="hidden" name="mod_id" value="<?php $mod_id ?>">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
 
+<?php
+  echo "<h3><a href = 'viewmodule.php?module_id=".$mod_id."'>Back</a></h3>";
 ?>
