@@ -25,6 +25,8 @@ else {
   "<tr><th>number of students</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id';"))[0] . "</th></tr>" .
   "</table>";
 
+  echo "<h3><a href = 'fileUploadedList.php?mod_id=".$row[0]."'>Module Uploaded Files</a></h3>";
+
   echo "<h3>Available quizzes</h3>";
   $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id';";
     $result2 = mysqli_query($db, $sql2);
