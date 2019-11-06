@@ -1,6 +1,5 @@
 <?php
 /*
-
          _nnnn_                      
         dGGGGMMb     ,"""""""""""""".
        @p~qp~~qMb    | Linux Rules! |
@@ -227,21 +226,24 @@ span.psw { float: right; padding-top: 16px;}
 <a href="register.html">Don't have an account? >> Register For an Account Now</a>
 </div>
 
-
-  <div class="container" style="background-color:#f1f1f1">
-    <a href="resetPassword.php" type="button" class="btn btn-danger">Forgot Your Password?</a>
-  </div>
 </form>
 
 
 
+  <div class="container" style="background-color:#f1f1f1" align='center'>
+    <a href="resetPassword.php" 
+	style="font-family:Old Standard;font-size: 14px"
+	type="button" class="btn btn-danger">RESET MY PASSWORD</a>
+  </div>
 
 
+  <div class="container" style="background-color:#f1f1f1" align='center'>
 
-<b><a href="resetPassword.php" style="font-family:Old Standard;font-size: 14px">RESET MY PASSWORD</a></b>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<b><a href="register.html" style="font-family:Old Standard;font-size: 14px">CREATE NEW ACCOUNT</a></b>
-
+<b><a href="register.html" 
+style="font-family:Old Standard;font-size: 14px"
+type="button" class="btn btn-primary"
+>CREATE NEW ACCOUNT</a></b>
+  </div>
 
 
 </div>

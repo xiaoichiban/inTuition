@@ -54,21 +54,17 @@ $results = mysqli_query($db, $query);
 		   
 		   
 $query77 = "INSERT INTO tc (username, credit_card_num, valid_till, credit_card_name, cvv, address, postal, longitude, latitude) 
-VALUES ('$username', '$credit_card_num', '$valid_till', '$credit_card_name', '$cvv', '$address', '$postal', '$longitude', '$latitude');";
+VALUES ('$username', '$credit_card_num', '$valid_till', '$credit_card_name', '$cvv', '$address', 
+'$postal', '$longitude', '$latitude');";
 // echo $query;
 $results77 = mysqli_query($db, $query77);
+
 		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-           echo '<meta http-equiv="refresh" content="4;url=./" />';
-           echo '<br/> <br/> <br/> <h3 align="center">Account Created !! <br/> You will be Redirected in 3 seconds</h3>';
-           echo '<p align="center"><img src="./image/load.gif" /></p>';
-           exit();
+echo '<meta http-equiv="refresh" content="4;url=./" />';
+echo '<br/> <br/> <br/> <h3 align="center">Account Created !! 
+<br/> You will be Redirected in 3 seconds :) </h3>';
+echo '<p align="center"><img src="./image/load.gif" /></p>';
+exit();
   	}
   }
   
