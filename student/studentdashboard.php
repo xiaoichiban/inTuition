@@ -21,13 +21,16 @@ include 'config.php';
 echo "Logged in As:<br/>";
 $user_id=$_SESSION['user_id'];
 $username=$_SESSION['username'];
-echo "$username";
+echo "$username<br/>";
 $login_user=$_SESSION['login_user'];
 $sql = "SELECT * FROM notification WHERE receiver = '$username' AND isRead = '0';";
 $result = mysqli_query($db, $sql);
 if (mysqli_num_rows($result) > 0){
-
+  $sql1 = "SELECT COUNT(*) FROM notification WHERE receiver='$username' and isRead = '0' GROUP BY receiver;";
+  $result1 = mysqli_query($db,$sql1);
+  $row1 = mysqli_fetch_row($result1);
   while ($row = mysqli_fetch_row($result)){
+    echo "Notifications(".$row1[0].")";
     echo "<h5>" . $row[1] . "</h5>";
     $tempstore[] = $row[0];
   }
@@ -38,6 +41,9 @@ if (mysqli_num_rows($result) > 0){
       echo "unsuccessful";
     }
   }
+}
+else{
+  echo "Notifications";
 }
 ?>
 
