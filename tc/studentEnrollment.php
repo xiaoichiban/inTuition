@@ -31,12 +31,12 @@ else {
   </table>
 </form>";
 
-echo $row[2] . " and " . $row[1];
+// echo $row[2] . " and " . $row[1];
   }
 }
 ?>
 
 <?php
 
-    echo "<h3><a href = 'tcTutorManagement.php'>Back</a></h3>";
+    echo "<h3><a href = 'tcdashboard.php'>Back</a></h3>";
 ?>

@@ -10,16 +10,18 @@ include '../session.php';
 
 
 <body>
-  
-  
+
+
 <p><a href="tcTutorManagement.php">My Tutors</a></p>
 
 <p><a href="tcModuleManagement.php">My Modules</a></p>
 
+<p><a href="studentEnrollment.php">Enrollment</a></p>
+
 <p><a href="">Chat (i think no need chat ah >> coz teacher already have chat) </a></p>
 
 <p><a href="">My Profile</a></p>
-	
+
 
 <p>  <a href="logout.php">Logout</a></p>
 
@@ -31,10 +33,10 @@ echo "Logged in As:<br/>";
 echo "user_id=".$_SESSION['user_id']."<br/>";
 echo "username=".$_SESSION['username']."<br/>";
 echo "login_user=".$_SESSION['login_user']."<br/>";
-?>  
-	
-	
-	
+?>
+
+
+
   </body>
 </html>
 
