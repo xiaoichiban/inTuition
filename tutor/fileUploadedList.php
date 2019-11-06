@@ -42,8 +42,8 @@ echo "</table><br/><br/>";
     <input type="text" name="description"><br/>
     Select PDF File to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="hidden" name="mod_id" value="<?php $mod_id ?>">
-    <input type="submit" value="Upload Image" name="submit">
+    <input type="hidden" name="mod_id" value="<?php echo $mod_id; ?>">
+    <input type="submit" value="Upload" name="submit">
 </form>
 
 <?php

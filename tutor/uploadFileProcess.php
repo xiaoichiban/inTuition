@@ -2,10 +2,10 @@
 
 include '../config.php';
 
-$mod_id = isset( $_POST['mod_id']);
-$name = isset( $_POST['name']);
-$description = isset( $_POST['descrption']);
-
+$mod_id = $_POST["mod_id"];
+$name = $_POST['name'];
+$description = $_POST['description'];
+// echo "mod id: ". $mod_id . " name: " . $name . "description: " . $description;
 $target_dir = "upload/";
 $temp = explode(".", $_FILES["fileToUpload"]["name"]);
 $newfilename = round(microtime(true)) . '.' . end($temp);
@@ -36,7 +36,7 @@ if(isset($_POST["submit"])) {
   // if everything is ok, try to upload file
   } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-          $sql = "INSERT INTO file (mod_id, name, description, filename) VALUES ('$mod_id', '$name' , '$description', '$newfilename')";
+          $sql = "INSERT INTO file (mod_id, name, description, filename) VALUES ('$mod_id', '$name', '$description', '$newfilename')";
           if ($db->query($sql) === TRUE) {
             echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
             header('Location: fileUploadedList.php?mod_id=' . $mod_id . '');
