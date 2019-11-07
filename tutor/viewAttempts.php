@@ -1,9 +1,9 @@
 <?php
 include('session.php');
-$thisuser = $_SESSION['login_user'];
+$studentName = $_GET['student'];
 $date = $_GET['date'];
 
-$attemptSql = "SELECT * FROM attempts WHERE student = '$thisuser' and datetimestamp = '$date'; ";
+$attemptSql = "SELECT * FROM attempts WHERE student = '$studentName' and datetimestamp = '$date'; ";
 $attemptResult = mysqli_query($db, $attemptSql);
 $attemptResult1 = mysqli_query($db, $attemptSql);
 $attemptRow = mysqli_fetch_row($attemptResult);
@@ -14,10 +14,10 @@ if (mysqli_num_rows($attemptResult) < 1) {
   echo "Invalid attempt on $date";
 }
 else {
-  echo "<h3>Attempts details</h3>";
+  echo "<h3>$studentName's attempts details</h3>";
   echo "Attempted on: $date <br>"; 
 
-  $correctAnsSql = "SELECT count(*) FROM attempts WHERE student = '$thisuser' and datetimestamp = '$date' and isCorrect = 1;" ;
+  $correctAnsSql = "SELECT count(*) FROM attempts WHERE student = '$studentName' and datetimestamp = '$date' and isCorrect = 1;" ;
   $correctAnsResult = mysqli_query($db, $correctAnsSql);
   $correctAnsRow = mysqli_fetch_row($correctAnsResult);
   $totalCorrectAns = $correctAnsRow[0];
@@ -71,7 +71,7 @@ else {
 
     echo "<br><br>";
   }
-  echo "<h3><a href = 'viewquiz.php?quizid=".$quizid."'>Back to quiz</a></h3>";
+  echo "<h3><a href = 'viewAllStudentsAttempts.php?quizid=".$quizid."'>Back to all attempts</a></h3>";
   
   echo "</div>";
 }

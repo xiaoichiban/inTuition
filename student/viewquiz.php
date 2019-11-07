@@ -39,7 +39,7 @@ else {
     $totalQnsRow = mysqli_fetch_row($totalQnsResult);
     $totalQns = $totalQnsRow[0];
 
-    echo "<tr><th>Attempt ". ++$attemptCounter ." </th><th><a href='viewattempts.php?date=". $attemptrow[6] ." '>" . $totalCorrectAns . "/" . $totalQns . "</a></th></tr>";
+    echo "<tr><th>Attempt ". ++$attemptCounter ." </th><th>Score: <a href='viewattempts.php?date=". $attemptrow[6] ." '>" . $totalCorrectAns . "/" . $totalQns . "</a></th></tr>";
   }
 
   echo "</table>";
