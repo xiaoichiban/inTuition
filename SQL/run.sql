@@ -61,8 +61,8 @@ DROP TABLE IF EXISTS message;
 
 
 DROP TABLE IF EXISTS enroll;
-DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS attempts;
+DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS quiz;
 DROP TABLE IF EXISTS video;
 DROP TABLE IF EXISTS file;
@@ -414,7 +414,26 @@ attemptedans VARCHAR(128) NOT NULL,
 quizid int NOT NULL,
 questionid int NOT NULL,
 student VARCHAR(128) NOT NULL,
+isCorrect BOOLEAN NOT NULL,
+datetimestamp DATETIME DEFAULT now() NOT NULL,
 FOREIGN KEY (quizid) REFERENCES quiz(id),
 FOREIGN KEY (questionid) REFERENCES question(id),
 FOREIGN KEY (student) REFERENCES student(username)
 );
+
+INSERT INTO quiz (quiztitle, moduleid) VALUES
+('Revision quiz', 1),
+('Mid term quiz', 1);
+
+INSERT INTO question (questiontitle, optiona, optionb, optionc, optiond, answer, quizid) VALUES
+('How is Weeeee', 'Good', 'Not good', 'So so', 'Bad', 'c', 1),
+('How is Java? ', 'Very Good', 'Not good', 'So so', 'Bad', 'd', 1),
+('What is ejb?',	'Erm', 'I don\'t know', 'Beans', 'Bu zhi dao', 'd', 1);
+
+
+INSERT INTO attempts (attemptedans, quizid, questionid, student, isCorrect, datetimestamp) VALUES
+('a', 1, 1, 'alice',	0, '2019-11-05 12:13:37'),
+('b', 1, 2, 'alice',	0, '2019-11-05 12:13:37'),
+('c', 1, 3, 'alice',	0, '2019-11-05 12:13:37');
+
+
