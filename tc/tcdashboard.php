@@ -2,42 +2,59 @@
 include ('layout.php');
 ?>
 
-<html>
-  <head>
-    <title>Dashboard</title>
-  </head>
-
-
-<body>
-
-
-<p><a href="tcTutorManagement.php">My Tutors</a></p>
-
-<p><a href="tcModuleManagement.php">My Modules</a></p>
-
-<p><a href="studentEnrollment.php">Enrollment</a></p>
-
-<p><a href="">Chat (i think no need chat ah >> coz teacher already have chat) </a></p>
-
-<p><a href="">My Profile</a></p>
-
-
-<p>  <a href="logout.php">Logout</a></p>
+<head>
+<title>Dashboard</title>
+</head>
 
 
 
+
+
+
+
+    <section class="buckets">
+      <ul>
+        <li>
+          <div class="bucket">
+            <h3 class="bucket-title">Grid is great</h3>
+            <p>CSS Grid is a <br/> 2-D layout tool. </p>
+          </div><!-- .bucket -->
+        </li>
+        <li>
+          <div class="bucket">
+            <h3 class="bucket-title">Grid is great</h3>
+            <p>CSS Grid is a <br/> 2-D layout tool. </p>
+          </div><!-- .bucket -->
+        </li>
+      </ul>
+    </section><!-- .buckets -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class='splash'>
+<div class='splash-content'>
+<h2 class='content-title'>Magical content restructuring with CSS Grid stacks</h2>
+<div class='splash-text'>
+
+		
 <?php
-session_start();
 echo "Logged in As:<br/>";
 echo "user_id=".$_SESSION['user_id']."<br/>";
 echo "username=".$_SESSION['username']."<br/>";
 echo "login_user=".$_SESSION['login_user']."<br/>";
 ?>
 
-
-
-  </body>
-</html>
 
 
 <!-- List of methods -->
@@ -155,4 +172,22 @@ View students - TC
         echo 'Registered Date:  '.$row["e.datetimestamp"];
     }
   }
+  
+  
+  echo"</div><!-- .splash-text --></div><!-- .splash-content --></section><!-- .splash -->";
+  
+  
+  
+  
+?>
+
+
+
+
+<!-- SideBar + Footers -->
+
+<?php
+
+include('layout2.php');
+
 ?>
