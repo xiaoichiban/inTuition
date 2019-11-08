@@ -1,20 +1,22 @@
 <?php
-   include('config.php');
-   session_start();
-   ob_start();
-   
-   $user_check = $_SESSION['login_user'];
-   
-   $ses_sql = mysqli_query($db,"select username from account where username = '$user_check' ;");
-   
+include('config.php');
+session_start();
+ob_start();
+// include('database_connection.php');
 
-   //$row = mysqli_fetch_assoc($ses_sql);
-   
-   $row = mysqli_fetch_array($ses_sql);
-   
-   $login_session = $row['username'];
-   
-   if(!isset($_SESSION['login_user'])){
+
+if(!isset($_SESSION['username'])){
       header("location:loginPlease.php");
-   }
+}
+
+/*
+if($_SESSION['username'] == null) { header("location:logout.php"); }
+else if($_SESSION['user_id'] == null) { header("location:logout.php"); }
+*/
+else {
+	
+	$query7777 = "UPDATE account SET last_seen = now() WHERE username = '".$_SESSION["username"]."'";
+	$statement7777 = $db->prepare($query7777);
+	$statement7777->execute();
+} 
 ?>
