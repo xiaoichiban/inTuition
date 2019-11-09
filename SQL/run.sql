@@ -69,6 +69,11 @@ DROP TABLE IF EXISTS file;
 DROP TABLE IF EXISTS markers;
 
 
+
+DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS chat_message;
+
+
 DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS tc;
@@ -99,9 +104,13 @@ last_login DATE
 );
 
 
+/*
+id int AUTO_INCREMENT UNIQUE,
+*/
+
 
 CREATE TABLE account (
-id int AUTO_INCREMENT UNIQUE,
+user_id int AUTO_INCREMENT UNIQUE,
 username VARCHAR(128) NOT NULL PRIMARY KEY,
 password VARCHAR(128) NOT NULL,
 name VARCHAR(128) NOT NULL,
@@ -118,6 +127,33 @@ account_type VARCHAR(20) NOT NULL DEFAULT 'student'
 /*
 account_type = {student , tc or tutor}
 */
+
+
+CREATE TABLE `chat_message` (
+  `chat_message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `to_user_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `chat_message` text NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` int(1) NOT NULL,
+  PRIMARY KEY (`chat_message_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
+(1,	1,	1,	'aaaa',	'2019-10-12 20:53:31',	0),
+(2,	1,	7,	'john',	'2019-10-20 00:38:22',	0),
+(3,	7,	1,	'hello',	'2019-10-20 00:39:49',	0),
+(4,	1,	7,	'hello wojak',	'2019-10-20 00:40:32',	1),
+(5,	1,	7,	'ssssssssssssssss',	'2019-11-04 03:07:16',	1),
+(6,	1,	7,	'aaaaaaaaaaaaaaaaaaaaaaaaaaa',	'2019-11-04 03:08:30',	1),
+(7,	1,	7,	'hahahahaha',	'2019-11-08 17:58:09',	1),
+(8,	1,	7,	'hdhdhdhd',	'2019-11-08 17:58:17',	1);
+
+
+
+
+
+
 
 
 /*

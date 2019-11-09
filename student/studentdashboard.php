@@ -10,6 +10,15 @@
     <p><a href="">My Profile</a></p>
     <p><a href="complain.php">Feedback</a></p>
     <p><a href="viewtimetable.php">My Timetable</a></p>
+	
+	
+	<br/>
+	
+    <p><a href="../chatwall/chatwall.php">CHATWALL</a></p>
+	
+	<br/>
+	<br/>
+	
     <p><a href="logout.php">Logout</a></p>
 
 	<br/>

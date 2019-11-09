@@ -8,16 +8,20 @@
 	  
 	  
 <p>
-<a href="tcTutorManagement.php" class="button button2"><font color="white">My Tutors</font></a><br/>
-<a href="tcModuleManagement.php"  class="button button2" ><br/>
-<a href="studentEnrollment.php"><font color="white">Enrollment</font></a><br/>
-<a href=""><font color="white">Chat</font></a><br/>
-<a href=""><font color="white">My Profile</font></a><br/>
-<a href="logout.php"><font color="white">Logout</font></a>
+<a href="tcTutorManagement.php" class="button"><font color="white">My Tutors</font></a><br/>
+<a href="tcModuleManagement.php"  class="button" ><br/>
+<a href="studentEnrollment.php" class="button"><font color="white">Enrollment</font></a><br/>
+<a href="../chatwall/chatwall.php" target="_blank" class="button">Chat </a> <br/>
+<a href=""><font color="white" class="button">My Profile</font></a><br/>
+<a href="logout.php" class="button"><font color="red">Logout</font></a>
 </p>
 	  
 	  
 
+	  
+<a href="tcTutorManagement.php" class="button button2"><font color="white">My Tutors</font></a><br/>
+	  
+	  
 <p>This is the first of two sidebar sections.
 It appears as the first of two items in the sidebar 
 <code>aside</code> element which is located after the 
@@ -32,6 +36,11 @@ appears at the top of the left-hand sidebar.</p>
     <div class="twin">
       <h2 class="content-title">Second Sidebar Item</h2>
       
+	  
+	  
+	  	  
+<a href="tcTutorManagement.php" class="button button2"><font color="white">My Tutors</font></a><br/>
+	  
 	  
 	  <p>This is the second of two sidebar sections. 
 	  It appears as the second of two items in the sidebar <code>aside</code> 
