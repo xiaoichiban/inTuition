@@ -28,7 +28,7 @@
 
   <?php
   session_start();
-  include 'config.php';
+  include './layout/config.php';
   include './layout/sidebar.php';
 
   ?>
@@ -68,8 +68,7 @@
             <div class="card pull-up ecom-card-1 bg-white">
               <div class="card-header">
                 <h4 class="card-title">Module name: <? echo $row[1]; ?></h4>
-                <div class="card-content">
-                  
+                <div class="card-content">                  
                     <div class="pt-2">
                       <?php 
                         echo "<b>Description:</b> <br>$row[2]";
@@ -81,25 +80,23 @@
                         echo "<b>Enrolled:</b> <br>$enroll_row[4]";
                       ?>
                     </div>
-                  
+
                 </div>
               </div>
             </div>
           </a>
           </div>
 
-          <?php 
+          <?php
             } //for while result2
           } //for result1
-        } //end of while result1 
+        } //end of while result1
           ?>
-        </div>  <!-- end of class row --> 
+        </div>  <!-- end of class row -->
 
       </div>  <!-- end of content-body -->
     </div>  <!-- end of content-wrapper -->
   </div>  <!-- end of app-content content -->
-
-  ?>
 
 
   <!-- BEGIN VENDOR JS-->
