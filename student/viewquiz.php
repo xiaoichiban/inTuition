@@ -27,7 +27,7 @@
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
 <?php
-include('../session.php');
+include('session.php');
 include ('./layout/sidebar.php');
 
 $thisuser = $_SESSION['login_user'];
@@ -42,7 +42,7 @@ $result1 = mysqli_query($db, $sql1);
 $quizresult = mysqli_query($db, $sql1);
 $questionrow = mysqli_fetch_row($quizresult);
 
-$sql2 = "SELECT * FROM attempts WHERE student = '$thisuser' GROUP BY datetimestamp; ";
+$sql2 = "SELECT * FROM attempts WHERE student = '$thisuser' and quizid = '$quiz_id' GROUP BY datetimestamp; ";
 $result2 = mysqli_query($db, $sql2);
 
 if (mysqli_num_rows($result) != 1) {
@@ -90,7 +90,7 @@ else {
                             $totalQnsRow = mysqli_fetch_row($totalQnsResult);
                             $totalQns = $totalQnsRow[0];
 
-                            echo "<tr><th>Attempt ". ++$attemptCounter ." </th><th>Score: <a href='viewattempts.php?date=". $attemptrow[6] ." '>" . $totalCorrectAns . "/" . $totalQns . "</a></th></tr>";
+                            echo "<tr><th>Attempt ". ++$attemptCounter ." </th><th>Score: <a href='viewattempts.php?date=". $attemptrow[6] ."&quiztitle=". $row[1] ."'>" . $totalCorrectAns . "/" . $totalQns . "</a></th></tr>";
                           }
 
                           echo "</table>";
@@ -115,22 +115,26 @@ else {
                     <?php
                       $qnscounter = 0;
                       echo "<form method='post' action='submitAnswers.php?quizid=". $quiz_id ."'>";
-                      while ($row1 = mysqli_fetch_row($result1)) {
-                        echo "<br><br><b>Question " . ++$qnscounter . "</b>"; 
-                        echo "<br>";
+                      if (mysqli_num_rows($result1) != 0) {
+                        while ($row1 = mysqli_fetch_row($result1)) {
+                          echo "<br><br><b>Question " . ++$qnscounter . "</b>"; 
+                          echo "<br>";
 
-                        echo $row1[1];
-                        echo "<br>";
-                        echo 
-                            "<input type='radio' name='qns". $row1[0] ."ans' value='a'> " .$row1[2] ." </input> ".
-                            "<input type='radio' name='qns". $row1[0] ."ans' value='b'> " .$row1[3] ." </input> ".
-                            "<input type='radio' name='qns". $row1[0] ."ans' value='c'> " .$row1[4] ." </input> ".
-                            "<input type='radio' name='qns". $row1[0] ."ans' value='d'> " .$row1[5] ."</input> ".
-                            "<input type='hidden' name='questionid' value='$row1[0]'>" ;      
+                          echo $row1[1];
+                          echo "<br>";
+                          echo 
+                              "<input type='radio' name='qns". $row1[0] ."ans' value='a'> " .$row1[2] ." </input> ".
+                              "<input type='radio' name='qns". $row1[0] ."ans' value='b'> " .$row1[3] ." </input> ".
+                              "<input type='radio' name='qns". $row1[0] ."ans' value='c'> " .$row1[4] ." </input> ".
+                              "<input type='radio' name='qns". $row1[0] ."ans' value='d'> " .$row1[5] ."</input> ".
+                              "<input type='hidden' name='questionid' value='$row1[0]'>" ;      
                         }
-
-                      echo "<br><br><input type='submit' class='btn btn-primary' name='submit' value='Submit answers'>".
-                      "</form> ";
+                        echo "<br><br><input type='submit' class='btn btn-primary' name='submit' value='Submit answers'>".
+                        "</form> ";
+                      } else {
+                        echo "<h6 class='pt-2'>There are no questions yet. </h6>";
+                      }
+                      
                       echo "<br>";
                       echo "<button class='btn btn-default'><a href = 'viewmodule.php?module_id=". $row[2] ."'>Back</a></button>";
                     ?>
