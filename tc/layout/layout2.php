@@ -5,29 +5,29 @@
   <aside class="sidebar">
     <div class="twin">
       <h2 class="content-title">Sidebar of Links</h2>
-	  
-	  
+
+
 <p>
 <a href="tcTutorManagement.php" class="button"><font color="white">My Tutors</font></a><br/>
-<a href="tcModuleManagement.php"  class="button" ><br/>
+<a href="tcModuleManagement.php"  class="button">Module<br/>
 <a href="studentEnrollment.php" class="button"><font color="white">Enrollment</font></a><br/>
 <a href="../chatwall/chatwall.php" target="_blank" class="button">Chat </a> <br/>
 <a href=""><font color="white" class="button">My Profile</font></a><br/>
 <a href="logout.php" class="button"><font color="red">Logout</font></a>
 </p>
-	  
-	  
 
-	  
+
+
+
 <a href="tcTutorManagement.php" class="button button2"><font color="white">My Tutors</font></a><br/>
-	  
-	  
+
+
 <p>This is the first of two sidebar sections.
-It appears as the first of two items in the sidebar 
-<code>aside</code> element which is located after the 
+It appears as the first of two items in the sidebar
+<code>aside</code> element which is located after the
 <code>main</code> element in the HTML source order.
-On narrow screens it visually appears after the 
-<code>main</code> element. On medium screens it appears 
+On narrow screens it visually appears after the
+<code>main</code> element. On medium screens it appears
 at the top of the left-hand sidebar. On wide screens it
 appears at the top of the left-hand sidebar.</p>
 </div>
@@ -35,48 +35,42 @@ appears at the top of the left-hand sidebar.</p>
 
     <div class="twin">
       <h2 class="content-title">Second Sidebar Item</h2>
-      
-	  
-	  
-	  	  
-<a href="tcTutorManagement.php" class="button button2"><font color="white">My Tutors</font></a><br/>
-	  
-	  
-	  <p>This is the second of two sidebar sections. 
-	  It appears as the second of two items in the sidebar <code>aside</code> 
-	  element which is located after the <code>main</code> element in the HTML source order. 
-	  On narrow screens it visually appears after the first sidebar item. On medium screens 
-	  it appears as the second item of the left-hand sidebar. On wide screens it appears at 
-	  the top of the right-hand sidebar.</p>
-      
-	  
-	  <p>This is the second of two sidebar sections. 
-	  It appears as the second of two items in the sidebar <code>aside</code> 
-	  element which is located after the <code>main</code> element in the HTML source order. 
-	  On narrow screens it visually appears after the first sidebar item. On medium screens 
-	  it appears as the second item of the left-hand sidebar. On wide screens it appears at 
-	  the top of the right-hand sidebar.</p>
-      
-	  
-	  <p>This is the second of two sidebar sections. 
-	  It appears as the second of two items in the sidebar <code>aside</code> 
-	  element which is located after the <code>main</code> element in the HTML source order. 
-	  On narrow screens it visually appears after the first sidebar item. On medium screens 
-	  it appears as the second item of the left-hand sidebar. On wide screens it appears at 
-	  the top of the right-hand sidebar.</p>
-      
 
 
-	  
+	  <p>This is the second of two sidebar sections.
+	  It appears as the second of two items in the sidebar <code>aside</code>
+	  element which is located after the <code>main</code> element in the HTML source order.
+	  On narrow screens it visually appears after the first sidebar item. On medium screens
+	  it appears as the second item of the left-hand sidebar. On wide screens it appears at
+	  the top of the right-hand sidebar.</p>
+
+
+	  <p>This is the second of two sidebar sections.
+	  It appears as the second of two items in the sidebar <code>aside</code>
+	  element which is located after the <code>main</code> element in the HTML source order.
+	  On narrow screens it visually appears after the first sidebar item. On medium screens
+	  it appears as the second item of the left-hand sidebar. On wide screens it appears at
+	  the top of the right-hand sidebar.</p>
+
+
+	  <p>This is the second of two sidebar sections.
+	  It appears as the second of two items in the sidebar <code>aside</code>
+	  element which is located after the <code>main</code> element in the HTML source order.
+	  On narrow screens it visually appears after the first sidebar item. On medium screens
+	  it appears as the second item of the left-hand sidebar. On wide screens it appears at
+	  the top of the right-hand sidebar.</p>
+
+
+
+
     </div>
   </aside><!-- .sidebar -->
 
   <footer class="colophon">
-    <aside>All photos: 
+    <aside>All photos:
 		<a href="https://unsplash.com/@andozo" target="_blank" rel="nofollow">Andreas Rønningen</a>.</aside>
-    <aside>Content, layout, design: 
+    <aside>Content, layout, design:
 		<a href="https://twitter.com/mor10" target="_blank" rel="nofollow">Morten Rand-Hendriksen</a>.</aside>
   </footer>
-  
-</div><!-- .site -->
 
+</div><!-- .site -->

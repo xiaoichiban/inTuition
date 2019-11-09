@@ -56,17 +56,15 @@ a {
 
 .cd-schedule__timeline { // events time
 	display: none;
-
   .js & {
   	@include breakpoint(md) {
   		display: block;
   		position: absolute;
   		top: 0;
   		left: 0;
-
+  		height: 100%;
   		width: 100%;
   		padding-top: var(--schedule-rows-height);
-
   		li {
   			position: relative;
   			height: var(--schedule-rows-height);
