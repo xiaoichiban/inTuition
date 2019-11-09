@@ -28,7 +28,7 @@
 
   <?php
   include 'session.php';
-  include 'config.php';
+  include './layout/config.php';
   include './layout/sidebar.php';
 
   ?>
