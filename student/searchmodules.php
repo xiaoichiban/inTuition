@@ -1,11 +1,12 @@
+
 <?php
-include 'config.php';
-include 'session.php';
+include './layout/config.php';
+include ('session.php');
 ?>
 <html>
   <head>
     <title>My Modules</title>
-    <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
+    <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png"/>
     <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
@@ -23,9 +24,11 @@ include 'session.php';
   </head>
   <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
     <?php
-      include './layout/sidebar.php';
+
+
+      include ('./layout/sidebar.php');
     ?>
-    
+
     <div class="app-content content">
       <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
@@ -33,9 +36,9 @@ include 'session.php';
           <div class="content-header-left col-md-4 col-12 mb-2">
             <h3 class="content-header-title">Search Modules</h3>
           </div>
-          
+
         </div>
-        
+
         <div class="content-body">
           <div class="row pl-1">
             <div class="card" style="background: none;">
@@ -47,35 +50,52 @@ include 'session.php';
           </div>
 
         <div class="row">
-          <?php 
+          <?php
             $username = $_SESSION['login_user'];
             if(isset($_GET['search']) != "") {
               $search_value = $_GET['search'];
-
-              $sql="SELECT * from module where name LIKE '%$search_value%' GROUP BY name, tc;";
+              echo"$search_value";
+              $sql="SELECT * from module where name LIKE '%".$search_value."%' GROUP BY name, tc;";
               // $sql= "SELECT * from module where tc = '$tc'";
 
               $result = mysqli_query($db, $sql);
           ?>
 
-          
-            <?php 
+
+            <?php
               while ($row = mysqli_fetch_row($result)) {
             ?>
               <div class="col-lg-4 col-md-12">
                 <div class="card">
                     <div class="card-content">
                       <div class="card-body">
-                          <div class="height-400">
-                            <?php echo $row[1] ?>
-                          </div>
+
+                            <?php
+                              $module_name = $row[1];
+                                echo "<h4 class='card-title'>Module name: $module_name</h4>";
+                                echo "<p class='card-text'>Offered by: $row[6]</p>";
+
+                                $sql_check = "SELECT * FROM module WHERE name = '$module_name' AND name IN (SELECT name FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username'));";
+                                $result_check = mysqli_query($db, $sql_check);
+                                if (mysqli_num_rows($result_check)==0){
+                                  echo"<button type='button' class='btn btn-primary'><a style='color:white;' href = 'registermodule.php?module_name=$module_name'>Register</a></button>";
+                                }
+                                else{
+                                  $sql3 = "SELECT * FROM module WHERE id IN (SELECT id FROM module WHERE name = '$module_name' AND id IN (SELECT mod_id FROM enroll WHERE student = '$username'));";
+                                  $result3 = mysqli_query($db, $sql3);
+                                  while($row3 = mysqli_fetch_row($result3)){
+                                    echo"<th><a href = 'viewmodule.php?module_id=".$row3[0]."'>View</a></th>";
+                                  }
+                                }
+                            ?>
+
                       </div>
                     </div>
                   </div>
               </div>
-            
 
-            <?php 
+
+            <?php
             } //end of row
 
             } else {
@@ -95,11 +115,11 @@ include 'session.php';
                 <div class="card">
                     <div class="card-content">
                       <div class="card-body">
-                          <div class="height-150">
-                              <?php 
+
+                              <?php
                                 $module_name = $row[1];
                                 echo "<h4 class='card-title'>Module name: $module_name</h4>";
-                                echo "<p class='card-text'>Offered by: $row[6]</p>";         
+                                echo "<p class='card-text'>Offered by: $row[6]</p>";
 
                                 $sql_check = "SELECT * FROM module WHERE name = '$module_name' AND name IN (SELECT name FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username'));";
                                 $result_check = mysqli_query($db, $sql_check);
@@ -116,24 +136,24 @@ include 'session.php';
                                 }
 
                               ?>
-                          </div>
+
                       </div>
                     </div>
                   </div>
               </div>
 
-            <?php 
+            <?php
 
               } // end of while
           } //end of if acctype == student
             } //end of row1 while loop
-          } //end of else 
+          } //end of else
             ?>
 
             </div>  <!-- end of row -->
-        
-      </div> <!-- end of content-body --> 
-    </div> <!-- end of content-wrapper --> 
+
+      </div> <!-- end of content-body -->
+    </div> <!-- end of content-wrapper -->
   </div>  <!-- end of app-content -->
 
   <!-- BEGIN VENDOR JS-->

@@ -1,7 +1,7 @@
 <html>
 
 <body>
-<?php 
+<?php
   $activePage = basename($_SERVER['PHP_SELF'], ".php");
 ?>
 
@@ -21,8 +21,8 @@
 
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true" data-img="../theme-assets/images/backgrounds/02.jpg">
       <div class="navbar-header">
-        <ul class="nav navbar-nav flex-row">       
-          <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="./layout/theme-assets/images/logo/intuition_logo.png"/>
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item mr-auto"><a class="navbar-brand" href="studentdashboard.php"><img class="brand-logo" alt="Chameleon admin logo" src="./layout/theme-assets/images/logo/intuition_logo.png"/>
               <h3 class="brand-text">inTuition</h3></a></li>
           <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
         </ul>
@@ -37,7 +37,7 @@
           </li>
           <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href=""><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
-          <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href=""><i class="ft-layers"></i><span class="menu-title" data-i18n="">My Profile</span></a>
+          <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href="viewProfile.php"><i class="ft-layers"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
           <li class="<?= ($activePage == 'complain') ? 'active':'nav-item'; ?>"><a href="complain.php"><i class="ft-box"></i><span class="menu-title" data-i18n="">Feedback</span></a>
           </li>

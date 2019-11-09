@@ -1,13 +1,10 @@
-<?php
-include 'config.php';
-include 'session.php';
-include 'layout/sidebar.php';
-?>
 <html>
 <head>
-  <title>My Modules</title>
+  <title>My Timetable</title>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="layout/timetablestyle.css">
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -23,10 +20,18 @@ include 'layout/sidebar.php';
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/core/menu/menu-types/vertical-menu.css">
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/core/colors/palette-gradient.css">
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/pages/dashboard-ecommerce.css">
-  <script>document.getElementsByTagName("html")[0].className += " js";</script>
-  <link rel="stylesheet" href="layout/timetablestyle.css">
+  <!-- END Page Level CSS-->
+  <!-- BEGIN Custom CSS-->
+  <!-- END Custom CSS-->
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+
+  <?php
+  include 'session.php';
+  include './layout/config.php';
+  include './layout/sidebar.php';
+
+  ?>
   <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-wrapper-before"></div>
@@ -39,133 +44,159 @@ include 'layout/sidebar.php';
 
       <div class="content-body">
 
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-content">
+                  <div class="card-body">
+                    <?php
+                    $username = $_SESSION['login_user'];
+                    $sql1 = "SELECT account_type FROM account WHERE username = '$username';";
+                    $result1 = mysqli_query($db, $sql1);
+                    $colorsnum = 0;
+                    while ($row1 = mysqli_fetch_row($result1)) {
+                      $acctype = $row1[0];
+                      if ($acctype == "student"){
+                        $daynum = 0;
+                        echo "<div class='table-responsive'><table style='width:100%; overflow:auto; empty-cells:show;' class='table'>" .
+                        "<tr><th></th><th>0800</th><th>0900</th><th>1000</th><th>1100</th><th>1200</th><th>1300</th><th>1400</th><th>1500</th><th>1600</th><th>1700</th><th>1800</th><th>1900</th><th>2000</th><th>2100</th><th>2200</th></tr>";
+                        while ($daynum <7){
+                          $day = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username') AND class_day = '$daynum' ORDER BY class_startTime ASC;";
+                          $daymodules = mysqli_query($db, $day);
+                          if ($daynum == 0){
+                            $day_label = "Sun";
+                          }
+                          elseif ($daynum == 1) {
+                            $day_label = "Mon";
+                          }
+                          elseif ($daynum == 2) {
+                            $day_label = "Tue";
+                          }
+                          elseif ($daynum == 3) {
+                            $day_label = "Wed";
+                          }
+                          elseif ($daynum == 4) {
+                            $day_label = "Thu";
+                          }
+                          elseif ($daynum == 5) {
+                            $day_label = "Fri";
+                          }
+                          else{
+                            $day_label = "Sat";
+                          }
+                          echo "<tr><th style='font-weight: bold;'>$day_label</th>";
+                          $i = 8;
+                          if (mysqli_num_rows($daymodules)==0){
+                            while ($i < 23){
+                              echo "<th></th>";
+                              $i = $i + 1;
+                            }
+                          }
+                          else{
+                            $numResults = mysqli_num_rows($daymodules);
+                            $cellcounter = 0;
+                            while ($numResults >0) {
+                              $row = mysqli_fetch_row($daymodules);
+                              if ($colorsnum == 0){
+                                $colorclass = '#FF8A80';
+                              }
+                              else if ($colorsnum == 1){
+                                $colorclass = '#FFEE58';
+                              }
+                              else if ($colorsnum == 2){
+                                $colorclass = '#efbbff';
+                              }
+                              else if ($colorsnum == 3){
+                                $colorclass = '#80DEEA';
+                              }
+                              else if ($colorsnum == 4){
+                                $colorclass = '#1DE9B6';
+                              }
+                              else if ($colorsnum == 5){
+                                $colorclass = '#edca98';
+                              }
+                              else if ($colorsnum == 6){
+                                $colorclass = '#ffb74c';
+                              }
+                              $tempnum;
+                              if ($numResults > 0 && $i == 23){
+                                $i = $tempnum;
+                              }
 
-        <h6><a href = 'studentdashboard.php'>Back</a></h6>
-      </div>
-    </div>  <!-- end of content-body -->
-    <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
-      <div class="cd-schedule__timeline">
-        <ul>
-          <li><span>08:00</span></li>
-          <li><span>09:00</span></li>
-          <li><span>10:00</span></li>
-          <li><span>11:00</span></li>
-          <li><span>12:00</span></li>
-          <li><span>13:00</span></li>
-          <li><span>14:00</span></li>
-          <li><span>15:00</span></li>
-          <li><span>16:00</span></li>
-          <li><span>17:00</span></li>
-          <li><span>18:00</span></li>
-          <li><span>19:00</span></li>
-          <li><span>20:00</span></li>
-          <li><span>21:00</span></li>
-          <li><span>22:00</span></li>
-        </ul>
-      </div> <!-- .cd-schedule__timeline -->
+                              while ($i < 23){
+                                $num_hours = ((int)$row[5] - (int)$row[4]) /100;
+                                if ($row[4]/100 == $i){
+                                  echo "<th colspan='$num_hours' style='background-color:$colorclass; color:black;'><p style='font-weight:bold;'>". $row[1]."</p><p>" . $row[4] . " - " . $row[5] . "</p></th>";
+                                  $i = $i + $num_hours;
+                                  $cellcounter = $cellcounter + $num_hours;
+                                  $tempnum = $i;
+                                  $i = 22;
 
-      <div class="cd-schedule__events">
-        <ul>
-          <?php
-          $username = $_SESSION['login_user'];
-          $sql1 = "SELECT account_type FROM account WHERE username = '$username';";
-          $result1 = mysqli_query($db, $sql1);
-          while ($row1 = mysqli_fetch_row($result1)) {
-            $acctype = $row1[0];
-            if ($acctype == "student"){
-              $daynum = 0;
+                                }
+                                else{
+                                  echo "<th></th>";
+                                  $cellcounter = $cellcounter +1;
+                                }
 
-              while ($daynum <7){
-                echo "<li class='cd-schedule__group'><div class='cd-schedule__top-info'>";
-                if ($daynum == 0){
-                  $day_label = "Sunday";
-                }
-                elseif ($daynum == 1) {
-                  $day_label = "Monday";
-                }
-                elseif ($daynum == 2) {
-                  $day_label = "Tuesday";
-                }
-                elseif ($daynum == 3) {
-                  $day_label = "Wednesday";
-                }
-                elseif ($daynum == 4) {
-                  $day_label = "Thursday";
-                }
-                elseif ($daynum == 5) {
-                  $day_label = "Friday";
-                }
-                else{
-                  $day_label = "Saturday";
-                }
-                echo "<span>$day_label</span></div><ul>";
-                $day = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username' AND class_day ='$daynum' AND status = 'accepted') ORDER BY class_day, class_startTime ASC;";
-                $daymodules = mysqli_query($db, $day);
-                if (mysqli_num_rows($daymodules) >0){
-                  $i = 1;
-                  while ($row = mysqli_fetch_row($daymodules)) {
-                    $starthour = $row[4]/100;
-                    $endhour = $row[5]/100;
-                    echo "<li class='cd-schedule__event'><a data-start='$starthour:00' data-end='$endhour:00'  data-content='event-rowing-workout' data-event='event-$i' href='#0'>
-                    <em class='cd-schedule__name'>$row[1]</em></a></li>";
-                    if ($i = 4){
-                      $i = 1;
+                                $i = $i + 1;
+                              }
+                              if ($colorsnum < 6){
+                                $colorsnum = $colorsnum + 1;
+                              }
+                              else{
+                                $colorsnum = 0;
+                              }
+                              $numResults = $numResults -1;
+                            }
+                            if ($cellcounter != 15){
+                              $cellcounter = 15 - $cellcounter;
+                            }
+                            while ($cellcounter > 0){
+                              echo "<th></th>";
+                              $cellcounter = $cellcounter -1;
+                            }
+                          }
+
+                          echo "</tr>";
+                          $daynum = $daynum + 1;
+
+                        }
+
+                        echo "</table></div>";
+                      }
+
                     }
-                    else{
-                      $i = $i+1;
-                    }
-                  }
-                }
-                echo "</ul></li>";
-                $daynum = $daynum + 1;
-              }
-            }
-          }
-          ?>
+                    ?>
 
-        </ul>
-      </div>
-
-
-      <div class="cd-schedule-modal">
-        <header class="cd-schedule-modal__header">
-          <div class="cd-schedule-modal__content">
-            <span class="cd-schedule-modal__date"></span>
-            <h3 class="cd-schedule-modal__name"></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h6><a href = 'studentdashboard.php'>Back</a></h6>
           </div>
-
-          <div class="cd-schedule-modal__header-bg"></div>
-        </header>
-
-        <div class="cd-schedule-modal__body">
-          <div class="cd-schedule-modal__event-info"></div>
-          <div class="cd-schedule-modal__body-bg"></div>
         </div>
 
-        <a href="#0" class="cd-schedule-modal__close text-replace">Close</a>
-      </div>
+      </div>  <!-- end of content-body -->
+    </div>  <!-- end of content-wrapper -->
+  </div>  <!-- end of app-content content -->
 
-      <div class="cd-schedule__cover-layer"></div>
-    </div> <!-- .cd-schedule -->
-  </div>
-   <!-- end of content-wrapper -->
-</div>
-<!-- BEGIN VENDOR JS-->
-<script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-<!-- BEGIN VENDOR JS-->
-<!-- BEGIN PAGE VENDOR JS-->
-<script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-<!-- END PAGE VENDOR JS-->
-<!-- BEGIN CHAMELEON  JS-->
-<script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
-<script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
-<!-- END CHAMELEON  JS-->
-<!-- BEGIN PAGE LEVEL JS-->
-<script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL JS-->
+  ?>
 
-<script src="layout/timetableutil.js"></script> <!-- util functions included in the CodyHouse framework -->
-<script src="layout/timetablemain.js"></script>
+
+  <!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
 
 </body>
 </html>
