@@ -17,6 +17,6 @@
 	
 	<br/>
 	
-	<a href="login.php"> (_Login__Again_) </a>
+	<a href="login.php"> ( Login Again ) </a>
 
 </center>

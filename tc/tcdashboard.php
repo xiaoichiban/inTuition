@@ -1,5 +1,5 @@
 <?php
-include ('layout.php');
+include ('./layout/layout.php');
 ?>
 
 <head>
@@ -188,6 +188,6 @@ View students - TC
 
 <?php
 
-include('layout2.php');
+include('./layout/layout2.php');
 
 ?>
