@@ -1,7 +1,4 @@
-<?php
-include 'config.php';
-include 'session.php';
-?>
+
 <html>
   <head>
     <title>My Modules</title>
@@ -23,6 +20,10 @@ include 'session.php';
   </head>
   <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
     <?php
+
+include '../config.php';
+include '../session.php';
+
       include ('./layout/sidebar.php');
     ?>
     

@@ -27,7 +27,7 @@
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
 <?php
-include('session.php');
+include('../session.php');
 $username = $_SESSION['login_user'];
 $date = date('Y-m-d');
 $module_id = $_GET['module_id'];

@@ -27,7 +27,7 @@
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
 <?php
-include('session.php');
+include('../session.php');
 include ('./layout/sidebar.php');
 
 $thisuser = $_SESSION['login_user'];
