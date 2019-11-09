@@ -17,17 +17,17 @@
       $count = mysqli_num_rows($result);
 	  
 	  //echo $count;
-	  echo "<br>";
+	  //echo "<br>";
 	  //echo $newpass;
-	  echo "<br>";
+	  //echo "<br>";
 	  //echo $confirmnewpass;
-	  echo "<br>";
+	  //echo "<br>";
 	  //echo $thisuser;
-	  echo "<br>";
+	  //echo "<br>";
 	  
       
-	  // If result matched $myusername and $mypassword, table row must be 1 row
-      if($count == 1) {
+// If result matched $myusername and $mypassword, table row must be 1 row
+if($count == 1) {
          //echo "Correct Old Password";
          //echo "$count == 1";
 	  
@@ -43,38 +43,29 @@
 		else{	echo "Password updated successfully <br>"; 	}
 	  
 	  }
-	  
-	  
-	  
+ 
 	 if($newpass == $confirmnewpass && $confirmnewpass == $oldpass){
 			echo "Your Old Password And New Password ARE THE SAME ... Troll ..."; 
 	  }
-	  
-	  
+
 	 if($newpass != $confirmnewpass){
-				
 				echo "<br> <br>";
 				echo "... Password Change Failed .. Please Try Again";
 				echo "<br> <br>";
 				echo "Your New Passwords don't match";
 				echo "<br> <br>";
-		  
 	  }
 
-	  
-				echo "<br> <br> <a href='welcome.php'> BACK </a>";
-	  
-	  
+	echo "<br> <br> <a href='welcome.php'> BACK </a>";
+
+}
 		 
-	  }
-		 
-      else {
-		  echo "Password Change Failed ==>> Information Supplied Incorrect";
-         $error = "Passwords are invalid";
-         $error = "Password Change Failed ";
-		 
-		echo "<br> <br> <a href='welcome.php'> BACK </a>";
-      }
+else {
+		 echo "Password Change Failed ==>> Information Supplied Incorrect";
+		 $error = "Passwords are invalid";
+		 $error = "Password Change Failed ";
+		 echo "<br> <br> <a href='welcome.php'> BACK </a>";
+}
 	  
 	  
    }
