@@ -1,18 +1,25 @@
-<meta http-equiv="refresh" content="0; url=loginAdmin.html" />
 
 
-<html>
-   
-   <head>
-      <title>Login Page</title>
-   </head>
-   
-   <body>
-	
-<a href="loginAdmin.html">
-GOTO LOGIN
-</a>
 
 
-   </body>
-</html>
+
+
+<center>
+
+<h3> Welcome Admin </h3>
+
+<p> <a href="./web/loginAdmin.html">  Web Manager</a> </p>
+
+<br/>
+<br/>
+
+
+<p> <a href="./manager/adminer.php">  Database Management  </a> </p>
+
+<p> <a href="./manager/tinyfilemanager.php">  Tiny File Manager </a> </p>
+
+
+
+
+
+</center>
