@@ -356,9 +356,9 @@ VALUES ('alice', '1', 'accepted');
 INSERT INTO enroll (student, mod_id, status)
 VALUES ('bob', '1', 'pending');
 INSERT INTO enroll (student, mod_id, status)
-VALUES ('alice', '2', 'pending');
+VALUES ('alice', '3', 'pending');
 INSERT INTO enroll (student, mod_id, status)
-VALUES ('bob', '2', 'pending');
+VALUES ('bob', '4', 'pending');
 
 
 
@@ -471,5 +471,3 @@ INSERT INTO attempts (attemptedans, quizid, questionid, student, isCorrect, date
 ('a', 1, 1, 'alice',	0, '2019-11-05 12:13:37'),
 ('b', 1, 2, 'alice',	0, '2019-11-05 12:13:37'),
 ('c', 1, 3, 'alice',	0, '2019-11-05 12:13:37');
-
-
