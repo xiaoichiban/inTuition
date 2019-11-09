@@ -36,10 +36,10 @@
 
       while ($row = mysqli_fetch_row($result)) {
       echo"<tr>";
-      $thisID = $row[0];
+      $username = $row[1];
       echo"<td>"; echo "$row[0]"; echo"</td>";
       echo"<td>"; echo "$row[1]"; echo"</td>";
-      echo"<td>"; echo "<a href='viewprofile.php?id=$thisID'> View Profile </a>"; echo"</td>";
+      echo"<td>"; echo "<a href='viewProfile.php?username=$username'> View Profile </a>"; echo"</td>";
       echo"</tr>";
       }
     }
@@ -51,10 +51,10 @@
 
       while ($row = mysqli_fetch_row($result)) {
       echo"<tr>";
-      $thisID = $row[0];
+      $username = $row[1];
       echo"<td>"; echo "$row[0]"; echo"</td>";
       echo"<td>"; echo "$row[1]"; echo"</td>";
-      echo"<td>"; echo "<a href='viewTutor.php?tutor_id=$thisID'> View Profile </a>"; echo"</td>";
+      echo"<td>"; echo "<a href='viewProfile.php?username=$username'> View Profile </a>"; echo"</td>";
       echo"</tr>";
       }
     }
