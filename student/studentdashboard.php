@@ -37,7 +37,7 @@
       <div class="content-wrapper-before"></div>
       <div class="content-header row">
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title">Dashboard</h3>
+          <h3 class="content-header-title">My Modules</h3>
         </div>
 
       </div>
@@ -45,36 +45,55 @@
       <div class="content-body">
 
         <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">My Modules</h4>
-                <div class="card-content">
-                  <div class="card-body">
+          <?php
+                    $username = $_SESSION['login_user'];
+                    $sql1 = "SELECT account_type FROM account WHERE username = '$username';";
+                    $result1 = mysqli_query($db, $sql1);
+                    while ($row1 = mysqli_fetch_row($result1)) {
+                      $acctype = $row1[0];
+                      if ($acctype == "student"){
+                        $sql2 = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username');";
+                        $result2 = mysqli_query($db, $sql2);
 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                          while ($row = mysqli_fetch_row($result2)) {
+                          $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
+                          $module_row = mysqli_fetch_row($module_details);
+                          $enroll_details = mysqli_query($db, "SELECT * FROM enroll e WHERE e.mod_id = '$row[0]'");
+                          $enroll_row = mysqli_fetch_row($enroll_details);
+                        ?>
 
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
+
+          <div class="col-lg-4 col-md-12">
+            <a href = 'viewmodule.php?module_id=<?php echo $row[0]; ?>'>
+            <div class="card pull-up ecom-card-1 bg-white">
               <div class="card-header">
-                <h4 class="card-title">Another card</h4>
+                <h4 class="card-title">Module name: <? echo $row[1]; ?></h4>
                 <div class="card-content">
-                  <div class="card-body">
-                    <div class="height-400">
-                      hello!
+                  
+                    <div class="height-300 pt-2">
+                      <?php 
+                        echo "<b>Description:</b> <br>$row[2]";
+                        echo "<br><br>";
+                        echo "<b>Offered by:</b> <br>$row[6]";
+                        echo "<br><br>";
+                        echo "<b>Tutored by:</b> <br>$row[7]";
+                        echo "<br><br>";
+                        echo "<b>Enrolled:</b> <br>$enroll_row[4]";
+                      ?>
                     </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
+          </a>
           </div>
-        </div>
+
+          <?php 
+            } //for while result2
+          } //for result1
+        } //end of while result1 
+          ?>
+        </div>  <!-- end of class row --> 
 
       </div>  <!-- end of content-body -->
     </div>  <!-- end of content-wrapper -->
