@@ -66,8 +66,25 @@ include 'session.php';
                 <div class="card">
                     <div class="card-content">
                       <div class="card-body">
-                          <div class="height-400">
-                            <?php echo $row[1] ?>
+                          <div class="height-150">
+                            <?php 
+                              $module_name = $row[1];
+                                echo "<h4 class='card-title'>Module name: $module_name</h4>";
+                                echo "<p class='card-text'>Offered by: $row[6]</p>";         
+
+                                $sql_check = "SELECT * FROM module WHERE name = '$module_name' AND name IN (SELECT name FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username'));";
+                                $result_check = mysqli_query($db, $sql_check);
+                                if (mysqli_num_rows($result_check)==0){
+                                  echo"<button type='button' class='btn btn-primary'><a style='color:white;' href = 'registermodule.php?module_name=$module_name'>Register</a></button>";
+                                }
+                                else{
+                                  $sql3 = "SELECT * FROM module WHERE id IN (SELECT id FROM module WHERE name = '$module_name' AND id IN (SELECT mod_id FROM enroll WHERE student = '$username'));";
+                                  $result3 = mysqli_query($db, $sql3);
+                                  while($row3 = mysqli_fetch_row($result3)){
+                                    echo"<th><a href = 'viewmodule.php?module_id=".$row3[0]."'>View</a></th>";
+                                  }
+                                }
+                            ?>
                           </div>
                       </div>
                     </div>
