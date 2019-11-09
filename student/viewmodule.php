@@ -64,7 +64,7 @@ else {
                 
               <div class="card-content">
                 <div class="card-body">
-                  <div class="height-200">
+                  
                     <b>Module ID: </b> <?php echo $row[0]; ?>
                     <br>
                     <b>Module name: </b> <?php echo $row[1]; ?>
@@ -78,7 +78,7 @@ else {
                     <b>No. of students: </b> <?php echo mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id';"))[0]; ?>
                     <br><br>
                     <button type='button' class='btn btn-primary'><a style='color:white;' href = 'fileUploadedList.php?mod_id=<?php $row[0]?>'>Module Uploaded Files</a></button>
-                  </div>
+                  
                 </div>
               </div>
             </div>

@@ -23,7 +23,7 @@ include 'session.php';
   </head>
   <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
     <?php
-      include './layout/sidebar.php';
+      include ('./layout/sidebar.php');
     ?>
     
     <div class="app-content content">
@@ -66,7 +66,7 @@ include 'session.php';
                 <div class="card">
                     <div class="card-content">
                       <div class="card-body">
-                          <div class="height-150">
+                          
                             <?php 
                               $module_name = $row[1];
                                 echo "<h4 class='card-title'>Module name: $module_name</h4>";
@@ -85,7 +85,7 @@ include 'session.php';
                                   }
                                 }
                             ?>
-                          </div>
+                          
                       </div>
                     </div>
                   </div>
@@ -112,7 +112,7 @@ include 'session.php';
                 <div class="card">
                     <div class="card-content">
                       <div class="card-body">
-                          <div class="height-150">
+                          
                               <?php 
                                 $module_name = $row[1];
                                 echo "<h4 class='card-title'>Module name: $module_name</h4>";
@@ -133,7 +133,7 @@ include 'session.php';
                                 }
 
                               ?>
-                          </div>
+                          
                       </div>
                     </div>
                   </div>

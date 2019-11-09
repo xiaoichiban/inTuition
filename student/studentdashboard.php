@@ -70,7 +70,7 @@
                 <h4 class="card-title">Module name: <? echo $row[1]; ?></h4>
                 <div class="card-content">
                   
-                    <div class="height-300 pt-2">
+                    <div class="pt-2">
                       <?php 
                         echo "<b>Description:</b> <br>$row[2]";
                         echo "<br><br>";
