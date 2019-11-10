@@ -45,12 +45,12 @@
     echo "invalid tutor $tutor_id";
   }
 
-  $sql = "SELECT * FROM tutor WHERE username = '$username'; ";
+  $sql = "SELECT * FROM tc WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
   $tutor = mysqli_fetch_row($result);
 
 
-  if (mysqli_num_rows($result) != 1) {   echo "<h1 align='center'> invalid tutor </h1>" ;  }
+  if (mysqli_num_rows($result) != 1) {   echo "<h1 align='center'> invalid tc </h1>" ;  }
 
   ?>
 

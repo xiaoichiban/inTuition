@@ -3,6 +3,9 @@
 <body>
 <?php
   $activePage = basename($_SERVER['PHP_SELF'], ".php");
+  include('config.php');
+  //include('session.php');
+  $username = $_SESSION['username'];
 ?>
 
 <nav class="header-navbar navbar-expand-md navbar navbar-without-dd-arrow fixed-top">
@@ -38,14 +41,14 @@
           </li>
           <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
-          <li class="<?= ($activePage == 'viewProfile') ? 'active':'nav-item'; ?>"><a href="viewProfile.php?username=<?php echo $username?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
+          <li class="<?= ($activePage == 'viewProfile') ? 'active':'nav-item'; ?>"><a href="viewProfile.php?username=<?php echo $username;?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
           <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href="viewfeedback.php"><i class="ft-help-circle"></i><span class="menu-title" data-i18n="">Feedback</span></a>
           </li>
           <li class="nav-item"><a href="logout.php"><i class="ft-power"></i><span class="menu-title" data-i18n="">Logout</span></a>
           </li>
           <li class="nav-item pl-2">
-            
+
           </li>
         </ul>
 
