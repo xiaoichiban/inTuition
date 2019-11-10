@@ -41,7 +41,7 @@
           </li>
           <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
-          <li class="<?= ($activePage == 'viewProfile') ? 'active':'nav-item'; ?>"><a href="viewProfile.php?username=<?php echo $username;?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
+          <li class="<?= ($activePage == 'viewMyProfile') ? 'active':'nav-item'; ?>"><a href="viewMyProfile.php?username=<?php echo $username;?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
           <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href="viewfeedback.php"><i class="ft-help-circle"></i><span class="menu-title" data-i18n="">Feedback</span></a>
           </li>
