@@ -55,11 +55,11 @@
                         <div class='basic-inputs'>
                             <br/>
                             <fieldset class="form-group">
-                                <h5 align='center' class="mt-2">Title: &nbsp;</h5>
+                                <h5 class="mt-2">Title: &nbsp;</h5>
                                 <input type="text" name="title" id="title" class="form-control" id="placeholderInput" placeholder="Enter Title..." required>
                             </fieldset>
                             <fieldset class="form-group">
-                                <h5 align='center' class="mt-2">Feedback: &nbsp;</h5>
+                                <h5  class="mt-2">Feedback: &nbsp;</h5>
                                 <input type="text" name="problem" id="problem" class="form-control" id="placeholderInput" placeholder="Enter Feedback..." required>
                             </fieldset>
 
