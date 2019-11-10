@@ -78,10 +78,10 @@ DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS tc;
 
+DROP TABLE IF EXISTS notification;
 /*DELETE FROM module;*/
 DROP TABLE IF EXISTS module;
 
-DROP TABLE IF EXISTS notification;
 
 /*DELETE FROM account;*/
 DROP TABLE IF EXISTS account;
@@ -201,10 +201,10 @@ FOREIGN KEY (username) REFERENCES account(username)
 INSERT INTO account
 (username, password, name, about_me, email, last_login, date_registered, status, account_type)
 VALUES
-('alice', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'alice', 'about me 0', 'alice@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
-('bob', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
-('brightkids', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'brightkids', 'best tuition center', 'brightkids@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
-('danny', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'danny', 'I very lepak', 'danny@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
+('alice', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'alice', 'about me 0', 'nottynottyowl@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
+('bob', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'bob', 'about me 1', 'ZG.LDQSN@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
+('brightkids', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'brightkids', 'best tuition center', 'shirleyooi921997@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
+('danny', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'danny', 'I very lepak', 'yinghuiseah@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
 
 
 
@@ -306,10 +306,12 @@ id int AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(128) NOT NULL,
 content VARCHAR(256) NOT NULL,
 complainer VARCHAR(128) NOT NULL,
+receiver VARCHAR(128) NOT NULL,
 datetimestamp DATETIME NOT NULL DEFAULT now(),
 status VARCHAR(128) NOT NULL DEFAULT 'new',
 comment VARCHAR(256),
-FOREIGN KEY (complainer) REFERENCES account(username)
+FOREIGN KEY (complainer) REFERENCES account(username),
+FOREIGN KEY (receiver) REFERENCES account(username)
 );
 
 CREATE TABLE notification (
@@ -317,10 +319,12 @@ id int AUTO_INCREMENT PRIMARY KEY,
 content VARCHAR(128) NOT NULL,
 sender VARCHAR(128) NOT NULL,
 receiver VARCHAR(128) NOT NULL,
+mod_id int NOT NULL,
 datetimestamp DATETIME NOT NULL DEFAULT now(),
 isRead BOOLEAN NOT NULL DEFAULT FALSE,
 FOREIGN KEY (sender) REFERENCES account(username),
-FOREIGN KEY (receiver) REFERENCES account(username)
+FOREIGN KEY (receiver) REFERENCES account(username),
+FOREIGN KEY (mod_id) REFERENCES module(id)
 );
 
 INSERT INTO module
@@ -359,6 +363,10 @@ INSERT INTO enroll (student, mod_id, status)
 VALUES ('alice', '3', 'pending');
 INSERT INTO enroll (student, mod_id, status)
 VALUES ('bob', '4', 'pending');
+
+INSERT INTO notification (content, sender, receiver, mod_id, datetimestamp, isRead)
+VALUES
+('Thank you for registering for our new module IS2103. As slots are currently full, you have been placed on our waiting list.', 'brightkids', 'alice', '1', '2019-11-01 12:00:00', TRUE);
 
 
 
@@ -417,11 +425,11 @@ VALUES
 
 
 
-INSERT INTO complain (title, content, complainer)
-VALUES ('slow', 'everything is too slow', 'bob');
+INSERT INTO complain (title, content, complainer, receiver)
+VALUES ('slow', 'everything is too slow', 'bob', 'brightkids');
 
-INSERT INTO complain (title, content, complainer)
-VALUES ('slow', 'everything is too slow', 'alice');
+INSERT INTO complain (title, content, complainer, receiver)
+VALUES ('slow', 'everything is too slow', 'alice', 'brightkids');
 
 
 CREATE TABLE quiz (

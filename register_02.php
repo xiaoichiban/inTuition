@@ -35,13 +35,13 @@ include 'config.php';
 
 	
 	if ( $confirm_password != $password) {
-      echo '<meta http-equiv="refresh" content="0.3; url=./registerPage.php?status=failedPassword" />';
+      echo '<meta http-equiv="refresh" content="0.3; url=./register_01.php?status=failedPassword" />';
   	}
   	else if (mysqli_num_rows($res_u) > 0) {
-      echo '<meta http-equiv="refresh" content="0.3; url=./registerPage.php?status=failedUsername" />';
+      echo '<meta http-equiv="refresh" content="0.3; url=./register_01.php?status=failedUsername" />';
   	}
 	else if(mysqli_num_rows($res_e) > 0){
-      echo '<meta http-equiv="refresh" content="0.3; url=./registerPage.php?status=failedEmail" />';
+      echo '<meta http-equiv="refresh" content="0.3; url=./register_01.php?status=failedEmail" />';
   	}
 	else{
 		

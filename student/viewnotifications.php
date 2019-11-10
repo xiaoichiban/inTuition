@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Dashboard</title>
+  <title>My Timetable</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,7 @@
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
   <?php
-  session_start();
+  include 'session.php';
   include './layout/config.php';
   include './layout/sidebar.php';
 
@@ -37,65 +37,77 @@
       <div class="content-wrapper-before"></div>
       <div class="content-header row">
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title">My Modules</h3>
+          <h3 class="content-header-title">Notifications</h3>
         </div>
 
       </div>
 
       <div class="content-body">
+
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Enrolled Modules</h4>
                 <div class="card-content">
                   <div class="card-body">
                     <?php
                     $username = $_SESSION['login_user'];
                     $sql1 = "SELECT account_type FROM account WHERE username = '$username';";
                     $result1 = mysqli_query($db, $sql1);
+                    $colorsnum = 0;
                     while ($row1 = mysqli_fetch_row($result1)) {
                       $acctype = $row1[0];
                       if ($acctype == "student"){
-                        $sql2 = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username');";
-                        $result2 = mysqli_query($db, $sql2);
-                        echo "<table style='width:100%' border='1'>" .
-                        "<tr><th></th>" .
-                        "<th>Module</th>" .
-                        "<th>Description</th>" .
-                        "<th>Offered by</th>" .
-                        "<th>Tutored by</th>" .
-                        "<th>Enrolled</th></tr>";
-                        while ($row = mysqli_fetch_row($result2)) {
-                          $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
-                          $module_row = mysqli_fetch_row($module_details);
-                          $enroll_details = mysqli_query($db, "SELECT * FROM enroll e WHERE e.mod_id = '$row[0]'");
-                          $enroll_row = mysqli_fetch_row($enroll_details);
-                          echo "<tr>
-                          <th><a href = 'viewmodule.php?module_id=".$row[0]."'>View</a></th>
-                          <th>". $row[1]."</th>
-                          <th>". $row[2]."</th>
-                          <th>". $row[6]."</th>
-                          <th>". $row[7]."</th>
-                          <th>". $enroll_row[4]."</th></tr>";
-                        }
-                        echo "</table>";
-                      }
+                        $sql = "SELECT * FROM notification WHERE receiver = '$username' ORDER BY datetimestamp DESC;";
+                        $result = mysqli_query($db, $sql);
+                        if (mysqli_num_rows($result) > 0){
+                          $numResults = 0;
+                          $date = date("Y-m-d");
+                          $comparedate = $date;
+                          while ($row = mysqli_fetch_row($result)){
+                            $numResults = $numResults + 1;
+                            if (substr($row[5], 0, 10) <= $date){
+                              $comparedate = $date;
+                              $date = substr($row[5], 0, 10);
 
+                              if ($date < $comparedate){
+                                echo "</table><hr/></div><br/><h5>$date</h5><br/>";
+                              }
+                              else if ($date == $comparedate && $numResults == 1){
+                                echo "<h5>$date</h5><br/>";
+                              }
+                              echo "<hr/><div class='table-responsive'><table style='width:100%; class='table'>";
+                            }
+                            echo "<tr class='clickable-row' data-href='viewmodule.php?module_id=$row[4]'><th>". $row[1] . "</th></tr>";
+
+                            $tempstore[] = $row[0];
+                          }
+                          echo "</table><hr/></div><br/>";
+                          foreach ($tempstore as $value) {
+                            $sql2 = "UPDATE notification SET isRead = '1' WHERE id = '$value' AND receiver = '$username';";
+                            $result2 = mysqli_query($db, $sql2);
+                          }
+                        }
+                        else{
+                          echo "<h6>You have no notifications.</h6>";
+                        }
+
+                      }
                     }
                     ?>
+
+
                   </div>
                 </div>
               </div>
             </div>
-            <a href = 'studentdashboard.php'>Back</a>
+            <h6><a href = 'studentdashboard.php'>Back</a></h6>
           </div>
-        </div>
 
-      </div>  <!-- end of content-body -->
-    </div>  <!-- end of content-wrapper -->
-  </div>  <!-- end of app-content content -->
-
+        </div>  <!-- end of content-body -->
+      </div>  <!-- end of content-wrapper -->
+    </div>  <!-- end of app-content content -->
+  </div>
   ?>
 
 
@@ -112,6 +124,11 @@
   <!-- BEGIN PAGE LEVEL JS-->
   <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS-->
+  <script>jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});</script>
 
 </body>
 </html>

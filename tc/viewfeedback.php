@@ -1,7 +1,7 @@
 <!-- To use this, just provide module id as mod_id in URI parameter -->
 <html>
 <head>
-  <title>File Uploaded List</title>
+  <title>View Feedback</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
 <?php
-include('session.php');
+include ('./layout/session.php');
 include ('./layout/sidebar.php');
 ?>
 
@@ -38,7 +38,7 @@ include ('./layout/sidebar.php');
       <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">Files</h3>
+            <h3 class="content-header-title">Feedback</h3>
           </div>
         </div>
 
@@ -48,30 +48,32 @@ include ('./layout/sidebar.php');
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">File details</h4>
+                  <h4 class="card-title"></h4>
                   <div class="card-content">
                     <div class="card-body">
                       <?php
-                        $mod_id = $_GET['mod_id'];
-                        $sql2 = "SELECT * FROM file WHERE mod_id = $mod_id";
+                        $username = $_SESSION['username'];
+                        $sql2 = "SELECT * FROM complain WHERE receiver = '$username';";
                         $result2 = mysqli_query($db, $sql2);
                         echo
                         "<div class='table-responsive'>" .
-                        "<table class='table table-borderless'>" .
+                        "<table class='table'>" .
                         "<tr>
-                        <th>File Name</th>
-                        <th>Description</th>
+                        <th>Student</th>
+                        <th>Title</th>
                         <th>Date</th>
+                        <th>Status</th>
                         <th></th>
                         </tr>";
 
                         while ($row = mysqli_fetch_assoc($result2)) {
                           echo
                           "<tr>
-                          <th>". $row['filename']."</th>
-                          <th>". $row['name']."<br/>". $row['description']."</th>
-                          <th>". $row['datetimestamp']."</th>
-                          <th><a href = 'downloadFileProcess.php?filename=".$row['filename']."'>Download</a></th>
+                          <td>". $row['complainer']."</td>
+                          <td>". $row['title']."</td>
+                          <td>". $row['datetimestamp']."</td>
+                          <td>". $row['status']."</td>
+                          <td><a href = 'viewfeedbackdetails.php?feedbackid=".$row['id']."'>View</a></td>
                           </tr>";
                         }
                         echo "</table></div>";
@@ -85,7 +87,7 @@ include ('./layout/sidebar.php');
           </div> <!-- row -->
         </div> <!-- content body -->
 
-        <button class='btn btn-default'><a href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
+        <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
 
       </div> <!-- content wrapper -->
     </div> <!-- app content -->
