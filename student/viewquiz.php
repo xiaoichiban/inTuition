@@ -73,7 +73,7 @@ else {
                     
                       <?php 
                         echo
-                          "<table style='width:40%'>" .
+                          "<table style='width:40%' class='table table-borderless'>" .
                           "<tr><th>Quiz title</th><th>" . $row[1] . "</th></tr>" .
                           "<tr><th>Number of attempts</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(quizid) from attempts where student = '$thisuser' and quizid = '$quiz_id' and questionid = '$questionrow[0]';"))[0] . "</th></tr>";
 
@@ -136,12 +136,16 @@ else {
                       }
                       
                       echo "<br>";
-                      echo "<button class='btn btn-default'><a href = 'viewmodule.php?module_id=". $row[2] ."'>Back</a></button>";
+                      
                     ?>
                   </div>
+
                 </div>
               </div>
             </div>
+          </div>
+          <div class="pl-1">
+            <button class='btn btn-default'><a href = 'viewmodule.php?module_id=<?= $row[2] ?>'>Back</a></button>
           </div>
         </div>
 
