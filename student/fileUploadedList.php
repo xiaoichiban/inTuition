@@ -48,7 +48,7 @@ include ('./layout/sidebar.php');
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Quiz details</h4>
+                  <h4 class="card-title">File details</h4>
                   <div class="card-content">
                     <div class="card-body">
                       <?php
