@@ -24,6 +24,7 @@
   <!-- BEGIN Custom CSS-->
   <!-- END Custom CSS-->
 </head>
+
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
   <?php
@@ -83,58 +84,19 @@
 
 
 
+  <!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
 
-
-
-
-    <section class="buckets">
-      <ul>
-        <li>
-          <div class="bucket">
-            <h3 class="bucket-title">Grid is great</h3>
-            <p>CSS Grid is a <br/> 2-D layout tool. </p>
-          </div><!-- .bucket -->
-        </li>
-        <li>
-          <div class="bucket">
-            <h3 class="bucket-title">Grid is great</h3>
-            <p>CSS Grid is a <br/> 2-D layout tool. </p>
-          </div><!-- .bucket -->
-        </li>
-      </ul>
-    </section><!-- .buckets -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class='splash'>
-<div class='splash-content'>
-<h2 class='content-title'>Magical content restructuring with CSS Grid stacks</h2>
-<div class='splash-text'>
-
-
-<?php
-echo "Logged in As:<br/>";
-echo "user_id=".$_SESSION['user_id']."<br/>";
-echo "username=".$_SESSION['username']."<br/>";
-echo "login_user=".$_SESSION['login_user']."<br/>";
-?>
-
-
-<!-- SideBar + Footers -->
-
-<?php
-echo"</div><!-- .splash-text --></div><!-- .splash-content --></section><!-- .splash -->";
-include('./layout/layout2.php');
-
-?>
+</body>
+</html>
