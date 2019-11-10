@@ -85,6 +85,7 @@
               </div>
             </div>
           </a>
+
           </div>
 
           <?php
@@ -92,8 +93,9 @@
           } //for result1
         } //end of while result1
           ?>
-        </div>  <!-- end of class row -->
 
+        </div>  <!-- end of class row -->
+        
       </div>  <!-- end of content-body -->
     </div>  <!-- end of content-wrapper -->
   </div>  <!-- end of app-content content -->

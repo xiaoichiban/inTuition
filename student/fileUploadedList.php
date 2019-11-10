@@ -48,7 +48,7 @@ include ('./layout/sidebar.php');
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Quiz details</h4>
+                  <h4 class="card-title">File details</h4>
                   <div class="card-content">
                     <div class="card-body">
                       <?php
@@ -59,8 +59,6 @@ include ('./layout/sidebar.php');
                         "<div class='table-responsive'>" .
                         "<table class='table table-borderless'>" .
                         "<tr>
-                        <th>File ID</th>
-                        <th>Module ID</th>
                         <th>File Name</th>
                         <th>Description</th>
                         <th>Date</th>
@@ -70,8 +68,6 @@ include ('./layout/sidebar.php');
                         while ($row = mysqli_fetch_assoc($result2)) {
                           echo
                           "<tr>
-                          <th>". $row['id']."</th>
-                          <th>". $row['mod_id']."</th>
                           <th>". $row['filename']."</th>
                           <th>". $row['name']."<br/>". $row['description']."</th>
                           <th>". $row['datetimestamp']."</th>
@@ -81,18 +77,18 @@ include ('./layout/sidebar.php');
                         echo "</table></div>";
 
                       ?>
-                    </div> 
-                  </div> <!-- card content --> 
-                </div> <!-- card header --> 
-              </div>  <!-- card --> 
-            </div> <!-- col-12 --> 
-          </div> <!-- row --> 
-        </div> <!-- content body --> 
-        
+                    </div>
+                  </div> <!-- card content -->
+                </div> <!-- card header -->
+              </div>  <!-- card -->
+            </div> <!-- col-12 -->
+          </div> <!-- row -->
+        </div> <!-- content body -->
+
         <button class='btn btn-default'><a href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
-      
-      </div> <!-- content wrapper --> 
-    </div> <!-- app content --> 
+
+      </div> <!-- content wrapper -->
+    </div> <!-- app content -->
 
 
 <!-- BEGIN VENDOR JS-->
@@ -111,5 +107,3 @@ include ('./layout/sidebar.php');
 
 </body>
 </html>
-
-
