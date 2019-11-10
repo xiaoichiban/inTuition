@@ -149,7 +149,7 @@ else {  echo " ";   }
 
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+form {border: 4px solid #f1f1f1;}
 
 input[type=text], input[type=password] {
   width: 100%;
@@ -204,6 +204,8 @@ span.psw { float: right; padding-top: 16px;}
 
   <div class="container">
 
+  
+
 <form action="login.php" method="POST">
   <div class="imgcontainer">
     <img src="logo.jpg" alt="Avatar" class="avatar">
@@ -215,38 +217,72 @@ span.psw { float: right; padding-top: 16px;}
   
 <input type="text" placeholder="Enter Username" autofocus name="username" id="username" required>
 <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+
+<br/>
+
+<script>
+window.onload = function() {
+var $recaptcha = document.querySelector('#g-recaptcha-response');
+if($recaptcha) { $recaptcha.setAttribute("required", "required"); }
+};
+</script>
+
+<style>	#g-recaptcha-response { display: block !important; position: absolute; 
+margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important; z-index: -999999;  opacity: 0;}
+</style>
+
+<div align="center">
+<div class="g-recaptcha" id="grecaptcha" data-sitekey="6LcpDroUAAAAAO-YS3f1FxTZic1lU7sykZop1PAj"></div>
+</div>
+
+<span id="captcha" style="color:red" /></span> 
+<!-- this will show captcha errors -->
+
+</div>
+
+
+
 <br/>
 <br/>
 <button type="submit" value="Login" name="login"  >Login</button>
 <label> <input type="checkbox" checked="checked" name="remember"> Remember me </label>
  </div>
 
-
-<div class="container" align="center">
-<a href="register.html">Don't have an account? >> Register For an Account Now</a>
-</div>
-
 </form>
 
+</div>
 
 
-  <div class="container" style="background-color:#f1f1f1" align='center'>
-    <a href="resetPassword.php" 
+
+
+
+
+<div class="container" style="background-color:#f1f1f1" align='center'>
+  
+  
+<a href="register.html">Don't have an account? >> Register For an Account Now</a>
+	
+	<br/>
+	<br/>
+	
+	<a href="resetPassword.php" 
 	style="font-family:Old Standard;font-size: 14px"
 	type="button" class="btn btn-danger">RESET MY PASSWORD</a>
-  </div>
+
+	<b><a href="register.html" 
+	style="font-family:Old Standard;font-size: 14px"
+	type="button" class="btn btn-primary">CREATE NEW ACCOUNT</a></b>
+
+	
+	</div>
+
+	
+	<br/>
+	<br/>
 
 
-  <div class="container" style="background-color:#f1f1f1" align='center'>
 
-<b><a href="register.html" 
-style="font-family:Old Standard;font-size: 14px"
-type="button" class="btn btn-primary"
->CREATE NEW ACCOUNT</a></b>
-  </div>
-
-
-</div>
 
 </body>
 

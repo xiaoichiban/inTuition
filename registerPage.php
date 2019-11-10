@@ -94,7 +94,8 @@
 
 
 
-<body style='background-image: url("https://st2.depositphotos.com/9223672/12081/v/950/depositphotos_120819408-stock-illustration-student-cap-graduation-hat-icon.jpg");'>
+<body style='background-image: 
+url("https://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/Desktop-Wallpaper-4.jpg");'>
 
 
 
