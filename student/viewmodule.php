@@ -64,21 +64,21 @@ else {
                 
               <div class="card-content">
                 <div class="card-body">
-                  <div class="height-200">
+                  
                     <b>Module ID: </b> <?php echo $row[0]; ?>
                     <br>
                     <b>Module name: </b> <?php echo $row[1]; ?>
                     <br>
                     <b>Description: </b> <?php echo $row[2]; ?>
                     <br>
-                    <b>Offered by: </b> <?php echo $row[3]; ?>
+                    <b>Offered by: </b> <?php echo $row[6]; ?>
                     <br>
-                    <b>Tutored by: </b> <?php echo $row[4]; ?>
+                    <b>Tutored by: </b> <?php echo $row[7]; ?>
                     <br>
                     <b>No. of students: </b> <?php echo mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id';"))[0]; ?>
                     <br><br>
-                    <button type='button' class='btn btn-primary'><a style='color:white;' href = 'fileUploadedList.php?mod_id=<?php $row[0]?>'>Module Uploaded Files</a></button>
-                  </div>
+                    <button type='button' class='btn btn-primary'><a style='color:white;' href = 'fileUploadedList.php?mod_id=<?=$row[0]?>'>Module Uploaded Files</a></button>
+                  
                 </div>
               </div>
             </div>
@@ -143,7 +143,7 @@ else {
         ?>
         <br>
         <div class="pl-1">
-          <button type='button' class='btn btn-primary'><a style='color:white;' href = 'studentdashboard.php'>Back to modules</a></button>
+          <button type='button' class='btn btn-primary'><a style='color:white;' href = 'studentdashboard.php'>Back</a></button>
         </div>
       </div> <!-- end of content body -->
 

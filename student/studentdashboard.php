@@ -68,10 +68,9 @@
             <div class="card pull-up ecom-card-1 bg-white">
               <div class="card-header">
                 <h4 class="card-title">Module name: <? echo $row[1]; ?></h4>
-                <div class="card-content">
-
-                    <div class="height-300 pt-2">
-                      <?php
+                <div class="card-content">                  
+                    <div class="pt-2">
+                      <?php 
                         echo "<b>Description:</b> <br>$row[2]";
                         echo "<br><br>";
                         echo "<b>Offered by:</b> <br>$row[6]";
