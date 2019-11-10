@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <head>
-    <title>WebRTC Video Conference Tutorial - Plain WebRTC</title>
+    <title>WebRTC Video Conference 1-1 with Node JS</title>
 </head>
 <body>
-    <h1>WebRTC Video Conference Tutorial - Plain WebRTC</h1>
 
+<center>
+    <h3>WebRTC Video Conference 1-1 <br/> Node JS</h3>
+
+	
+	<br/>
+	
+	<button onclick="genRandom()"> Generate Random Room Number</button>
+
+	<br/><br/>
+	
+	<!--<p id="demo"></p>-->
+	<input id="demo" type="text" value="">
+	<button onclick="myFunction()">Copy text</button>
+	
+	<p id="msg001" style="color:blue; "> <br/> </p>
+
+	<script>
+	function genRandom() {
+	  //var x = document.getElementById("demo")
+	  //x.innerHTML = Math.floor((Math.random() * 1000) + 1);
+	  var rand = Math.floor((Math.random() * 1000) + 1);
+	  document.getElementById("demo").value = rand;
+	};
+
+	
+	function myFunction() {
+	  var copyText = document.getElementById("demo");
+	  copyText.select();
+	  copyText.setSelectionRange(0, 1000)
+	  document.execCommand("copy");
+	  // alert("Copied the text: " + copyText.value);
+	  document.getElementById("msg001").innerHTML = "Copied the text: " + copyText.value ; 
+	}; 
+	
+	
+	async function paste() {
+	   const text = await navigator.clipboard.readText();
+	   document.getElementById("roomNumber").value = text;
+	   // document.execCommand("paste");
+	};
+</script>
+	
+	<br/>
+	<br/>
+	<br/>
+	<hr/>
+	<br/>
+	<p style="color:blue; "> Or you can enter your own number: </p>
+	
     <div id="selectRoom">
         <label>Type the room number</label>
+		<br/>
         <input id="roomNumber" type="text" />
-        <button id="goRoom">Go</button>
+		<button onclick="paste()">paste text</button>
+		
+		<br/>
+		<br/>
+        <button id="goRoom">Go to ROOM</button>
     </div>
 
     <div id="consultingRoom" style="display:none">
@@ -18,4 +71,8 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="client.js"></script>
+	
+	
+</center>
+
 </body>
