@@ -88,7 +88,7 @@
                 </div>
               </div>
             </div>
-            <h6><a href = 'studentdashboard.php'>Back</a></h6>
+            <a href = 'studentdashboard.php'>Back</a>
           </div>
         </div>
 

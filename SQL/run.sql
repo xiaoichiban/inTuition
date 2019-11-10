@@ -306,10 +306,12 @@ id int AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(128) NOT NULL,
 content VARCHAR(256) NOT NULL,
 complainer VARCHAR(128) NOT NULL,
+receiver VARCHAR(128) NOT NULL,
 datetimestamp DATETIME NOT NULL DEFAULT now(),
 status VARCHAR(128) NOT NULL DEFAULT 'new',
 comment VARCHAR(256),
-FOREIGN KEY (complainer) REFERENCES account(username)
+FOREIGN KEY (complainer) REFERENCES account(username),
+FOREIGN KEY (receiver) REFERENCES account(username)
 );
 
 CREATE TABLE notification (
@@ -423,11 +425,11 @@ VALUES
 
 
 
-INSERT INTO complain (title, content, complainer)
-VALUES ('slow', 'everything is too slow', 'bob');
+INSERT INTO complain (title, content, complainer, receiver)
+VALUES ('slow', 'everything is too slow', 'bob', 'brightkids');
 
-INSERT INTO complain (title, content, complainer)
-VALUES ('slow', 'everything is too slow', 'alice');
+INSERT INTO complain (title, content, complainer, receiver)
+VALUES ('slow', 'everything is too slow', 'alice', 'brightkids');
 
 
 CREATE TABLE quiz (
