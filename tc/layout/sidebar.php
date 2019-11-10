@@ -38,9 +38,9 @@
           </li>
           <li class="<?= ($activePage == 'studentEnrollment') ? 'active':'nav-item'; ?>"><a href="studentEnrollment.php"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Enrollment</span></a>
           </li>
-          <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Chat</span></a>
+          <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php"  target="_blank"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
-          <li class="<?= ($activePage == 'viewProfile') ? 'active':'nav-item'; ?>"><a href="viewProfile.php?username=<?php echo $username?>"><i class="ft-layers"></i><span class="menu-title" data-i18n="">My Profile</span></a>
+          <li class="<?= ($activePage == 'viewMyProfile') ? 'active':'nav-item'; ?>"><a href="viewMyProfile.php?username=<?php echo $username?>"><i class="ft-layers"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
           <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href=""><i class="ft-box"></i><span class="menu-title" data-i18n="">Feedback</span></a>
           </li>
