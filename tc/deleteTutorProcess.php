@@ -9,14 +9,10 @@
 
 echo"Tutor ID is $tutor_id";
 
-  $sql = "DELETE FROM tutor WHERE tutor.id = $tutor_id";
+  $sql = "UPDATE account SET status = 'deactivate' WHERE account.username = (SELECT username FROM tutor WHERE tutor.id = $tutor_id)";
 
   if ($db->query($sql) === TRUE) {
-      echo $username . " account created successfully!";
-      $sql = "INSERT INTO tutor (username, tc_owner) VALUES ('$name', '$tc')";
-      if ($db->query($sql) === TRUE) {
-        echo $username . " tutor created successfully!";
-      }
+      echo $username . " account deactivted successfully!";
   } else {
       echo "Error: " . $sql . "<br>" . $db->error;
   }
