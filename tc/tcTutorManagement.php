@@ -43,7 +43,7 @@ include './layout/session.php';
             <!-- Module search function -->
             <form action="tcTutorManagement.php" method="GET">
               <input type="text" style="width: 50%; display: inline;" name="search" placeholder="Enter tutor username" class="form-control"/>
-              <input type="submit" class="btn btn-primary" value="Search for module" />
+              <input type="submit" class="btn btn-primary" value="Search for tutor" />
             </form>
           </div>
         </div>
@@ -61,7 +61,8 @@ include './layout/session.php';
                     <thead>
                       <tr>
                         <th scope="col">Tutor ID</th>
-                        <th scope="col">Tutor username</th>
+                        <th scope="col">Tutor Username</th>
+                        <th scope="col">Created</th>
                         <th scope="col">Profile</th>
                       </tr>
                     </thead>
@@ -79,12 +80,19 @@ include './layout/session.php';
                         $result = mysqli_query($db, $sql);
 
                         while ($row = mysqli_fetch_row($result)) {
-                          echo"<tr>";
                           $username = $row[1];
-                          echo"<th scope='row'>"; echo "$row[0]"; echo"</th>";
-                          echo"<td>"; echo "$row[1]"; echo"</td>";
-                          echo"<td>"; echo "<a href='viewProfile.php?username=$username'> View Profile </a>"; echo"</td>";
-                          echo"</tr>";
+                          $sql1 = "SELECT * FROM account WHERE username = '$username';";
+                          $result1 = mysqli_query($db,$sql1);
+                          while ($row1 = mysqli_fetch_row($result1)){
+                            echo"<tr>";
+
+                            echo"<th scope='row'>"; echo "$row[0]"; echo"</th>";
+                            echo"<td>"; echo "$row[1]"; echo"</td>";
+                            echo"<td>"; echo "$row1[9]"; echo"</td>";
+                            echo"<td>"; echo "<a href='viewProfile.php?username=$username'> View Profile </a>"; echo"</td>";
+                            echo"</tr>";
+                          }
+
                         }
                       }
 
@@ -94,12 +102,19 @@ include './layout/session.php';
                         $result = mysqli_query($db, $sql);
 
                         while ($row = mysqli_fetch_row($result)) {
-                          echo"<tr>";
                           $username = $row[1];
-                          echo"<th scope='row'>"; echo "$row[0]"; echo"</th>";
-                          echo"<td>"; echo "$row[1]"; echo"</td>";
-                          echo"<td>"; echo "<a href='viewProfile.php?username=$username'> View Profile </a>"; echo"</td>";
-                          echo"</tr>";
+                          $sql1 = "SELECT * FROM account WHERE username = '$username';";
+                          $result1 = mysqli_query($db,$sql1);
+                          while ($row1 = mysqli_fetch_row($result1)){
+                            echo"<tr>";
+
+                            echo"<th scope='row'>"; echo "$row[0]"; echo"</th>";
+                            echo"<td>"; echo "$row[1]"; echo"</td>";
+                            echo"<td>"; echo "$row1[9]"; echo"</td>";
+                            echo"<td>"; echo "<a href='viewProfile.php?username=$username'> View Profile </a>"; echo"</td>";
+                            echo"</tr>";
+                          }
+
                         }
                       }
                       ?>
@@ -111,6 +126,7 @@ include './layout/session.php';
           </div>
         </div>
       </div>
+      <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
     </div>
   </div>
 </body>

@@ -3,6 +3,9 @@
 <body>
 <?php
   $activePage = basename($_SERVER['PHP_SELF'], ".php");
+  include('config.php');
+  //include('session.php');
+  $username = $_SESSION['username'];
 ?>
 
 <nav class="header-navbar navbar-expand-md navbar navbar-without-dd-arrow fixed-top">
@@ -36,9 +39,9 @@
           </li>
           <li class="<?= ($activePage == 'studentEnrollment') ? 'active':'nav-item'; ?>"><a href="studentEnrollment.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Enrollment</span></a>
           </li>
-          <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php"  target="_blank"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Chat</span></a>
+          <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
-          <li class="<?= ($activePage == 'viewMyProfile') ? 'active':'nav-item'; ?>"><a href="viewMyProfile.php?username=<?php echo $username?>"><i class="ft-layers"></i><span class="menu-title" data-i18n="">My Profile</span></a>
+          <li class="<?= ($activePage == 'viewMyProfile') ? 'active':'nav-item'; ?>"><a href="viewMyProfile.php?username=<?php echo $username;?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
           <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href="viewfeedback.php"><i class="ft-help-circle"></i><span class="menu-title" data-i18n="">Feedback</span></a>
           </li>

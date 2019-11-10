@@ -38,7 +38,7 @@
       <div class="content-wrapper-before"></div>
       <div class="content-header row">
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title">Students Enrollments</h3>
+          <h3 class="content-header-title">Student Enrollments</h3>
         </div>
 
       </div>
@@ -60,17 +60,22 @@
                     }
                     else {
                       while ($row = mysqli_fetch_row($result)) {
+                        $sql1 = "SELECT * FROM module WHERE id ='$row[2]';";
+                        $result1 = mysqli_query($db, $sql1);
+                        $row1 = mysqli_fetch_row($result1);
                         echo
                         "<form method='post' action='registerStudentProcess.php'>
                         <div class='table-responsive'>
                         <table class='table table-borderless'>
                         <tr>
-                        <th>Module ID</th>
+                        <th>Module</th>
+                        <th>Class</th>
                         <th>Student</th>
                         <th>Status</th>
-                        <th>Accept</th>
+                        <th></th>
                         <tr/>".
-                        "<tr><th>" . $row[2] . "</th>" .
+                        "<tr><th>" . $row1[1] . "</th>" .
+                        "<th>" . $row1[5] . " - " . $row1[4] . "</th>" .
                         "<th>" . $row[1] . "</th>" .
                         "<th style='color:orange;'>" . $row[3] . "</th>" .
                         "<th><input type='hidden' name='mod_id' value='$row[2]'><input type='hidden' name='username' value='$row[1]'>
@@ -89,6 +94,7 @@
           </div>
         </div>
       </div>
+      <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
     </div>
   </div>
 
