@@ -201,10 +201,10 @@ FOREIGN KEY (username) REFERENCES account(username)
 INSERT INTO account
 (username, password, name, about_me, email, last_login, date_registered, status, account_type)
 VALUES
-('alice', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'alice', 'about me 0', 'alice@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
-('bob', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'bob', 'about me 1', 'bob@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
-('brightkids', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'brightkids', 'best tuition center', 'brightkids@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
-('danny', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'danny', 'I very lepak', 'danny@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
+('alice', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'alice', 'about me 0', 'nottynottyowl@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
+('bob', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'bob', 'about me 1', 'ZG.LDQSN@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
+('brightkids', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'brightkids', 'best tuition center', 'shirleyooi921997@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
+('danny', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'danny', 'I very lepak', 'yinghuiseah@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
 
 
 
