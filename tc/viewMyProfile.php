@@ -36,7 +36,8 @@
   include '../session.php';
   include './layout/sidebar.php';
 
-  $username = $_GET['username'];
+
+  $username = $_SESSION['login_user'];
 
   $sql = "SELECT * FROM account WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
@@ -45,12 +46,12 @@
     echo "invalid tutor $tutor_id";
   }
 
-  $sql = "SELECT * FROM tutor WHERE username = '$username'; ";
+  $sql = "SELECT * FROM tc WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
   $tutor = mysqli_fetch_row($result);
-
-
-  if (mysqli_num_rows($result) != 1) {   echo "<h1 align='center'> invalid tutor </h1>" ;  }
+  if (mysqli_num_rows($result) != 1) {
+    echo "invalid tc $tutor_id";
+  }
 
   ?>
 
@@ -76,6 +77,11 @@
                         <div class="col-md-4">
                           <div class="profile-img">
                             <img src="../profilepics/<?php echo $account[7] ?>" alt="Profile picture"/>
+                            <a href="editProfilePicture.php">
+                              <div class="file btn btn-sm btn-primary">
+                                <b>Change Photo</b>
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -84,15 +90,12 @@
                               <?php echo $account[1] ?>
                             </h5>
                             <h6>
-                              Tutor
+                              Student
                             </h6>
-                            <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                            <p class="proile-rating"><br/></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                               <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Experience</a>
                               </li>
                             </ul>
                           </div>
@@ -108,9 +111,6 @@
                             <a href="">Website Link</a><br/>
                             <a href="">Bootsnipp Profile</a><br/>
                             <a href="">Bootply Profile</a>
-                            <p>SKILLS</p>
-                            <a>Mathematics (Primary)</a><br/>
-                            <a>Mathematics (Secondary)</a><br/>
                           </div>
                         </div>
                         <div class="col-md-8">
@@ -134,14 +134,6 @@
                               </div>
                               <div class="row">
                                 <div class="col-md-6">
-                                  <label>Tuition Centre</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p><?php echo $tutor[2] ?></p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
                                   <label>Date Registered</label>
                                 </div>
                                 <div class="col-md-6">
@@ -154,41 +146,6 @@
                                 </div>
                                 <div class="col-md-6">
                                   <p><?php echo $account[10] ?></p>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Experience</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p>Expert</p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Hourly Rate</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p>$70/hr</p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Total Modules Taught</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p>8</p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>English Level</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p>Expert</p>
                                 </div>
                               </div>
                               <div class="row">
