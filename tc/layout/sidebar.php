@@ -39,7 +39,7 @@
           </li>
           <li class="<?= ($activePage == 'studentEnrollment') ? 'active':'nav-item'; ?>"><a href="studentEnrollment.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Enrollment</span></a>
           </li>
-          <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
+          <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php" target="_blank"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
           <li class="<?= ($activePage == 'viewMyProfile') ? 'active':'nav-item'; ?>"><a href="viewMyProfile.php?username=<?php echo $username;?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
