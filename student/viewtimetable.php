@@ -62,7 +62,7 @@
                         echo "<div class='table-responsive'><table style='width:100%; overflow:auto; empty-cells:show;' class='table'>" .
                         "<tr><th></th><th>0800</th><th>0900</th><th>1000</th><th>1100</th><th>1200</th><th>1300</th><th>1400</th><th>1500</th><th>1600</th><th>1700</th><th>1800</th><th>1900</th><th>2000</th><th>2100</th><th>2200</th></tr>";
                         while ($daynum <7){
-                          $day = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username') AND class_day = '$daynum' ORDER BY class_startTime ASC;";
+                          $day = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username' AND status='accepted') AND class_day = '$daynum' ORDER BY class_startTime ASC;";
                           $daymodules = mysqli_query($db, $day);
                           if ($daynum == 0){
                             $day_label = "Sun";
@@ -149,7 +149,7 @@
                               }
                               $numResults = $numResults -1;
                             }
-                            if ($cellcounter != 15){
+                            if ($cellcounter <= 15 && $cellcounter>0){
                               $cellcounter = 15 - $cellcounter;
                             }
                             while ($cellcounter > 0){

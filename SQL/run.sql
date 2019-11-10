@@ -78,10 +78,10 @@ DROP TABLE IF EXISTS tutor;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS tc;
 
+DROP TABLE IF EXISTS notification;
 /*DELETE FROM module;*/
 DROP TABLE IF EXISTS module;
 
-DROP TABLE IF EXISTS notification;
 
 /*DELETE FROM account;*/
 DROP TABLE IF EXISTS account;
@@ -317,10 +317,12 @@ id int AUTO_INCREMENT PRIMARY KEY,
 content VARCHAR(128) NOT NULL,
 sender VARCHAR(128) NOT NULL,
 receiver VARCHAR(128) NOT NULL,
+mod_id int NOT NULL,
 datetimestamp DATETIME NOT NULL DEFAULT now(),
 isRead BOOLEAN NOT NULL DEFAULT FALSE,
 FOREIGN KEY (sender) REFERENCES account(username),
-FOREIGN KEY (receiver) REFERENCES account(username)
+FOREIGN KEY (receiver) REFERENCES account(username),
+FOREIGN KEY (mod_id) REFERENCES module(id)
 );
 
 INSERT INTO module
@@ -359,6 +361,10 @@ INSERT INTO enroll (student, mod_id, status)
 VALUES ('alice', '3', 'pending');
 INSERT INTO enroll (student, mod_id, status)
 VALUES ('bob', '4', 'pending');
+
+INSERT INTO notification (content, sender, receiver, mod_id, datetimestamp, isRead)
+VALUES
+('Thank you for registering for our new module IS2103. As slots are currently full, you have been placed on our waiting list.', 'brightkids', 'alice', '1', '2019-11-01 12:00:00', TRUE);
 
 
 

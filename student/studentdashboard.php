@@ -52,7 +52,7 @@
                     while ($row1 = mysqli_fetch_row($result1)) {
                       $acctype = $row1[0];
                       if ($acctype == "student"){
-                        $sql2 = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username');";
+                        $sql2 = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username' AND status='accepted');";
                         $result2 = mysqli_query($db, $sql2);
 
                           while ($row = mysqli_fetch_row($result2)) {
@@ -67,10 +67,10 @@
             <a href = 'viewmodule.php?module_id=<?php echo $row[0]; ?>'>
             <div class="card pull-up ecom-card-1 bg-white">
               <div class="card-header">
-                <h4 class="card-title">Module name: <? echo $row[1]; ?></h4>
-                <div class="card-content">                  
+                <h4 class="card-title"><?php echo $row[1]; ?></h4>
+                <div class="card-content">
                     <div class="pt-2">
-                      <?php 
+                      <?php
                         echo "<b>Description:</b> <br>$row[2]";
                         echo "<br><br>";
                         echo "<b>Offered by:</b> <br>$row[6]";

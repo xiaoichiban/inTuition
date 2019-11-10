@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Feedback</title>
+  <title>My Timetable</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,7 @@
       <div class="content-wrapper-before"></div>
       <div class="content-header row">
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title">Feedback</h3>
+          <h3 class="content-header-title">Notifications</h3>
         </div>
 
       </div>
@@ -48,42 +48,66 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Feedback Form</h4>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="complain.php" method="post" enctype="multipart/form-data">
-                        <div class='basic-inputs'>
-                            <br/>
-                            <fieldset class="form-group">
-                                <h5 class="mt-2">Title: &nbsp;</h5>
-                                <input type="text" name="title" id="title" class="form-control" id="placeholderInput" placeholder="Enter Title..." required>
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <h5  class="mt-2">Feedback: &nbsp;</h5>
-                                <input type="text" name="problem" id="problem" class="form-control" id="placeholderInput" placeholder="Enter Feedback..." required>
-                            </fieldset>
+                    <?php
+                    $username = $_SESSION['login_user'];
+                    $sql1 = "SELECT account_type FROM account WHERE username = '$username';";
+                    $result1 = mysqli_query($db, $sql1);
+                    $colorsnum = 0;
+                    while ($row1 = mysqli_fetch_row($result1)) {
+                      $acctype = $row1[0];
+                      if ($acctype == "student"){
+                        $sql = "SELECT * FROM notification WHERE receiver = '$username' ORDER BY datetimestamp DESC;";
+                        $result = mysqli_query($db, $sql);
+                        if (mysqli_num_rows($result) > 0){
+                          $numResults = 0;
+                          $date = date("Y-m-d");
+                          $comparedate = $date;
+                          while ($row = mysqli_fetch_row($result)){
+                            $numResults = $numResults + 1;
+                            if (substr($row[5], 0, 10) <= $date){
+                              $comparedate = $date;
+                              $date = substr($row[5], 0, 10);
 
-                            <br/>
-                        </div>
-                        <div align='center'>
-                            <br/>
-                            <input type="submit" value="Submit" name="submit" class="btn btn-primary btn-min-width mr-1 mb-1">
-                        </div>
-                    </form>
+                              if ($date < $comparedate){
+                                echo "</table><hr/></div><br/><h5>$date</h5><br/>";
+                              }
+                              else if ($date == $comparedate && $numResults == 1){
+                                echo "<h5>$date</h5><br/>";
+                              }
+                              echo "<hr/><div class='table-responsive'><table style='width:100%; class='table'>";
+                            }
+                            echo "<tr class='clickable-row' data-href='viewmodule.php?module_id=$row[4]'><th>". $row[1] . "</th></tr>";
+
+                            $tempstore[] = $row[0];
+                          }
+                          echo "</table><hr/></div><br/>";
+                          foreach ($tempstore as $value) {
+                            $sql2 = "UPDATE notification SET isRead = '1' WHERE id = '$value' AND receiver = '$username';";
+                            $result2 = mysqli_query($db, $sql2);
+                          }
+                        }
+                        else{
+                          echo "<h6>You have no notifications.</h6>";
+                        }
+
+                      }
+                    }
+                    ?>
 
 
-                    <h6><a href = 'studentdashboard.php'>Back</a></h6>
                   </div>
                 </div>
               </div>
             </div>
+            <h6><a href = 'studentdashboard.php'>Back</a></h6>
           </div>
-        </div>
 
-      </div>  <!-- end of content-body -->
-    </div>  <!-- end of content-wrapper -->
-  </div>  <!-- end of app-content content -->
-
+        </div>  <!-- end of content-body -->
+      </div>  <!-- end of content-wrapper -->
+    </div>  <!-- end of app-content content -->
+  </div>
   ?>
 
 
@@ -100,24 +124,11 @@
   <!-- BEGIN PAGE LEVEL JS-->
   <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS-->
+  <script>jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});</script>
 
 </body>
 </html>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_SESSION['username'];
-    $title = $_POST['title'];
-    $problem = $_POST['problem'];
-    $sql = "INSERT INTO complain(title, content, complainer, status)"
-            . "VALUES('$title', '$problem', '$username', 'new');";
-    $results = mysqli_query($db, $sql);
-    if ($results) {
-        echo "<script type = 'text/javascript'> alert ('Thank you for your report!!')</script>";
-    } else {
-        echo "<script type = 'text/javascript'> alert ('Error in Submission!!')</script>";
-    }
-    echo '<script>window.location.href = "studentdashboard.php";</script>';
-    exit();
-}
-?>
