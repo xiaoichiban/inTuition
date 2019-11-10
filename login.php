@@ -200,15 +200,13 @@ span.psw { float: right; padding-top: 16px;}
 <!---<center><img src ="logo.jpg" style="height:70%;"></center>-->
 
 
-<h2 align="center"><i><u>Intuition Login</u></i></h2>
-
   <div class="container">
 
   
 
 <form action="login.php" method="POST">
   <div class="imgcontainer">
-    <img src="logo.jpg" alt="Avatar" class="avatar">
+    <img src="intuition_logo.png" alt="Avatar" class="avatar">
 </div>
 
   <div class="container">
@@ -219,7 +217,6 @@ span.psw { float: right; padding-top: 16px;}
 <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
 
-<br/>
 
 <script>
 window.onload = function() {
@@ -241,13 +238,14 @@ margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important
 
 </div>
 
-
-
-<br/>
 <br/>
 <button type="submit" value="Login" name="login"  >Login</button>
+
+<br/>
+<center>
 <label> <input type="checkbox" checked="checked" name="remember"> Remember me </label>
- </div>
+</center>
+</div>
 
 </form>
 

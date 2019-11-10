@@ -116,7 +116,7 @@ require_once './vendor/autoload.php';
 			$result = $mailer->send($message);
 			
 			echo "<h3 align='center'><font color='green'>Your Password has been reset<br/>";
-			echo "Your Password has been reset</font></h3>";
+			echo "Please Check Your Email</font></h3>";
 			echo "<h3 align='center'><a href='../login.html' > Login Here </a></h3>";
 			
 			

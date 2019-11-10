@@ -55,6 +55,38 @@ span.psw { float: right; padding-top: 16px;}
 <input type="text" placeholder="Enter Username" autofocus
 name="username" id="username" required>
 <br/><br/>
+
+
+
+
+<script>
+window.onload = function() {
+var $recaptcha = document.querySelector('#g-recaptcha-response');
+if($recaptcha) { $recaptcha.setAttribute("required", "required"); }
+};
+</script>
+
+<style>	#g-recaptcha-response { display: block !important; position: absolute; 
+margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important; z-index: -999999;  opacity: 0;}
+</style>
+
+<div align="center">
+<div class="g-recaptcha" id="grecaptcha" data-sitekey="6LcpDroUAAAAAO-YS3f1FxTZic1lU7sykZop1PAj"></div>
+</div>
+
+<span id="captcha" style="color:red" /></span> 
+<!-- this will show captcha errors -->
+
+
+<br/><br/>
+
+
+
+
+
+
+
+
 <button type="submit" value="RESET" name="RESET">RESET</button>
  </div>
 

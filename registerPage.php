@@ -34,7 +34,7 @@
 	<link rel="stylesheet" href="style_01.css">
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  
   
-  	<!----
+  	<!--
 	--->
 
 	<style>
@@ -107,12 +107,14 @@ url("https://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/Desktop-Wal
 	
 
 	<div id="frmCheckUsername" >
-	  <input type="text" placeholder="Username" name="username" id="username" class="demoInputBox" onBlur="checkAvailability()" value=""  required >
+	  <input type="text" placeholder="Username" name="username" 
+	  id="username" class="demoInputBox" onBlur="checkAvailability()" value=""  required >
 		
 		<span id="user-availability-status"></span>   
 		
 		
-		<p align="center"><img src="./image/loadbar.gif" id="loaderIcon" height="50px" width="50px" style="display:none" /></p>
+		<p align="center"><img src="./image/loadbar.gif" 
+		id="loaderIcon" height="50px" width="50px" style="display:none" /></p>
 	</div>
 	
 	
@@ -131,7 +133,9 @@ url("https://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/Desktop-Wal
   	</div>
 	
 	<div>
-  		<input type="password"  placeholder="Confirm Password" name="confirm_password" id="confirm_password" onkeyup="check();" required>
+  		<input type="password"  placeholder="Confirm Password"
+		name="confirm_password"
+		id="confirm_password" onkeyup="check();" required>
 		<span id="message"></span>
   	</div>
 	
