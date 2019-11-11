@@ -28,7 +28,7 @@ include('session.php');
 			<br />
 			<div class="row">
 				<div class="col-md-8 col-sm-6">
-					<h4>Online User</h4>
+					<h4>All Online User(s)</h4>
 				</div>
 				<div class="col-md-2 col-sm-3">
 					<input type="hidden" id="is_active_group_chat_window" value="no" />
@@ -38,7 +38,8 @@ include('session.php');
 					<p align="right">Hi - <?php echo $_SESSION['username']; ?> 
 					 - <a href="../router.php">Back To App</a>
 					<br/> <br/>
-					<a href="logout.php" style="color:red">Logout</a>
+					
+					<!---<a href="logout.php" style="color:red">Logout</a>--->
 					
 					
 					</p>
@@ -153,7 +154,7 @@ $(document).ready(function(){
 	function make_chat_dialog_box(to_user_id, to_user_name)
 	{
 		var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
-		modal_content += '<div style="height:350px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:10px; padding:10px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
+		modal_content += '<div style="height:320px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:10px; padding:10px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
 		modal_content += fetch_user_chat_history(to_user_id);
 		modal_content += '</div>';
 		modal_content += '<div class="form-group">';
