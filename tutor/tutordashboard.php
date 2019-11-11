@@ -26,7 +26,7 @@
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
 
-<?php 
+<?php
 session_start();
 include './layout/config.php';
 include './layout/sidebar.php';
@@ -57,7 +57,7 @@ include './layout/sidebar.php';
                   while ($row = mysqli_fetch_row($result2)) {
                     $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
                     $module_row = mysqli_fetch_row($module_details);
-                    $enroll_details = mysqli_query($db, "SELECT COUNT(*) FROM enroll e WHERE e.mod_id = '$row[0]'");
+                    $enroll_details = mysqli_query($db, "SELECT COUNT(*) FROM enroll e WHERE e.mod_id = '$row[0]' AND e.status = 'accepted';");
                     $enroll_row = mysqli_fetch_row($enroll_details);
             ?>
 
@@ -66,9 +66,9 @@ include './layout/sidebar.php';
                 <div class="card pull-up ecom-card-1 bg-white">
                   <div class="card-header">
                     <h4 class="card-title">Module name: <? echo $row[1]; ?></h4>
-                    <div class="card-content">                  
+                    <div class="card-content">
                         <div class="pt-2">
-                          <?php 
+                          <?php
                             echo "<b>Module ID:</b> <br>$row[0]";
                             echo "<br><br>";
                             echo "<b>Description:</b> <br>$row[2]";
@@ -85,11 +85,11 @@ include './layout/sidebar.php';
                   </div>
                 </div>
               </a>
-              </div> <!-- end of the whole module card --> 
+              </div> <!-- end of the whole module card -->
 
-              <?php 
+              <?php
                 } // while row = result2
-              } // if acc type == tutor 
+              } // if acc type == tutor
             } // while row = result1
 
               ?>
@@ -98,8 +98,8 @@ include './layout/sidebar.php';
         </div> <!-- content body -->
 
       </div>
-    </div> <!-- content-wrapper --> 
-  </div> <!-- app content --> 
+    </div> <!-- content-wrapper -->
+  </div> <!-- app content -->
 
 
 <!-- BEGIN VENDOR JS-->

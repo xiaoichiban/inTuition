@@ -60,7 +60,7 @@
               while ($row = mysqli_fetch_row($result2)) {
                 $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
                 $module_row = mysqli_fetch_row($module_details);
-                $enroll_details = mysqli_query($db, "SELECT COUNT(*) FROM enroll e WHERE e.mod_id = '$row[0]'");
+                $enroll_details = mysqli_query($db, "SELECT COUNT(*) FROM enroll e WHERE e.mod_id = '$row[0]' AND e.status = 'accepted';");
                 $enroll_row = mysqli_fetch_row($enroll_details);
                 ?>
 
