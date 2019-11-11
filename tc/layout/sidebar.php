@@ -37,6 +37,8 @@
           </li>
           <li class="<?= ($activePage == 'tcTutorManagement') ? 'active':'nav-item'; ?>"><a href="tcTutorManagement.php"><i class="ft-search"></i><span class="menu-title" data-i18n="">My Tutors</span></a>
           </li>
+          <li class="<?= ($activePage == 'tcModuleManagement') ? 'active':'nav-item'; ?>"><a href="tcModuleManagement.php"><i class="la la-bars"></i><span class="menu-title" data-i18n="">Module List</span></a>
+          </li>
           <li class="<?= ($activePage == 'studentEnrollment') ? 'active':'nav-item'; ?>"><a href="studentEnrollment.php"><i class="ft-book"></i><span class="menu-title" data-i18n="">Enrollment</span></a>
           </li>
           <li class="<?= ($activePage == 'chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php" target="_blank"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>

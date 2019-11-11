@@ -111,6 +111,7 @@ $module_id = $_GET['module_id'];
         </div>
       </div>
       <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
+      <a class='btn btn-dark' href = 'tcModuleManagement.php'>Back to Module List</a>
     </div>
   </div>
 </body>

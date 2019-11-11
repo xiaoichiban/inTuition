@@ -1,83 +1,157 @@
-<table border='2' width='100%'>
-  <th> <h2>Tution Centre Module Management</h2></th>
-  <tr><td>
-  <a href="tcdashboard.php"><b><font color='green'> << BACK <<</font> </b></a>
-  <br><br>
-  <a href="createModule.php"><b><font color='green'> + Create New Module + </font> </b></a>
-  </td></tr>
-</table>
-<br><br><br>
+<?php
+include '../config.php';
+include '../session.php';
+include './layout/sidebar.php';
+?>
 
-<!-- Module search function -->
-<form action="tcModuleManagement.php" method="GET">
-  <input type="text" name="search" />
-  <input type="submit" value="Search for module" />
-</form>
+<html>
+<head>
+  <title>Dashboard</title>
 
-<table border='1'>
-  <tr>
-    <th>Module ID</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Tution Day</th>
-    <th>Start</th>
-    <th>End</th>
-    <th>Tution Centre</th>
-    <th>Tutor</th>
-    <th>Status</th>
-    <th>Details</th>
-  </tr>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="layout/timetablestyle.css">
+  <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
+  <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+  <!-- BEGIN VENDOR CSS-->
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/vendors.css">
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/vendors/css/charts/chartist.css">
+  <!-- END VENDOR CSS-->
+  <!-- BEGIN CHAMELEON  CSS-->
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/app-lite.css">
+  <!-- END CHAMELEON  CSS-->
+  <!-- BEGIN Page Level CSS-->
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/core/menu/menu-types/vertical-menu.css">
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/pages/dashboard-ecommerce.css">
+  <!-- END Page Level CSS-->
+  <!-- BEGIN Custom CSS-->
+  <!-- END Custom CSS-->
+</head>
 
-  <!-- Search for active module method-->
-  <?php
-    include '../config.php';
-    include '../session.php';
-    $tc = $_SESSION['login_user'];
+<body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
-    if(isset($_GET['search']) != "") {
-      $search_value = $_GET['search'];
+  <div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title">Module Management</h3>
+        </div>
+      </div>
 
-      $sql="SELECT * from module where tc = '$tc' AND description LIKE '%$search_value%'";
-      // $sql= "SELECT * from module where tc = '$tc'";
+      <div class="content-body">
+        <!-- Module search function -->
+        <div class="row pl-1">
+          <div class="card" style="background: none;">
+            <form action="tcModuleManagement.php" method="GET">
+              <input type="text" style="width: 50%; display: inline;" placeholder="Enter Mod Description" name="search"  class="form-control"/>
+              <input type="submit" class="btn btn-primary"  value="Search for module" />
+            </form>
+          </div>
+        </div>
 
-      $result = mysqli_query($db, $sql);
+        <div class="row pl-1">
+          <div class="card" style="background: none;">
+              <button type='button' class='btn btn-dark'><a style='color:white;' href = 'createModule.php'>Create Module</a></button>
+          </div>
+        </div>
 
-      while ($row = mysqli_fetch_row($result)) {
-      echo"<tr>";
-      $thisID = $row[0];
-      echo"<td>"; echo "$row[0]"; echo"</td>";
-      echo"<td>"; echo "$row[1]"; echo"</td>";
-      echo"<td>"; echo "$row[2]"; echo"</td>";
-      echo"<td>"; echo "$row[3]"; echo"</td>";
-      echo"<td>"; echo "$row[4]"; echo"</td>";
-      echo"<td>"; echo "$row[5]"; echo"</td>";
-      echo"<td>"; echo "$row[6]"; echo"</td>";
-      echo"<td>"; echo "$row[7]"; echo"</td>";
-      echo"<td>"; echo "$row[9]"; echo"</td>";
-      echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
-      echo"</tr>";
-      }
-    }
 
-    else {
-      $sql= "SELECT * from module where tc = '$tc';";
+        <div class="card-content collapse show">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Module ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Tution Day</th>
+                  <th>Start</th>
+                  <th>End</th>
+                  <th>Tution Centre</th>
+                  <th>Tutor</th>
+                  <th>Status</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
 
-      $result = mysqli_query($db, $sql);
+                <!-- Search for active module method-->
+                <?php
 
-      while ($row = mysqli_fetch_row($result)) {
-      echo"<tr>";
-      $thisID = $row[0];
-      echo"<td>"; echo "$row[0]"; echo"</td>";
-      echo"<td>"; echo "$row[1]"; echo"</td>";
-      echo"<td>"; echo "$row[2]"; echo"</td>";
-      echo"<td>"; echo "$row[3]"; echo"</td>";
-      echo"<td>"; echo "$row[4]"; echo"</td>";
-      echo"<td>"; echo "$row[5]"; echo"</td>";
-      echo"<td>"; echo "$row[6]"; echo"</td>";
-      echo"<td>"; echo "$row[7]"; echo"</td>";
-      echo"<td>"; echo "$row[9]"; echo"</td>";
-      echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
-      echo"</tr>";
-      }
-    }
-  ?>
+                $tc = $_SESSION['login_user'];
+
+                if(isset($_GET['search']) != "") {
+                  $search_value = $_GET['search'];
+
+                  $sql="SELECT * from module where tc = '$tc' AND description LIKE '%$search_value%'";
+                  // $sql= "SELECT * from module where tc = '$tc'";
+
+                  $result = mysqli_query($db, $sql);
+
+                  while ($row = mysqli_fetch_row($result)) {
+                    echo"<tr>";
+                    $thisID = $row[0];
+                    echo"<td>"; echo "$row[0]"; echo"</td>";
+                    echo"<td>"; echo "$row[1]"; echo"</td>";
+                    echo"<td>"; echo "$row[2]"; echo"</td>";
+                    echo"<td>"; echo "$row[3]"; echo"</td>";
+                    echo"<td>"; echo "$row[4]"; echo"</td>";
+                    echo"<td>"; echo "$row[5]"; echo"</td>";
+                    echo"<td>"; echo "$row[6]"; echo"</td>";
+                    echo"<td>"; echo "$row[7]"; echo"</td>";
+                    echo"<td>"; echo "$row[9]"; echo"</td>";
+                    echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
+                    echo"</tr>";
+                  }
+                }
+
+                else {
+                  $sql= "SELECT * from module where tc = '$tc';";
+
+                  $result = mysqli_query($db, $sql);
+
+                  while ($row = mysqli_fetch_row($result)) {
+                    echo"<tr>";
+                    $thisID = $row[0];
+                    echo"<td>"; echo "$row[0]"; echo"</td>";
+                    echo"<td>"; echo "$row[1]"; echo"</td>";
+                    echo"<td>"; echo "$row[2]"; echo"</td>";
+                    echo"<td>"; echo "$row[3]"; echo"</td>";
+                    echo"<td>"; echo "$row[4]"; echo"</td>";
+                    echo"<td>"; echo "$row[5]"; echo"</td>";
+                    echo"<td>"; echo "$row[6]"; echo"</td>";
+                    echo"<td>"; echo "$row[7]"; echo"</td>";
+                    echo"<td>"; echo "$row[9]"; echo"</td>";
+                    echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
+                    echo"</tr>";
+                  }
+                }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+
+</body>
+</html>
