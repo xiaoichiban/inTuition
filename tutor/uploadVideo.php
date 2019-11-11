@@ -1,19 +1,58 @@
-<?php
-//include('layout.php');
+<html>
+<head>
+  <title>Tutor Upload Video</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="layout/timetablestyle.css">
+  <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
+  <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+  <!-- BEGIN VENDOR CSS-->
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/vendors.css">
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/vendors/css/charts/chartist.css">
+  <!-- END VENDOR CSS-->
+  <!-- BEGIN CHAMELEON  CSS-->
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/app-lite.css">
+  <!-- END CHAMELEON  CSS-->
+  <!-- BEGIN Page Level CSS-->
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/core/menu/menu-types/vertical-menu.css">
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/pages/dashboard-ecommerce.css">
+  <!-- END Page Level CSS-->
+  <!-- BEGIN Custom CSS-->
+  <!-- END Custom CSS-->
+</head>
+<body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
+
+<?php 
+session_start();
+include './layout/config.php';
+include './layout/sidebar.php';
+
 ?>
 
-<!DOCTYPE html>
-<html>
-<body>
 
-<div class="container-fluid">
-<div class="row">
 
-<div class='col-sm'><br/></div>
 
-	
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title"> Upload Videos</h3>
+        </div>
 
-<div class='col-sm'>
+        <div class="content-body">
+
+          <div class="row">
+
+
+
+
+
+
 
 <center>
 
@@ -33,6 +72,13 @@
 	<br/>
 	<br/>
 	
+	<label for="videscript">Module Code</label>
+	<br/>
+	<input type="text"  id="modcode" name="modcode" 
+	maxlength="5" class="form-control" required> </input>
+
+	<br/>
+	<br/>
 
 	
   	
@@ -48,24 +94,7 @@
 			
 	<br/>
 	<br/>
-	
-	
-	
-	
-	
-	
-	
-	<br/>
-	<br/>
-	
-	
-	
-	
-	
-	
-	
-	
-	<br/>
+
 	
 	
 	
@@ -76,13 +105,7 @@
 	</div>	
 			
 	<br/>
-	
-	
 
-	
-
-	<br/>
-	<br/>
 	
 	
 	<div align='center'>
@@ -103,11 +126,15 @@
 
     </div>
 
-    <div class='col-sm'>
-      <br/>
-    </div>
-
-
+	</div>
+	</div>
+	
+	</div>
+	</div>
+	
+	
+	
+	
 
 </div>
 </div>

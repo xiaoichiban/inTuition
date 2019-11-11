@@ -100,6 +100,94 @@ else {
             </div> <!-- card --> 
           </div> <!-- col-12 -->
         </div> <!-- row --> 
+		
+		
+		
+		
+		<!-- start of videos part --> 
+		
+		
+		
+<?php
+$sql222 = "SELECT * FROM video WHERE mod_id = '$module_id'; ";
+$result222 = mysqli_query($db, $sql222);
+
+// $row222 = mysqli_fetch_assoc($result222);
+
+$vidcount = mysqli_num_rows($result222);
+
+if ($vidcount < 1) {
+	echo "no videos available";
+}
+else{
+	echo "<p>Number of Videos in this module: $vidcount</p>";
+	echo "";
+	
+	echo 
+	"<table class='table' style='width:80%' border='1'>" .
+	"<tr>
+	<thead class='thead-dark'>
+	<th>Action</th>
+	<th>id</th>
+	<th>mod_id</th>
+	<th>filename & subtitles</th>
+	<th>name & description</th>
+	<th>datetime created</th>
+	<th>delete</th>
+	</tr>
+	</thead>";
+
+
+	while ($row222 = mysqli_fetch_assoc($result222)) {
+		echo 
+		"<tr>
+		<th scope='row'>
+		<font style='color:blue;'>
+		<a href = 'viewVideo.php?id=".$row222['filename']."&subs=".$row222['subtitles']."'>
+		View </font> </a>
+		</th>
+		<th scope='row'>". $row222['id']."</th>
+		<th scope='row'>". $row222['mod_id']."</th>
+		<th scope='row'>". $row222['filename']."<br/>". $row222['subtitles']."</th>
+		<th scope='row'>". $row222['name']."<br/>". $row222['description']."</th>
+		<th scope='row'>". $row222['datetimestamp']."</th>
+		<th scope='row'>
+		<font style='color:blue;'>
+		<a href = 'deleteVideo.php?id=".$row222['id']."'>
+		Delete </font> </a>
+		</th>
+		</tr>";
+	}
+	echo "</table>";
+	
+	
+}
+
+?>
+		
+
+
+		
+		
+		
+		<!-- end of videos part --> 
+		
+		
+		
+
+
+<br/>
+<br/>		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- start of quiz part --> 
 
         <div class="content-header-left col-md-4 col-12 mb-2">
           <h3 class="content-header-title" style="color: #464855;">Available quizzes</h3>
@@ -137,10 +225,46 @@ else {
         } // end of else got quizzes
         ?>
 
-        <button type="button" class="btn btn-primary"><a style="color:white;" href = 'createQuiz.php?module_id=<?= $module_id; ?>'>Create quiz</a></button>
+        <button type="button" class="btn btn-primary"><a style="color:white;" 
+		href = 'createQuiz.php?module_id=<?= $module_id; ?>'>Create quiz</a></button>
         <button class='btn btn-default'><a href = 'tutordashboard.php'>Back</a></button>
 
+		
+		
+		<br/><br/>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
     </div> <!-- content wrapper --> 
+	
+	
+	
   </div> <!-- app content --> 
 
 
