@@ -68,10 +68,8 @@ include './layout/sidebar.php';
                   <th>Module ID</th>
                   <th>Name</th>
                   <th>Description</th>
-                  <th>Tution Day</th>
-                  <th>Start</th>
-                  <th>End</th>
-                  <th>Tution Centre</th>
+                  <th>Time </th>
+                  <th>Tuition Centre</th>
                   <th>Tutor</th>
                   <th>Status</th>
                   <th>Details</th>
@@ -95,12 +93,31 @@ include './layout/sidebar.php';
                   while ($row = mysqli_fetch_row($result)) {
                     echo"<tr>";
                     $thisID = $row[0];
+                    if ($row[3] == 0){
+                      $day_label = "Sun";
+                    }
+                    elseif ($row[3] == 1) {
+                      $day_label = "Mon";
+                    }
+                    elseif ($row[3] == 2) {
+                      $day_label = "Tue";
+                    }
+                    elseif ($row[3] == 3) {
+                      $day_label = "Wed";
+                    }
+                    elseif ($row[3] == 4) {
+                      $day_label = "Thu";
+                    }
+                    elseif ($row[3] == 5) {
+                      $day_label = "Fri";
+                    }
+                    else{
+                      $day_label = "Sat";
+                    }
                     echo"<td>"; echo "$row[0]"; echo"</td>";
                     echo"<td>"; echo "$row[1]"; echo"</td>";
                     echo"<td>"; echo "$row[2]"; echo"</td>";
-                    echo"<td>"; echo "$row[3]"; echo"</td>";
-                    echo"<td>"; echo "$row[4]"; echo"</td>";
-                    echo"<td>"; echo "$row[5]"; echo"</td>";
+                    echo"<td>"; echo "$day_label" . " " . $row[4] . " - " . $row[5]; echo"</td>";
                     echo"<td>"; echo "$row[6]"; echo"</td>";
                     echo"<td>"; echo "$row[7]"; echo"</td>";
                     echo"<td>"; echo "$row[9]"; echo"</td>";
@@ -117,12 +134,31 @@ include './layout/sidebar.php';
                   while ($row = mysqli_fetch_row($result)) {
                     echo"<tr>";
                     $thisID = $row[0];
+                    if ($row[3] == 0){
+                      $day_label = "Sun";
+                    }
+                    elseif ($row[3] == 1) {
+                      $day_label = "Mon";
+                    }
+                    elseif ($row[3] == 2) {
+                      $day_label = "Tue";
+                    }
+                    elseif ($row[3] == 3) {
+                      $day_label = "Wed";
+                    }
+                    elseif ($row[3] == 4) {
+                      $day_label = "Thu";
+                    }
+                    elseif ($row[3] == 5) {
+                      $day_label = "Fri";
+                    }
+                    else{
+                      $day_label = "Sat";
+                    }
                     echo"<td>"; echo "$row[0]"; echo"</td>";
                     echo"<td>"; echo "$row[1]"; echo"</td>";
                     echo"<td>"; echo "$row[2]"; echo"</td>";
-                    echo"<td>"; echo "$row[3]"; echo"</td>";
-                    echo"<td>"; echo "$row[4]"; echo"</td>";
-                    echo"<td>"; echo "$row[5]"; echo"</td>";
+                    echo"<td>"; echo "$day_label" . " " . $row[4] . " - " . $row[5]; echo"</td>";
                     echo"<td>"; echo "$row[6]"; echo"</td>";
                     echo"<td>"; echo "$row[7]"; echo"</td>";
                     echo"<td>"; echo "$row[9]"; echo"</td>";
