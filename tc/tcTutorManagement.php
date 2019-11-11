@@ -47,6 +47,13 @@ include './layout/session.php';
             </form>
           </div>
         </div>
+
+        <div class="row pl-1">
+          <div class="card" style="background: none;">
+              <button type='button' class='btn btn-dark'><a style='color:white;' href = 'createTutor.php'>Create Tutor</a></button>
+          </div>
+        </div>
+
         <br/>
         <div class="row">
           <div class="col-12">
