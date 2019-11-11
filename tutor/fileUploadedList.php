@@ -80,30 +80,30 @@ include ('./layout/sidebar.php');
                         echo "</table></div>";
 
                       ?>
-                    </div> 
-                  </div> <!-- card content --> 
-                </div> <!-- card header --> 
-              </div>  <!-- card --> 
-            </div> <!-- col-12 --> 
-          </div> <!-- row --> 
-        </div> <!-- content body --> 
+                    </div>
+                  </div> <!-- card content -->
+                </div> <!-- card header -->
+              </div>  <!-- card -->
+            </div> <!-- col-12 -->
+          </div> <!-- row -->
+        </div> <!-- content body -->
 
         <form action="uploadFileProcess.php" method="post" enctype="multipart/form-data">
             File Name:
             <input class="form-control" style="width:40%;" type="text" name="name"><br/>
             File Description:
             <textarea class="form-control" rows="3" style="width:40%;" name="description"></textarea><br/>
-            Select PDF File to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
+            <b>Select PDF File to upload:<b>
+            <input type="file" class="btn-light" name="fileToUpload" id="fileToUpload">
             <input type="hidden" name="mod_id" value="<?php echo $mod_id; ?>">
-            <input type="submit" value="Upload" name="submit">
+            <input type="submit" class="btn-info" value="Upload" name="submit">
         </form>
-        <br>
-        
+        <br><br>
+
         <button class='btn btn-primary'><a style="color:white;" href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
-      
-      </div> <!-- content wrapper --> 
-    </div> <!-- app content --> 
+
+      </div> <!-- content wrapper -->
+    </div> <!-- app content -->
 
 <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>

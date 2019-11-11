@@ -87,8 +87,9 @@ $module_id = $_GET['module_id'];
                       $row = mysqli_fetch_row($result);
 
                       echo
-                      "<form method='post' action='removeStudentProcess.php'>
-                        <table style='width:100%' border='1'>
+                      "<h3 style='padding:15'><b>List of students enrolled<b></h3>
+                        <form method='post' action='removeStudentProcess.php'>
+                        <table class='table table-striped'>
                           <tr>
                           <th>Student name</th>
                           <th>Date of Enrollment</th>
@@ -97,7 +98,7 @@ $module_id = $_GET['module_id'];
                         "<tr><th>" . $row[1] . "</th>" .
                         "<th>" . $row[4] . "</th>" .
                         "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$row[1]'>
-                        <input type='submit' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
+                        <input type='submit' class='btn-dark' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
                       </table>
                       </form>";
                       ?>
