@@ -45,12 +45,12 @@ span.psw { float: right; padding-top: 16px;}
 
 
   <div class="imgcontainer">
-    <img src="logo.jpg" alt="Avatar" class="avatar">
+    <img src="intuition_logo.png" alt="Avatar" class="avatar">
 
 
 
 
-<form method="POST" action="sendmail/resetPasswordProcess.php">
+<form method="POST" action="./sendmail/resetPasswordProcess.php">
 
 <input type="text" placeholder="Enter Username" autofocus
 name="username" id="username" required>
@@ -92,7 +92,7 @@ margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important
 
 
 <div class="container" align="center">
-<a href="register.html">Don't have an account? >> Register For an Account Now</a>
+<a href="login.php"> Back To Login</a>
 </div>
 
 </form>
