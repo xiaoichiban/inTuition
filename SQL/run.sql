@@ -436,6 +436,7 @@ CREATE TABLE quiz (
 id int AUTO_INCREMENT PRIMARY KEY,
 quiztitle VARCHAR(128) NOT NULL,
 moduleid int NOT NULL,
+status VARCHAR(128) NOT NULL DEFAULT 'active',
 FOREIGN KEY (moduleid) REFERENCES module(id)
 );
 

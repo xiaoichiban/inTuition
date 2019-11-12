@@ -44,6 +44,7 @@ $countQuestion = mysqli_query($db, $sql1);
 $overviewQuestion = mysqli_query($db, $sql1);
 $countQuestionRow = mysqli_fetch_row($countQuestion);
 
+
 $countAttemptsSql = "SELECT count(*) FROM attempts WHERE quizid = '$quiz_id' and questionid = '$countQuestionRow[0]' GROUP BY student; ";
 $countAttemptsResult = mysqli_query($db, $countAttemptsSql);
 $countAttemptRow = mysqli_num_rows($countAttemptsResult);
@@ -86,12 +87,22 @@ else {
 
                         if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
                           echo "<button class='btn btn-primary'><a style='color:white;' href='createQuestion.php?quizid=$quiz_id'>Add questions</a></button>";
+                          echo "&nbsp;";
                         } else if (mysqli_num_rows(mysqli_query($db, "SELECT * from attempts WHERE quizid = '$quiz_id';")) > 0) {
                           echo "<button class='btn btn-primary'><a style='color:white;' href='editQuiz.php?quizid=$quiz_id'>Edit quiz</a></button>";
+                          echo "&nbsp;";
                         }else {
                           echo "<button class='btn btn-primary'><a style='color:white;' href='editQuiz.php?quizid=$quiz_id'>Edit quiz</a></button>";
                           echo "&nbsp;";
                           echo "<button class='btn btn-primary'><a style='color:white;' href='createQuestion.php?quizid=$quiz_id'>Add questions</a></button>";
+                          echo "&nbsp;";
+                        }
+
+                        //check quiz's status
+                        if ($row[3] == 'active') {
+                          echo "<button class='btn btn-secondary'><a style='color:white;' href='setQuizStatus.php?quizid=$quiz_id&status=expired'>Deactivate</a></button>";
+                        } else {
+                          echo "<button class='btn btn-secondary'><a style='color:white;' href='setQuizStatus.php?quizid=$quiz_id&status=active'>Activate</a></button>";
                         }
                       ?>
                     
@@ -221,13 +232,20 @@ else {
           
 
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title" style="color: #464855;">Question Statistics</h3>
+          <?php 
+            if ($countAttemptRow == 0) {
+              echo "<h3 class='content-header-title' style='color: #464855;'>Questions</h3>";
+            } else {
+              echo "<h3 class='content-header-title' style='color: #464855;'>Question Statistics</h3>";
+            }
+          ?>
+          
         </div>
 
           <div class="row">
             <?php
             if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
-              echo "<h5 class='card-title pl-2'>There are no questions yet.</h5>";
+              echo "<h6 class='card-title pl-2'>There is no questions yet.</h6>";
             } else {
               while ($row2 = mysqli_fetch_row($overviewQuestion)) {
 
@@ -252,6 +270,11 @@ else {
                 <h4 class="card-title">Question <?= ++$qnscounter ?></h4>
                 <h6 class="pt-1"><?= $row2[1] ?></h6>
                 <div class="card-content"><br>
+                  <?php 
+                    if ($countAttemptRow == 0) {
+                      echo "<a class='btn btn-secondary' style='color:white; float:right;' href='deleteQuestion.php?id=$row2[0]'>Remove</a>";
+                    } else {
+                  ?>
                   <table class="table table-borderless" style="font-size:14px;">
                     <tr>
                       <th>Answered correctly</th>
@@ -279,11 +302,15 @@ else {
                       </tr>
                     
                   </table>
+                  <?php 
+                  }
+                  ?>
                 </div>
               </div>
             </div> <!-- end of card -->
           </div> <!-- end of col-12 -->
           <?php 
+
             } // end of while 
           } //end of if
           ?>

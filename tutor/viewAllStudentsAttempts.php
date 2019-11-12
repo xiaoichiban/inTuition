@@ -11,7 +11,6 @@
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/vendors.css">
-  <link rel="stylesheet" type="text/css" href="./layout/theme-assets/vendors/css/charts/chartist.css">
   <!-- END VENDOR CSS-->
   <!-- BEGIN CHAMELEON  CSS-->
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/app-lite.css">
@@ -46,6 +45,7 @@ $result1 = mysqli_query($db, $sql1);
 $quizresult = mysqli_query($db, $sql1);
 $questionrow = mysqli_fetch_row($quizresult);
 
+
 ?> 
 
 <div class="app-content content">
@@ -61,12 +61,16 @@ $questionrow = mysqli_fetch_row($quizresult);
 
           <div class="row">
             <?php 
+            if (mysqli_num_rows($attemptResult) > 0) {
+             
               while ($attemptRow = mysqli_fetch_row($attemptResult)) {
                 $studentName = $attemptRow[0];
 
                 $sql2 = "SELECT * FROM attempts WHERE student = '$studentName' GROUP BY datetimestamp ORDER BY student ASC; ";
                 $result2 = mysqli_query($db, $sql2);
-
+                $numAttempts = mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(quizid) from attempts where student = '$studentName' and quizid = '$quiz_id' and questionid = '$questionrow[0]';"))[0];
+              }
+            
             ?>
             <div class="col-lg-4 col-md-12">
               <div class="card">
@@ -75,9 +79,10 @@ $questionrow = mysqli_fetch_row($quizresult);
                   <div class="card-content">
                     <div class="card-body">
                       <?php
+                        
                         echo
                           "<table style='width:100%; font-size:14px;' class='table-borderless'>" .
-                          "<tr><th>Number of attempts</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(quizid) from attempts where student = '$studentName' and quizid = '$quiz_id' and questionid = '$questionrow[0]';"))[0] . "</th></tr>";
+                          "<tr><th>Number of attempts</th><th>" . $numAttempts . "</th></tr>";
 
                           $attemptCounter = 0; 
                           while ($attemptrow = mysqli_fetch_row($result2)) {
@@ -96,16 +101,25 @@ $questionrow = mysqli_fetch_row($quizresult);
                           }
 
                           echo "</table>";
+                        
                         ?>
                     </div>
                   </div>
                 </div> <!-- card header --> 
               </div> <!-- card --> 
             </div> <!-- col-12 --> 
-            <?php
-            } //end of while
+           <?php 
+              } else {
+                echo "<div class='col-12'>";
+                echo "<div class='card'>";
+                echo "<div class='card-body'>";
+                echo "<h4 class='card-title'>No students attempted this quiz yet.</h4>";                      
+                echo "</div></div></div>";
+              } //end of if 
             ?>
+
           </div> <!--row --> 
+
         </div> <!-- content body --> 
 
 <?php
@@ -116,6 +130,8 @@ echo "<h3><a class='btn btn-primary' href = 'viewQuiz.php?quizid=".$quiz_id."'>B
 
   </div> <!-- end of content-wrapper -->
 </div> <!-- end of app-content -->
+
+
 
 </body>
 </html>

@@ -124,7 +124,6 @@ include './layout/sidebar.php';
     <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
-    <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN CHAMELEON  JS-->
     <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>

@@ -177,10 +177,10 @@
                         <th scope='row'>". $row222['name']."<br/>". $row222['description']."</th>
                         <th scope='row'>". $row222['datetimestamp']."</th>
                         <th scope='row'>
-                        <a class='btn btn-info' href = 'viewVideo.php?id=".$row222['filename']."&subs=".$row222['subtitles']."'>View</a>
+                        <a class='btn btn-sm btn-info' href = 'viewVideo.php?id=".$row222['filename']."&subs=".$row222['subtitles']."'>View</a>
                         </th>
                         <th scope='row'>
-                        <a class='btn btn-secondary' href = 'deleteVideo.php?id=".$row222['id']."'>Remove</a>
+                        <a class='btn btn-sm btn-secondary' href = 'deleteVideo.php?id=".$row222['id']."'>Remove</a>
                         </th>
                         </tr>";
                       }
@@ -202,17 +202,17 @@
           <!-- end of videos part -->
 
 
-          <!-- start of quiz part -->
+          <!-- start of ongoing quiz part -->
 
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title" style="color: #464855;">Available quizzes</h3>
+            <h3 class="content-header-title" style="color: #464855;">Ongoing quizzes</h3>
           </div>
 
           <?php
-          $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id';";
+          $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id' AND status ='active';";
           $result2 = mysqli_query($db, $sql2);
           if (mysqli_num_rows($result2) == 0) {
-            echo "<h3 class='pl-1'>There are no quizzes for this module.</h3>";
+            echo "<h6 class='pl-1'>There is no ongoing quizzes for this module.</h6>";
           } else {
 
             ?>
@@ -227,6 +227,44 @@
                     <div class="card pull-up ecom-card-1 bg-white">
                       <div class="card-header">
                         <h4 class="card-title"><?php echo $row1[1] ?></h4>
+                      </div>
+
+                    </div>
+                  </a>
+                </div>
+                <?php
+              } //end of while
+              ?>
+            </div>  <!-- end of class row -->
+            <?php
+          } // end of else got quizzes
+          ?>
+
+          <!-- start of past quiz part -->
+
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title" style="color: #464855;">Past quizzes</h3>
+          </div>
+
+          <?php
+          $sql3 = "SELECT * FROM quiz WHERE moduleid = '$module_id' AND status ='expired';";
+          $result3 = mysqli_query($db, $sql3);
+          if (mysqli_num_rows($result3) == 0) {
+            echo "<h6 class='pl-1'>There is no past quizzes for this module.</h6>";
+          } else {
+
+            ?>
+
+            <div class="row">
+              <?php
+              while ($row3 = mysqli_fetch_row($result3)) {
+
+                ?>
+                <div class="col-lg-4 col-md-12" style="text-align:center;">
+                  <a href = 'viewquiz.php?quizid=<?php echo $row3[0]; ?>'>
+                    <div class="card pull-up ecom-card-1 bg-white">
+                      <div class="card-header">
+                        <h4 class="card-title"><?php echo $row3[1] ?></h4>
                       </div>
 
                     </div>
