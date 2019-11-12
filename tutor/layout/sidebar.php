@@ -35,19 +35,19 @@
           </li>
           <li class="<?= ($activePage == 'videoList') ? 'active':'nav-item'; ?>"><a href="videoList.php"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Video List</span></a>
           </li>
-          <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href=""><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Chat</span></a>
+          <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php" target="_blank"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
           <li class="<?= ($activePage == 'viewProfile') ? 'active':'nav-item'; ?>"><a href="viewProfile.php?username=<?php echo $username?>"><i class="ft-layers"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
-		  
+
 		  <li class="nav-item"><a href="../chatwall/chatwall.php" target="_blank"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
 		  <li class="nav-item"><a href="webrtc.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">WebRTC</span></a>
           </li>
-		  
+
           <li class="nav-item"><a href="logout.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Logout</span></a>
           </li>
-          
+
         </ul>
 
       </div>
