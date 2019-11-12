@@ -38,7 +38,7 @@ if($id == null || $id =='' ){
 echo "
 <center>
 <br/>
-<a href= 'index.php' > << Back << </a>
+<a href= 'videoList.php' > << Back << </a>
 <br/>
 <br/>
 <br/>
