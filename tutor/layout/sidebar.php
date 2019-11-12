@@ -40,7 +40,7 @@
           </li>
           <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php" target="_blank"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
-          <li class="nav-item"><a href="webrtc.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">WebRTC</span></a>
+          <li class="<?= ($activePage == 'webrtc') ? 'active':'nav-item'; ?>"><a href="webrtc.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">WebRTC</span></a>
           </li>
           <li class="<?= ($activePage == 'viewProfile') ? 'active':'nav-item'; ?>"><a href="viewProfile.php?username=<?php echo $username?>"><i class="ft-layers"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>

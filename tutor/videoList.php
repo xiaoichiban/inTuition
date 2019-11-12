@@ -42,68 +42,58 @@ include './layout/sidebar.php';
         </div>
 
         <div class="content-body">
-
-		
-		
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		
-		
-		
-		
           <div class="row">
-            
+            <div class="col-12">				
+				      <div class="card">
+                <div class="card-header">
+                  <div class="card-content">
+                    <div class="card-body">
 
-              <div class="col-lg-4 col-md-12">
+            				<?php 
+            					$thistutor = $_SESSION['username'];
+            					$sqlQuery = "SELECT v.mod_id ,  v.name , v. description , v. filename , v.subtitles , v.datetimestamp
+            					from video v , module m WHERE v.mod_id = m.id AND m.tutor = '$thistutor';";
+            					$result = mysqli_query($db, $sqlQuery);
+            					
+            					while ($row = mysqli_fetch_assoc($result)) {
+            						
+            						$subs = $row['subtitles'];
+            						$vid  = $row['filename'];
+            						
+                        "<div class='table-responsive'>".
+                        "<table class='table table-borderless' style='width:80%; font-size:14px;'>" .
+                        "<tr>
+                        <thead>
+                        <th>Module Name</th>
+                        <th>Video Name</th>
+                        <th>Video Description</th>
+                        <th>Filename</th>
+                        <th>Subtitles</th>
+                        <th>Date created</th>
+                        <th></th>
+                        </tr>
+                        </thead>";
+
+            						echo "Module ID=".$row['mod_id'] . "<br/>";
+            						echo "Video Name=".$row['name'] . "<br/>";
+            						echo "Video Desc=".$row['description'] . "<br/>";
+            						echo "Filename=".$row['filename'] . "<br/>";
+            						echo "Subs=".$row['subtitles'] . "<br/>";
+            						echo "Date Time=".$row['datetimestamp'] . " <br/>";
+            						echo "<a style='color:red' href='viewVideo.php?id=$vid&subs=$subs'> 
+            						<b>WATCH VIDEO</b></a> <br/><br/><br/>";
+            						
+            					}	
+            					
+            				?>
+                    </div>
+                  </div>
+                </div>
+              </div>
 				
-				
-				<p> <br/> </p>
-				
-				
-				<?php 
-					$thistutor = $_SESSION['username'];
-					$sqlQuery = "SELECT v.mod_id ,  v.name , v. description , v. filename , v.subtitles , v.datetimestamp
-					from video v , module m WHERE v.mod_id = m.id AND m.tutor = '$thistutor';";
-					$result = mysqli_query($db, $sqlQuery);
-					
-					while ($row = mysqli_fetch_assoc($result)) {
-						
-						$subs = $row['subtitles'];
-						$vid  = $row['filename'];
-						
-						echo "Module ID=".$row['mod_id'] . "<br/>";
-						echo "Video Name=".$row['name'] . "<br/>";
-						echo "Video Desc=".$row['description'] . "<br/>";
-						echo "Filename=".$row['filename'] . "<br/>";
-						echo "Subs=".$row['subtitles'] . "<br/>";
-						echo "Date Time=".$row['datetimestamp'] . " <br/>";
-						echo "<a style='color:red' href='viewVideo.php?id=$vid&subs=$subs'> 
-						<b>WATCH VIDEO</b></a> <br/><br/><br/>";
-						
-						
-						
-						
-					}	
-					
-				?>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-              </div> 
+            </div> 
 			  
-			  <!-- end of the whole module card --> 
-
-
+			     <!-- end of the whole module card --> 
 
           </div> <!-- div row -->
         </div> <!-- content body -->
