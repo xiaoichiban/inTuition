@@ -3,10 +3,10 @@
    $thisuser = $_SESSION['login_user'];
    $loginlast = $_SESSION['last_login'];
 ?>
-<html">
+<html>
    
    <head>
-      <title>TASK MASTER</title>
+      <title>INTUITION</title>
    </head>
       
 <body>
@@ -18,7 +18,10 @@
 <tr> <br/> </tr>
 
 <tr>
-<th> <h3>Welcome Home Admin !!</h3></th>
+<th> <h3>
+Home @ Admin
+<i class='fas fa-hamburger' style='font-size:20px'></i>
+</h3></th>
 </tr>
 
 <tr> <br/> </tr>
@@ -40,9 +43,8 @@
       <h3>******************************************</h3> 
       <h3><a href="forumMain.php">Manage Forum</a></h3>
       <h3>******************************************</h3> 
-      <h3><a href="searchcomplain.php">Manage Complains</a></h3>
-      <h3>******************************************</h3> 
       <h3><a href = "logout.php">Sign Out</a></h3>
+      <h3>=====================================</h3> 
 	  
 	</div>  
    </body>

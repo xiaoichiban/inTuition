@@ -24,7 +24,9 @@ $status = $row[4];
 
 <hr/>
 <center>
-<h2>Edit User Profile</h2>
+<h3>Edit User Profile
+<i class='fas fa-hamburger' style='font-size:20px'></i>
+</h3>
 
 
 <b style='color:blue'> <?php echo $username?> <br>

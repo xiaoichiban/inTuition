@@ -1,5 +1,10 @@
-<table border='2' width='100%'>
-<th> <h2>WELCOME ADMINISTRATOR TO TASK MASTER FORUM MANAGEMENT!!!</h2></th>
+
+<center>
+<table border='2' width='40%'>
+<th> <h2>
+ADMINISTRATOR @ FORUM 
+<i class='fas fa-chess-queen'></i>
+</h2></th>
 <tr><td>
 <a href="welcome.php"><b><font color='green'> << BACK HOME <<</font> </b></a>
 <br><br>
@@ -76,7 +81,7 @@ echo"
 ?>
 
 
-
+</center>
 
 
 

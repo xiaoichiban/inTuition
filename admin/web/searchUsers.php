@@ -1,6 +1,36 @@
- <a href="welcome.php"><b><font color='green'>BACK</font> </b></a>
-<br><br>
+<?php
+include 'config.php';
+include 'session.php';
+?>
+
+
+
+<center>
+
+<table border='2' width='40%'>
+<tr> <br/> </tr>
+<th> <h3>
+ADMINISTRATOR @ INTUITION FORUM
+<i class='fas fa-hamburger' style='font-size:20px'></i>
+</h3></th>
+<tr><td>
+<a href="welcome.php"><b><font color='green'> << BACK HOME <<</font> </b></a>
+</td></tr>
+</table>
+
+</center>
+
+
+
+
+
+
    <body bgcolor = "#FFFFFF">
+   
+   
+   
+   <br/>
+   <br/>
 	
       <div align = "center">
          <div style = "width:300px; border: solid 1px #333333; " align = "left">

@@ -58,66 +58,81 @@ $token = strtok($string, "=");
 $token = strtok(" ");
 $id =  $token;
 
-$query = "SELECT creator,datetimestamp,topic,body FROM thread WHERE id='$id';" ;
+$query = "SELECT creator,datetimestamp,topic,body,status FROM thread WHERE id='$id';" ;
 $result = mysqli_query($db, $query);
 
-$query2 = "SELECT poster,datetimestamp,body FROM reply WHERE threadid='$id';" ;
-$result2 = mysqli_query($db, $query2);
-
-
-
 if (mysqli_num_rows($result) < 1){
-	
 	echo"<br/><center> No Such Forum , Try Another One</center>";
 	return;
 }
 
-
-
 $row = mysqli_fetch_row($result);
+$statusVar = $row[4];
 
+if ($statusVar != 'ok'){
+	echo"<br/><br/><center><h3 style='color:red;'>Oops, looks like the administrator has banned this thread!";
+	echo"<br/><br/>You can drop us an email if you think it was unfair</h3></center>";
+	return;
 	
-echo"<table class='table' border='1'><tr><th width='10%' ><font color='green'>Creator</font>   </th>
-<th width='20%' ><font color='green'>Date & Time</font></th></tr>";
-echo "<h3><font color='blue'>Topic:: $row[2]   </font> </h3> <br>";  
-echo"$row[3]";
-echo"<tr>";
-echo"<td>";echo "$row[0]";echo"</td>";
-echo"<td>";echo "$row[1]";echo"</td>";
-echo"</tr>";
-echo "</table><br/><br/>";
-
-
-
-
-
-
-
-
-echo"<table class='table' border='1'>
-  <tr>
-    <th width='10%'>Responder</th>
-    <th width='20%'>Date & Time</th>
-    <th  width='70%'>Reply</th>
-  </tr>";
-
-while ($row2 = mysqli_fetch_row($result2)) {
-
-		echo "<h3>$row[2]</h3>";  
-		echo"<tr>";
-		echo"<td>";echo "$row2[0]";echo"</td>";
-		echo"<td>";echo "$row2[1]";echo"</td>";
-		echo"<td>";echo "$row2[2]";echo"</td>";
-		echo"</tr>";
 }
-echo"</table>";
+
+
+$topix = $row[2];
+
+echo "<h3><font color='blue'>Topic:: $topix  </font> </h3>";  
+echo "<b>$row[3]</b><br/>";
+echo "<br/>";
+echo"<font color='green'>Creator: $row[0] </font> <br/>
+<font color='green'>Date & Time: $row[1]</font>";
+
+
+
+
+
+
+$query2 = "SELECT poster,datetimestamp,body FROM reply WHERE threadid='$id';" ;
+
+$result2 = mysqli_query($db, $query2);
+
+if (mysqli_num_rows($result2) < 1){
+		
+		echo"<br/><br/><center> (There Are No Replies Yet) <br/> Be the first one to reply !</center>";
+}
+
+else {
+		echo "<br/>";
+		echo "<br/>";
+		echo "<br/>";
+		echo "<div class='col-md-6'>";
+		echo"<table class='table' border='1' >
+				<tr class='bg-primary' style='color:white;'>
+				<th width='70%'>Reply</th>
+				<th width='10%'>Responder</th>
+				<th width='20%'>Date & Time</th>
+				</tr>";
+	
+		while ($row2 = mysqli_fetch_row($result2)) {
+				echo"<tr>";
+				echo"<td>";echo "$row2[2]";echo"</td>";
+				echo"<td>";echo "$row2[0]";echo"</td>";
+				echo"<td>";echo "$row2[1]";echo"</td>";
+				echo"</tr>";
+		}
+		echo"</table>";
+		echo"</div>";
+}
+
+
+
+
 
 echo"
-<div><br/><br/><h3> REPLIES :: </h3><form method='post' action='replyforum.php'>
-  <input type='hidden' name='id' value='$id'>
-    <textarea name='reply' rows='3' cols='80'></textarea>
+<div class='col-md-6'><br/><br/><h3> REPLY :: </h3>
+<form method='post' action='replyforum.php'>
+  <input class='form-control' type='hidden' name='id' value='$id'>
+    <textarea class='form-control' name='reply' rows='3' cols='80' required ></textarea>
 	<br/>
-    <input type='submit' value='Submit reply' /> </form> </div>"
+    <input class='bg-primary' style='color:white;' type='submit' value='Submit reply' /> </form> </div>"
 
 
 ?>
