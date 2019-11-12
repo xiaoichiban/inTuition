@@ -53,7 +53,7 @@ $feedback_id = $_GET['feedback_id'];
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" style="font-size:14px;">
                     <thead>
                       <tr>
                         <th scope="col">Feedback ID</th><th scope="col"><?php echo $feedback_id?></th>
@@ -102,15 +102,13 @@ $feedback_id = $_GET['feedback_id'];
                 <form action="viewfeedbackdetails.php?feedback_id=<?php echo $feedback_id; ?>" method="post" enctype="multipart/form-data">
                   <div class='basic-inputs'>
                     <br/>
-                    <fieldset class="form-group">
-                      <input type="text" name="comment" id="comment" class="form-control" id="placeholderInput" placeholder="Enter Comment..." required>
+                    <fieldset class="form-group" >
+                      <textarea name="comment" id="comment" class="form-control" id="placeholderInput" placeholder="Enter Comment..." required></textarea>
                     </fieldset>
-
-                    <br/>
                   </div>
                   <div align='center'>
                     <br/>
-                    <input type="submit" value="Submit" name="submit" class="btn btn-primary btn-min-width mr-1 mb-1">
+                    <input type="submit" value="Submit" name="submit" class="btn btn-dark btn-min-width mr-1 mb-1">
                   </div>
                 </form>
               </div>
@@ -118,9 +116,23 @@ $feedback_id = $_GET['feedback_id'];
           </div>
         </div>
       </div>
-      <a class='btn btn-primary' href = 'viewfeedback.php'>Back</a>
+      <a class='btn btn-secondary' href = 'viewfeedback.php'>Back</a>
     </div>
   </div>
+  <!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+
 </body>
 </html>
 <?php

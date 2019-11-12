@@ -82,10 +82,6 @@
 
 
 															<div class='row'>
-															<div class='col'>
-															<br/>
-															</div>
-
 
 															<div class='col'>
 															<form action='editProfileProcess.php?username=$targetUsername' method='post' >
@@ -101,7 +97,7 @@
 															<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
 															</div>
 
-															<button type='submit' class='btn btn-primary'>Change My Details</button>
+															<button type='submit' class='btn btn-dark'>Change My Details</button>
 
 															</form>
 
@@ -109,17 +105,13 @@
 															<br/>
 															<br/>
 
-															<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
+															<b>Profile Picture</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
 															<br/><br/>
 															<form action='editProfilePicture.php?username=$targetUsername'>
-															<button type='submit' class='btn btn-primary'>Change Profile Picture</button>
+															<button type='submit' class='btn btn-dark'>Change Profile Picture</button>
 															</form>
 															</div>
 
-
-															<div class='col'>
-															<br/>
-															</div>
 															</div>";
 
 															// Free result set
@@ -137,7 +129,7 @@
 													// Close connection
 													mysqli_close($dba);
 													?>
-													<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
+													
 												</div>
 											</div>
 										</div>
@@ -149,7 +141,23 @@
 				</div>
 			</div>
 		</div>
+    <a class='btn btn-secondary' href = 'viewMyProfile.php'>Back</a>
 	</div>
 </div>
+
+<!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+
 </body>
 </html>

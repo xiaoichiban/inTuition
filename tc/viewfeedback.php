@@ -57,14 +57,14 @@ include ('./layout/sidebar.php');
                         $result2 = mysqli_query($db, $sql2);
                         echo
                         "<div class='table-responsive'>" .
-                        "<table class='table'>" .
-                        "<tr>
+                        "<table class='table' style='font-size:14px;'>" .
+                        "<thead><tr>
                         <th>Student</th>
                         <th>Title</th>
                         <th>Date</th>
                         <th>Status</th>
                         <th></th>
-                        </tr>";
+                        </tr></thead>";
 
                         while ($row = mysqli_fetch_assoc($result2)) {
                           echo
@@ -87,7 +87,7 @@ include ('./layout/sidebar.php');
           </div> <!-- row -->
         </div> <!-- content body -->
 
-        <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
+        <a class='btn btn-secondary' href = 'tcdashboard.php'>Back</a>
 
       </div> <!-- content wrapper -->
     </div> <!-- app content -->

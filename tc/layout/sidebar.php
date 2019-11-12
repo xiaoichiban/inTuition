@@ -52,7 +52,7 @@
           </li>
 		  
 		  
-		  <li class="nav-item"><a href="webrtc.php"><i class="ft-message-circle">
+		  <li class="<?= ($activePage == 'webrtc') ? 'active':'nav-item'; ?>"><a href="webrtc.php"><i class="ft-message-circle">
 		  </i><span class="menu-title" data-i18n="">WebRTC</span></a>
           </li>
 		  
