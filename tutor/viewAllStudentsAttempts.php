@@ -199,6 +199,12 @@ echo "<h3><a class='btn btn-primary' href='javascript:history.back(1)'>Back</a><
 </div> <!-- end of app-content -->
 
 
-
+<!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
 </body>
 </html>
