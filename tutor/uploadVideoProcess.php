@@ -33,8 +33,8 @@ if ($_FILES["fileToUpload"]["size"] > (17*1024*1024)  ) {
     $uploadOk = 0;
 }
 // Allow certain file formats
-if($fileType != "mp4") {
-    echo "<h3 align='center'>Sorry, only MP4 files are allowed.</h3>";
+if($fileType != "mp4" && $fileType != "webm" ) {
+    echo "<h3 align='center'>Sorry, only MP4 or WEBM files are allowed.</h3>";
     $uploadOk = 0;
 }
 
@@ -93,11 +93,12 @@ if ($uploadOk == 1) {
 		// $newsubsfilename
 		$vidname  = $_POST["vidname"];
 		$videscript  = $_POST["videscript"];
+		$mod_id = $_POST["mod_id"];
 		
 		
 		$sql = "
 		INSERT INTO video (mod_id, name, description, filename, subtitles)
-		VALUES ('1', '$vidname', '$videscript' , '$smallfilename' , '$newsubsfilename' )";
+		VALUES ('$mod_id', '$vidname', '$videscript' , '$smallfilename' , '$newsubsfilename' )";
 
 
 		if ($db->query($sql) === TRUE) {
@@ -121,18 +122,18 @@ if ($uploadOk == 1) {
 	
 	echo "
 	<div align='center'>
-	<h3>You will be redirected in <div id='counter'>5</h3>
+	<h3>You will be redirected in <div id='counter'>3</h3>
 	<script>
 	setInterval(function() {
             var div = document.querySelector('#counter');
             var count = div.textContent * 1 - 1;
             div.textContent = count;
-            if (count <= 0) {window.location.replace('./index.php');  }
+            if (count <= 0) {window.location.replace('./videoList.php');  }
         }, 1000);
     </script>
 	<img src='./load.gif'  />
 	<br/>
-	<a href = './index.php'>Alternatively you can click here to redirect !</a>
+	<a href = './videoList.php'>Alternatively you can click here to redirect !</a>
 	</div>
 	";
 

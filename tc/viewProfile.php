@@ -104,13 +104,7 @@
                       <div class="row">
                         <div class="col-md-4">
                           <div class="profile-work">
-                            <p>WORK LINK</p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
-                            <p>SKILLS</p>
-                            <a>Mathematics (Primary)</a><br/>
-                            <a>Mathematics (Secondary)</a><br/>
+                            <p>WORK LINK</p><br/>
                           </div>
                         </div>
                         <div class="col-md-8">
