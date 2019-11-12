@@ -28,9 +28,6 @@ session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
 	  
-
-	  
-	  
 	  if(! isset($_POST['username']) || ! isset($_POST['password'])){
 		echo "<h3 align='center'><font color='red'>LOGIN FAILED</font></h3>";
 		echo "<h3 align='center'>Login Failed >> Your Account has been Deactivated or Banned</h3>";
@@ -72,7 +69,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					return;
 				  }
 				
-				
 
 				$_SESSION['user_id'] = $row['user_id'];
 				$_SESSION['username'] = $username_var;
@@ -103,9 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					echo "<br/><br/><h3 align='center'><font color='red'>LOGIN FAILED</font></h3>";
 					
 				 }
-						
 				
-						
 						
 	}
 		// End of IF password_verify == true
@@ -264,7 +258,7 @@ margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important
 	
 	<button type="button" class="btn btn-danger" style="width: 30%;"><a style="color:white;" href="resetPassword.php" >RESET MY PASSWORD</a></button>
 
-	<button type="button" class="btn btn-danger" style="width: 30%;"><b><a style="color:white;" href="register.html">CREATE NEW ACCOUNT</a></button>
+	<button type="button" class="btn btn-info" style="width: 30%;"><b><a style="color:white;" href="register.html">CREATE NEW ACCOUNT</a></button>
 
 	
 	</div>
