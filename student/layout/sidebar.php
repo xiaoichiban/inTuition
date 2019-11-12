@@ -70,9 +70,19 @@
         </li>
 		
 				  
-		  <li class="nav-item"><a href="../chatwall/chatwall.php" target="_blank"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
+		  <li class="nav-item"><a href="../chatwall/chatwall.php" target="_blank">
+		  <i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
-		  <li class="nav-item"><a href="webrtc.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">WebRTC</span></a>
+		  
+		  
+		  <li class="nav-item"><a href="webrtc.php"><i class="ft-message-circle"></i>
+		  <span class="menu-title" data-i18n="">WebRTC</span></a>
+          </li>
+		  
+		  
+		  		  
+		  <li class="nav-item"><a href="../forum/forum.php"><i class="ft-message-circle"></i>
+		  <span class="menu-title" data-i18n="">Forum</span></a>
           </li>
 		  
 		
