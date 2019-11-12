@@ -3,6 +3,9 @@
 <body>
   <?php
   $activePage = basename($_SERVER['PHP_SELF'], ".php");
+  include('config.php');
+  //include('session.php');
+  $username = $_SESSION['username'];
   ?>
 
   <nav class="header-navbar navbar-expand-md navbar navbar-without-dd-arrow fixed-top">

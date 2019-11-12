@@ -38,61 +38,72 @@ include './layout/sidebar.php';
       <div class="content-wrapper-before"></div>
       <div class="content-header">
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title">My Modules</h3>
+          <h3 class="content-header-title">All My Videos</h3>
         </div>
 
         <div class="content-body">
 
+		
+		
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+		
+		
+		
           <div class="row">
-            <?php
-              $username = $_SESSION['login_user'];
-              $sql1 = "SELECT account_type FROM account WHERE username = '$username';";
-              $result1 = mysqli_query($db, $sql1);
-              while ($row1 = mysqli_fetch_row($result1)) {
-                $acctype = $row1[0];
-                if ($acctype == "tutor"){
-                  $sql2 = "SELECT * FROM module WHERE tutor = '$username';";
-                  $result2 = mysqli_query($db, $sql2);
-
-                  while ($row = mysqli_fetch_row($result2)) {
-                    $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
-                    $module_row = mysqli_fetch_row($module_details);
-                    $enroll_details = mysqli_query($db, "SELECT COUNT(*) FROM enroll e WHERE e.mod_id = '$row[0]'");
-                    $enroll_row = mysqli_fetch_row($enroll_details);
-            ?>
+            
 
               <div class="col-lg-4 col-md-12">
-                <a href = 'viewmodule.php?module_id=<?php echo $row[0]; ?>'>
-                <div class="card pull-up ecom-card-1 bg-white">
-                  <div class="card-header">
-                    <h4 class="card-title">Module name: <? echo $row[1]; ?></h4>
-                    <div class="card-content">                  
-                        <div class="pt-2">
-                          <?php 
-                            echo "<b>Module ID:</b> <br>$row[0]";
-                            echo "<br><br>";
-                            echo "<b>Description:</b> <br>$row[2]";
-                            echo "<br><br>";
-                            echo "<b>Offered by:</b> <br>$row[6]";
-                            echo "<br><br>";
-                            echo "<b>Number of students:</b> <br>$enroll_row[0]";
-                            echo "<br><br>";
-                            echo "<b>Created</b> <br>$row[8]";
-                          ?>
-                        </div>
+				
+				
+				<p> <br/> </p>
+				
+				
+				<?php 
+					$thistutor = $_SESSION['username'];
+					$sqlQuery = "SELECT v.mod_id ,  v.name , v. description , v. filename , v.subtitles , v.datetimestamp
+					from video v , module m WHERE v.mod_id = m.id AND m.tutor = '$thistutor';";
+					$result = mysqli_query($db, $sqlQuery);
+					
+					while ($row = mysqli_fetch_assoc($result)) {
+						
+						$subs = $row['subtitles'];
+						$vid  = $row['filename'];
+						
+						echo "Module ID=".$row['mod_id'] . "<br/>";
+						echo "Video Name=".$row['name'] . "<br/>";
+						echo "Video Desc=".$row['description'] . "<br/>";
+						echo "Filename=".$row['filename'] . "<br/>";
+						echo "Subs=".$row['subtitles'] . "<br/>";
+						echo "Date Time=".$row['datetimestamp'] . " <br/>";
+						echo "<a style='color:red' href='viewVideo.php?id=$vid&subs=$subs'> 
+						<b>WATCH VIDEO</b></a> <br/><br/><br/>";
+						
+						
+						
+						
+					}	
+					
+				?>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+              </div> 
+			  
+			  <!-- end of the whole module card --> 
 
-                    </div>
-                  </div>
-                </div>
-              </a>
-              </div> <!-- end of the whole module card --> 
 
-              <?php 
-                } // while row = result2
-              } // if acc type == tutor 
-            } // while row = result1
-
-              ?>
 
           </div> <!-- div row -->
         </div> <!-- content body -->

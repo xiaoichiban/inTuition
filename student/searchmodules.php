@@ -54,7 +54,7 @@ include ('session.php');
             $username = $_SESSION['login_user'];
             if(isset($_GET['search']) != "") {
               $search_value = $_GET['search'];
-              echo"$search_value";
+              // echo"$search_value";
               $sql="SELECT * from module where name LIKE '%".$search_value."%' GROUP BY name, tc;";
               // $sql= "SELECT * from module where tc = '$tc'";
 
@@ -63,6 +63,9 @@ include ('session.php');
 
 
             <?php
+              if(mysqli_fetch_row($result) == 0) {
+                echo"<h3><b>No results for \"$search_value\"</h3>";
+              }
               while ($row = mysqli_fetch_row($result)) {
             ?>
               <div class="col-lg-4 col-md-12">
