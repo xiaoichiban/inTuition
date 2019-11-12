@@ -71,7 +71,7 @@
                       <th>". $row['filename']."</th>
                       <th>". $row['name']."<br/>". $row['description']."</th>
                       <th>". $row['datetimestamp']."</th>
-                      <th><a href = 'downloadFileProcess.php?filename=".$row['filename']."'>Download</a></th>
+                      <th><a class = 'btn btn-info' href = 'downloadFileProcess.php?filename=".$row['filename']."'>Download</a></th>
                       </tr>";
                     }
                     echo "</table></div>";
