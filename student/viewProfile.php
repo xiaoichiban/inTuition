@@ -1,3 +1,10 @@
+<?php
+
+  session_start();
+
+?>
+
+
 <html>
 <head>
   <title>Dashboard</title>
@@ -127,12 +134,28 @@
 
   <?php
 
-  include '../config.php';
-  include './session.php';
+  // include '../config.php';
+  // include './session.php';
+  
+  // ob_start();
+
+  // include('database_connection.php');
+  // include('./layout/config.php');
+  
+  
+  
+  
+  $db = mysqli_connect("localhost", "admin", "admin", "petdb");
+  if (!$db) {die("Connection failed: " . mysqli_connect_error());}
+  
   include './layout/sidebar.php';
 
 
   $username = $_SESSION['login_user'];
+
+
+
+
 
   $sql = "SELECT * FROM account WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
