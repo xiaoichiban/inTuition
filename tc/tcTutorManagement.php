@@ -50,7 +50,7 @@ include './layout/session.php';
 
         <div class="row pl-1">
           <div class="card" style="background: none;">
-              <button type='button' class='btn btn-dark'><a style='color:white;' href = 'createTutor.php'>Create Tutor</a></button>
+              <a class='btn btn-dark' style='color:white;' href = 'createTutor.php'>Create Tutor</a>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ include './layout/session.php';
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">All My Tutors</h4>
+                <h4 class="card-title">All Mcy Tutors</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
               </div>
               <div class="card-content collapse show">
@@ -71,6 +71,7 @@ include './layout/session.php';
                         <th scope="col">Tutor Username</th>
                         <th scope="col">Created</th>
                         <th scope="col">Profile</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -88,7 +89,7 @@ include './layout/session.php';
 
                         while ($row = mysqli_fetch_row($result)) {
                           $username = $row[1];
-                          $sql1 = "SELECT * FROM account WHERE username = '$username';";
+                          $sql1 = "SELECT * FROM account WHERE username = '$username' AND status ='active';";
                           $result1 = mysqli_query($db,$sql1);
                           while ($row1 = mysqli_fetch_row($result1)){
                             echo"<tr>";
@@ -97,6 +98,7 @@ include './layout/session.php';
                             echo"<td>"; echo "$row[1]"; echo"</td>";
                             echo"<td>"; echo "$row1[9]"; echo"</td>";
                             echo"<td>"; echo "<a href='viewProfile.php?username=$username'> View Profile </a>"; echo"</td>";
+                            echo"<td>"; echo "<a href='deleteTutorProcess.php?tutor_id=$row[0]'> Delete </a>"; echo"</td>";
                             echo"</tr>";
                           }
 
@@ -110,7 +112,7 @@ include './layout/session.php';
 
                         while ($row = mysqli_fetch_row($result)) {
                           $username = $row[1];
-                          $sql1 = "SELECT * FROM account WHERE username = '$username';";
+                          $sql1 = "SELECT * FROM account WHERE username = '$username' AND status ='active';";
                           $result1 = mysqli_query($db,$sql1);
                           while ($row1 = mysqli_fetch_row($result1)){
                             echo"<tr>";
@@ -119,6 +121,7 @@ include './layout/session.php';
                             echo"<td>"; echo "$row[1]"; echo"</td>";
                             echo"<td>"; echo "$row1[9]"; echo"</td>";
                             echo"<td>"; echo "<a href='viewProfile.php?username=$username'> View Profile </a>"; echo"</td>";
+                            echo"<td>"; echo "<a href='deleteTutorProcess.php?tutor_id=$row[0]'> Delete </a>"; echo"</td>";
                             echo"</tr>";
                           }
 
