@@ -104,7 +104,7 @@
                         echo "<h3><a href = 'viewtcmodules.php'>Back</a></h3>";
                       }
                       else if ($acctype == 'tutor'){
-                        echo "<button class='btn btn-primary' style='float:right;'><a style='color:white;' href = 'fileUploadedList.php?mod_id=".$row[0]."'>Module Uploaded Files</a></button>";
+                        echo "<a class='btn btn-primary' style='float:right;' style='color:white;' href = 'fileUploadedList.php?mod_id=".$row[0]."'>Module Uploaded Files</a>";
 
                       }
                       else{
@@ -241,8 +241,8 @@
           ?>
 
           <div style="text-align:center;">
-            <button type="button" class="btn btn-info"><a style="color:white;"
-              href = 'createQuiz.php?module_id=<?= $module_id; ?>'>Create quiz</a></button>
+            <a style="color:white;" class="btn btn-info"
+              href = 'createQuiz.php?module_id=<?= $module_id; ?>'>Create quiz</a>
             </div>
             <br/>
             <br/>
