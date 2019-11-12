@@ -54,7 +54,7 @@ include ('session.php');
             $username = $_SESSION['login_user'];
             if(isset($_GET['search']) != "") {
               $search_value = $_GET['search'];
-              echo"$search_value";
+              // echo"$search_value";
               $sql="SELECT * from module where name LIKE '%".$search_value."%' GROUP BY name, tc;";
               // $sql= "SELECT * from module where tc = '$tc'";
 
@@ -63,6 +63,9 @@ include ('session.php');
 
 
             <?php
+              if(mysqli_fetch_row($result) == 0) {
+                echo"<h3><b>No results for \"$search_value\"</h3>";
+              }
               while ($row = mysqli_fetch_row($result)) {
             ?>
               <div class="col-lg-4 col-md-12">
@@ -84,7 +87,7 @@ include ('session.php');
                                   $sql3 = "SELECT * FROM module WHERE id IN (SELECT id FROM module WHERE name = '$module_name' AND id IN (SELECT mod_id FROM enroll WHERE student = '$username'));";
                                   $result3 = mysqli_query($db, $sql3);
                                   while($row3 = mysqli_fetch_row($result3)){
-                                    echo"<th><a href = 'viewmodule.php?module_id=".$row3[0]."'>View</a></th>";
+                                    echo"<th><a class = 'btn btn-info' href = 'viewmodule.php?module_id=".$row3[0]."'>View</a></th>";
                                   }
                                 }
                             ?>
@@ -124,20 +127,24 @@ include ('session.php');
                                 $sql_check = "SELECT * FROM module WHERE name = '$module_name' AND name IN (SELECT name FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username'));";
                                 $result_check = mysqli_query($db, $sql_check);
                                 if (mysqli_num_rows($result_check)==0){
-                                  echo "<button type='button' class='btn btn-primary'><a style='color:white;' href= 'registermodule.php?module_name=$module_name'>Register</a></button>";
+                                  echo "<br/>";
+                                  echo "<button type='button' class='btn btn-info' style='float:right;'><a style='color:white;' href= 'registermodule.php?module_name=$module_name'>Register</a></button>";
                                 }
                                 else{
                                   $sql3 = "SELECT * FROM module WHERE id IN (SELECT id FROM module WHERE name = '$module_name' AND id IN (SELECT mod_id FROM enroll WHERE student = '$username'));";
                                   $result3 = mysqli_query($db, $sql3);
                                   while($row3 = mysqli_fetch_row($result3)){
-                                    echo "<br>";
-                                    echo "<a href = 'viewmodule.php?module_id=".$row3[0]."'>View</a>";
+                                    echo "<br/>";
+                                    echo "<a class = 'btn btn-info' style='float: right;' href = 'viewmodule.php?module_id=".$row3[0]."'>View</a>";
+
                                   }
                                 }
 
                               ?>
+                              <br/>
 
                       </div>
+
                     </div>
                   </div>
               </div>

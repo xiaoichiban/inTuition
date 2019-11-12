@@ -1,3 +1,10 @@
+<?php
+// session_start();
+include '../session.php';
+include '../config.php';
+include './layout/sidebar.php';
+?>
+
 <html>
 <head>
 	<title>Dashboard</title>
@@ -29,13 +36,6 @@
 	<!-- END Custom CSS-->
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
-
-	<?php
-	// session_start();
-	include '../session.php';
-	include '../config.php';
-	include './layout/sidebar.php';
-	?>
 
 	<div class="app-content content">
 		<div class="content-wrapper">
@@ -79,9 +79,6 @@
 
 
 															echo "
-
-
-
 															<div class='container'>
 
 
@@ -150,7 +147,7 @@
 
 
 													?>
-												<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
+													<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
 												</div>
 											</div>
 										</div>

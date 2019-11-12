@@ -73,13 +73,13 @@ else {
                 <div class="card-content">
                   <div class="card-body">
 
-                    <?php 
+                    <?php
                         echo
                           "<table style='width:40%' class='table table-borderless'>" .
                           "<tr><th>Quiz title</th><th>" . $row[1] . "</th></tr>" .
                           "<tr><th>Number of attempts</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(quizid) from attempts where student = '$thisuser' and quizid = '$quiz_id' and questionid = '$questionrow[0]';"))[0] . "</th></tr>";
 
-                          $attemptCounter = 0; 
+                          $attemptCounter = 0;
                           while ($attemptrow = mysqli_fetch_row($result2)) {
 
                             $correctAnsSql = "SELECT count(*) FROM attempts WHERE student = '$thisuser' and datetimestamp = '$attemptrow[6]' and isCorrect = 1;" ;
@@ -118,16 +118,16 @@ else {
                       echo "<form method='post' action='submitAnswers.php?quizid=". $quiz_id ."'>";
                       if (mysqli_num_rows($result1) != 0) {
                         while ($row1 = mysqli_fetch_row($result1)) {
-                          echo "<br><br><b>Question " . ++$qnscounter . "</b>"; 
+                          echo "<br><br><b>Question " . ++$qnscounter . "</b>";
                           echo "<br>";
                           echo $row1[1];
                           echo "<br>";
-                          echo 
+                          echo
                               "<input type='radio' name='qns". $row1[0] ."ans' value='a'> " .$row1[2] ." </input> ".
                               "<input type='radio' name='qns". $row1[0] ."ans' value='b'> " .$row1[3] ." </input> ".
                               "<input type='radio' name='qns". $row1[0] ."ans' value='c'> " .$row1[4] ." </input> ".
                               "<input type='radio' name='qns". $row1[0] ."ans' value='d'> " .$row1[5] ."</input> ".
-                              "<input type='hidden' name='questionid' value='$row1[0]'>" ;      
+                              "<input type='hidden' name='questionid' value='$row1[0]'>" ;
                         }
                         echo "<br><br><input type='submit' class='btn btn-primary' name='submit' value='Submit answers'>".
                         "</form> ";
@@ -135,7 +135,7 @@ else {
                         echo "<h6 class='pt-2'>There are no questions yet. </h6>";
                       }
                       echo "<br>";
-                      
+
                     ?>
                   </div>
 
@@ -144,7 +144,7 @@ else {
             </div>
           </div>
           <div class="pl-1">
-            <button class='btn btn-default'><a href='viewmodule.php?module_id=<?= $row[2] ?>'>Back</a></button>
+            <a class='btn btn-default' href='viewmodule.php?module_id=<?= $row[2] ?>'>Back</a>
           </div>
         </div>
 

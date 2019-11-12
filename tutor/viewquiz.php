@@ -77,15 +77,21 @@ else {
                     
                       <?php 
                         echo
-                          "<table style='width:40%' class='table table-borderless'>" .
+                          "<table style='width:40%; font-size:14px;' class='table table-borderless'>" .
                           "<tr><th>Quiz title</th><th>" . $row[1] . "</th></tr>" .
                           "<tr><th>Number of student attempts</th><th>" . "<a href='viewAllStudentsAttempts.php?quizid=". $quiz_id ."'>". $countAttemptRow ."</a> out of $totalStudents students</th></tr></table>";
 
                           $qnscounter = 0;
+                        } // end of else at the front
+
+                        if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
+                          echo "<button class='btn btn-primary'><a style='color:white;' href='createQuestion.php?quizid=$quiz_id'>Add questions</a></button>";
+                        } else {
+                          echo "<button class='btn btn-primary'><a style='color:white;' href='editQuiz.php?quizid=$quiz_id'>Edit quiz</a></button>";
+                          echo "&nbsp;";
+                          echo "<button class='btn btn-primary'><a style='color:white;' href='createQuestion.php?quizid=$quiz_id'>Add questions</a></button>";
                         }
                       ?>
-
-                      <button class="btn btn-primary"><a style="color:white;" href="editQuiz.php?quizid=<?= $quiz_id ?>">Edit quiz</a></button>
                     
                       </div>
                     </div>
@@ -108,7 +114,11 @@ else {
                   <?php
                     $highestScore = mysqli_fetch_row(mysqli_query($db, "SELECT count(isCorrect) from attempts where quizid = '$quiz_id' and isCorrect = '1' group by datetimestamp order by count(isCorrect) DESC LIMIT 1;"))[0];
                     $totalQuestions = mysqli_num_rows($countQuestion);
-                    echo "<h4 class='card-title'>$highestScore/$totalQuestions</h4>";
+
+                    if ($highestScore != null) {
+                      echo "<h4 class='card-title'>$highestScore/$totalQuestions</h4>";
+                    }
+
                   ?>
                 </div>
               </div>
@@ -124,7 +134,11 @@ else {
                   <?php 
                     $numOfWrong = mysqli_fetch_row(mysqli_query($db, "SELECT count(isCorrect) from attempts where quizid = '$quiz_id' and isCorrect = '0' group by datetimestamp order by count(isCorrect) DESC LIMIT 1;"))[0];
                     $lowestScore = $totalQuestions - $numOfWrong; 
-                    echo "<h4 class='card-title'>$lowestScore/$totalQuestions</h4>";
+
+                    if ($highestScore != null) {
+                      echo "<h4 class='card-title'>$lowestScore/$totalQuestions</h4>";
+                    }
+                    
                   ?>
                 </div>
               </div>
@@ -168,9 +182,9 @@ else {
             
           
 
-          <div class="content-header-left col-md-4 col-12 mb-2">
+        <div class="content-header-left col-md-4 col-12 mb-2">
           <h3 class="content-header-title" style="color: #464855;">Question Statistics</h3>
-          </div>
+        </div>
 
           <div class="row">
             <?php

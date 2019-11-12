@@ -101,9 +101,7 @@ else {
           </div> <!-- col-12 -->
         </div> <!-- row --> 
 		
-		
-		
-		
+				
 		<!-- start of videos part --> 
 		
 		
@@ -120,71 +118,73 @@ if ($vidcount < 1) {
 	echo "no videos available";
 }
 else{
-	echo "<p>Number of Videos in this module: $vidcount</p>";
-	echo "";
 	
-	echo 
-	"<table class='table' style='width:80%' border='1'>" .
-	"<tr>
-	<thead class='thead-dark'>
-	<th>Action</th>
-	<th>id</th>
-	<th>mod_id</th>
-	<th>filename & subtitles</th>
-	<th>name & description</th>
-	<th>datetime created</th>
-	<th>delete</th>
-	</tr>
-	</thead>";
+  ?>
+
+    <div class="content-header-left col-md-4 col-12 mb-2">
+      <h3 class="content-header-title" style="color: #464855;">Videos</h3>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+
+              <?php
+              echo "<p>Number of Videos in this module: $vidcount</p>";
+
+            	echo 
+              "<div class='table-responsive'>".
+            	"<table class='table table-borderless' style='width:80%; font-size:14px;'>" .
+            	"<tr>
+            	<thead>
+            	<th>Action</th>
+            	<th>ID</th>
+            	<th>Module ID</th>
+            	<th>Filename & Subtitles File</th>
+            	<th>Name & Description</th>
+            	<th>Date created</th>
+            	<th></th>
+            	</tr>
+            	</thead>";
 
 
-	while ($row222 = mysqli_fetch_assoc($result222)) {
-		echo 
-		"<tr>
-		<th scope='row'>
-		<font style='color:blue;'>
-		<a href = 'viewVideo.php?id=".$row222['filename']."&subs=".$row222['subtitles']."'>
-		View </font> </a>
-		</th>
-		<th scope='row'>". $row222['id']."</th>
-		<th scope='row'>". $row222['mod_id']."</th>
-		<th scope='row'>". $row222['filename']."<br/>". $row222['subtitles']."</th>
-		<th scope='row'>". $row222['name']."<br/>". $row222['description']."</th>
-		<th scope='row'>". $row222['datetimestamp']."</th>
-		<th scope='row'>
-		<font style='color:blue;'>
-		<a href = 'deleteVideo.php?id=".$row222['id']."'>
-		Delete </font> </a>
-		</th>
-		</tr>";
-	}
-	echo "</table>";
-	
-	
-}
+            	while ($row222 = mysqli_fetch_assoc($result222)) {
+            		echo 
+            		"<tr>
+            		<th scope='row'>
+            		<font style='color:blue;'>
+            		<a href = 'viewVideo.php?id=".$row222['filename']."&subs=".$row222['subtitles']."'>
+            		View </font> </a>
+            		</th>
+            		<th scope='row'>". $row222['id']."</th>
+            		<th scope='row'>". $row222['mod_id']."</th>
+            		<th scope='row'>". $row222['filename']."<br/>". $row222['subtitles']."</th>
+            		<th scope='row'>". $row222['name']."<br/>". $row222['description']."</th>
+            		<th scope='row'>". $row222['datetimestamp']."</th>
+            		<th scope='row'>
+            		<font style='color:blue;'>
+            		<a href = 'deleteVideo.php?id=".$row222['id']."'>
+            		Delete </font> </a>
+            		</th>
+            		</tr>";
+            	}
+            	echo "</table></div>";
+            	
+            }
 
-?>
+            ?>
 		
-
+            </div>
+          </div>
+        </div> <!-- end of card --> 
+      </div> <!-- end of col-12 --> 
+    </div> <!-- end of row --> 
 
 		
 		
 		
 		<!-- end of videos part --> 
-		
-		
-		
-
-
-<br/>
-<br/>		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		<!-- start of quiz part --> 
@@ -232,34 +232,6 @@ else{
 		
 		
 		<br/><br/>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
     </div> <!-- content wrapper --> 
 	

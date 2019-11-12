@@ -61,10 +61,10 @@ else {
         <div class="row">
           <div class="col-12">
             <div class="card">
-                
+
               <div class="card-content">
                 <div class="card-body">
-                  
+
                     <b>Module ID: </b> <?php echo $row[0]; ?>
                     <br>
                     <b>Module name: </b> <?php echo $row[1]; ?>
@@ -78,13 +78,13 @@ else {
                     <b>No. of students: </b> <?php echo mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id';"))[0]; ?>
                     <br><br>
                     <button type='button' class='btn btn-primary'><a style='color:white;' href = 'fileUploadedList.php?mod_id=<?=$row[0]?>'>Module Uploaded Files</a></button>
-                  
+
                 </div>
               </div>
             </div>
 
           </div>
-        </div>  <!-- end of class row --> 
+        </div>  <!-- end of class row -->
 
 		
 		
@@ -154,17 +154,17 @@ else {
           <h3 class="content-header-title" style="color: #464855;">Available quizzes</h3>
         </div>
 
-        <?php 
+        <?php
           $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id';";
           $result2 = mysqli_query($db, $sql2);
           if (mysqli_num_rows($result2) == 0) {
             echo "<h3 class='pl-1'>There are no quizzes for this module.</h3>";
           } else {
-            
+
       ?>
 
         <div class="row">
-          <?php 
+          <?php
             while ($row1 = mysqli_fetch_row($result2)) {
 
           ?>
@@ -174,15 +174,15 @@ else {
                 <div class="card-header">
                 <h4 class="card-title"><?php echo $row1[1] ?></h4>
               </div>
-              
+
             </div>
           </a>
           </div>
-          <?php 
+          <?php
           } //end of while
           ?>
-        </div>  <!-- end of class row --> 
-        <?php 
+        </div>  <!-- end of class row -->
+        <?php
 
         } //end of else
 
@@ -196,9 +196,9 @@ else {
           if ($row3[3] == 'pending'){
             $confirm="return confirm('Are you sure?');";
             echo "<br>";
-            echo "<div class='pl-1'>";
-            echo"<form action ='deregistermoduleprocessing.php?module_id=$row3[2]' method = 'post' onSubmit='$confirm'>
-            <input type = 'submit' class='btn btn-primary' value = ' Deregister this module ' />
+            echo "<div class='pl-1' style='align:center;'>";
+            echo"<form action ='deregistermoduleprocessing.php?module_id=$row3[2]' method = 'post' onSubmit='<script>$confirm'</script>>
+            <input type = 'submit' class='btn btn-primary'  value = ' Deregister this module ' />
             </form>";
             echo "</div>";
           }
@@ -211,12 +211,12 @@ else {
         </div>
       </div> <!-- end of content body -->
 
-    </div> <!-- end of content-wrapper --> 
-  </div> <!-- end of app content --> 
+    </div> <!-- end of content-wrapper -->
+  </div> <!-- end of app content -->
 
   <?php
 
-  } //end of ($row[6] == 'inactive') else. 
+  } //end of ($row[6] == 'inactive') else.
 
   ?>
 

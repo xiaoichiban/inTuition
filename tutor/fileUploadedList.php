@@ -56,7 +56,7 @@ include ('./layout/sidebar.php');
                         $result2 = mysqli_query($db, $sql2);
                         echo
                         "<div class='table-responsive'>" .
-                        "<table class='table table-borderless'>" .
+                        "<table class='table table-borderless' style='font-size: 14px;'>" .
                         "<tr>
                         <th>File ID</th>
                         <th>Module ID</th>
@@ -93,8 +93,8 @@ include ('./layout/sidebar.php');
             <input class="form-control" style="width:40%;" type="text" name="name"><br/>
             File Description:
             <textarea class="form-control" rows="3" style="width:40%;" name="description"></textarea><br/>
-            <b>Select PDF File to upload:<b>
-            <input type="file" class="btn-light" name="fileToUpload" id="fileToUpload">
+            <b>Select PDF File to upload:<b><br>
+            <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="hidden" name="mod_id" value="<?php echo $mod_id; ?>">
             <input type="submit" class="btn-info" value="Upload" name="submit">
         </form>
