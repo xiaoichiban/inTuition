@@ -2,7 +2,6 @@
 session_start();
 include './layout/sidebar.php';
 ?>
-
 <html>
 <head>
   <title>Dashboard</title>
@@ -42,38 +41,48 @@ include './layout/sidebar.php';
       </div>
 
       <div class="content-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
 
-        <form action="createTutorProcess.php" method="post">
-          <b><h4>Username</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor's Username" name="username" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Password</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor's Password" name="password" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Tutor Name</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor's Name" name="name" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Tutor Email</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor's Email" name="email" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Status</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="default is active" name="status" size="48"></input>
-          <br><br>
-          <div class="row pl-1">
-            <div class="card" style="background: none;">
-                <input type="submit" class="btn btn-primary" value="Create" />
-            </div>
-          </div>
-        </form>
+                <form action="createTutorProcess.php" method="post">
+                  <b><h4>Username</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor's Username" name="username" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Password</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor's Password" name="password" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Tutor Name</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor's Name" name="name" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Tutor Email</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor's Email" name="email" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Status</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="default is active" name="status" size="48"></input>
+                  <br><br>
+                  <div class="row pl-1">
+                    <div class="card" style="background: none;">
+                        <input type="submit" class="btn btn-primary" value="Create" />
+                    </div>
+                  </div>
+                </form>
+
+              </div> <!-- card header --> 
+            </div> <!-- card --> 
+          </div> <!-- col-12 --> 
+        </div> <!-- row --> 
+                
       </div>
     </div>
   </div>
