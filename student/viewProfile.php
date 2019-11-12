@@ -107,10 +107,7 @@
                       <div class="row">
                         <div class="col-md-4">
                           <div class="profile-work">
-                            <p>WORK LINK</p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
+                            <p>STUDENT LINK</p>
                           </div>
                         </div>
                         <div class="col-md-8">
