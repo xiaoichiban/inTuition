@@ -1,17 +1,18 @@
 <?php
 include './layout/config.php';
 include './layout/session.php';
-include './layout/sidebar.php';
 
 $thisuser = $_SESSION['login_user'];
 $date = date('Y-m-d');
 $module_id = $_GET['module_id'];
-
-
+$sql1 = "SELECT * FROM module WHERE id = '$module_id'; ";
+$result1 = mysqli_query($db, $sql1);
+$row1 = mysqli_fetch_row($result1);
 ?>
+
 <html>
 <head>
-  <title><?php $sql1 = "SELECT * FROM module WHERE id = '$module_id'; ";  $result1 = mysqli_query($db, $sql1);  $row1 = mysqli_fetch_row($result); echo $row1[1]?></title>
+  <title><?php echo $row1[1] ?></title>
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -29,10 +30,10 @@ $module_id = $_GET['module_id'];
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/pages/dashboard-ecommerce.css">
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-green" data-col="2-columns">
-  <?php
-  include './layout/sidebar.php';
-  ?>
 
+<?php
+include './layout/sidebar.php';
+?>
   <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-wrapper-before"></div>
@@ -52,8 +53,9 @@ $module_id = $_GET['module_id'];
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
               </div>
               <div class="card-content collapse show">
+                <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" style="font-size:14px;">
                     <thead>
                       <tr>
                         <th scope="col">Module ID</th><th scope="col"><?php echo $module_id?></th>
@@ -91,36 +93,46 @@ $module_id = $_GET['module_id'];
                     </tbody>
                   </table>
                 </div>
-              </div>
+              </div> <!-- card body -->
+              </div> <!-- card content -->
               <div class="row">
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class = 'card-title' style='padding:15'><b>List of students enrolled</b></h3>
+                      <h3 class = 'card-title'><b>List of students enrolled</b></h3>
                     </div>
                     <div class="card-body">
                       <?php
-                      echo
-                      "<form method='post' action='removeStudentProcess.php'>
-                      <table class='table '>
-                      <tr>
-                      <th>Student Name</th>
-                      <th>Date of Enrollment</th>
-                      <th></th>
-                      <tr/>" .
-                      "<tr><th>" . $row[1] . "</th>" .
-                      "<th>" . $row[4] . "</th>" .
-                      "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$row[1]'>
-                      <input type='submit' class='btn-dark' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
-                      </table>
-                      </form>";
+                      $rowCount = mysqli_num_rows($result);
+
+                      if ($rowCount == 0) {
+                        echo "<h6 class>No students enrolled yet.</h6>";
+                      } else {  
+                        echo
+                          "<form method='post' action='removeStudentProcess.php'>
+                          <table class='table' style='font-size:14px; width: 80%;'>
+                          <thead>
+                          <tr>
+                          <th>Student Name</th>
+                          <th>Date of Enrollment</th>
+                          <th></th>
+                          <tr/>" .
+                          "<tr><th>" . $row[1] . "</th>" .
+                          "<th>" . $row[4] . "</th>" .
+                          "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$row[1]'>
+                          <input type='submit' class='btn btn-sm btn-dark' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
+                          </thead>
+                          </table>
+                          </form>";
+                        }
+
                       ?>
                     </div>
 
                   </div>
                 </div>
               </div>
-              <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
+              <a class='btn btn-secondary' href = 'tcdashboard.php'>Back home</a>
               <a class='btn btn-dark' href = 'tcModuleManagement.php'>Back to Module List</a>
             </div>
           </div>
@@ -129,5 +141,19 @@ $module_id = $_GET['module_id'];
 
     </div>
   </div>
+
+  <!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
 </body>
 </html>

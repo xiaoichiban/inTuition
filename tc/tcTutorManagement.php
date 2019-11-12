@@ -43,7 +43,7 @@ include './layout/session.php';
             <!-- Module search function -->
             <form action="tcTutorManagement.php" method="GET">
               <input type="text" style="width: 50%; display: inline;" name="search" placeholder="Enter tutor username" class="form-control"/>
-              <input type="submit" class="btn btn-primary" value="Search for tutor" />
+              <input type="submit" class="btn btn-secondary" value="Search for tutor" />
             </form>
           </div>
         </div>
@@ -59,12 +59,13 @@ include './layout/session.php';
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">All Mcy Tutors</h4>
+                <h4 class="card-title">All My Tutors</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
               </div>
               <div class="card-content collapse show">
+                <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-striped">
+                  <table class="table" style="font-size:14px;">
                     <thead>
                       <tr>
                         <th scope="col">Tutor ID</th>
@@ -132,12 +133,28 @@ include './layout/session.php';
                   </table>
                 </div>
               </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
+      <a class='btn btn-secondary' href = 'tcdashboard.php'>Back</a>
     </div>
   </div>
+
+<!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+
 </body>
 </html>

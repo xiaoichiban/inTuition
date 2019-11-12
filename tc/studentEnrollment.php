@@ -66,7 +66,7 @@
                         echo
                         "<form method='post' action='registerStudentProcess.php'>
                         <div class='table-responsive'>
-                        <table class='table table-borderless'>
+                        <table class='table table-borderless' style='font-size:14px;'>
                         <tr>
                         <th>Module</th>
                         <th>Class</th>
@@ -79,7 +79,7 @@
                         "<th>" . $row[1] . "</th>" .
                         "<th style='color:orange;'>" . $row[3] . "</th>" .
                         "<th><input type='hidden' name='mod_id' value='$row[2]'><input type='hidden' name='username' value='$row[1]'>
-                        <input type='submit'class='btn btn-primary' onclick='return confirm('Accept student $row[1] to Module $row[2]?')' name='submit' value='Accept'></th></tr>
+                        <input type='submit'class='btn btn-dark' onclick='return confirm('Accept student $row[1] to Module $row[2]?')' name='submit' value='Accept'></th></tr>
                         </table></div><br/>
                         </form>";
 
@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-      <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
+      <a class='btn btn-secondary' href = 'tcdashboard.php'>Back</a>
     </div>
   </div>
 

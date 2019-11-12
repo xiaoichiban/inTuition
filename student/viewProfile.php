@@ -154,8 +154,10 @@
                                 </div>
                               </div>
                               <div class="row">
-                                <div class="col-md-12">
-                                  <label>Your Bio</label><br/>
+                                <div class="col-md-6">
+                                  <label>Bio</label><br/>
+                                </div>
+                                <div class="col-md-6">
                                   <p>"<?php echo $account[4] ?>"</p>
                                 </div>
                               </div>

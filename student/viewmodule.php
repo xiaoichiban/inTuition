@@ -116,21 +116,23 @@
 
               </div>
             </div>  <!-- end of class row -->
-
+            <div class="content-header-left col-md-4 col-12 mb-2">
+              <h4 class="content-header-title" style="color: #464855;">Videos</h4>
+            </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
 
                   <div class="card-content">
-                    <div class= "card-header">
-                      <h5 class='card-title'>Videos</h5>
-                    </div>
                     <div class="card-body">
                       <?php
                       $thistutor = $_SESSION['username'];
                       $sqlQuery = "SELECT * from video v  WHERE v.mod_id = '$module_id';";
 
                       $result = mysqli_query($db, $sqlQuery);
+                      $vidcount = mysqli_num_rows($result);
+                      
+                      echo "<p>Number of Videos in this module: $vidcount</p>";
                       echo "<table class='table'><thead><tr><th><b>Name</b></th><th><b>Description</b</th><th><b>Filename</b></th><th><b>Subtitles</b></th><th><b>Uploaded</b></th><th></th></tr></thead><tbody>";
                       while ($row = mysqli_fetch_assoc($result)) {
                         $subs = $row['subtitles'];
@@ -140,7 +142,7 @@
                         echo "<td>".$row['filename'] . "</td>";
                         echo "<td>".$row['subtitles'] . "</td>";
                         echo "<td>".$row['datetimestamp'] . " </td>";
-                        echo "<td><a class='btn btn-info' href='viewVideo.php?id=$vid&subs=$subs'>
+                        echo "<td><a class='btn btn-sm btn-info' href='viewVideo.php?id=$vid&subs=$subs'>
                         <b>WATCH</b></a> </td></tr>";
                       }
                       echo "</tbody></table><br/>";

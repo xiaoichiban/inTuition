@@ -123,9 +123,9 @@ else {
                           echo $row1[1];
                           echo "<br>";
                           echo
-                              "<input type='radio' name='qns". $row1[0] ."ans' value='a'> " .$row1[2] ." </input> ".
-                              "<input type='radio' name='qns". $row1[0] ."ans' value='b'> " .$row1[3] ." </input> ".
-                              "<input type='radio' name='qns". $row1[0] ."ans' value='c'> " .$row1[4] ." </input> ".
+                              "<input type='radio' name='qns". $row1[0] ."ans' value='a'> " .$row1[2] ." </input><br> ".
+                              "<input type='radio' name='qns". $row1[0] ."ans' value='b'> " .$row1[3] ." </input><br> ".
+                              "<input type='radio' name='qns". $row1[0] ."ans' value='c'> " .$row1[4] ." </input><br> ".
                               "<input type='radio' name='qns". $row1[0] ."ans' value='d'> " .$row1[5] ."</input> ".
                               "<input type='hidden' name='questionid' value='$row1[0]'>" ;
                         }
@@ -144,7 +144,7 @@ else {
             </div>
           </div>
           <div class="pl-1">
-            <a class='btn btn-default' href='viewmodule.php?module_id=<?= $row[2] ?>'>Back</a>
+            <a class='btn btn-primary' href='viewmodule.php?module_id=<?= $row[2] ?>'>Back</a>
           </div>
         </div>
 

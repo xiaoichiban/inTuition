@@ -104,6 +104,7 @@
 									</video>
 
 									</center>
+                  <br>
 									";
 									?>
 								</div>

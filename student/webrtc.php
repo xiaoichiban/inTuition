@@ -2,7 +2,6 @@
 // session_start();
 include '../session.php';
 include '../config.php';
-include './layout/sidebar.php';
 ?>
 
 <html>
@@ -27,8 +26,9 @@ include './layout/sidebar.php';
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" 
 data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
-
-
+<?php
+include './layout/sidebar.php';
+?>
 
   <div class="app-content content">
     <div class="content-wrapper">
@@ -41,13 +41,6 @@ data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blu
       </div>
 
       <div class="content-body">
-        <div class="row pl-1">
-          <div class="card" style="background: none;">
-            <!-- Module search function -->
-
-          </div>
-        </div>
-        <br/>
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -58,11 +51,9 @@ data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blu
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
               </div>
               <div class="card-content collapse show">
-
-			  
-			  
+              <div class="card-body">			  
                 <div class="table-responsive">
-                  <table class="table table-striped">
+                  <table class="table">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -122,11 +113,25 @@ data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blu
                   </table>
                 </div>
               </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- BEGIN VENDOR JS-->
+    <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN CHAMELEON  JS-->
+    <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+    <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+    <!-- END CHAMELEON  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL JS-->
 </body>
 </html>
