@@ -43,15 +43,20 @@
   $result = mysqli_query($db, $sql);
   $account = mysqli_fetch_row($result);
   if (mysqli_num_rows($result) != 1) {
-    echo "invalid tutor $tutor_id";
+    echo"
+    <div class='app-content content'>
+    <div class='content-wrapper'>
+    <div class='content-wrapper-before'></div>
+    <div class='content-header row'>
+    <div class='content-header-left col-md-4 col-12 mb-2'>
+    <h3 class='content-header-title'>invalid tutor $account</h3>
+    </div></div></div></div>";
   }
+  else {
 
   $sql = "SELECT * FROM tutor WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
   $tutor = mysqli_fetch_row($result);
-  if (mysqli_num_rows($result) != 1) {
-    echo "invalid tutor $tutor_id";
-  }
 
   ?>
 
@@ -226,12 +231,11 @@
       </div>
     </div>
   </div>
+<?php } ?>
 </body>
+</html>
 
 <style>
-body{
-  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-}
 .emp-profile{
   padding: 3%;
   margin-top: 3%;
