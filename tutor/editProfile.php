@@ -1,7 +1,10 @@
 <?php
-session_start();
+// session_start();
+include '../session.php';
+include '../config.php';
 include './layout/sidebar.php';
 ?>
+
 <html>
 <head>
 	<title>Dashboard</title>
@@ -54,98 +57,97 @@ include './layout/sidebar.php';
 										<div class="container emp-profile">
 											<div class="row">
 												<div class="col-md-12">
+													<?php
+
+													$dba = mysqli_connect("localhost", "admin", "admin", "petdb");
+
+													if (!$dba) {
+														die("Connection failed: " . mysqli_connect_error());
+													}
+
+													/* Attempt MySQL server connection. Assuming you are running MySQL
+													server with default setting (user 'root' with no password) */
+
+													// Attempt select query execution
+													$targetUsername = $_SESSION['username'];
+													$sql = "SELECT * FROM account WHERE username = '$targetUsername' ";
+													if($result = mysqli_query($dba, $sql)){
+
+														if(mysqli_num_rows($result) > 0){
+
+															$row = mysqli_fetch_array($result);
 
 
-													<body>
-														<div align="center">
-															<h3>Edit Profile Picture</h3>
+															echo "
+															<div class='container'>
+
+
+
+															<div class='row'>
+															<div class='col'>
 															<br/>
-															<?php
-
-															$dba = mysqli_connect("localhost", "admin", "admin", "petdb");
-
-															if (!$dba) {
-																die("Connection failed: " . mysqli_connect_error());
-															}
-
-															/* Attempt MySQL server connection. Assuming you are running MySQL
-															server with default setting (user 'root' with no password) */
-
-															// Attempt select query execution
-															$targetUsername = $_SESSION['username'];
-															$sql = "SELECT * FROM account WHERE username = '$targetUsername' ";
-															if($result = mysqli_query($dba, $sql)){
-
-																if(mysqli_num_rows($result) > 0){
-
-																	$row = mysqli_fetch_array($result);
+															</div>
 
 
-																	echo "
+															<div class='col'>
+															<form action='editProfileProcess.php' method='post' >
+
+															<div class='form-group'>
+															<label for='email'>Email</label>
+															<input type='email' class='form-control' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
+															<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>
+															</div>
+
+															<div class='form-group'>
+															<label for='about_me'>About Me</label>
+															<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
+															</div>
 
 
 
-																	<div class='container'>
 
 
 
-																	<div class='row'>
-																	<div class='col'>
-																	<br/>
-																	</div>
+															<button type='submit' class='btn btn-primary'>Change My Details</button>
+
+															</form>
+
+															<br/>
+															<br/>
+															<br/>
+
+															<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
+															<br/><br/>
+															<form action='editProfilePicture.php'>
+															<button type='submit' class='btn btn-primary'>Change Profile Picture</button>
+															</form>
+															</div>
 
 
-																	<div class='col'>
-																	<form action='editProfilePictureProcess.php' method='post' enctype='multipart/form-data'>
+															<div class='col'>
+															<br/>
+															</div>
+															</div>";
 
-																	<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
-																	<br/><br/>
+															// Free result set
+															mysqli_free_result($result);
 
-																	<script src='./js/jslib.js'></script>
+														}
 
-																	<label>Select image to upload:</label>
+														else{
+															echo "No records matching your query were found.";
+														}
+													}
+													else{
+														echo "ERROR: Could not able to execute $sql. " . mysqli_error($dba);
+													}
 
-																	<label class='file-upload btn btn-primary'>
-
-																	<input type='file' class='form-control-file'
-																	accept='image/*' name='fileToUpload' id='fileToUpload' required='true' onchange='checkFileSize(this)'>
-																	</label>
-
-																	<br/> <br/>
-
-																	<button type='submit' class='btn btn-success'>Change Profile Picture</button>
-
-																	</form>
-																	</div>
+													// Close connection
+													mysqli_close($dba);
 
 
-																	<div class='col'>
-																	<br/>
-																	</div>
-
-																	</div>
-																	";
-
-																	// Free result set
-																	mysqli_free_result($result);
-
-																}
-
-																else{
-																	echo "No records matching your query were found.";
-																}
-															}
-															else{
-																echo "ERROR: Could not able to execute $sql. " . mysqli_error($dba);
-															}
-
-															// Close connection
-															mysqli_close($dba);
-
-
-															?>
-														</div>
-													</div>
+													?>
+													<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
 												</div>
 											</div>
 										</div>
@@ -158,5 +160,6 @@ include './layout/sidebar.php';
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
