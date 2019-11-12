@@ -1,10 +1,3 @@
-<?php
-// session_start();
-include '../session.php';
-include '../config.php';
-include './layout/sidebar.php';
-?>
-
 <html>
 <head>
 	<title>Dashboard</title>
@@ -37,102 +30,126 @@ include './layout/sidebar.php';
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
-	<div align="center">
-		<h3>Edit Profile</h3>
-		<br/>
-		<?php
-
-		$dba = mysqli_connect("localhost", "admin", "admin", "petdb");
-
-		if (!$dba) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
-
-		/* Attempt MySQL server connection. Assuming you are running MySQL
-		server with default setting (user 'root' with no password) */
-
-		// Attempt select query execution
-		$targetUsername = $_GET['username'];
-		$sql = "SELECT * FROM account WHERE username = '$targetUsername' ";
-		if($result = mysqli_query($dba, $sql)){
-
-			if(mysqli_num_rows($result) > 0){
-
-				$row = mysqli_fetch_array($result);
-
-
-				echo "
-
-
-
-				<div class='container'>
-
-
-
-				<div class='row'>
-				<div class='col'>
-				<br/>
+	<?php
+	// session_start();
+	include '../session.php';
+	include '../config.php';
+	include './layout/sidebar.php';
+	?>
+	<div class="app-content content">
+		<div class="content-wrapper">
+			<div class="content-wrapper-before"></div>
+			<div class="content-header row">
+				<div class="content-header-left col-md-4 col-12 mb-2">
+					<h3 class="content-header-title">Edit Profile</h3>
 				</div>
 
+			</div>
+			<div class="content-body">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title"><?php echo $username ?> Profile</h4>
+								<div class="card-content">
+									<div class="card-body">
+										<div class="container emp-profile">
+											<div class="row">
+												<div class="col-md-12">
+													<?php
 
-				<div class='col'>
-				<form action='editProfileProcess.php?username=$targetUsername' method='post' >
+													$dba = mysqli_connect("localhost", "admin", "admin", "petdb");
 
-				<div class='form-group'>
-				<label for='email'>Email</label>
-				<input type='email' class='form-control' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
-				<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>
+													if (!$dba) {
+														die("Connection failed: " . mysqli_connect_error());
+													}
+
+													/* Attempt MySQL server connection. Assuming you are running MySQL
+													server with default setting (user 'root' with no password) */
+
+													// Attempt select query execution
+													$targetUsername = $_GET['username'];
+													$sql = "SELECT * FROM account WHERE username = '$targetUsername' ";
+													if($result = mysqli_query($dba, $sql)){
+
+														if(mysqli_num_rows($result) > 0){
+
+															$row = mysqli_fetch_array($result);
+
+
+															echo "
+															<div class='container'>
+
+
+															<div class='row'>
+															<div class='col'>
+															<br/>
+															</div>
+
+
+															<div class='col'>
+															<form action='editProfileProcess.php?username=$targetUsername' method='post' >
+
+															<div class='form-group'>
+															<label for='email'>Email</label>
+															<input type='email' class='form-control' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
+															<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>
+															</div>
+
+															<div class='form-group'>
+															<label for='about_me'>About Me</label>
+															<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
+															</div>
+
+															<button type='submit' class='btn btn-primary'>Change My Details</button>
+
+															</form>
+
+															<br/>
+															<br/>
+															<br/>
+
+															<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
+															<br/><br/>
+															<form action='editProfilePicture.php'>
+															<button type='submit' class='btn btn-primary'>Change Profile Picture</button>
+															</form>
+															</div>
+
+
+															<div class='col'>
+															<br/>
+															</div>
+															</div>";
+
+															// Free result set
+															mysqli_free_result($result);
+
+														}
+														else{
+															echo "No records matching your query were found.";
+														}
+													}
+													else{
+														echo "ERROR: Could not able to execute $sql. " . mysqli_error($dba);
+													}
+
+													// Close connection
+													mysqli_close($dba);
+													?>
+													<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-
-				<div class='form-group'>
-				<label for='about_me'>About Me</label>
-				<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
-				</div>
-
-
-
-
-
-
-				<button type='submit' class='btn btn-primary'>Change My Details</button>
-
-				</form>
-
-				<br/>
-				<br/>
-				<br/>
-
-				<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
-				<br/><br/>
-				<form action='editProfilePicture.php'>
-				<button type='submit' class='btn btn-primary'>Change Profile Picture</button>
-				</form>
-				</div>
-
-
-				<div class='col'>
-				<br/>
-				</div>
-				</div>";
-
-				// Free result set
-				mysqli_free_result($result);
-
-			}
-
-			else{
-				echo "No records matching your query were found.";
-			}
-		}
-		else{
-			echo "ERROR: Could not able to execute $sql. " . mysqli_error($dba);
-		}
-
-		// Close connection
-		mysqli_close($dba);
-
-
-		?>
-
-	</body>
-	</html>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
