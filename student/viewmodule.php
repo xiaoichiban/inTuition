@@ -105,7 +105,7 @@
 
                       <?php
                       if ($seecontent){
-                        echo "<button type='button' class='btn btn-primary' style='float:right;''><a style='color:white;' href = 'fileUploadedList.php?mod_id=<?=$row[0]?>'>Module Uploaded Files</a></button>";
+                        echo "<button type='button' class='btn btn-primary' style='float:right;''><a style='color:white;' href = 'fileUploadedList.php?mod_id=$row[0]'>Module Uploaded Files</a></button>";
                       }
                       ?>
                       <br/>
