@@ -26,117 +26,117 @@
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
-<?php
-include('session.php');
-include ('./layout/sidebar.php');
+  <?php
+  include('session.php');
+  include ('./layout/sidebar.php');
 
-$thisuser = $_SESSION['login_user'];
-$date = $_GET['date'];
-$quiztitle = $_GET['quiztitle'];
+  $thisuser = $_SESSION['login_user'];
+  $date = $_GET['date'];
+  $quiztitle = $_GET['quiztitle'];
 
-$attemptSql = "SELECT * FROM attempts WHERE student = '$thisuser' and datetimestamp = '$date'; ";
-$attemptResult = mysqli_query($db, $attemptSql);
-$attemptResult1 = mysqli_query($db, $attemptSql);
-$attemptRow = mysqli_fetch_row($attemptResult);
+  $attemptSql = "SELECT * FROM attempts WHERE student = '$thisuser' and datetimestamp = '$date'; ";
+  $attemptResult = mysqli_query($db, $attemptSql);
+  $attemptResult1 = mysqli_query($db, $attemptSql);
+  $attemptRow = mysqli_fetch_row($attemptResult);
 
-$quizid = $attemptRow[2];
+  $quizid = $attemptRow[2];
 
-if (mysqli_num_rows($attemptResult) < 1) {
-  echo "Invalid attempt on $date";
-}
-else {
-  $correctAnsSql = "SELECT count(*) FROM attempts WHERE student = '$thisuser' and datetimestamp = '$date' and isCorrect = 1;" ;
-  $correctAnsResult = mysqli_query($db, $correctAnsSql);
-  $correctAnsRow = mysqli_fetch_row($correctAnsResult);
-  $totalCorrectAns = $correctAnsRow[0];
+  if (mysqli_num_rows($attemptResult) < 1) {
+    echo "Invalid attempt on $date";
+  }
+  else {
+    $correctAnsSql = "SELECT count(*) FROM attempts WHERE student = '$thisuser' and datetimestamp = '$date' and isCorrect = 1;" ;
+    $correctAnsResult = mysqli_query($db, $correctAnsSql);
+    $correctAnsRow = mysqli_fetch_row($correctAnsResult);
+    $totalCorrectAns = $correctAnsRow[0];
 
-  $totalQnsSql = "SELECT count(*) FROM question WHERE quizid = '$quizid';";
-  $totalQnsResult = mysqli_query($db, $totalQnsSql);
-  $totalQnsRow = mysqli_fetch_row($totalQnsResult);
-  $totalQns = $totalQnsRow[0];
+    $totalQnsSql = "SELECT count(*) FROM question WHERE quizid = '$quizid';";
+    $totalQnsResult = mysqli_query($db, $totalQnsSql);
+    $totalQnsRow = mysqli_fetch_row($totalQnsResult);
+    $totalQns = $totalQnsRow[0];
 
-?>
+    ?>
 
-<div class="app-content content">
-  <div class="content-wrapper">
-    <div class="content-wrapper-before"></div>
-      <div class="content-header row">
-        <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title"><?= $quiztitle ?></h3>
+    <div class="app-content content">
+      <div class="content-wrapper">
+        <div class="content-wrapper-before"></div>
+        <div class="content-header row">
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title"><?= $quiztitle ?></h3>
+          </div>
         </div>
-      </div>
 
-      <div class="content-body">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Attempted on <?= $date; ?></h4>
-                <h4 class="card-title">Score: <?= $totalCorrectAns; ?>/<?= $totalQns; ?></h4>
-                <div class="card-content">
-                  <h4 class="pt-3">Selected Answers</h4>
-                  <div class="card-body pt-0">
-                    <?php 
-                        $qnscounter = 0;
+        <div class="content-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Attempted on <?= $date; ?></h4>
+                  <h4 class="card-title">Score: <?= $totalCorrectAns; ?>/<?= $totalQns; ?></h4>
+                  <div class="card-content">
+                    <h4 class="pt-3">Selected Answers</h4>
+                    <div class="card-body pt-0">
+                      <?php
+                      $qnscounter = 0;
 
-                        while ($row = mysqli_fetch_row($attemptResult1)) {
-                          echo "<b><br>Question " . ++$qnscounter ."</b>"; 
-                          echo "<br>";
+                      while ($row = mysqli_fetch_row($attemptResult1)) {
+                        echo "<b><br>Question " . ++$qnscounter ."</b>";
+                        echo "<br>";
 
-                          $qnsSql = "SELECT * FROM question WHERE id = '$row[3]'; ";
-                          $qnsResult = mysqli_query($db, $qnsSql);
-                          $qnsRow = mysqli_fetch_row($qnsResult);
+                        $qnsSql = "SELECT * FROM question WHERE id = '$row[3]'; ";
+                        $qnsResult = mysqli_query($db, $qnsSql);
+                        $qnsRow = mysqli_fetch_row($qnsResult);
 
-                          echo $qnsRow[1]; //questiontitle
-                          echo "<br>";
-                          ?> 
-                          <input type="radio" name="qns<?= $row[0]?>ans" value="a" <?php echo ($row[1] == 'a') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[2] ?>
-                          <input type="radio" name="qns<?= $row[0]?>ans" value="b" <?php echo ($row[1] == 'b') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[3] ?>
-                          <input type="radio" name="qns<?= $row[0]?>ans" value="c" <?php echo ($row[1] == 'c') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[4] ?>
-                          <input type="radio" name="qns<?= $row[0]?>ans" value="d" <?php echo ($row[1] == 'd') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[5] ?>
-                          <br>
-                          <?
-                          echo "<br>";
+                        echo $qnsRow[1]; //questiontitle
+                        echo "<br>";
+                        ?>
+                        <input type="radio" name="qns<?= $row[0]?>ans" value="a" <?php echo ($row[1] == 'a') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[2] ?>
+                        <input type="radio" name="qns<?= $row[0]?>ans" value="b" <?php echo ($row[1] == 'b') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[3] ?>
+                        <input type="radio" name="qns<?= $row[0]?>ans" value="c" <?php echo ($row[1] == 'c') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[4] ?>
+                        <input type="radio" name="qns<?= $row[0]?>ans" value="d" <?php echo ($row[1] == 'd') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[5] ?>
+                        <br>
+                        <?php
+                        echo "<br>";
 
-                          if ($row[1] == $qnsRow[6]) {
-                            echo "Correct.";
-                          } else {
-                            echo "Wrong. The correct answer is: ";
-                            $correctAnsStr = ''; 
-                            if ($qnsRow[6] == 'a') {
-                              $correctAnsStr = $qnsRow[2];
-                            } else if ($qnsRow[6] == 'b') {
-                              $correctAnsStr = $qnsRow[3];
-                            } else if ($qnsRow[6] == 'c') {
-                              $correctAnsStr = $qnsRow[4];
-                            } else if ($qnsRow[6] == 'd') {
-                              $correctAnsStr = $qnsRow[5];
-                            }
-                            echo "<b> $correctAnsStr </b>";
-                            echo "<br>";
+                        if ($row[1] == $qnsRow[6]) {
+                          echo "Correct.";
+                        } else {
+                          echo "Wrong. The correct answer is: ";
+                          $correctAnsStr = '';
+                          if ($qnsRow[6] == 'a') {
+                            $correctAnsStr = $qnsRow[2];
+                          } else if ($qnsRow[6] == 'b') {
+                            $correctAnsStr = $qnsRow[3];
+                          } else if ($qnsRow[6] == 'c') {
+                            $correctAnsStr = $qnsRow[4];
+                          } else if ($qnsRow[6] == 'd') {
+                            $correctAnsStr = $qnsRow[5];
                           }
+                          echo "<b> $correctAnsStr </b>";
+                          echo "<br>";
                         }
+                      }
 
-                    ?>
+                      ?>
+                    </div>
                   </div>
-                </div>
-              </div> <!-- end of card-header --> 
-            </div> <!-- end of card -->
-          </div> <!-- end of col-12 --> 
-        </div> <!-- end of row -->
+                </div> <!-- end of card-header -->
+              </div> <!-- end of card -->
+            </div> <!-- end of col-12 -->
+          </div> <!-- end of row -->
 
-  <button type='button' class='btn btn-primary'><a style='color:white;' href = 'viewquiz.php?quizid=<?= $quizid; ?>'>Back</a></button>
+          <button type='button' class='btn btn-primary'><a style='color:white;' href = 'viewquiz.php?quizid=<?= $quizid; ?>'>Back</a></button>
 
-  </div> <!-- end of content wrapper -->
-</div> <!-- end of app-content --> 
+        </div> <!-- end of content wrapper -->
+      </div> <!-- end of app-content -->
 
-<?php
-}   //end of else
-?>
+      <?php
+    }   //end of else
+    ?>
 
-</div>
+  </div>
 
-<!-- BEGIN VENDOR JS-->
+  <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
@@ -151,3 +151,4 @@ else {
   <!-- END PAGE LEVEL JS-->
 
 </body>
+</html>
