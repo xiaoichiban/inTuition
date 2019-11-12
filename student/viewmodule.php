@@ -61,10 +61,10 @@ else {
         <div class="row">
           <div class="col-12">
             <div class="card">
-                
+
               <div class="card-content">
                 <div class="card-body">
-                  
+
                     <b>Module ID: </b> <?php echo $row[0]; ?>
                     <br>
                     <b>Module name: </b> <?php echo $row[1]; ?>
@@ -78,6 +78,61 @@ else {
                     <b>No. of students: </b> <?php echo mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id';"))[0]; ?>
                     <br><br>
                     <button type='button' class='btn btn-primary'><a style='color:white;' href = 'fileUploadedList.php?mod_id=<?=$row[0]?>'>Module Uploaded Files</a></button>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>  <!-- end of class row -->
+
+		
+		
+		
+		<div class="row">
+          <div class="col-12">
+            <div class="card">
+                
+              <div class="card-content">
+                <div class="card-body">
+                  
+				  
+				  <?php
+				  
+				  
+					$thistutor = $_SESSION['username'];
+					$sqlQuery = "SELECT * from video v  WHERE v.mod_id = '$module_id';";
+					
+					$result = mysqli_query($db, $sqlQuery);
+					
+					while ($row = mysqli_fetch_assoc($result)) {
+						
+						$subs = $row['subtitles'];
+						$vid  = $row['filename'];
+						
+						echo "Module ID=".$row['mod_id'] . "<br/>";
+						echo "Video Name=".$row['name'] . "<br/>";
+						echo "Video Desc=".$row['description'] . "<br/>";
+						echo "Filename=".$row['filename'] . "<br/>";
+						echo "Subs=".$row['subtitles'] . "<br/>";
+						echo "Date Time=".$row['datetimestamp'] . " <br/>";
+						echo "<a style='color:red' href='viewVideo.php?id=$vid&subs=$subs'> 
+						<b>WATCH VIDEO</b></a> <br/><br/><br/>";
+						
+					}
+					
+					?>
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+
                   
                 </div>
               </div>
@@ -86,21 +141,30 @@ else {
           </div>
         </div>  <!-- end of class row --> 
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
         <div class="content-header-left col-md-4 col-12 mb-2">
           <h3 class="content-header-title" style="color: #464855;">Available quizzes</h3>
         </div>
 
-        <?php 
+        <?php
           $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id';";
           $result2 = mysqli_query($db, $sql2);
           if (mysqli_num_rows($result2) == 0) {
             echo "<h3 class='pl-1'>There are no quizzes for this module.</h3>";
           } else {
-            
+
       ?>
 
         <div class="row">
-          <?php 
+          <?php
             while ($row1 = mysqli_fetch_row($result2)) {
 
           ?>
@@ -110,15 +174,15 @@ else {
                 <div class="card-header">
                 <h4 class="card-title"><?php echo $row1[1] ?></h4>
               </div>
-              
+
             </div>
           </a>
           </div>
-          <?php 
+          <?php
           } //end of while
           ?>
-        </div>  <!-- end of class row --> 
-        <?php 
+        </div>  <!-- end of class row -->
+        <?php
 
         } //end of else
 
@@ -130,11 +194,10 @@ else {
         }
         else {
           if ($row3[3] == 'pending'){
-            $confirm="return confirm('Are you sure?');";
             echo "<br>";
-            echo "<div class='pl-1'>";
-            echo"<form action ='deregistermoduleprocessing.php?module_id=$row3[2]' method = 'post' onSubmit='$confirm'>
-            <input type = 'submit' class='btn btn-primary' value = ' Deregister this module ' />
+            echo "<div class='pl-1' style='align:center;'>";
+            echo"<form action ='viewmodule.php?module_id=$row3[2]' method = 'post'>
+            <input type = 'submit' class='btn btn-primary'  value = ' Deregister this module ' />
             </form>";
             echo "</div>";
           }
@@ -147,12 +210,12 @@ else {
         </div>
       </div> <!-- end of content body -->
 
-    </div> <!-- end of content-wrapper --> 
-  </div> <!-- end of app content --> 
+    </div> <!-- end of content-wrapper -->
+  </div> <!-- end of app content -->
 
   <?php
 
-  } //end of ($row[6] == 'inactive') else. 
+  } //end of ($row[6] == 'inactive') else.
 
   ?>
 
@@ -172,3 +235,22 @@ else {
 
 </body>
 </html>
+<?php
+$username = $_SESSION['login_user'];
+$date = date('Y-m-d');
+$module_id = $_GET['module_id'];
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $sql = "DELETE FROM enroll WHERE student = '$username' AND mod_id = '$module_id' AND status = 'pending';";
+  $result = mysqli_query($db,$sql);
+
+  if (!$result) {
+    echo '<script>alert("An error occurred. Deregistration failed.")</script>';
+    echo '<script>window.location.href = "viewmodule.php?module_id=' . $module_id .'";</script>';
+  }
+  else{
+    echo "<script>alert('Deregistration successful.')</script>";
+    echo '<script>window.location.href = "studentdashboard.php";</script>';
+  }
+}
+?>

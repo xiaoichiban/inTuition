@@ -42,16 +42,10 @@
   $sql = "SELECT * FROM account WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
   $account = mysqli_fetch_row($result);
-  if (mysqli_num_rows($result) != 1) {
-    echo "invalid tutor $tutor_id";
-  }
 
   $sql = "SELECT * FROM tc WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
   $tc = mysqli_fetch_assoc($result);
-  if (mysqli_num_rows($result) != 1) {
-    echo "invalid tc $tutor_id";
-  }
 
   ?>
 
@@ -90,7 +84,7 @@
                               <?php echo $account[1] ?>
                             </h5>
                             <h6>
-                              Student
+                              Tuition Centre
                             </h6>
                             <p class="proile-rating"><br/></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -104,28 +98,12 @@
                           <input type="button" class="profile-edit-btn" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
                         </div>
                       </div>
-					  
-					  
-					  
                       <div class="row">
-					  
-					  
-					  
-					  
-					  
                         <div class="col-md-4">
                           <div class="profile-work">
-                            <p>WORK LINK</p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
+                            <p>TC LINK</p>
                           </div>
                         </div>
-						
-						
-						
-						
-						
                         <div class="col-md-8">
                           <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -179,68 +157,45 @@
                           </div>
                           <br/>
                         </div>
-						
-						
-						
-						
-						
-						
-	<?php
-		$long = $tc['longitude'];
-		$lat = $tc['latitude'];
-		$postal = $tc['postal'];
-		$address = $tc['address'];
-	?>
-						
-						
-						
+
+                        <?php
+                        $long = $tc['longitude'];
+                        $lat = $tc['latitude'];
+                        $postal = $tc['postal'];
+                        $address = $tc['address'];
+                        ?>
+
                         <div class="col-lg">
                           <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-							
 
-                                  
-								 <iframe 
-									src="https://tools.onemap.sg/minimap/minimap.html?
-									mWidth=790&amp;mHeight=595&amp;
-									latLng=<?php echo $long;?>,<?php echo $lat;?>&amp;
-									zoomLevl=17"
-									height="500px" width="100%" 
-									scrolling="no" frameborder="0">
-								</iframe>
+                              <iframe
+                              src="https://tools.onemap.sg/minimap/minimap.html?
+                              mWidth=790&amp;mHeight=595&amp;
+                              latLng=<?php echo $long;?>,<?php echo $lat;?>&amp;
+                              zoomLevl=17"
+                              height="500px" width="100%"
+                              scrolling="no" frameborder="0">
+                            </iframe>
 
-							  
-								<br/>
-								<br/>
+
+                            <br/>
+                            <br/>
 
 
 
-								<iframe 
-								frameborder="0" 
-								scrolling="no" marginheight="0" marginwidth="0" 
-								height="500px" width="100%" 
-								src="https://maps.google.com/maps?q=Singapore<?php echo $postal; ?>+&amp;t=m&amp;z=14&amp;output=embed&amp;iwloc=near" 
-								aria-label="Singapore <?php echo $postal; ?>">
-								</iframe>
-								
-								
-															  
-							  
-							  
-                            </div>
-                          </div>
-                          <br/>
+                            <iframe
+                            frameborder="0"
+                            scrolling="no" marginheight="0" marginwidth="0"
+                            height="500px" width="100%"
+                            src="https://maps.google.com/maps?q=Singapore<?php echo $postal; ?>+&amp;t=m&amp;z=14&amp;output=embed&amp;iwloc=near"
+                            aria-label="Singapore <?php echo $postal; ?>">
+                          </iframe>
+
+
                         </div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
                       </div>
+                      <br/>
                     </div>
                   </div>
                 </div>
@@ -251,13 +206,13 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 </body>
 </html>
 
 <style>
-body{
-  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-}
+
 .emp-profile{
   padding: 3%;
   margin-top: 3%;

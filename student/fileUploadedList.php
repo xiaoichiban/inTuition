@@ -85,7 +85,7 @@ include ('./layout/sidebar.php');
           </div> <!-- row -->
         </div> <!-- content body -->
 
-        <button class='btn btn-default'><a href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
+        <button class='btn btn-primary'><a style='color:white;' href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
 
       </div> <!-- content wrapper -->
     </div> <!-- app content -->
