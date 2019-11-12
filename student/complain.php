@@ -52,48 +52,47 @@
                 <div class="card-content">
                   <div class="card-body">
                     <form action="complain.php" method="post" enctype="multipart/form-data">
-                        <div class='basic-inputs'>
-                            <br/>
-                            <fieldset class="form-group">
-                                <h5 class="mt-2">Title: &nbsp;</h5>
-                                <input type="text" name="title" id="title" class="form-control" id="placeholderInput" placeholder="Enter Title..." required>
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <h5  class="mt-2">Feedback: &nbsp;</h5>
-                                <input type="text" name="problem" id="problem" class="form-control" id="placeholderInput" placeholder="Enter Feedback..." required>
-                            </fieldset>
-                            <fieldset class="form-group">
-                              <h5  class="mt-2">Submit to: &nbsp;</h5>
-                                <select class="custom-select" name="tc" id="tc" required>
-                                    <?php
-                                    $username = $_SESSION['login_user'];
-                                    $sql = "SELECT * FROM account WHERE username IN (SELECT tc FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student ='$username'));";
-                                    $result = mysqli_query($db, $sql);
-                                    $numResults = 0;
-                                    if (mysqli_num_rows($result) >0){
-                                      $numResults = $numResults + 1;
-                                      while ($row = mysqli_fetch_row($result)){
-                                        if ($numResults == 1){
-                                          echo "<option value ='$row[1]' selected='selected'>$row[1]</option>";
-                                        }
-                                        else{
-                                          echo "<option value ='$row[1]'>$row[1]</option>";
-                                        }
+                      <div class='basic-inputs'>
+                        <br/>
+                        <fieldset class="form-group">
+                          <h5 class="mt-2">Title: &nbsp;</h5>
+                          <input type="text" name="title" id="title" class="form-control" id="placeholderInput" placeholder="Enter Title..." required>
+                        </fieldset>
+                        <fieldset class="form-group">
+                          <h5  class="mt-2">Feedback: &nbsp;</h5>
+                          <input type="text" name="problem" id="problem" class="form-control" id="placeholderInput" placeholder="Enter Feedback..." required>
+                        </fieldset>
+                        <fieldset class="form-group">
+                          <h5  class="mt-2">Submit to: &nbsp;</h5>
+                          <select class="custom-select" name="tc" id="tc" required>
+                            <?php
+                            $username = $_SESSION['login_user'];
+                            $sql = "SELECT * FROM account WHERE username IN (SELECT tc FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student ='$username'));";
+                            $result = mysqli_query($db, $sql);
+                            $numResults = 0;
+                            if (mysqli_num_rows($result) >0){
+                              $numResults = $numResults + 1;
+                              while ($row = mysqli_fetch_row($result)){
+                                if ($numResults == 1){
+                                  echo "<option value ='$row[1]' selected='selected'>$row[1]</option>";
+                                }
+                                else{
+                                  echo "<option value ='$row[1]'>$row[1]</option>";
+                                }
 
-                                      }
-                                    }
+                              }
+                            }
 
-                                    ?>
-                                </select>
-                            </fieldset>
-                            <br/>
-                        </div>
-                        <div align='center'>
-                            <br/>
-                            <input type="submit" value="Submit" name="submit" class="btn btn-primary btn-min-width mr-1 mb-1">
-                        </div>
+                            ?>
+                          </select>
+                        </fieldset>
+                        <br/>
+                      </div>
+                      <div align='center'>
+                        <br/>
+                        <input type="submit" value="Submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">
+                      </div>
                     </form>
-
 
                     <a class='btn btn-primary' href = 'studentdashboard.php'>Back</a>
                   </div>
@@ -106,9 +105,6 @@
       </div>  <!-- end of content-body -->
     </div>  <!-- end of content-wrapper -->
   </div>  <!-- end of app-content content -->
-
-  ?>
-
 
   <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
@@ -129,19 +125,19 @@
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_SESSION['username'];
-    $title = $_POST['title'];
-    $problem = $_POST['problem'];
-    $tc = $_POST['tc'];
-    $sql = "INSERT INTO complain(title, content, complainer, receiver, status)"
-            . "VALUES('$title', '$problem', '$username', '$tc', 'new');";
-    $results = mysqli_query($db, $sql);
-    if ($results) {
-        echo "<script type = 'text/javascript'> alert ('Thank you for your report!!')</script>";
-    } else {
-        echo "<script type = 'text/javascript'> alert ('Error in Submission!!')</script>";
-    }
-    echo '<script>window.location.href = "studentdashboard.php";</script>';
-    exit();
+  $username = $_SESSION['username'];
+  $title = $_POST['title'];
+  $problem = $_POST['problem'];
+  $tc = $_POST['tc'];
+  $sql = "INSERT INTO complain(title, content, complainer, receiver, status)"
+  . "VALUES('$title', '$problem', '$username', '$tc', 'new');";
+  $results = mysqli_query($db, $sql);
+  if ($results) {
+    echo "<script type = 'text/javascript'> alert ('Thank you for your report!!')</script>";
+  } else {
+    echo "<script type = 'text/javascript'> alert ('Error in Submission!!')</script>";
+  }
+  echo '<script>window.location.href = "studentdashboard.php";</script>';
+  exit();
 }
 ?>

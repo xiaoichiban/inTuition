@@ -85,7 +85,7 @@
                           else{
                             $day_label = "Sat";
                           }
-                          echo "<tr><th style='font-weight: bold;'>$day_label</th>";
+                          echo "<tr><th><h6><b>$day_label</b></h6></th>";
                           $i = 8;
                           if (mysqli_num_rows($daymodules)==0){
                             while ($i < 23){

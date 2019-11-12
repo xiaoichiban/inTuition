@@ -51,7 +51,7 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title"><?php echo $username ?> Profile</h4>
+								<h4 class="card-title"><?php echo $username ?>'s Profile</h4>
 								<div class="card-content">
 									<div class="card-body">
 										<div class="container emp-profile">
@@ -76,23 +76,10 @@
 														if(mysqli_num_rows($result) > 0){
 
 															$row = mysqli_fetch_array($result);
-
-
 															echo "
-
-
-
-															<div class='container'>
-
-
-
+															<div class='container' style='width:80%;'>
 															<div class='row'>
-															<div class='col'>
-															<br/>
-															</div>
-
-
-															<div class='col'>
+															<div class='col-md-10'>
 															<form action='editProfileProcess.php' method='post' >
 
 															<div class='form-group'>
@@ -105,13 +92,7 @@
 															<label for='about_me'>About Me</label>
 															<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
 															</div>
-
-
-
-
-
-
-															<button type='submit' class='btn btn-primary'>Change My Details</button>
+															<button type='submit' class='btn btn-info' style='float:right;'>Change My Details</button>
 
 															</form>
 
@@ -119,14 +100,12 @@
 															<br/>
 															<br/>
 
-															<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
+															<b>Profile Photo:</b> <br/><br/> <div style='text-align:center;'><img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px'/></div>
 															<br/><br/>
 															<form action='editProfilePicture.php'>
-															<button type='submit' class='btn btn-primary'>Change Profile Picture</button>
+															<button type='submit' class='btn btn-info' style='float:right;'>Change Profile Picture</button>
 															</form>
 															</div>
-
-
 															<div class='col'>
 															<br/>
 															</div>
@@ -147,10 +126,8 @@
 
 													// Close connection
 													mysqli_close($dba);
-
-
 													?>
-												<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
+													<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
 												</div>
 											</div>
 										</div>
@@ -163,6 +140,5 @@
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>

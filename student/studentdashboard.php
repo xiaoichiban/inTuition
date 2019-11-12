@@ -46,56 +46,70 @@
 
         <div class="row">
           <?php
-                    $username = $_SESSION['login_user'];
-                    $sql1 = "SELECT account_type FROM account WHERE username = '$username';";
-                    $result1 = mysqli_query($db, $sql1);
-                    while ($row1 = mysqli_fetch_row($result1)) {
-                      $acctype = $row1[0];
-                      if ($acctype == "student"){
-                        $sql2 = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username' AND status='accepted');";
-                        $result2 = mysqli_query($db, $sql2);
+          $username = $_SESSION['login_user'];
+          $sql1 = "SELECT account_type FROM account WHERE username = '$username';";
+          $result1 = mysqli_query($db, $sql1);
+          while ($row1 = mysqli_fetch_row($result1)) {
+            $acctype = $row1[0];
+            if ($acctype == "student"){
+              $sql2 = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username' AND status='accepted');";
+              $result2 = mysqli_query($db, $sql2);
 
-                          while ($row = mysqli_fetch_row($result2)) {
-                          $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
-                          $module_row = mysqli_fetch_row($module_details);
-                          $enroll_details = mysqli_query($db, "SELECT * FROM enroll e WHERE e.mod_id = '$row[0]'");
-                          $enroll_row = mysqli_fetch_row($enroll_details);
-                        ?>
+              while ($row = mysqli_fetch_row($result2)) {
+                $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
+                $module_row = mysqli_fetch_row($module_details);
+                $enroll_details = mysqli_query($db, "SELECT * FROM enroll e WHERE e.mod_id = '$row[0]'");
+                $enroll_row = mysqli_fetch_row($enroll_details);
+                if ($row[3] == 0){
+                  $day_label = "Sun";
+                }
+                elseif ($row[3] == 1) {
+                  $day_label = "Mon";
+                }
+                elseif ($row[3] == 2) {
+                  $day_label = "Tue";
+                }
+                elseif ($row[3] == 3) {
+                  $day_label = "Wed";
+                }
+                elseif ($row[3] == 4) {
+                  $day_label = "Thu";
+                }
+                elseif ($row[3] == 5) {
+                  $day_label = "Fri";
+                }
+                else{
+                  $day_label = "Sat";
+                }
+                ?>
 
-
-          <div class="col-lg-4 col-md-12">
-            <a href = 'viewmodule.php?module_id=<?php echo $row[0]; ?>'>
-            <div class="card pull-up ecom-card-1 bg-white">
-              <div class="card-header">
-                <h4 class="card-title"><?php echo $row[1]; ?></h4>
-                <div class="card-content">
-                    <div class="pt-2">
-                      <?php
-                        echo "<b>Description:</b> <br>$row[2]";
-                        echo "<br><br>";
-                        echo "<b>Offered by:</b> <br>$row[6]";
-                        echo "<br><br>";
-                        echo "<b>Tutored by:</b> <br>$row[7]";
-                        echo "<br><br>";
-                        echo "<b>Enrolled:</b> <br>$enroll_row[4]";
-                      ?>
+                <div class="col-lg-4 col-md-12">
+                  <a href = 'viewmodule.php?module_id=<?php echo $row[0]; ?>'>
+                    <div class="card pull-up ecom-card-1 bg-white">
+                      <div class="card-header">
+                        <h4 class="card-title"><?php echo $row[1]; ?></h4>
+                        <div class="card-content">
+                          <div class="pt-2">
+                            <?php
+                            echo "<b>Time:</b> <br/>$day_label $row[4] - $row[5]";
+                            echo "<br/><br/>";
+                            echo "<b>Offered by:</b> <br/>$row[6]";
+                            echo "<br/><br/>";
+                            echo "<b>Tutored by:</b> <br/>$row[7]";
+                            ?>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
+                  </a>
                 </div>
-              </div>
-            </div>
-          </a>
-
-          </div>
-
-          <?php
-            } //for while result2
-          } //for result1
-        } //end of while result1
+                <?php
+              } //for while result2
+            } //for result1
+          } //end of while result1
           ?>
 
         </div>  <!-- end of class row -->
-        
       </div>  <!-- end of content-body -->
     </div>  <!-- end of content-wrapper -->
   </div>  <!-- end of app-content content -->

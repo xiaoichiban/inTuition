@@ -89,7 +89,7 @@
 
 									echo "
 									<center>
-									<h3><b>Title: $name</b></h3><br>
+									<h3><b>Title: $name</b></h3><br/>
 									<h5>$description</h5>
 									<video
 									id='myVideo'
@@ -113,7 +113,7 @@
 				</div> <!-- end of row -->
 			</div> <!-- end of content body -->
 
-			<button  class='btn btn-primary' onclick='goBack()'>Go Back</button>
+			<button  class='btn btn-primary' onclick='goBack()'>Back</button>
 			<script>function goBack() {window.history.back();}</script>
 
 		</div> <!-- content wrapper -->
