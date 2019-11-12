@@ -27,71 +27,71 @@
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
-<?php
-include('session.php');
-include ('./layout/sidebar.php');
-?>
+  <?php
+  include('session.php');
+  include ('./layout/sidebar.php');
+  ?>
 
 
-<div class="app-content content">
+  <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-wrapper-before"></div>
-        <div class="content-header row">
-          <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">Files</h3>
-          </div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title">Files</h3>
         </div>
+      </div>
 
-        <div class="content-body">
+      <div class="content-body">
 
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">File details</h4>
-                  <div class="card-content">
-                    <div class="card-body">
-                      <?php
-                        $mod_id = $_GET['mod_id'];
-                        $sql2 = "SELECT * FROM file WHERE mod_id = $mod_id";
-                        $result2 = mysqli_query($db, $sql2);
-                        echo
-                        "<div class='table-responsive'>" .
-                        "<table class='table table-borderless'>" .
-                        "<tr>
-                        <th>File Name</th>
-                        <th>Description</th>
-                        <th>Date</th>
-                        <th></th>
-                        </tr>";
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">File details</h4>
+                <div class="card-content">
+                  <div class="card-body">
+                    <?php
+                    $mod_id = $_GET['mod_id'];
+                    $sql2 = "SELECT * FROM file WHERE mod_id = $mod_id";
+                    $result2 = mysqli_query($db, $sql2);
+                    echo
+                    "<div class='table-responsive'>" .
+                    "<table class='table table-borderless'>" .
+                    "<tr>
+                    <th>File Name</th>
+                    <th>Description</th>
+                    <th>Uploaded</th>
+                    <th></th>
+                    </tr>";
 
-                        while ($row = mysqli_fetch_assoc($result2)) {
-                          echo
-                          "<tr>
-                          <th>". $row['filename']."</th>
-                          <th>". $row['name']."<br/>". $row['description']."</th>
-                          <th>". $row['datetimestamp']."</th>
-                          <th><a href = 'downloadFileProcess.php?filename=".$row['filename']."'>Download</a></th>
-                          </tr>";
-                        }
-                        echo "</table></div>";
+                    while ($row = mysqli_fetch_assoc($result2)) {
+                      echo
+                      "<tr>
+                      <th>". $row['filename']."</th>
+                      <th>". $row['name']."<br/>". $row['description']."</th>
+                      <th>". $row['datetimestamp']."</th>
+                      <th><a href = 'downloadFileProcess.php?filename=".$row['filename']."'>Download</a></th>
+                      </tr>";
+                    }
+                    echo "</table></div>";
 
-                      ?>
-                    </div>
-                  </div> <!-- card content -->
-                </div> <!-- card header -->
-              </div>  <!-- card -->
-            </div> <!-- col-12 -->
-          </div> <!-- row -->
-        </div> <!-- content body -->
+                    ?>
+                  </div>
+                </div> <!-- card content -->
+              </div> <!-- card header -->
+            </div>  <!-- card -->
+          </div> <!-- col-12 -->
+        </div> <!-- row -->
+      </div> <!-- content body -->
 
-        <button class='btn btn-primary'><a style='color:white;' href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
+      <button class='btn btn-primary'><a style='color:white;' href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
 
-      </div> <!-- content wrapper -->
-    </div> <!-- app content -->
+    </div> <!-- content wrapper -->
+  </div> <!-- app content -->
 
 
-<!-- BEGIN VENDOR JS-->
+  <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
