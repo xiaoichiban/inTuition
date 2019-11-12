@@ -73,6 +73,7 @@ include './layout/sidebar.php';
                   <th>Tutor</th>
                   <th>Status</th>
                   <th>Details</th>
+                  <!-- <th></th> -->
                 </tr>
               </thead>
               <tbody>
@@ -85,7 +86,7 @@ include './layout/sidebar.php';
                 if(isset($_GET['search']) != "") {
                   $search_value = $_GET['search'];
 
-                  $sql="SELECT * from module where tc = '$tc' AND description LIKE '%$search_value%'";
+                  $sql="SELECT * from module where tc = '$tc' AND description LIKE '%$search_value%' AND status='active'";
                   // $sql= "SELECT * from module where tc = '$tc'";
 
                   $result = mysqli_query($db, $sql);
@@ -122,12 +123,13 @@ include './layout/sidebar.php';
                     echo"<td>"; echo "$row[7]"; echo"</td>";
                     echo"<td>"; echo "$row[9]"; echo"</td>";
                     echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
+                    // echo"<td>"; echo "<a href='deleteModuleProcess.php?mod_id=$row[0]'> Delete </a>"; echo"</td>";
                     echo"</tr>";
                   }
                 }
 
                 else {
-                  $sql= "SELECT * from module where tc = '$tc';";
+                  $sql= "SELECT * from module where tc = '$tc' AND status='active';";
 
                   $result = mysqli_query($db, $sql);
 
@@ -163,6 +165,7 @@ include './layout/sidebar.php';
                     echo"<td>"; echo "$row[7]"; echo"</td>";
                     echo"<td>"; echo "$row[9]"; echo"</td>";
                     echo"<td>"; echo "<a href='viewmodule.php?module_id=$thisID'> View Module </a>"; echo"</td>";
+                    // echo"<td>"; echo "<a href='deleteModuleProcess.php?mod_id=$row[0]'> Delete </a>"; echo"</td>";
                     echo"</tr>";
                   }
                 }
