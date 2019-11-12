@@ -47,7 +47,7 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title"><?php echo $username ?> Profile</h4>
+								<h4 class="card-title"><?php echo $username ?>'s Profile</h4>
 								<div class="card-content">
 									<div class="card-body">
 										<div class="container emp-profile">
@@ -97,7 +97,7 @@
 																	<div class='col'>
 																	<form action='editProfilePictureProcess.php' method='post' enctype='multipart/form-data'>
 
-																	<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
+																	<b>Profile Photo:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
 																	<br/><br/>
 
 																	<script src='./js/jslib.js'></script>

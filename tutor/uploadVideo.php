@@ -26,14 +26,14 @@
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
 
-<?php 
-session_start();
-include './layout/config.php';
-include './layout/sidebar.php';
+  <?php
+  session_start();
+  include './layout/config.php';
+  include './layout/sidebar.php';
 
-?>
+  ?>
 
-<div class="app-content content">
+  <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-wrapper-before"></div>
       <div class="content-header">
@@ -49,114 +49,101 @@ include './layout/sidebar.php';
                 <div class="card-content">
                   <div class="card-body">
 
-                      <form action="uploadVideoProcess.php" method="post" enctype="multipart/form-data">
+                    <form action="uploadVideoProcess.php" method="post" enctype="multipart/form-data">
 
-                        <?php
-  
-                          $thistutor = $_SESSION['username'];
-                          $sqlQuery = "SELECT m.id from module m where m.tutor = '$thistutor' ";
-                          $result = mysqli_query($db, $sqlQuery);
-                          $count = mysqli_num_rows($result);
-                          
-                          $hidden = '';
-                          
-                          // remove later
-                          // $count = 0;
-                          // For Testing
-                          
-                          if ($count < 1){
-                            
-                            echo "<br/><p> You have no modules here; nothing to upload</p>";
-                            echo "<br/><input type='text' disabled hidden id='mod_id' name='mod_id' required>";
-                            $hidden = 'hidden';
-                            
-                          }
-                          
-                          
-                          else {
-                            echo "<br/><label for='mod_id'>Module ID</label><br/>";
-                            echo "<select id='mod_id' name='mod_id' style='width: 40%;' required class='form-control'>";
-                            
-                            while ($row = mysqli_fetch_assoc($result)) {
-                              $id = $row['id'];
-                              echo "<option value='$id'>$id</option>";
-                            }
-                            echo "</select>";
-                          }
+                      <?php
 
-                        ?>
-                        <br/>
-                        <br/>
-                          
-                        <label for="vidname">Video name</label>
-                        <br/>
-                        <input type="text" style="width: 40%;" id="vidname" name="vidname" maxlength="20" class="form-control" required> </input>
+                      $thistutor = $_SESSION['username'];
+                      $sqlQuery = "SELECT m.id from module m where m.tutor = '$thistutor' ";
+                      $result = mysqli_query($db, $sqlQuery);
+                      $count = mysqli_num_rows($result);
 
-                        <br/>
-                        <br/>
-                        
-                        <label for="videscript">Video Description</label>
-                        <br/>
-                        <textarea style="width: 40%;" id="videscript" name="videscript" maxlength="50" class="form-control" required> </textarea>
+                      $hidden = '';
 
-                        <br/>
-                        <br/>
-                        
-                        <label for="videscript">Module Code</label>
-                        <br/>
-                        <input type="text" style="width: 40%;" id="modcode" name="modcode" 
-                        maxlength="5" class="form-control" required> </input>
+                      // remove later
+                      // $count = 0;
+                      // For Testing
 
-                        <br/>
-                        <br/>
-                          
-                        <div class="form-group">
+                      if ($count < 1){
+
+                        echo "<br/><p> You have no modules here; nothing to upload</p>";
+                        echo "<br/><input type='text' disabled hidden id='mod_id' name='mod_id' required>";
+                        $hidden = 'hidden';
+
+                      }
+
+
+                      else {
+                        echo "<br/><label for='mod_id'>Module ID</label><br/>";
+                        echo "<select id='mod_id' name='mod_id' style='width: 40%;' required class='form-control'>";
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          $id = $row['id'];
+                          echo "<option value='$id'>$id</option>";
+                        }
+                        echo "</select>";
+                      }
+
+                      ?>
+                      <br/>
+                      <br/>
+
+                      <label for="vidname">Video name</label>
+                      <br/>
+                      <input type="text" style="width: 40%;" id="vidname" name="vidname" maxlength="20" class="form-control" required> </input>
+
+                      <br/>
+                      <br/>
+
+                      <label for="videscript">Video Description</label>
+                      <br/>
+                      <textarea style="width: 40%;" id="videscript" name="videscript" maxlength="50" class="form-control" required> </textarea>
+
+                      <br/>
+                      <br/>
+
+                      <label for="videscript">Module Code</label>
+                      <br/>
+                      <input type="text" style="width: 40%;" id="modcode" name="modcode"
+                      maxlength="5" class="form-control" required> </input>
+
+                      <br/>
+                      <br/>
+
+                      <div class="form-group">
                         <script src="./js/jslib.js"></script>
                         <label class="file-upload">
                           Select Video to upload: <br/>
-                          <input type="file" class="form-control-file"  
-                            accept='video/mp4' name="fileToUpload" id="fileToUpload" 
-                            onchange="checkFileSize(this)">
-                        </label>  
-                        </div>  
-                        
-                        
-                        <div class="form-group">
-                          Select Subtitles to upload (optional): <br/>
-                          <input type="file" class="form-control-file"  
-                            accept='.vtt' name="subsToUpload" id="subsToUpload" >
-                        </div>  
-                            
-                        <br/>
-                        
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>                        
-                        
-                        <br/>
-                        <br/>
-                        
-                      </form>
+                          <input type="file" class="form-control-file"
+                          accept='video/mp4' name="fileToUpload" id="fileToUpload"
+                          onchange="checkFileSize(this)">
+                        </label>
+                      </div>
 
+
+                      <div class="form-group">
+                        Select Subtitles to upload (optional): <br/>
+                        <input type="file" class="form-control-file"
+                        accept='.vtt' name="subsToUpload" id="subsToUpload" >
+                      </div>
+
+                      <br/>
+
+                      <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+                      <br/>
+                      <br/>
+                    </form>
 
                   </div>
                 </div>
               </div>
-            </div> <!-- row --> 
-
-
-
+            </div> <!-- row -->
+          </div>
+        </div>
+      </div>
     </div>
-
-	</div>
-	</div>
-	
-	</div>
-	</div>
-	
-	
-	
-	
-
-</div>
+  </div>
 </div>
 
 </body>

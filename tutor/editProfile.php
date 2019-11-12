@@ -32,12 +32,12 @@
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
 
-<?php
-// session_start();
-include '../session.php';
-include '../config.php';
-include './layout/sidebar.php';
-?>
+	<?php
+	// session_start();
+	include '../session.php';
+	include '../config.php';
+	include './layout/sidebar.php';
+	?>
 
 	<div class="app-content content">
 		<div class="content-wrapper">
@@ -57,88 +57,90 @@ include './layout/sidebar.php';
 								<div class="card-content">
 									<div class="card-body">
 
-													<?php
+										<?php
 
-													$dba = mysqli_connect("localhost", "admin", "admin", "petdb");
+										$dba = mysqli_connect("localhost", "admin", "admin", "petdb");
 
-													if (!$dba) {
-														die("Connection failed: " . mysqli_connect_error());
-													}
+										if (!$dba) {
+											die("Connection failed: " . mysqli_connect_error());
+										}
 
-													/* Attempt MySQL server connection. Assuming you are running MySQL
-													server with default setting (user 'root' with no password) */
+										/* Attempt MySQL server connection. Assuming you are running MySQL
+										server with default setting (user 'root' with no password) */
 
-													// Attempt select query execution
-													$targetUsername = $_SESSION['username'];
-													$sql = "SELECT * FROM account WHERE username = '$targetUsername' ";
-													if($result = mysqli_query($dba, $sql)){
+										// Attempt select query execution
+										$targetUsername = $_SESSION['username'];
+										$sql = "SELECT * FROM account WHERE username = '$targetUsername' ";
+										if($result = mysqli_query($dba, $sql)){
 
-														if(mysqli_num_rows($result) > 0){
+											if(mysqli_num_rows($result) > 0){
 
-															$row = mysqli_fetch_array($result);
-
-
-															echo "
-															<div class='container'>
-
-															<div class='row'>
+												$row = mysqli_fetch_array($result);
 
 
+												echo "
+												<div class='container'>
 
-															<div class='col'>
-															<form action='editProfileProcess.php?username=$username' method='post' >
-
-															<div class='form-group'>
-															<label for='email'>Email</label>
-															<input type='email' class='form-control' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
-															<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>
-															</div>
-
-															<div class='form-group'>
-															<label for='about_me'>About Me</label>
-															<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
-															</div>
+												<div class='row'>
 
 
-															<button type='submit' class='btn btn-primary'>Change My Details</button>
 
-															</form>
+												<div class='col-sm-10'>
+												<form action='editProfileProcess.php?username=$username' method='post' >
 
-															<br/>
-															<br/>
-															<br/>
+												<div class='form-group'>
+												<label for='email'>Email</label>
+												<input type='email' class='form-control' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
+												<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>
+												</div>
 
-															<b>Current Profile Picture:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
-															<br/><br/>
-															<form action='editProfilePicture.php'>
-															<button type='submit' class='btn btn-primary'>Change Profile Picture</button>
-															</form>
-															</div>
-
-
-															<div class='col'>
-															<br/>
-															</div>
-															</div>";
-
-															// Free result set
-															mysqli_free_result($result);
-
-														}
-
-														else{
-															echo "No records matching your query were found.";
-														}
-													}
-													else{
-														echo "ERROR: Could not able to execute $sql. " . mysqli_error($dba);
-													}
-
-													// Close connection
-													mysqli_close($dba);
+												<div class='form-group'>
+												<label for='about_me'>About Me</label>
+												<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
+												</div>
 
 
-													?>
+												<button type='submit' class='btn btn-info' style='float:right'>Change My Details</button>
+
+												</form>
+
+												<br/>
+												<br/>
+												<br/>
+
+												<b>Current Profile Picture:</b> <br/><div align='center'> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' /></div>
+												<br/><br/>
+												<form action='editProfilePicture.php' style='float:right'>
+												<button type='submit' class='btn btn-info'>Change Profile Picture</button>
+												</form>
+												<a class='btn btn-primary' href = 'viewProfile.php?username=$targetUsername'>Back</a>
+												</div>
+
+
+												<div class='col'>
+												<br/>
+
+												</div>
+												</div>";
+
+												// Free result set
+												mysqli_free_result($result);
+
+											}
+
+											else{
+												echo "No records matching your query were found.";
+											}
+										}
+										else{
+											echo "ERROR: Could not able to execute $sql. " . mysqli_error($dba);
+										}
+
+										// Close connection
+										mysqli_close($dba);
+
+
+										?>
 
 									</div>
 								</div>
@@ -147,24 +149,23 @@ include './layout/sidebar.php';
 					</div>
 				</div>
 			</div>
-      <a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
 		</div>
 	</div>
 </div>
 
 <!-- BEGIN VENDOR JS-->
-  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-  <!-- BEGIN VENDOR JS-->
-  <!-- BEGIN PAGE VENDOR JS-->
-  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-  <!-- END PAGE VENDOR JS-->
-  <!-- BEGIN CHAMELEON  JS-->
-  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
-  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
-  <!-- END CHAMELEON  JS-->
-  <!-- BEGIN PAGE LEVEL JS-->
-  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-  <!-- END PAGE LEVEL JS-->
+<script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+<!-- BEGIN VENDOR JS-->
+<!-- BEGIN PAGE VENDOR JS-->
+<script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+<!-- END PAGE VENDOR JS-->
+<!-- BEGIN CHAMELEON  JS-->
+<script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+<script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+<!-- END CHAMELEON  JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+<script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL JS-->
 
 
 </body>

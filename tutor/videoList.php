@@ -26,14 +26,14 @@
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
 
-<?php 
-session_start();
-include './layout/config.php';
-include './layout/sidebar.php';
+  <?php
+  session_start();
+  include './layout/config.php';
+  include './layout/sidebar.php';
 
-?>
+  ?>
 
-<div class="app-content content">
+  <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-wrapper-before"></div>
       <div class="content-header">
@@ -43,76 +43,99 @@ include './layout/sidebar.php';
 
         <div class="content-body">
           <div class="row">
-            <div class="col-12">				
-				      <div class="card">
+            <div class="col-12">
+              <div class="card">
                 <div class="card-header">
                   <div class="card-content">
                     <div class="card-body">
 
-            				<?php 
-            					$thistutor = $_SESSION['username'];
-            					$sqlQuery = "SELECT v.mod_id ,  v.name , v. description , v. filename , v.subtitles , v.datetimestamp
-            					from video v , module m WHERE v.mod_id = m.id AND m.tutor = '$thistutor';";
-            					$result = mysqli_query($db, $sqlQuery);
-            					
-                      echo
-                        "<div class='table-responsive'>".
-                        "<table class='table table-borderless' style='width:80%; font-size:14px;'>" .
-                        "<tr>
-                        <thead>
-                        <th>Module Name</th>
-                        <th>Video Name</th>
-                        <th>Video Description</th>
-                        <th>Filename</th>
-                        <th>Subtitles</th>
-                        <th>Date created</th>
-                        <th></th>
-                        </tr>
-                        </thead>";
+                      <?php
+                      $thistutor = $_SESSION['username'];
+                      $sqlQuery = "SELECT v.mod_id ,  v.name , v. description , v. filename , v.subtitles , v.datetimestamp
+                      from video v , module m WHERE v.mod_id = m.id AND m.tutor = '$thistutor';";
+                      $result = mysqli_query($db, $sqlQuery);
 
-            					while ($row = mysqli_fetch_assoc($result)) {
-            						
-            						$subs = $row['subtitles'];
-            						$vid  = $row['filename'];
+                      echo
+                      "<div class='table-responsive'>".
+                      "<table class='table table-borderless' style='font-size:14px;'>" .
+                      "<tr>
+                      <thead>
+                      <th>Module</th>
+                      <th>Class</th>
+                      <th>Video Name</th>
+                      <th>Video Description</th>
+                      <th>Filename</th>
+                      <th>Subtitles</th>
+                      <th>Uploaded</th>
+                      <th></th>
+                      </tr>
+                      </thead>";
+
+                      while ($row = mysqli_fetch_assoc($result)) {
+
+                        $subs = $row['subtitles'];
+                        $vid  = $row['filename'];
                         $mod_id  = $row['mod_id'];
 
-                        $sql1 = "SELECT name FROM module WHERE id = '$mod_id';";
+                        $sql1 = "SELECT * FROM module WHERE id = '$mod_id';";
                         $result1 = mysqli_query($db, $sql1);
-                        $moduleName = mysqli_fetch_row($result1)[0];
-            						
+                        $rowrow = mysqli_fetch_row($result1);
+                        $moduleName = $rowrow[1];
+                        if ($rowrow[3] == 0){
+                          $day_label = "Sun";
+                        }
+                        elseif ($rowrow[3] == 1) {
+                          $day_label = "Mon";
+                        }
+                        elseif ($rowrow[3] == 2) {
+                          $day_label = "Tue";
+                        }
+                        elseif ($rowrow[3] == 3) {
+                          $day_label = "Wed";
+                        }
+                        elseif ($rowrow[3] == 4) {
+                          $day_label = "Thu";
+                        }
+                        elseif ($rowrow[3] == 5) {
+                          $day_label = "Fri";
+                        }
+                        else{
+                          $day_label = "Sat";
+                        }
                         echo
-                          "<tr>
-                          <th>". $moduleName."</th>
-                          <th>". $row['name']."</th>
-                          <th>". $row['description']."</th>
-                          <th>". $row['filename']."</th>
-                          <th>". $row['subtitles']."</th>
-                          <th>". $row['datetimestamp']."</th>
-                          <th><a href='viewVideo.php?id=$vid&subs=$subs'> 
-                          <b>Watch Video</b></a></th>
-                          </tr>";
-            						
-            					}	
-            					echo "</table>";
-            				?>
+                        "<tr>
+                        <th>". $moduleName."</th>
+                        <th>". $day_label . " " . $rowrow[4] . " - " . $rowrow[5] ."</th>
+                        <th>". $row['name']."</th>
+                        <th>". $row['description']."</th>
+                        <th>". $row['filename']."</th>
+                        <th>". $row['subtitles']."</th>
+                        <th>". $row['datetimestamp']."</th>
+                        <th><a class='btn btn-info' href='viewVideo.php?id=$vid&subs=$subs'>
+                        <b>Watch</b></a></th>
+                        </tr>";
+
+                      }
+                      echo "</table>";
+                      ?>
                     </div>
                   </div>
                 </div>
               </div>
-				
-            </div> 
-			  
-			     <!-- end of the whole module card --> 
+
+            </div>
+
+            <!-- end of the whole module card -->
 
           </div> <!-- div row -->
         </div> <!-- content body -->
 
       </div>
-    </div> <!-- content-wrapper --> 
-  </div> <!-- app content --> 
+    </div> <!-- content-wrapper -->
+  </div> <!-- app content -->
 
 
-<!-- BEGIN VENDOR JS-->
+  <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
@@ -126,5 +149,5 @@ include './layout/sidebar.php';
   <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS-->
 
-  </body>
+</body>
 </html>
