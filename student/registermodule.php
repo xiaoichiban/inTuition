@@ -85,7 +85,7 @@
                       echo
                       "<tr><th>" . $row[7] . "</th>" .
                       "<th>" . $day_label . " " . $row[4] . " to " . $row[5] . "</th>" .
-                      "<th><form action = 'registermoduleprocessing.php?module_id=$row[0]' method = 'post'>
+                      "<th><form action = 'registermodule.php?module_id=$row[0]&module_name=$row[1]' method = 'post'>
                       <input type = 'submit' class = 'btn btn-primary' value = ' Register '/>
                       </form></th></tr>";
                     }
@@ -106,7 +106,6 @@
     </div>  <!-- end of content-wrapper -->
   </div>  <!-- end of app-content content -->
 
-  ?>
 
 
   <!-- BEGIN VENDOR JS-->
@@ -124,4 +123,21 @@
   <!-- END PAGE LEVEL JS-->
 
 </body>
+<?php
+$username = $_SESSION['login_user'];
+$date = date('Y-m-d');
+$module_id = $_GET['module_id'];
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $sql = "INSERT INTO enroll (student, mod_id, status) VALUES ('$username', '$module_id' , 'pending');";
+  $result = mysqli_query($db,$sql);
+  if (!$result) {
+    echo '<script>alert("An error occurred. Registration failed.")</script>';
+    echo '<script>window.location.href = "searchmodules.php";</script>';
+  }
+  else{
+    echo "<script>alert('Registration successful.')</script>";
+    echo '<script>window.location.href = "studentdashboard.php";</script>';
+  }
+}
+?>
 </html>
