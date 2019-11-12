@@ -34,37 +34,19 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class="<?= ($activePage == 'tutordashboard') ? 'active':'nav-item'; ?>"><a href="tutordashboard.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Home</span></a>
           </li>
-          <li class="<?= ($activePage == 'uploadVideo') ? 'active':'nav-item'; ?>"><a href="uploadVideo.php"><i class="ft-home"></i><span class="menu-title" data-i18n="">Upload Video</span></a>
+          <li class="<?= ($activePage == 'uploadVideo') ? 'active':'nav-item'; ?>"><a href="uploadVideo.php"><i class="ft-upload"></i><span class="menu-title" data-i18n="">Upload Video</span></a>
           </li>
-          <li class="<?= ($activePage == 'videoList') ? 'active':'nav-item'; ?>"><a href="videoList.php"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Video List</span></a>
+          <li class="<?= ($activePage == 'videoList') ? 'active':'nav-item'; ?>"><a href="videoList.php"><i class="ft-video"></i><span class="menu-title" data-i18n="">Video List</span></a>
           </li>
-		  
-		  
-		  
-          <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>">
-		  <a href="../chatwall/chatwall.php" target="_blank"><i class="ft-droplet"></i>
-		  <span class="menu-title" data-i18n="">Chat</span></a>
+          <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"> <a href="../chatwall/chatwall.php" target="_blank"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
           </li>
-          <li class="<?= ($activePage == 'webrtc') ? 'active':'nav-item'; ?>"><a href="webrtc.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">WebRTC</span></a>
+          <li class="<?= ($activePage == 'webrtc') ? 'active':'nav-item'; ?>"><a href="webrtc.php"><i class="ft-phone-call"></i><span class="menu-title" data-i18n="">WebRTC</span></a>
           </li>
-		  
-		  
-		  		  
-		  		  
-		  <li class="nav-item"><a href="../forum/forum.php"><i class="ft-message-circle"></i>
-		  <span class="menu-title" data-i18n="">Forum</span></a>
+          <li class="nav-item"><a href="../forum/forum.php"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Forum</span></a>
           </li>
-		  
-		
-		  
-		  
-		  
-		  
-          <li class="<?= ($activePage == 'viewProfile') ? 'active':'nav-item'; ?>">
-		  <a href="viewProfile.php?username=<?php echo $username?>"><i class="ft-layers">
-		  </i><span class="menu-title" data-i18n="">My Profile</span></a>
+          <li class="<?= ($activePage == 'viewProfile') ? 'active':'nav-item'; ?>"> <a href="viewProfile.php?username=<?php echo $username?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
-          <li class="nav-item"><a href="logout.php"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Logout</span></a>
+          <li class="nav-item"><a href="logout.php"><i class="ft-power"></i><span class="menu-title" data-i18n="">Logout</span></a>
           </li>
 
         </ul>

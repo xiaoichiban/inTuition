@@ -89,13 +89,13 @@
                             <p class="proile-rating"><br/></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                               <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                <a class="nav-link active btn-secondary" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                               </li>
                             </ul>
                           </div>
                         </div>
                         <div class="col-md-2">
-                          <input type="button" class="profile-edit-btn" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
+                          <input type="button" class="btn btn-secondary" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
                         </div>
                       </div>
                       <div class="row">
@@ -148,8 +148,10 @@
                                 </div>
                               </div>
                               <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                   <label>Your Bio</label><br/>
+                                </div>
+                                <div class="col-md-6">
                                   <p>"<?php echo $account[4] ?>"</p>
                                 </div>
                               </div>
@@ -207,6 +209,21 @@
   </div>
 </div>
 </div>
+
+<!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+
 </body>
 </html>
 

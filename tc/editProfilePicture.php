@@ -1,6 +1,5 @@
 <?php
 session_start();
-include './layout/sidebar.php';
 ?>
 <html>
 <head>
@@ -34,12 +33,17 @@ include './layout/sidebar.php';
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-green" data-col="2-columns">
 
+<?php
+include './layout/sidebar.php';
+
+?>
+
 	<div class="app-content content">
 		<div class="content-wrapper">
 			<div class="content-wrapper-before"></div>
 			<div class="content-header row">
 				<div class="content-header-left col-md-4 col-12 mb-2">
-					<h3 class="content-header-title">Edit Profile</h3>
+					<h3 class="content-header-title">Edit Profile Picture</h3>
 				</div>
 
 			</div>
@@ -55,10 +59,6 @@ include './layout/sidebar.php';
 											<div class="row">
 												<div class="col-md-12">
 
-
-													<body>
-														<div align="center">
-															<h3>Edit Profile Picture</h3>
 															<br/>
 															<?php
 
@@ -80,48 +80,34 @@ include './layout/sidebar.php';
 
 																	$row = mysqli_fetch_array($result);
 
-
 																	echo "
-
-
 
 																	<div class='container'>
 
-
-
 																	<div class='row'>
-																	<div class='col'>
-																	<br/>
-																	</div>
-
 
 																	<div class='col'>
 																	<form action='editProfilePictureProcess.php' method='post' enctype='multipart/form-data'>
 
-																	<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
+																	<b>Profile Picture:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
 																	<br/><br/>
 
 																	<script src='./js/jslib.js'></script>
-
+                                  <br>
 																	<label>Select image to upload:</label>
-
-																	<label class='file-upload btn btn-primary'>
-
+                                  <br>
+																	<label class='file-upload'>
 																	<input type='file' class='form-control-file'
 																	accept='image/*' name='fileToUpload' id='fileToUpload' required='true' onchange='checkFileSize(this)'>
 																	</label>
 
-																	<br/> <br/>
+																	<br/><br/>
 
-																	<button type='submit' class='btn btn-success'>Change Profile Picture</button>
+																	<button type='submit' class='btn btn-dark'>Change Profile Picture</button>
 
 																	</form>
 																	</div>
 
-
-																	<div class='col'>
-																	<br/>
-																	</div>
 
 																	</div>
 																	";
@@ -144,7 +130,6 @@ include './layout/sidebar.php';
 
 
 															?>
-														</div>
 													</div>
 												</div>
 											</div>
@@ -156,7 +141,22 @@ include './layout/sidebar.php';
 					</div>
 				</div>
 			</div>
+      <a class='btn btn-secondary' href = 'viewMyProfile.php'>Back to profile</a>
 		</div>
 	</div>
+  <!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+
 </body>
 </html>

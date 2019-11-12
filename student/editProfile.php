@@ -77,39 +77,31 @@
 
 															$row = mysqli_fetch_array($result);
 															echo "
-															<div class='container' style='width:80%;'>
-															<div class='row'>
-															<div class='col-md-10'>
+
 															<form action='editProfileProcess.php' method='post' >
 
 															<div class='form-group'>
 															<label for='email'>Email</label>
-															<input type='email' class='form-control' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
+															<input type='email' class='form-control' style='width:50%;' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
 															<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>
 															</div>
 
 															<div class='form-group'>
 															<label for='about_me'>About Me</label>
-															<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
+															<input type='text' class='form-control' style='width:50%;' name='about_me' id='about_me' value='".$row['about_me']."' required>
 															</div>
-															<button type='submit' class='btn btn-info' style='float:right;'>Change My Details</button>
+															<button type='submit' class='btn btn-info'>Change My Details</button>
 
 															</form>
 
 															<br/>
 															<br/>
-															<br/>
 
-															<b>Profile Photo:</b> <br/><br/> <div style='text-align:center;'><img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px'/></div>
+															<b>Profile Photo:</b> <br/><br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px'/>
 															<br/><br/>
 															<form action='editProfilePicture.php'>
-															<button type='submit' class='btn btn-info' style='float:right;'>Change Profile Picture</button>
-															</form>
-															</div>
-															<div class='col'>
-															<br/>
-															</div>
-															</div>";
+															<button type='submit' class='btn btn-info'>Change Profile Picture</button>
+															</form>";
 
 															// Free result set
 															mysqli_free_result($result);
@@ -127,7 +119,7 @@
 													// Close connection
 													mysqli_close($dba);
 													?>
-													<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
+
 												</div>
 											</div>
 										</div>
@@ -138,7 +130,15 @@
 					</div>
 				</div>
 			</div>
+      <a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
 		</div>
 	</div>
+  <!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
 </body>
 </html>

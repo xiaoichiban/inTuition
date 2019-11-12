@@ -1,7 +1,6 @@
 <?php
 include '../config.php';
 include '../session.php';
-include './layout/sidebar.php';
 ?>
 
 <html>
@@ -33,6 +32,9 @@ include './layout/sidebar.php';
 
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-green" data-col="2-columns">
 
+<?php
+  include './layout/sidebar.php';
+?>
   <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-wrapper-before"></div>
@@ -48,7 +50,7 @@ include './layout/sidebar.php';
           <div class="card" style="background: none;">
             <form action="tcModuleManagement.php" method="GET">
               <input type="text" style="width: 50%; display: inline;" placeholder="Enter Mod Description" name="search"  class="form-control"/>
-              <input type="submit" class="btn btn-primary"  value="Search for module" />
+              <input type="submit" class="btn btn-secondary"  value="Search for module" />
             </form>
           </div>
         </div>
@@ -59,10 +61,17 @@ include './layout/sidebar.php';
           </div>
         </div>
 
-
-        <div class="card-content collapse show">
-          <div class="table-responsive">
-            <table class="table table-striped">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">All My Tutors</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+              </div>
+              <div class="card-content collapse show">
+                <div class="card-body">
+                  <div class="table-responsive">
+            <table class="table" style="font-size:14px;">
               <thead>
                 <tr>
                   <th>Module ID</th>
@@ -173,7 +182,12 @@ include './layout/sidebar.php';
               </tbody>
             </table>
           </div>
-        </div>
+                </div>
+              </div>
+            </div> <!-- card --> 
+          </div> <!-- col-12 -->
+        </div> <!-- row -->
+        
       </div>
     </div>
   </div>

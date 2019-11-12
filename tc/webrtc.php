@@ -32,23 +32,12 @@ include './layout/session.php';
       <div class="content-wrapper-before"></div>
       <div class="content-header row">
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title">Tutor Management</h3>
+          <h3 class="content-header-title">Web RTC</h3>
         </div>
 
       </div>
 
       <div class="content-body">
-        <div class="row pl-1">
-          <div class="card" style="background: none;">
-            <!-- Module search function -->
-            <form action="tcTutorManagement.php" method="GET">
-              <input type="text" style="width: 50%; display: inline;" 
-			  name="search" placeholder="Enter tutor username" class="form-control"/>
-              <input type="submit" class="btn btn-primary" value="Search for module" />
-            </form>
-          </div>
-        </div>
-        <br/>
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -59,11 +48,9 @@ include './layout/session.php';
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
               </div>
               <div class="card-content collapse show">
-
-			  
-			  
+                <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-striped">
+                  <table class="table" style="font-size: 14px;">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -92,15 +79,12 @@ include './layout/session.php';
 					  
 					  
 					  
-					  
 					  <tr>
                         <th scope="col">3</th>
                         <th scope="col"> 
 						<a href="https://localhost:8443" target="_blank"> Node JS </a>  </th>
                         <th scope="col">(Local)Node JS</th>
                       </tr>
-					  
-					  
 					  
 					  
 					  
@@ -113,9 +97,6 @@ include './layout/session.php';
                       </tr>
 
 
-
-
-
                       <?php
 
                       ?>
@@ -123,11 +104,27 @@ include './layout/session.php';
                   </table>
                 </div>
               </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+
 </body>
 </html>
