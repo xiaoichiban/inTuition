@@ -72,7 +72,11 @@ else {
                     <br><br>
                     <input type="text" class="form-control" style="width: 40%; display:inline;" placeholder="Option d" name="optiond" size="48">
                     <br><br>
+                    
                     <input type="text" class="form-control" style="width: 40%; display:inline;" placeholder="Correct Answer" name="correctans" size="48">
+                    <fieldset class="form-group">
+                      <small class="text-muted"><i>Correct answer is either a, b, c, or d</i></small>
+                    </fieldset>
                     <br><br>
                     <input type="hidden" name="quizid" value="<?= $quiz_id ?>" size="48">
                     <input type="submit" class="btn btn-primary" value="Create"/>

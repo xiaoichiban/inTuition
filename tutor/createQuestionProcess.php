@@ -16,11 +16,9 @@
   VALUES ('$questiontitle', '$optiona', '$optionb', '$optionc', '$optiond', '$correctans', '$quizid')";
 
   if ($db->query($sql) === TRUE) {
-      echo $questiontitle . " created successfully!";
-
-      echo "<h3><a href = 'createQuestion.php?quizid=". $quizid ."'>Add question</a></h3>";
+    header("Location: viewquiz.php?quizid=$quizid");
   } else {
       echo "Error: " . $sql . "<br>" . $db->error;
   }
-  echo "<h3><a href = 'viewquiz.php?quizid=". $quizid ."'>Back</a></h3>";
+  
 ?>

@@ -28,6 +28,7 @@
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
 
 <?php
+session_start();
 include('./layout/config.php');
 include ('./layout/sidebar.php');
 ?>

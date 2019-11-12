@@ -76,10 +76,14 @@
                   <div class="card-content">
                     <div class="pl-1">
                       <form action="editQuizProcess.php?quizid=<? echo $quiz_id; ?>" method="post">
-
+                        <br />
+                        <h6>Quiz title</h6>
+                        <input type="text" class="form-control" style="width:50%;" name="quiztitle" size="48" value="<?= $row[1] ?>">
+                        <br />
                         <?
 
                         $counter = 0;
+
                         while ($row1 = mysqli_fetch_row($result1)) {
 
                           echo "<br><h6>Question " . ++$counter . "</h6>"; 
