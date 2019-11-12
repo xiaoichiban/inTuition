@@ -1,6 +1,7 @@
 <?php
-//include './layout/config.php';
-//include './layout/session.php';
+session_start();
+include './layout/config.php';
+
 ?>
 
 <html>
@@ -22,7 +23,7 @@
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/core/colors/palette-gradient.css">
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/pages/dashboard-ecommerce.css">
 </head>
-<body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+<body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
   <?php
   include './layout/sidebar.php';
   ?>
@@ -38,25 +39,18 @@
       </div>
 
       <div class="content-body">
-        <div class="row pl-1">
-          <div class="card" style="background: none;">
-			<br/><br/>
-
-          </div>
-        </div>
         <br/>
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-			  
-                <h3 class="card-title">WebRTC services</h3>
-				
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-              </div>
-              <div class="card-content collapse show">
-
-			  
+			         <div class="card-content">
+                  <div class="card-body">
+                  <h3 class="card-title">WebRTC services</h3>
+  				
+                  <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                </div>
+                <div class="card-content collapse show">
 			  
                 <div class="table-responsive">
                   <table class="table table-striped">
@@ -75,9 +69,7 @@
                         <th scope="col"> 
 						<a href="https://localhost/pets/webrtc2/" target="_blank"> PHP </a>  </th>
                         <th scope="col">(Local) Basic 1-1</th>
-                      </tr>
-					  
-					  
+                      </tr>					  
 					  
 					  <tr>
                         <th scope="col">2</th>
@@ -86,19 +78,12 @@
                         <th scope="col">(Local)Based on Workerman</th>
                       </tr>
 					  
-					  
-					  
-					  
 					  <tr>
                         <th scope="col">3</th>
                         <th scope="col"> 
 						<a href="https://localhost:8443" target="_blank"> Node JS </a>  </th>
                         <th scope="col">(Local)Node JS</th>
                       </tr>
-					  
-					  
-					  
-					  
 					  
 					  <tr>
                         <th scope="col">4</th>
@@ -109,14 +94,13 @@
                       </tr>
 
 
-
-
-
                       <?php
 
                       ?>
                     </tbody>
                   </table>
+                </div>
+              </div>
                 </div>
               </div>
             </div>

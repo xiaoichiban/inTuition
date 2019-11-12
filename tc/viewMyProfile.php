@@ -169,15 +169,14 @@
                           <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                              <iframe
-                              src="https://tools.onemap.sg/minimap/minimap.html?
-                              mWidth=790&amp;mHeight=595&amp;
-                              latLng=<?php echo $long;?>,<?php echo $lat;?>&amp;
+							<!---
+<iframe src="https://tools.onemap.sg/minimap/minimap.html?mWidth=790&amp;mHeight=595&amp;
+                              latLng=<?php// echo $long;?>,<?php//  echo $lat;?>&amp;
                               zoomLevl=17"
                               height="500px" width="100%"
                               scrolling="no" frameborder="0">
                             </iframe>
-
+							-->
 
                             <br/>
                             <br/>
