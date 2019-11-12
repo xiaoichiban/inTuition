@@ -75,43 +75,58 @@ $module_id = $_GET['module_id'];
                       }
                       else {
                         echo
-                        "<tr><th>module_name</th><th>" . $row[1] . "</th></tr>" .
-                        "<tr><th>description</th><th>" . $row[2] . "</th></tr>" .
-                        "<tr><th>tutored by</th><th>" . $row[4] . "</th></tr>" .
-                        "<tr><th>number of students</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id' AND status = 'accepted';"))[0] . "</th></tr>" .
-                        "</table>";
+                        "<tr><th>Module Name</th><th>" . $row[1] . "</th></tr>" .
+                        "<tr><th>Description</th><th>" . $row[2] . "</th></tr>" .
+                        "<tr><th>Tutored by</th><th>" . $row[4] . "</th></tr>" .
+                        "<tr><th>Number of students</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id' AND status = 'accepted';"))[0] . "</th></tr>" .
+                        "</table></div></div></div>";
                       }
 
                       $sql = "SELECT * FROM enroll WHERE mod_id = '$module_id' AND status = 'accepted' ORDER BY student";
                       $result = mysqli_query($db, $sql);
                       $row = mysqli_fetch_row($result);
 
-                      echo
-                      "<h3 style='padding:15'><b>List of students enrolled<b></h3>
-                        <form method='post' action='removeStudentProcess.php'>
-                        <table class='table table-striped'>
-                          <tr>
-                          <th>Student name</th>
-                          <th>Date of Enrollment</th>
-                          <th></th>
-                          <tr/>" .
-                        "<tr><th>" . $row[1] . "</th>" .
-                        "<th>" . $row[4] . "</th>" .
-                        "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$row[1]'>
-                        <input type='submit' class='btn-dark' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
-                      </table>
-                      </form>";
+
                       ?>
                     </tbody>
                   </table>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class = 'card-title' style='padding:15'><b>List of students enrolled</b></h3>
+                    </div>
+                    <div class="card-body">
+                      <?php
+                      echo
+                      "<form method='post' action='removeStudentProcess.php'>
+                      <table class='table '>
+                      <tr>
+                      <th>Student Name</th>
+                      <th>Date of Enrollment</th>
+                      <th></th>
+                      <tr/>" .
+                      "<tr><th>" . $row[1] . "</th>" .
+                      "<th>" . $row[4] . "</th>" .
+                      "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$row[1]'>
+                      <input type='submit' class='btn-dark' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
+                      </table>
+                      </form>";
+                      ?>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
+              <a class='btn btn-dark' href = 'tcModuleManagement.php'>Back to Module List</a>
             </div>
           </div>
         </div>
       </div>
-      <a class='btn btn-primary' href = 'tcdashboard.php'>Back</a>
-      <a class='btn btn-dark' href = 'tcModuleManagement.php'>Back to Module List</a>
+
     </div>
   </div>
 </body>
