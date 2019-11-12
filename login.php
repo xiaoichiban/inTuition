@@ -257,20 +257,14 @@ margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important
 
 
 <div class="container" style="background-color:#f1f1f1" align='center'>
-  
-  
-<a href="register.html">Don't have an account? >> Register For an Account Now</a>
+	<a href="register.html">Don't have an account? >> Register For an Account Now</a>
 	
 	<br/>
 	<br/>
 	
-	<a href="resetPassword.php" 
-	style="font-family:Old Standard;font-size: 14px"
-	type="button" class="btn btn-danger">RESET MY PASSWORD</a>
+	<button type="button" class="btn btn-danger" style="width: 30%;"><a style="color:white;" href="resetPassword.php" >RESET MY PASSWORD</a></button>
 
-	<b><a href="register.html" 
-	style="font-family:Old Standard;font-size: 14px"
-	type="button" class="btn btn-primary">CREATE NEW ACCOUNT</a></b>
+	<button type="button" class="btn btn-danger" style="width: 30%;"><b><a style="color:white;" href="register.html">CREATE NEW ACCOUNT</a></button>
 
 	
 	</div>

@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <title>Dashboard</title>
 
@@ -7,7 +8,8 @@
   <link rel="stylesheet" href="layout/timetablestyle.css">
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700"
+    rel="stylesheet">
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
   <link rel="stylesheet" type="text/css" href="./layout/theme-assets/css/vendors.css">
@@ -24,9 +26,11 @@
   <!-- BEGIN Custom CSS-->
   <!-- END Custom CSS-->
 </head>
-<body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
-<?php
+<body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click"
+  data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+
+  <?php
 include('session.php');
 include ('./layout/sidebar.php');
 
@@ -51,18 +55,16 @@ if (mysqli_num_rows($result) != 1) {
 else {
 
 ?>
-
   <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-wrapper-before"></div>
-        <div class="content-header row">
-          <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title"><?php echo $row[1]; ?></h3>
-          </div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title"><?php echo $row[1]; ?></h3>
         </div>
+      </div>
 
-        <div class="content-body">
-
+      <div class="content-body">
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -70,8 +72,8 @@ else {
                 <h4 class="card-title">Quiz details</h4>
                 <div class="card-content">
                   <div class="card-body">
-                    
-                      <?php 
+
+                    <?php 
                         echo
                           "<table style='width:40%' class='table table-borderless'>" .
                           "<tr><th>Quiz title</th><th>" . $row[1] . "</th></tr>" .
@@ -95,17 +97,16 @@ else {
 
                           echo "</table>";
                         }
-
                       ?>
-                    
+
                   </div>
                 </div>
-            </div>
-          </div> <!-- end of card -->
-        </div> <!-- end of col-12 -->
-      </div> <!-- end of row -->
+              </div>
+            </div> <!-- end of card -->
+          </div> <!-- end of col-12 -->
+        </div> <!-- end of row -->
 
-      <div class="row">
+        <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
@@ -119,7 +120,6 @@ else {
                         while ($row1 = mysqli_fetch_row($result1)) {
                           echo "<br><br><b>Question " . ++$qnscounter . "</b>"; 
                           echo "<br>";
-
                           echo $row1[1];
                           echo "<br>";
                           echo 
@@ -134,7 +134,6 @@ else {
                       } else {
                         echo "<h6 class='pt-2'>There are no questions yet. </h6>";
                       }
-                      
                       echo "<br>";
                       
                     ?>
@@ -145,28 +144,28 @@ else {
             </div>
           </div>
           <div class="pl-1">
-            <button class='btn btn-default'><a href = 'viewmodule.php?module_id=<?= $row[2] ?>'>Back</a></button>
+            <button class='btn btn-default'><a href='viewmodule.php?module_id=<?= $row[2] ?>'>Back</a></button>
           </div>
         </div>
 
-    </div> <!-- end of content-wrapper -->
-  </div> <!-- end of app-content -->
+      </div> <!-- end of content-wrapper -->
+    </div> <!-- end of app-content -->
 
 
-<!-- BEGIN VENDOR JS-->
-  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-  <!-- BEGIN VENDOR JS-->
-  <!-- BEGIN PAGE VENDOR JS-->
-  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-  <!-- END PAGE VENDOR JS-->
-  <!-- BEGIN CHAMELEON  JS-->
-  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
-  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
-  <!-- END CHAMELEON  JS-->
-  <!-- BEGIN PAGE LEVEL JS-->
-  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-  <!-- END PAGE LEVEL JS-->
+    <!-- BEGIN VENDOR JS-->
+    <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN CHAMELEON  JS-->
+    <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+    <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+    <!-- END CHAMELEON  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL JS-->
 
 </body>
-</html>
 
+</html>

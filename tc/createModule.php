@@ -42,48 +42,58 @@ include './layout/sidebar.php';
       </div>
 
       <div class="content-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+    
+                <form action="createModuleProcess.php" method="post">
+                  <b><h4>Name</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" name="name" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Description</h4></b>
+                  <br>
+                  <textarea style="width: 50%; display: inline;" class="form-control" placeholder="Short Module Description" rows="4" cols="50" name="description"></textarea>
+                  <br>
+                  <br><br><br>
+                  <b><h4>Class Day</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class Day" name="day" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Class Start Time</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class start timing" name="start" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Class End Time</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class end timing" name="end" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Module Tutor</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor name" name="tutor" size="48">
+                  <br>
+                  <br><br><br>
+                  <b><h4>Status</h4></b>
+                  <br>
+                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="default is active" name="status" size="48">
+                  <br><br>
+                  <div class="row pl-1">
+                    <div class="card" style="background: none;">
+                        <input type="submit" class="btn btn-primary" value="Create" />
+                    </div>
+                  </div>
+                </form>
 
-        <form action="createModuleProcess.php" method="post">
-          <b>Name</b>
-          <br>
-          <input type="text" name="name" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Description</h4></b>
-          <br>
-          <textarea style="width: 50%; display: inline;" class="form-control" placeholder="Short Module Description" rows="4" cols="50" name="description"></textarea>
-          <br>
-          <br><br><br>
-          <b><h4>Class Day</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class Day" name="day" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Class Start Time</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class start timing" name="start" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Class End Time</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class end timing" name="end" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Module Tutor</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor name" name="tutor" size="48">
-          <br>
-          <br><br><br>
-          <b><h4>Status</h4></b>
-          <br>
-          <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="default is active" name="status" size="48">
-          <br><br>
-          <div class="row pl-1">
-            <div class="card" style="background: none;">
-                <input type="submit" class="btn btn-primary" value="Create" />
-            </div>
-          </div>
-        </form>
+              </div> <!-- card header --> 
+            </div> <!-- card --> 
+          </div> <!-- col-12 --> 
+        </div> <!-- row --> 
+
       </div>
     </div>
   </div>
