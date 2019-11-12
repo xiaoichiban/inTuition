@@ -1,7 +1,6 @@
 <?php
 include('session.php');
-$thisuser = $_SESSION['login_user'];
-$loginlast = $_SESSION['last_login'];
+$thisuser = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -28,11 +27,12 @@ $loginlast = $_SESSION['last_login'];
 		
         <div class="header">
             <?php
-            $username = $_SESSION['login_user'];
+            $username = $_SESSION['username'];
             $sql = "SELECT avatar_path FROM account WHERE username = '$username';";
             $result = mysqli_query($db, $sql);
             $row = mysqli_fetch_assoc($result);
-            echo '<h1>Welcome, ' . $username . '&nbsp;&nbsp;&nbsp;<img src = "/pets/img/account/' . $row['avatar_path'] . '" style="height:40px;"></h1>';
+			
+            echo '<h1>Welcome, $username &nbsp;&nbsp;&nbsp;<img src = "../profilepics/' . $row['avatar_path'] . '" style="height:40px;"></h1>';
             ?>
         </div>
         <div class="row">
@@ -47,7 +47,7 @@ $loginlast = $_SESSION['last_login'];
             </div>
 
             <div class="column">
-                <b><p style="text-align:right"> Last Login ::  <?php echo $loginlast; ?>  </p></b>
+                <b><p style="text-align:right"> Welcome ! </p></b>
                 <?php
                 $query7 = "SELECT datetimestamp, topic, body FROM announcement ORDER BY datetimestamp DESC LIMIT 5;";
                 $result7 = mysqli_query($db, $query7);

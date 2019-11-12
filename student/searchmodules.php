@@ -91,7 +91,8 @@ include ('session.php');
                                   }
                                 }
                             ?>
-
+                            <br/>
+                            <br/>
                       </div>
                     </div>
                   </div>
@@ -142,7 +143,7 @@ include ('session.php');
 
                               ?>
                               <br/>
-
+                              <br/>
                       </div>
 
                     </div>
