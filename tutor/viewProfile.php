@@ -229,9 +229,6 @@
 </body>
 
 <style>
-body{
-  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-}
 .emp-profile{
   padding: 3%;
   margin-top: 3%;
