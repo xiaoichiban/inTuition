@@ -13,7 +13,7 @@
         <div class="navbar-container content">
           <div class="collapse navbar-collapse show" id="navbar-mobile">
             <ul class="nav navbar-nav mr-auto float-left">
-              <li class="nav-item d-block d-md-none"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#">
+              <li class="nav-item d-block d-md-none"><a class="nav-link nav-menu-main menu-toggle hidden-xs" style="color:#ededed;" href="#">
                 <i class="ft-menu"></i></a></li>
               </li>
             </ul>
@@ -52,7 +52,7 @@
           </li>
 		  
 		  
-		  <li class="<?= ($activePage == 'webrtc') ? 'active':'nav-item'; ?>"><a href="webrtc.php"><i class="ft-message-circle">
+		  <li class="<?= ($activePage == 'webrtc') ? 'active':'nav-item'; ?>"><a href="webrtc.php"><i class="la la-video-camera">
 		  </i><span class="menu-title" data-i18n="">WebRTC</span></a>
           </li>
 		  

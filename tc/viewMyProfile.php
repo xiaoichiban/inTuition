@@ -95,7 +95,7 @@
                           </div>
                         </div>
                         <div class="col-md-2">
-                          <input type="button" class="profile-edit-btn" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
+                          <input type="button" class="btn btn-secondary" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
                         </div>
                       </div>
                       <div class="row">

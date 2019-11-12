@@ -120,7 +120,7 @@ include './layout/sidebar.php';
                           "<tr><th>" . $row[1] . "</th>" .
                           "<th>" . $row[4] . "</th>" .
                           "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$row[1]'>
-                          <input type='submit' class='btn-sm btn-dark' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
+                          <input type='submit' class='btn btn-sm btn-dark' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
                           </thead>
                           </table>
                           </form>";

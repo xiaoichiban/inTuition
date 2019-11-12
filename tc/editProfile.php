@@ -88,13 +88,13 @@
 
 															<div class='form-group'>
 															<label for='email'>Email</label>
-															<input type='email' class='form-control' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
+															<input type='email' class='form-control' style='width:50%;' id='email' name='email' aria-describedby='emailHelp' value='".$row['email']."' required>
 															<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>
 															</div>
 
 															<div class='form-group'>
 															<label for='about_me'>About Me</label>
-															<input type='text' class='form-control' name='about_me' id='about_me' value='".$row['about_me']."' required>
+															<input type='text' class='form-control' style='width:50%;' name='about_me' id='about_me' value='".$row['about_me']."' required>
 															</div>
 
 															<button type='submit' class='btn btn-dark'>Change My Details</button>

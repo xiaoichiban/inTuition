@@ -140,7 +140,7 @@
                         echo "<td>".$row['filename'] . "</td>";
                         echo "<td>".$row['subtitles'] . "</td>";
                         echo "<td>".$row['datetimestamp'] . " </td>";
-                        echo "<td><a class='btn btn-info' href='viewVideo.php?id=$vid&subs=$subs'>
+                        echo "<td><a class='btn btn-sm btn-info' href='viewVideo.php?id=$vid&subs=$subs'>
                         <b>WATCH</b></a> </td></tr>";
                       }
                       echo "</tbody></table><br/>";
