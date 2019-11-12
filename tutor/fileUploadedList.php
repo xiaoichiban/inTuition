@@ -101,7 +101,7 @@ include ('./layout/sidebar.php');
         </form>
         <br><br>
 
-        <button class='btn btn-primary'><a style="color:white;" href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
+        <a class='btn btn-primary' style="color:white;" href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a>
 
       </div> <!-- content wrapper -->
     </div> <!-- app content -->
