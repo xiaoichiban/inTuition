@@ -42,166 +42,172 @@
   $result = mysqli_query($db, $sql);
   $account = mysqli_fetch_row($result);
   if (mysqli_num_rows($result) != 1) {
-    echo "invalid tutor $tutor_id";
+    echo"
+    <div class='app-content content'>
+    <div class='content-wrapper'>
+    <div class='content-wrapper-before'></div>
+    <div class='content-header row'>
+    <div class='content-header-left col-md-4 col-12 mb-2'>
+    <h3 class='content-header-title'>invalid tutor $account</h3>
+    </div></div></div></div>";
   }
+  else {
 
-  $sql = "SELECT * FROM tc WHERE username = '$username'; ";
-  $result = mysqli_query($db, $sql);
-  $tutor = mysqli_fetch_row($result);
+    $sql = "SELECT * FROM tutor WHERE username = '$username'; ";
+    $result = mysqli_query($db, $sql);
+    $tutor = mysqli_fetch_row($result);
 
+    ?>
 
-  if (mysqli_num_rows($result) != 1) {   echo "<h1 align='center'> invalid tc </h1>" ;  }
+    <div class="app-content content">
+      <div class="content-wrapper">
+        <div class="content-wrapper-before"></div>
+        <div class="content-header row">
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">Profile</h3>
+          </div>
 
-  ?>
-
-  <div class="app-content content">
-    <div class="content-wrapper">
-      <div class="content-wrapper-before"></div>
-      <div class="content-header row">
-        <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title">Profile</h3>
         </div>
+        <div class="content-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title"><?php echo $username ?> Profile</h4>
+                  <div class="card-content">
+                    <div class="card-body">
+                      <div class="container emp-profile">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="profile-img">
+                              <img src="../profilepics/<?php echo $account[7] ?>" alt="Profile picture"/>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="profile-head">
+                              <h5>
+                                <?php echo $account[1] ?>
+                              </h5>
+                              <h6>
+                                Tutor
+                              </h6>
+                              <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Experience</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <input type="button" class="profile-edit-btn" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="profile-work">
+                              <p>WORK LINK</p><br/>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Name</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p><?php echo $account[3] ?></p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Email</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p><?php echo $account[6] ?></p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Tuition Centre</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p><?php echo $tutor[2] ?></p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Date Registered</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p><?php echo $account[9] ?></p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Status</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p><?php echo $account[10] ?></p>
+                                  </div>
+                                </div>
+                              </div>
 
-      </div>
-      <div class="content-body">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"><?php echo $username ?> Profile</h4>
-                <div class="card-content">
-                  <div class="card-body">
-                    <div class="container emp-profile">
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="profile-img">
-                            <img src="../profilepics/<?php echo $account[7] ?>" alt="Profile picture"/>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="profile-head">
-                            <h5>
-                              <?php echo $account[1] ?>
-                            </h5>
-                            <h6>
-                              Tutor
-                            </h6>
-                            <p class="proile-rating">RANKINGS : <span>8/10</span></p>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                              <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Experience</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div class="col-md-2">
-                          <input type="button" class="profile-edit-btn" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="profile-work">
-                            <p>WORK LINK</p><br/>
-                          </div>
-                        </div>
-                        <div class="col-md-8">
-                          <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Name</label>
+                              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Experience</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p>Expert</p>
+                                  </div>
                                 </div>
-                                <div class="col-md-6">
-                                  <p><?php echo $account[3] ?></p>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Hourly Rate</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p>$70/hr</p>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Email</label>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Total Modules Taught</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p>8</p>
+                                  </div>
                                 </div>
-                                <div class="col-md-6">
-                                  <p><?php echo $account[6] ?></p>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>English Level</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p>Expert</p>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Tuition Centre</label>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <label>Last Seen Availability</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p><?php echo $account[5] ?></p>
+                                  </div>
                                 </div>
-                                <div class="col-md-6">
-                                  <p><?php echo $tutor[2] ?></p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Date Registered</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p><?php echo $account[9] ?></p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Status</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p><?php echo $account[10] ?></p>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <label>Your Bio</label><br/>
+                                    <p>"<?php echo $account[4] ?>"</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Experience</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p>Expert</p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Hourly Rate</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p>$70/hr</p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Total Modules Taught</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p>8</p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>English Level</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p>Expert</p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <label>Last Seen Availability</label>
-                                </div>
-                                <div class="col-md-6">
-                                  <p><?php echo $account[5] ?></p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-12">
-                                  <label>Your Bio</label><br/>
-                                  <p>"<?php echo $account[4] ?>"</p>
-                                </div>
-                              </div>
-                            </div>
+                            <br/>
                           </div>
-                          <br/>
                         </div>
                       </div>
                     </div>
@@ -213,14 +219,11 @@
         </div>
       </div>
     </div>
-  </div>
+  <?php } ?>
 </body>
 </html>
 
 <style>
-body{
-  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-}
 .emp-profile{
   padding: 3%;
   margin-top: 3%;

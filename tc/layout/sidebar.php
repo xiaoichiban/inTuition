@@ -45,7 +45,7 @@
           </li>
 		  <li class="nav-item"><a href="webrtc.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">WebRTC</span></a>
           </li>
-          <li class="<?= ($activePage == 'viewMyProfile') ? 'active':'nav-item'; ?>"><a href="viewMyProfile.php?username=<?php echo $username;?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
+          <li class="<?= ($activePage == 'viewMyProfile') ? 'active':'nav-item'; ?>"><a href="viewMyProfile.php"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
           </li>
           <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href="viewfeedback.php"><i class="ft-help-circle"></i><span class="menu-title" data-i18n="">Feedback</span></a>
           </li>

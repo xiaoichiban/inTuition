@@ -42,16 +42,10 @@
   $sql = "SELECT * FROM account WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
   $account = mysqli_fetch_row($result);
-  if (mysqli_num_rows($result) != 1) {
-    echo "invalid tutor $tutor_id";
-  }
 
   $sql = "SELECT * FROM tc WHERE username = '$username'; ";
   $result = mysqli_query($db, $sql);
   $tc = mysqli_fetch_assoc($result);
-  if (mysqli_num_rows($result) != 1) {
-    echo "invalid tc $tutor_id";
-  }
 
   ?>
 
@@ -90,7 +84,7 @@
                               <?php echo $account[1] ?>
                             </h5>
                             <h6>
-                              Student
+                              Tuition Centre
                             </h6>
                             <p class="proile-rating"><br/></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">

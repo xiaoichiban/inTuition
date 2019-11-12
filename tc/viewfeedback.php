@@ -38,7 +38,7 @@ include ('./layout/sidebar.php');
       <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">Feedback</h3>
+            <h3 class="content-header-title">Feedback Management</h3>
           </div>
         </div>
 
@@ -73,7 +73,7 @@ include ('./layout/sidebar.php');
                           <td>". $row['title']."</td>
                           <td>". $row['datetimestamp']."</td>
                           <td>". $row['status']."</td>
-                          <td><a href = 'viewfeedbackdetails.php?feedbackid=".$row['id']."'>View</a></td>
+                          <td><a href = 'viewfeedbackdetails.php?feedback_id=".$row['id']."'>View</a></td>
                           </tr>";
                         }
                         echo "</table></div>";

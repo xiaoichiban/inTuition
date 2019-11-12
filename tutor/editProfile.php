@@ -1,9 +1,4 @@
-<?php
-// session_start();
-include '../session.php';
-include '../config.php';
-include './layout/sidebar.php';
-?>
+
 
 <html>
 <head>
@@ -37,6 +32,13 @@ include './layout/sidebar.php';
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
 
+<?php
+// session_start();
+include '../session.php';
+include '../config.php';
+include './layout/sidebar.php';
+?>
+
 	<div class="app-content content">
 		<div class="content-wrapper">
 			<div class="content-wrapper-before"></div>
@@ -54,9 +56,7 @@ include './layout/sidebar.php';
 								<h4 class="card-title"><?php echo $username ?> Profile</h4>
 								<div class="card-content">
 									<div class="card-body">
-										<div class="container emp-profile">
-											<div class="row">
-												<div class="col-md-12">
+										
 													<?php
 
 													$dba = mysqli_connect("localhost", "admin", "admin", "petdb");
@@ -81,12 +81,8 @@ include './layout/sidebar.php';
 															echo "
 															<div class='container'>
 
-
-
 															<div class='row'>
-															<div class='col'>
-															<br/>
-															</div>
+															
 
 
 															<div class='col'>
@@ -104,10 +100,6 @@ include './layout/sidebar.php';
 															</div>
 
 
-
-
-
-
 															<button type='submit' class='btn btn-primary'>Change My Details</button>
 
 															</form>
@@ -116,7 +108,7 @@ include './layout/sidebar.php';
 															<br/>
 															<br/>
 
-															<b>profilepic:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
+															<b>Current Profile Picture:</b> <br/> <img src='../profilepics/" . $row['avatar_path'] . "' width='200px' height='200px' />
 															<br/><br/>
 															<form action='editProfilePicture.php'>
 															<button type='submit' class='btn btn-primary'>Change Profile Picture</button>
@@ -148,9 +140,7 @@ include './layout/sidebar.php';
 
 													?>
 													<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
-												</div>
-											</div>
-										</div>
+												
 									</div>
 								</div>
 							</div>
@@ -161,5 +151,21 @@ include './layout/sidebar.php';
 		</div>
 	</div>
 </div>
+
+<!-- BEGIN VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN CHAMELEON  JS-->
+  <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+  <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+  <!-- END CHAMELEON  JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
+
+
 </body>
 </html>
