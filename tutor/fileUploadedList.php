@@ -28,6 +28,7 @@
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
 
 <?php
+session_start();
 include('./layout/config.php');
 include ('./layout/sidebar.php');
 ?>
@@ -100,7 +101,7 @@ include ('./layout/sidebar.php');
         </form>
         <br><br>
 
-        <button class='btn btn-primary'><a style="color:white;" href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a></button>
+        <a class='btn btn-primary' style="color:white;" href = 'viewmodule.php?module_id=<?= $mod_id ?>'>Back</a>
 
       </div> <!-- content wrapper -->
     </div> <!-- app content -->
