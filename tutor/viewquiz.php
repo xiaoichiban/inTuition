@@ -86,7 +86,9 @@ else {
 
                         if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
                           echo "<button class='btn btn-primary'><a style='color:white;' href='createQuestion.php?quizid=$quiz_id'>Add questions</a></button>";
-                        } else {
+                        } else if (mysqli_num_rows(mysqli_query($db, "SELECT * from attempts WHERE quizid = '$quiz_id';")) > 0) {
+                          echo "<button class='btn btn-primary'><a style='color:white;' href='editQuiz.php?quizid=$quiz_id'>Edit quiz</a></button>";
+                        }else {
                           echo "<button class='btn btn-primary'><a style='color:white;' href='editQuiz.php?quizid=$quiz_id'>Edit quiz</a></button>";
                           echo "&nbsp;";
                           echo "<button class='btn btn-primary'><a style='color:white;' href='createQuestion.php?quizid=$quiz_id'>Add questions</a></button>";
@@ -112,13 +114,19 @@ else {
                 <h4 class="card-title" style="color: #82B1FF;">Highest Score</h4>
                 <div class="card-content"><br>
                   <?php
+
+                  if ($countAttemptRow == 0) {
+                    echo "<h4 class='card-title'>No attempts yet.";
+                  } else {
                     $highestScore = mysqli_fetch_row(mysqli_query($db, "SELECT count(isCorrect) from attempts where quizid = '$quiz_id' and isCorrect = '1' group by datetimestamp order by count(isCorrect) DESC LIMIT 1;"))[0];
                     $totalQuestions = mysqli_num_rows($countQuestion);
 
                     if ($highestScore != null) {
                       echo "<h4 class='card-title'>$highestScore/$totalQuestions</h4>";
+                    } else {
+                      echo "<h4 class='card-title'>0/$totalQuestions</h4>";
                     }
-
+                  }
                   ?>
                 </div>
               </div>
@@ -132,13 +140,20 @@ else {
                 <h4 class="card-title" style="color: #7B1FA2;">Lowest Score</h4>
                 <div class="card-content"><br>
                   <?php 
-                    $numOfWrong = mysqli_fetch_row(mysqli_query($db, "SELECT count(isCorrect) from attempts where quizid = '$quiz_id' and isCorrect = '0' group by datetimestamp order by count(isCorrect) DESC LIMIT 1;"))[0];
-                    $lowestScore = $totalQuestions - $numOfWrong; 
 
-                    if ($highestScore != null) {
-                      echo "<h4 class='card-title'>$lowestScore/$totalQuestions</h4>";
+                    if ($countAttemptRow == 0) {
+                      echo "<h4 class='card-title'>No attempts yet.";
+                    } else {
+                      $numOfWrong = mysqli_fetch_row(mysqli_query($db, "SELECT count(isCorrect) from attempts where quizid = '$quiz_id' and isCorrect = '0' group by datetimestamp order by count(isCorrect) DESC LIMIT 1;"))[0];
+                      
+
+                      if ($numOfWrong != null) {
+                        $lowestScore = $totalQuestions - $numOfWrong; 
+                        echo "<h4 class='card-title'>$lowestScore/$totalQuestions</h4>";
+                      } else {
+                        echo "<h4 class='card-title'>0/0</h4>";
+                      }
                     }
-                    
                   ?>
                 </div>
               </div>
@@ -151,10 +166,22 @@ else {
                 <h4 class="card-title" style="color: #EF5350;">Hardest Question</h4>
                 <div class="card-content"><br>
                   <?php
-                    $hardestQnsId = mysqli_fetch_row(mysqli_query($db, "SELECT questionid, COUNT(*) from attempts where quizid = '$quiz_id' and isCorrect = '0' group by questionid order by count(*) desc LIMIT 1;"))[0];
 
-                    $hardestQnsStr = mysqli_fetch_row(mysqli_query($db, "SELECT questiontitle FROM question WHERE id = '$hardestQnsId';"))[0];
-                    echo "<h4 class='card-title'>$hardestQnsStr</h4>";
+                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
+                      echo "<h4 class='card-title'>No questions yet</h4>";
+                    } else if ($countAttemptRow == 0) {
+                      echo "<h4 class='card-title'>No attempts yet.";
+                    } else {
+
+                      $hardestQnsId = mysqli_fetch_row(mysqli_query($db, "SELECT questionid, COUNT(*) from attempts where quizid = '$quiz_id' and isCorrect = '0' group by questionid order by count(*) desc LIMIT 1;"))[0];
+
+                      $hardestQnsStr = mysqli_fetch_row(mysqli_query($db, "SELECT questiontitle FROM question WHERE id = '$hardestQnsId';"))[0];
+                      echo "<h4 class='card-title'>$hardestQnsStr</h4>";
+
+                      if ($hardestQnsId == null) {
+                        echo "<h4 class='card-title'>Everyone got all questions right.</h4>";
+                      }
+                    }
                   ?>
                 </div>
               </div>
@@ -167,10 +194,21 @@ else {
                 <h4 class="card-title" style="color: #0eaa5e;">Easiest Question</h4>
                 <div class="card-content"><br>
                   <?php
-                  $easiestQnsId = mysqli_fetch_row(mysqli_query($db, "SELECT questionid, COUNT(*) from attempts where quizid = '$quiz_id' and isCorrect = '1' group by questionid order by count(*) desc LIMIT 1;"))[0];
 
-                  $easiestQnsStr = mysqli_fetch_row(mysqli_query($db, "SELECT questiontitle FROM question WHERE id = '$easiestQnsId';"))[0];
-                  echo "<h4 class='card-title'>$easiestQnsStr</h4>";
+                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
+                      echo "<h4 class='card-title'>No questions yet</h4>";
+                    } else if ($countAttemptRow == 0) {
+                      echo "<h4 class='card-title'>No attempts yet.";
+                    } else {
+                      $easiestQnsId = mysqli_fetch_row(mysqli_query($db, "SELECT questionid, COUNT(*) from attempts where quizid = '$quiz_id' and isCorrect = '1' group by questionid order by count(*) desc LIMIT 1;"))[0];
+
+                      $easiestQnsStr = mysqli_fetch_row(mysqli_query($db, "SELECT questiontitle FROM question WHERE id = '$easiestQnsId';"))[0];
+                      echo "<h4 class='card-title'>$easiestQnsStr</h4>";
+
+                      if ($easiestQnsId == null) {
+                        echo "<h4 class='card-title'>Everyone got all questions wrong.</h4>";
+                      }
+                    }
 
                   ?>
                 </div>
@@ -188,21 +226,24 @@ else {
 
           <div class="row">
             <?php
-            while ($row2 = mysqli_fetch_row($overviewQuestion)) {
+            if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
+              echo "<h5 class='card-title pl-2'>There are no questions yet.</h5>";
+            } else {
+              while ($row2 = mysqli_fetch_row($overviewQuestion)) {
 
-            $totalAttempts = mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(questionid) FROM attempts where quizid = '$quiz_id' and questionid = '$row2[0]';"))[0];
+              $totalAttempts = mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(questionid) FROM attempts where quizid = '$quiz_id' and questionid = '$row2[0]';"))[0];
 
-            $correctCount = mysqli_fetch_row(mysqli_query($db, "SELECT count(questionid) from attempts WHERE quizid = '$quiz_id' and questionid= '$row2[0]' and isCorrect = '1'; "))[0];
+              $correctCount = mysqli_fetch_row(mysqli_query($db, "SELECT count(questionid) from attempts WHERE quizid = '$quiz_id' and questionid= '$row2[0]' and isCorrect = '1'; "))[0];
 
-            $wrongCount = mysqli_fetch_row(mysqli_query($db, "SELECT count(questionid) from attempts WHERE quizid = '$quiz_id' and questionid= '$row2[0]' and isCorrect = '0'; "))[0];
+              $wrongCount = mysqli_fetch_row(mysqli_query($db, "SELECT count(questionid) from attempts WHERE quizid = '$quiz_id' and questionid= '$row2[0]' and isCorrect = '0'; "))[0];
 
-            $countOptionA = mysqli_fetch_row(mysqli_query($db, "SELECT count(*) from attempts where quizid = '$quiz_id' and questionid= '$row2[0]' and attemptedans = 'a'; "))[0];
+              $countOptionA = mysqli_fetch_row(mysqli_query($db, "SELECT count(*) from attempts where quizid = '$quiz_id' and questionid= '$row2[0]' and attemptedans = 'a'; "))[0];
 
-            $countOptionB = mysqli_fetch_row(mysqli_query($db, "SELECT count(*) from attempts where quizid = '$quiz_id' and questionid= '$row2[0]' and attemptedans = 'b'; "))[0];
+              $countOptionB = mysqli_fetch_row(mysqli_query($db, "SELECT count(*) from attempts where quizid = '$quiz_id' and questionid= '$row2[0]' and attemptedans = 'b'; "))[0];
 
-            $countOptionC = mysqli_fetch_row(mysqli_query($db, "SELECT count(*) from attempts where quizid = '$quiz_id' and questionid= '$row2[0]' and attemptedans = 'c'; "))[0];
+              $countOptionC = mysqli_fetch_row(mysqli_query($db, "SELECT count(*) from attempts where quizid = '$quiz_id' and questionid= '$row2[0]' and attemptedans = 'c'; "))[0];
 
-            $countOptionD = mysqli_fetch_row(mysqli_query($db, "SELECT count(*) from attempts where quizid = '$quiz_id' and questionid= '$row2[0]' and attemptedans = 'd'; "))[0];
+              $countOptionD = mysqli_fetch_row(mysqli_query($db, "SELECT count(*) from attempts where quizid = '$quiz_id' and questionid= '$row2[0]' and attemptedans = 'd'; "))[0];
 
           ?>
           <div class="col-lg-4 col-md-12">
@@ -243,7 +284,8 @@ else {
             </div> <!-- end of card -->
           </div> <!-- end of col-12 -->
           <?php 
-            }
+            } // end of while 
+          } //end of if
           ?>
         </div> <!-- end of row -->
         <button class='btn btn-primary'><a style="color:white;" href = 'viewmodule.php?module_id=<?= $row[2] ?>'>Back</a></button>

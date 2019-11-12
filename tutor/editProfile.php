@@ -56,7 +56,7 @@ include './layout/sidebar.php';
 								<h4 class="card-title"><?php echo $username ?> Profile</h4>
 								<div class="card-content">
 									<div class="card-body">
-										
+
 													<?php
 
 													$dba = mysqli_connect("localhost", "admin", "admin", "petdb");
@@ -82,11 +82,11 @@ include './layout/sidebar.php';
 															<div class='container'>
 
 															<div class='row'>
-															
+
 
 
 															<div class='col'>
-															<form action='editProfileProcess.php' method='post' >
+															<form action='editProfileProcess.php?username=$username' method='post' >
 
 															<div class='form-group'>
 															<label for='email'>Email</label>
@@ -140,7 +140,7 @@ include './layout/sidebar.php';
 
 													?>
 													<a class='btn btn-primary' href = 'viewProfile.php?username=<?php echo $username ?>'>Back</a>
-												
+
 									</div>
 								</div>
 							</div>

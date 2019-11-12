@@ -3,7 +3,7 @@
 // include('layout.php');
 
 
-include('config.php');
+include('./layout/config.php');
 
 session_start();
 

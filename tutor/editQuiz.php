@@ -76,72 +76,77 @@
                   <div class="card-content">
                     <div class="pl-1">
                       <form action="editQuizProcess.php?quizid=<? echo $quiz_id; ?>" method="post">
+                        <br />
+                        <h6>Quiz title</h6>
+                        <input type="text" class="form-control" style="width:50%;" name="quiztitle" size="48" value="<?= $row[1] ?>">
+                        <br />
 
-                        <?
+                        <?php
 
                         $counter = 0;
+
                         while ($row1 = mysqli_fetch_row($result1)) {
 
-                          echo "<br><h6>Question " . ++$counter . "</h6>"; 
+                          echo "<br><h6>Question " . ++$counter . "</h6>";
                           ?>
 
                           Question title
                           <br>
                           <input type="text" class="form-control" style="width:50%;" name="questiontitle<?= $row1[0] ?>" size="48" value="<?= $row1[1] ?>">
                           <br><br>
-                          Option a: 
+                          Option a:
                           <input type="text" class="form-control" style="width:50%;" name="qns<?= $row1[0] ?>a" size="48" value="<?= $row1[2] ?>">
                           <br>
-                          Option b: 
+                          Option b:
                           <input type="text" class="form-control" style="width:50%;" name="qns<?= $row1[0] ?>b" size="48" value="<?= $row1[3] ?>">
                           <br>
-                          Option c: 
+                          Option c:
                           <input type="text" class="form-control" style="width:50%;" name="qns<?= $row1[0] ?>c" size="48" value="<?= $row1[4] ?>">
                           <br>
                           Option d:
                           <input type="text" class="form-control" style="width:50%;" name="qns<?= $row1[0] ?>d" size="48" value="<?= $row1[5] ?>">
                           <br>
-                          Correct answer: 
+                          Correct answer:
                           <input type="text" class="form-control" style="width:50%;" name="correctans<?= $row1[0] ?>" size="48" value="<?= $row1[6] ?>">
                           <br><br>
                           <input type="hidden" name="quizid" value="<?= $quiz_id ?>" size="48">
                           <input type="hidden" name="questionid" value="<?= $row1[0] ?>" size="48">
 
-                          <?    
-                            } //end of while loop
-                          } //end of valid quiz
-                          ?>
+                          <?php
+                        } //end of while loop
+                      } //end of valid quiz
+                      ?>
 
-                          <input class="btn btn-primary" type="submit" value="Edit"/>
-                        </form>
-                      </div>
+                      <input class="btn btn-primary" type="submit" value="Edit"/>
+                    </form>
+                  </div>
 
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                          <div class="pl-1">
-                            <button class='btn btn-default'><a href = 'viewquiz.php?quizid=<?= $quiz_id ?>'>Back</a></button>
-                          </div>
-                          </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pl-1">
+            <button class='btn btn-default'><a href = 'viewquiz.php?quizid=<?= $quiz_id ?>'>Back</a></button>
+          </div>
+        </div>
 
-                          </div> <!-- end of content-wrapper -->
-                          </div> <!-- end of app-content -->
+      </div> <!-- end of content-wrapper -->
+    </div> <!-- end of app-content -->
 
 
-<!-- BEGIN VENDOR JS-->
-<script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-<!-- BEGIN VENDOR JS-->
-<!-- BEGIN PAGE VENDOR JS-->
-<script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-<!-- END PAGE VENDOR JS-->
-<!-- BEGIN CHAMELEON  JS-->
-<script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
-<script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
-<!-- END CHAMELEON  JS-->
-<!-- BEGIN PAGE LEVEL JS-->
-<script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL JS-->
+    <!-- BEGIN VENDOR JS-->
+    <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN CHAMELEON  JS-->
+    <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+    <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+    <!-- END CHAMELEON  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL JS-->
 
-</body>
-</html>
+  </body>
+  </html>

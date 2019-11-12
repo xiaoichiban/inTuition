@@ -66,28 +66,14 @@
         </li>
         <li class="<?= ($activePage == '../chatwall/chatwall') ? 'active':'nav-item'; ?>"><a href="../chatwall/chatwall.php" target="_blank"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
         </li>
+        <li class="nav-item"><a href="webrtc.php"><i class="ft-message-circle"></i><span class="menu-title" data-i18n="">WebRTC</span></a>
+        </li>
         <li class="<?= ($activePage == 'index') ? 'active':'nav-item'; ?>"><a href="viewProfile.php?username=<?php echo $username?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">My Profile</span></a>
         </li>
-		
-				  
-		  <li class="nav-item"><a href="../chatwall/chatwall.php" target="_blank">
-		  <i class="ft-message-circle"></i><span class="menu-title" data-i18n="">Chat</span></a>
-          </li>
-		  
-		  
-		  <li class="nav-item"><a href="webrtc.php"><i class="ft-message-circle"></i>
-		  <span class="menu-title" data-i18n="">WebRTC</span></a>
-          </li>
-		  
-		  
-		  		  
-		  <li class="nav-item"><a href="../forum/forum.php"><i class="ft-message-circle"></i>
-		  <span class="menu-title" data-i18n="">Forum</span></a>
-          </li>
-		  
-		
-		
-		
+
+
+
+
         <li class="<?= ($activePage == 'complain') ? 'active':'nav-item'; ?>"><a href="complain.php"><i class="ft-help-circle"></i><span class="menu-title" data-i18n="">Feedback</span></a>
         </li>
         <li class="<?= ($activePage == 'viewtimetable') ? 'active':'nav-item'; ?>"><a href="viewtimetable.php"><i class="ft-clock"></i><span class="menu-title" data-i18n="">My Timetable</span></a>

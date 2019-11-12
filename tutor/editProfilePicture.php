@@ -107,7 +107,7 @@
 																	<label class='file-upload btn btn-primary'>
 
 																	<input type='file' class='form-control-file'
-																	accept='image/*' name='fileToUpload' id='fileToUpload' required='true' onchange='checkFileSize(this)'>
+																	accept='image/*' name='fileToUpload' id='fileToUpload' required='true'>
 																	</label>
 
 																	<br/> <br/>
