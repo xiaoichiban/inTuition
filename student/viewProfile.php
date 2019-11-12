@@ -155,7 +155,7 @@
                               </div>
                               <div class="row">
                                 <div class="col-md-6">
-                                  <label>Your Bio</label><br/>
+                                  <label>Bio</label><br/>
                                 </div>
                                 <div class="col-md-6">
                                   <p>"<?php echo $account[4] ?>"</p>
