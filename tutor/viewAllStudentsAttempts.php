@@ -52,16 +52,83 @@ $questionrow = mysqli_fetch_row($quizresult);
     <div class="content-wrapper">
       <div class="content-wrapper-before"></div>
         <div class="content-header row">
-          <div class="content-header-left col-md-4 col-12 mb-2">
+          <div class="content-header-left col-12 mb-2">
             <h3 class="content-header-title">Students' attempts on <?= $row[1] ?></h3>
           </div>
         </div>
 
         <div class="content-body">
 
+          <div class="row pl-1">
+            <div class="card" style="background: none;">
+              <form action="viewAllStudentsAttempts.php" method="GET">
+                <input type="text" style="width: 50%; display: inline;" name="search" placeholder="Enter a name" class="form-control"/>
+                <input type="hidden" name="quizid" value="<?= $quiz_id ?>" />
+                <input type="submit" class="btn btn-default" value="Search for student" />
+              </form>
+            </div>
+          </div>
+
           <div class="row">
+
             <?php 
-            if (mysqli_num_rows($attemptResult) > 0) {
+            if(isset($_GET['search']) != "") {
+              $search_value = $_GET['search'];
+              // echo"$search_value";
+              $searchStudentSQL="SELECT * from attempts where student LIKE '%".$search_value."%' ORDER BY student ASC;";
+              // $sql= "SELECT * from module where tc = '$tc'";
+
+              $searchStudentResult = mysqli_query($db, $searchStudentSQL);
+
+              if(mysqli_fetch_row($searchStudentResult) == 0) {
+                echo "<h3><b>No results for \"$search_value\"</h3> &nbsp;";
+
+              }
+              while ($searchStudentRow = mysqli_fetch_row($searchStudentResult)) {
+                $foundStudent = $searchStudentRow[4];
+                $numAttempts1 = mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(quizid) from attempts where student = '$foundStudent' and quizid = '$quiz_id' and questionid = '$questionrow[0]';"))[0];
+            ?>
+              <div class="col-lg-4 col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Student: <?= $foundStudent ?></h4>
+                  <div class="card-content">
+                    <div class="card-body">
+                      <?php
+                        
+                        echo
+                          "<table style='width:100%; font-size:14px;' class='table-borderless'>" .
+                          "<tr><th>Number of attempts</th><th>" . $numAttempts1 . "</th></tr>";
+
+                          $attemptCounter1 = 0; 
+                          while ($attemptrow = mysqli_fetch_row($searchStudentResult)) {
+
+                            $correctAnsSql = "SELECT count(*) FROM attempts WHERE student = '$foundStudent' and datetimestamp = '$attemptrow[6]' and isCorrect = 1;" ;
+                            $correctAnsResult = mysqli_query($db, $correctAnsSql);
+                            $correctAnsRow = mysqli_fetch_row($correctAnsResult);
+                            $totalCorrectAns = $correctAnsRow[0];
+
+                            $totalQnsSql = "SELECT count(*) FROM question WHERE quizid = '$quiz_id';";
+                            $totalQnsResult = mysqli_query($db, $totalQnsSql);
+                            $totalQnsRow = mysqli_fetch_row($totalQnsResult);
+                            $totalQns = $totalQnsRow[0];
+
+                            echo "<tr><th>Attempt ". ++$attemptCounter1 ." </th><th>Score: <a href='viewattempts.php?date=". $attemptrow[6] ."&student=". $foundStudent ." '>" . $totalCorrectAns . "/" . $totalQns . "</a></th></tr>";
+                          }
+
+                          echo "</table>";
+                        
+                        ?>
+                    </div>
+                  </div>
+                </div> <!-- card header --> 
+              </div> <!-- card --> 
+            </div> <!-- col-12 --> 
+
+
+            <?php
+            } //end of row
+          } else if (mysqli_num_rows($attemptResult) > 0) {
              
               while ($attemptRow = mysqli_fetch_row($attemptResult)) {
                 $studentName = $attemptRow[0];
@@ -124,7 +191,7 @@ $questionrow = mysqli_fetch_row($quizresult);
 
 <?php
 
-echo "<h3><a class='btn btn-primary' href = 'viewQuiz.php?quizid=".$quiz_id."'>Back to quiz</a></h3>";
+echo "<h3><a class='btn btn-primary' href='javascript:history.back(1)'>Back</a></h3>";
 
 ?>
 

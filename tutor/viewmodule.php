@@ -85,7 +85,7 @@
 
                 <div class="card-content">
                   <div class="card-body">
-                    <table class='table table-borderless' style="width:40%;">
+                    <table class='table table-borderless' style="width:40%; font-size:14px;">
                       <tbody><tr><td><b>Module Name: </b> </td><td><?php echo $row[1]; ?></td></tr>
                         <tr><td><b>Time: </b> </td><td><?php echo $day_label . " " . $row[4] . " - " . $row[5]; ?></td></tr>
                         <tr><td><b>Description: </b> </td><td><?php echo $row[2]; ?></td></tr>
@@ -204,7 +204,7 @@
 
           <!-- start of ongoing quiz part -->
 
-          <div class="content-header-left col-md-4 col-12 mb-2">
+          <div id="ongoing" class="content-header-left col-md-4 col-12 mb-2">
             <h3 class="content-header-title" style="color: #464855;">Ongoing quizzes</h3>
           </div>
 

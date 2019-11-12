@@ -46,7 +46,7 @@
       <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
-          <div class="content-header-left col-md-4 col-12 mb-2">
+          <div class="content-header-left col-12 mb-2">
             <h3 style="font-weight: 700; color: white;">Add questions for <?= $row[1] ?></h3>
           </div>
         </div>
@@ -92,13 +92,13 @@
         while ($row1 = mysqli_fetch_row($result1)) {
           $acctype = $row1[0];
           if ($acctype == 'tc'){
-            echo "<h3><button class='btn btn-default'><a href = 'viewtcmodules.php'>Back</a></button></h3>";
+            echo "<h3><button class='btn btn-primary'><a style='color:white;' href = 'viewtcmodules.php'>Back</a></button></h3>";
           }
           else if ($acctype == 'tutor'){
-            echo "<h3><button class='btn btn-default'><a href = 'viewquiz.php?quizid=$quiz_id'>Back</a></button></h3>";
+            echo "<h3><button class='btn btn-primary'><a style='color:white;' href = 'viewquiz.php?quizid=$quiz_id'>Back</a></button></h3>";
           }
           else{
-            echo "<h3><button class='btn btn-default'><a href = 'viewstudentmodules.php'>Back</a></button></h3>";
+            echo "<h3><button class='btn btn-primary'><a style='color:white;' href = 'viewstudentmodules.php'>Back</a></button></h3>";
           }
         }
 

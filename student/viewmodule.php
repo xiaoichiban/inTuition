@@ -153,13 +153,15 @@
 
               </div>
             </div>  <!-- end of class row -->
+
+            <!-- available quizzes --> 
             <div class="content-header-left col-md-4 col-12 mb-2">
               <h4 class="content-header-title" style="color: #464855;">Available quizzes</h4>
             </div>
 
             <?php
             if ($seecontent){
-              $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id';";
+              $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id' and status = 'active';";
               $result2 = mysqli_query($db, $sql2);
               if (mysqli_num_rows($result2) == 0) {
                 echo "<h5 class='pl-1'>There are no quizzes for this module.</h5>";
@@ -184,8 +186,47 @@
                     </div>
                     <?php
                   } //end of while
+                }
+              }
                   ?>
                 </div>  <!-- end of class row -->
+
+                <!-- past quizzes --> 
+                <div class="content-header-left col-md-4 col-12 mb-2">
+                  <h4 class="content-header-title" style="color: #464855;">Past quizzes</h4>
+                </div>
+
+                <?php
+                if ($seecontent){
+                  $sql2 = "SELECT quiz.quiztitle, attempts.student FROM quiz INNER JOIN attempts ON quiz.id = attempts.quizid WHERE moduleid = '$module_id' and status = 'expired' and student = '$username';";
+                  $result2 = mysqli_query($db, $sql2);
+                  if (mysqli_num_rows($result2) == 0) {
+                    echo "<h5 class='pl-1'>There is no done past quizzes.</h5>";
+                  } else {
+
+                    ?>
+
+                    <div class="row">
+                      <?php
+                      while ($row1 = mysqli_fetch_row($result2)) {
+
+                        ?>
+                        <div class="col-lg-4 col-md-12">
+                          <a href = 'viewquiz.php?quizid=<?php echo $row1[0]; ?>'>
+                            <div class="card pull-up ecom-card-1 bg-white">
+                              <div class="card-header">
+                                <h4 class="card-title" style='text-align:center;'><?php echo $row1[1] ?></h4>
+                              </div>
+
+                            </div>
+                          </a>
+                        </div>
+                        <?php
+                      } //end of while
+                ?>
+                </div>  <!-- end of class row -->
+
+
                 <?php
 
               }

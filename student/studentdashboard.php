@@ -54,7 +54,19 @@
             if ($acctype == "student"){
               $sql2 = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username' AND status='accepted');";
               $result2 = mysqli_query($db, $sql2);
-
+              $nothingResult = mysqli_query($db, $sql2);
+              
+              if (mysqli_num_rows($nothingResult) == 0) {
+                echo "<div class='col-12'>".
+                  "<div class='card>".
+                  "<div class='card-content'>".
+                  "<div class='card-body'>".
+                    "<h6 style='color:white;'>You are not enrolled in any modules yet.</h6>".
+                  "</div>".
+                  "</div>".
+                  "</div>".
+                  "</div>";
+              }
               while ($row = mysqli_fetch_row($result2)) {
                 $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
                 $module_row = mysqli_fetch_row($module_details);
@@ -111,6 +123,13 @@
 
         </div>  <!-- end of class row -->
       </div>  <!-- end of content-body -->
+      <div class="pl-2">
+      <?php
+        if (mysqli_num_rows($nothingResult) == 0) {
+          echo "<a class='btn btn-primary' href='searchModules.php' >Discover modules</a>";
+        }
+      ?>
+      </div>
     </div>  <!-- end of content-wrapper -->
   </div>  <!-- end of app-content content -->
 
