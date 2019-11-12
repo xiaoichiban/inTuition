@@ -40,6 +40,8 @@ echo "
 <br/>
 <a href= 'videoList.php' > << Back << </a>
 <br/>
+<button onclick='goBack()'>Go Back</button> 
+<script> function goBack() { window.history.back(); } </script>
 <br/>
 <br/>
 

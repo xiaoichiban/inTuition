@@ -86,6 +86,70 @@ else {
           </div>
         </div>  <!-- end of class row --> 
 
+		
+		
+		
+		<div class="row">
+          <div class="col-12">
+            <div class="card">
+                
+              <div class="card-content">
+                <div class="card-body">
+                  
+				  
+				  <?php
+				  
+				  
+					$thistutor = $_SESSION['username'];
+					$sqlQuery = "SELECT * from video v  WHERE v.mod_id = '$module_id';";
+					
+					$result = mysqli_query($db, $sqlQuery);
+					
+					while ($row = mysqli_fetch_assoc($result)) {
+						
+						$subs = $row['subtitles'];
+						$vid  = $row['filename'];
+						
+						echo "Module ID=".$row['mod_id'] . "<br/>";
+						echo "Video Name=".$row['name'] . "<br/>";
+						echo "Video Desc=".$row['description'] . "<br/>";
+						echo "Filename=".$row['filename'] . "<br/>";
+						echo "Subs=".$row['subtitles'] . "<br/>";
+						echo "Date Time=".$row['datetimestamp'] . " <br/>";
+						echo "<a style='color:red' href='viewVideo.php?id=$vid&subs=$subs'> 
+						<b>WATCH VIDEO</b></a> <br/><br/><br/>";
+						
+					}
+					
+					?>
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+
+                  
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>  <!-- end of class row --> 
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
         <div class="content-header-left col-md-4 col-12 mb-2">
           <h3 class="content-header-title" style="color: #464855;">Available quizzes</h3>
         </div>
