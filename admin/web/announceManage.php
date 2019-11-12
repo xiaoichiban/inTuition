@@ -10,7 +10,12 @@ $result = mysqli_query($db, $query);
 
 
 
-<table border='2' width='100%'>
+<center>
+
+<table border='2' width='40%'>
+
+<tr> <br/> </tr>
+
 <th> <h2>Manage Announcement</h2></th>
 <tr><td>
 <a href="welcome.php"><b><font color='green'> << BACK HOME <<</font> </b></a>
@@ -55,3 +60,5 @@ $result = mysqli_query($db, $query);
   
  
 </table>
+
+</center>

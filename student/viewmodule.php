@@ -105,7 +105,7 @@
 
                       <?php
                       if ($seecontent){
-                        echo "<button type='button' class='btn btn-primary' style='float:right;''><a style='color:white;' href = 'fileUploadedList.php?mod_id=$row[0]'>Module Uploaded Files</a></button>";
+                        echo "<a class='btn btn-primary' style='float:right;' style='color:white;' href = 'fileUploadedList.php?mod_id=$row[0]'>Module Uploaded Files</a>";
                       }
                       ?>
                       <br/>
@@ -131,7 +131,7 @@
 
                       $result = mysqli_query($db, $sqlQuery);
                       $vidcount = mysqli_num_rows($result);
-                      
+
                       echo "<p>Number of Videos in this module: $vidcount</p>";
                       echo "<table class='table'><thead><tr><th><b>Name</b></th><th><b>Description</b</th><th><b>Filename</b></th><th><b>Subtitles</b></th><th><b>Uploaded</b></th><th></th></tr></thead><tbody>";
                       while ($row = mysqli_fetch_assoc($result)) {
@@ -227,16 +227,10 @@
     <!-- BEGIN VENDOR JS-->
     <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
     <!-- BEGIN VENDOR JS-->
-    <!-- BEGIN PAGE VENDOR JS-->
-    <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-    <!-- END PAGE VENDOR JS-->
     <!-- BEGIN CHAMELEON  JS-->
     <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
     <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
     <!-- END CHAMELEON  JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
-    <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-    <!-- END PAGE LEVEL JS-->
 
   </body>
   </html>

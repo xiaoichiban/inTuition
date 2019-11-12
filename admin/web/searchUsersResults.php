@@ -1,10 +1,19 @@
-<table border='2' width='100%'>
-<th> <h2>Manage Users</h2></th>
+<center>
+<table border='2' width='40%%'>
+<th>
+<h3>
+Manage Users
+<i class='fas fa-hamburger' style='font-size:20px'></i>
+</h3>
+</th>
 <tr><td>
 <a href="welcome.php"><b><font color='green'> << BACK HOME <<</font> </b></a>
 <br>
 </td></tr>
 </table>
+</center>
+
+
 <br><br><br>
 
 

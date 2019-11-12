@@ -1,10 +1,27 @@
-<table border='2' width='100%'>
-<th> <h2>Create Announcement</h2></th>
+
+<?php
+
+include('session.php');
+
+?>
+
+<center>
+<table border='2' width='40%'>
+<tr> <br/> </tr>
+
+<th> 
+<h3>
+Create Announcement
+<i class='fas fa-hamburger' style='font-size:20px'></i>
+</h3>
+</th>
 <tr><td>
 <a href="welcome.php"><b><font color='green'> << BACK HOME <<</font> </b></a>
 <br>
 </td></tr>
 </table>
+</center>
+
 <br><br><br>
 
 
