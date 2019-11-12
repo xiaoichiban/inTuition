@@ -143,8 +143,8 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu.menu-light .navigati
 body.vertical-layout.vertical-menu.menu-expanded .main-menu.menu-light .navigation:hover > a > i,
 body.vertical-layout.vertical-menu.menu-expanded .main-menu.menu-light .navigation .open > a > i
 {
-    -webkit-box-shadow: 0 0 20px rgba(253, 99, 107, .3);
-            box-shadow: 0 0 20px rgba(253, 99, 107, .3);
+    -webkit-box-shadow: 0 0 20px rgba(159, 120, 255, 1);
+            box-shadow: 0 0 20px rgba(159, 120, 255, 1);
 }
 body.vertical-layout.vertical-menu.menu-expanded .main-menu.menu-dark .navigation > li > a > i
 {
