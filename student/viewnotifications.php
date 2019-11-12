@@ -101,7 +101,7 @@
                 </div>
               </div>
             </div>
-            <h6><a href = 'studentdashboard.php'>Back</a></h6>
+            <h6><a class='btn btn-primary' href = 'studentdashboard.php'>Back</a></h6>
           </div>
 
         </div>  <!-- end of content-body -->
@@ -126,9 +126,9 @@
   <!-- END PAGE LEVEL JS-->
   <script>jQuery(document).ready(function($) {
     $(".clickable-row").click(function() {
-        window.location = $(this).data("href");
+      window.location = $(this).data("href");
     });
-});</script>
+  });</script>
 
 </body>
 </html>

@@ -44,7 +44,7 @@ include ('session.php');
             <div class="card" style="background: none;">
               <form action="searchmodules.php" method="GET">
                 <input type="text" style="width: 50%; display: inline;" name="search" placeholder="Enter a module name" class="form-control"/>
-                <input type="submit" class="btn btn-primary" value="Search for module" />
+                <input type="submit" class="btn btn-default" value="Search for module" />
               </form>
             </div>
           </div>

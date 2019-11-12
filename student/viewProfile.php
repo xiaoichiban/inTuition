@@ -69,7 +69,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"><?php echo $username ?> Profile</h4>
+                <h4 class="card-title"><?php echo $username ?>'s Profile</h4>
                 <div class="card-content">
                   <div class="card-body">
                     <div class="container emp-profile">
@@ -101,7 +101,7 @@
                           </div>
                         </div>
                         <div class="col-md-2">
-                          <input type="button" class="profile-edit-btn" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
+                          <input type="button" class="btn btn-info" name="btnAddMore" onclick="location.href = 'editProfile.php?username=<?php echo $username?>';" value="Edit Profile"/>
                         </div>
                       </div>
                       <div class="row">
