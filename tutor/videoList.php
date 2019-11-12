@@ -55,11 +55,7 @@ include './layout/sidebar.php';
             					from video v , module m WHERE v.mod_id = m.id AND m.tutor = '$thistutor';";
             					$result = mysqli_query($db, $sqlQuery);
             					
-            					while ($row = mysqli_fetch_assoc($result)) {
-            						
-            						$subs = $row['subtitles'];
-            						$vid  = $row['filename'];
-            						
+                      echo
                         "<div class='table-responsive'>".
                         "<table class='table table-borderless' style='width:80%; font-size:14px;'>" .
                         "<tr>
@@ -74,17 +70,30 @@ include './layout/sidebar.php';
                         </tr>
                         </thead>";
 
-            						echo "Module ID=".$row['mod_id'] . "<br/>";
-            						echo "Video Name=".$row['name'] . "<br/>";
-            						echo "Video Desc=".$row['description'] . "<br/>";
-            						echo "Filename=".$row['filename'] . "<br/>";
-            						echo "Subs=".$row['subtitles'] . "<br/>";
-            						echo "Date Time=".$row['datetimestamp'] . " <br/>";
-            						echo "<a style='color:red' href='viewVideo.php?id=$vid&subs=$subs'> 
-            						<b>WATCH VIDEO</b></a> <br/><br/><br/>";
+            					while ($row = mysqli_fetch_assoc($result)) {
+            						
+            						$subs = $row['subtitles'];
+            						$vid  = $row['filename'];
+                        $mod_id  = $row['mod_id'];
+
+                        $sql1 = "SELECT name FROM module WHERE id = '$mod_id';";
+                        $result1 = mysqli_query($db, $sql1);
+                        $moduleName = mysqli_fetch_row($result1)[0];
+            						
+                        echo
+                          "<tr>
+                          <th>". $moduleName."</th>
+                          <th>". $row['name']."</th>
+                          <th>". $row['description']."</th>
+                          <th>". $row['filename']."</th>
+                          <th>". $row['subtitles']."</th>
+                          <th>". $row['datetimestamp']."</th>
+                          <th><a href='viewVideo.php?id=$vid&subs=$subs'> 
+                          <b>Watch Video</b></a></th>
+                          </tr>";
             						
             					}	
-            					
+            					echo "</table>";
             				?>
                     </div>
                   </div>
