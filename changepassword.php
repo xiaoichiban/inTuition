@@ -1,5 +1,9 @@
- 
-   <body bgcolor = "#FFFFFF">
+<head>
+  <title>Change Password</title>
+  <link rel="shortcut icon" type="image/x-icon" href="lightbulb.ico">
+</head>
+
+<body bgcolor = "#FFFFFF">
       <div align = "center">
          <div style = "width:300px; border: solid 1px #333333; " align = "left">
             <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Change Password</b></div>
@@ -15,7 +19,7 @@
 				  <br/><br />
 				  <a href="welcome.php"> CANCEL </a>
                </form>
-               <div style = "font-size:11px; color:#cc0000; margin-top:10px"></div>	
-            </div>	
+               <div style = "font-size:11px; color:#cc0000; margin-top:10px"></div>
+            </div>
          </div>
       </div>

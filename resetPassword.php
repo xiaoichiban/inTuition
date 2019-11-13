@@ -1,7 +1,8 @@
 
 <html>
 <head>
-<title>Intuition RESET</title>	
+<title>Intuition RESET</title>
+<link rel="shortcut icon" type="image/x-icon" href="lightbulb.ico">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -19,7 +20,7 @@ input[type=text], input[type=password] {
 
 button {
   background-color: #4CAF50;
-  color: white;  padding: 14px 20px;  margin: 8px 0;  
+  color: white;  padding: 14px 20px;  margin: 8px 0;
   border: none;  cursor: pointer;  width: 100%;
 }
 
@@ -66,7 +67,7 @@ if($recaptcha) { $recaptcha.setAttribute("required", "required"); }
 };
 </script>
 
-<style>	#g-recaptcha-response { display: block !important; position: absolute; 
+<style>	#g-recaptcha-response { display: block !important; position: absolute;
 margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important; z-index: -999999;  opacity: 0;}
 </style>
 
@@ -74,7 +75,7 @@ margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important
 <div class="g-recaptcha" id="grecaptcha" data-sitekey="6LcpDroUAAAAAO-YS3f1FxTZic1lU7sykZop1PAj"></div>
 </div>
 
-<span id="captcha" style="color:red" /></span> 
+<span id="captcha" style="color:red" /></span>
 <!-- this will show captcha errors -->
 
 

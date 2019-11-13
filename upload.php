@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Intuition Login</title>
+  <link rel="shortcut icon" type="image/x-icon" href="lightbulb.ico">  
+</head>
 <body>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -54,4 +58,3 @@ if ($uploadOk == 0) {
 ?>
 </body>
 </html>
-

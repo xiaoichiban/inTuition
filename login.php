@@ -1,6 +1,6 @@
 <?php
 /*
-         _nnnn_                      
+         _nnnn_
         dGGGGMMb     ,"""""""""""""".
        @p~qp~~qMb    | Linux Rules! |
        M|@||@) M|   _;..............'
@@ -24,10 +24,10 @@ _)      \.___.,|     .'
 include("config.php");
 session_start();
 
-	 
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-	  
+      // username and password sent from form
+
 	  if(! isset($_POST['username']) || ! isset($_POST['password'])){
 		echo "<h3 align='center'><font color='red'>LOGIN FAILED</font></h3>";
 		echo "<h3 align='center'>Login Failed >> Your Account has been Deactivated or Banned</h3>";
@@ -39,26 +39,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql  = "SELECT * FROM account WHERE username = '$thisUSERNAME';";
 	$result = mysqli_query($db, $sql);
 	$count = mysqli_num_rows($result);
-	
-	
+
+
 	if($count > 0)
 	{
 		$row = mysqli_fetch_assoc($result);
-		
+
 		// echo "   ".$_POST["password"];
 		// echo "   ".$row["password"];
-		
+
 	// Password correct
 	if(password_verify($_POST["password"], $row["password"]) == true)
-	{	
+	{
 
 
 		$status = $row['status'];
 		$account_type = $row['account_type'];
 		$username_var = $row['username'];
-		
-		
-		
+
+
+
 				// If result matched $myusername and $mypassword, table row must be 1 row
 				// CASE : BANNED OR DEACTIVATED
 				if($status!='active') {
@@ -68,23 +68,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					//exit;
 					return;
 				  }
-				
+
 
 				$_SESSION['user_id'] = $row['user_id'];
 				$_SESSION['username'] = $username_var;
 				$_SESSION['login_user'] = $username_var;
 				$_SESSION['user_type'] = $row['account_type'];
 				$_SESSION['account_type'] = $row['account_type'];
-				
+
 				// Setting all session variables
 				$sub_query = "UPDATE account SET last_seen = now() WHERE username = '$username_var' ;";
 				$result = mysqli_query($db, $sub_query);
-				
+
 				//$statement = $db->prepare($sub_query);
 				//$statement->execute();
 				//$_SESSION['login_details_id'] = $db->lastInsertId();
 				//header('location:index.php');
-						 
+
 				 if ($account_type == "student"){
 					header("location: ./student/studentdashboard.php");
 				 }
@@ -97,21 +97,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				 else {
 					// header("location: loginFailed.php");
 					echo "<br/><br/><h3 align='center'><font color='red'>LOGIN FAILED</font></h3>";
-					
+
 				 }
-				
-						
+
+
 	}
 		// End of IF password_verify == true
 		else { echo "<br/><br/><h3 align='center'><font color='red'>login unsuccessful</font></h3>";	}
-	
+
 
 
 	}
  	// Start of ELSE
 	// Password failed
 	else { echo "<br/><br/><h3 align='center'><font color='red'>LOGIN (Password) FAILED</font></h3>";	}
-	  
+
 
 }
 
@@ -134,7 +134,7 @@ else {  echo " ";   }
 
 <html>
 <head>
-<title>Intuition Login</title>	
+<title>Intuition Login</title>
 <link rel="shortcut icon" type="image/x-icon" href="lightbulb.ico">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -188,16 +188,16 @@ span.psw { float: right; padding-top: 16px;}
 
 
 <body>
-	
-	
-	
-	
+
+
+
+
 <!---<center><img src ="logo.jpg" style="height:70%;"></center>-->
 
 
   <div class="container">
 
-  
+
 
 <form action="login.php" method="POST">
   <div class="imgcontainer">
@@ -205,9 +205,9 @@ span.psw { float: right; padding-top: 16px;}
 </div>
 
   <div class="container">
-  
-  
-  
+
+
+
 <input type="text" placeholder="Enter Username" autofocus name="username" id="username" required>
 <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
@@ -220,7 +220,7 @@ if($recaptcha) { $recaptcha.setAttribute("required", "required"); }
 };
 </script>
 
-<style>	#g-recaptcha-response { display: block !important; position: absolute; 
+<style>	#g-recaptcha-response { display: block !important; position: absolute;
 margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important; z-index: -999999;  opacity: 0;}
 </style>
 
@@ -228,7 +228,7 @@ margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important
 <div class="g-recaptcha" id="grecaptcha" data-sitekey="6LcpDroUAAAAAO-YS3f1FxTZic1lU7sykZop1PAj"></div>
 </div>
 
-<span id="captcha" style="color:red" /></span> 
+<span id="captcha" style="color:red" /></span>
 <!-- this will show captcha errors -->
 
 </div>
@@ -253,18 +253,18 @@ margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important
 
 <div class="container" style="background-color:#f1f1f1" align='center'>
 	<a href="register.html">Don't have an account? >> Register For an Account Now</a>
-	
+
 	<br/>
 	<br/>
-	
+
 	<button type="button" class="btn btn-danger" style="width: 30%;"><a style="color:white;" href="resetPassword.php" >RESET MY PASSWORD</a></button>
 
 	<button type="button" class="btn btn-info" style="width: 30%;"><b><a style="color:white;" href="register.html">CREATE NEW ACCOUNT</a></button>
 
-	
+
 	</div>
 
-	
+
 	<br/>
 	<br/>
 
@@ -277,20 +277,3 @@ margin: -78px 0 0 0 !important; width: 302px !important; height: 76px !important
 
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
