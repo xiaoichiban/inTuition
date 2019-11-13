@@ -69,8 +69,8 @@ include './layout/sidebar.php';
                   <br><br><br>
                   <b><h4>Status</h4></b>
                   <br>
-                  <input type="text" style="width: 50%; display: inline;" 
-				  class="form-control" value="active" name="status" 
+                  <input type="text" style="width: 50%; display: inline;"
+				  class="form-control" value="active" name="status"
 				  disabled
 				  size="48"></input>
                   <br><br>
@@ -81,11 +81,11 @@ include './layout/sidebar.php';
                   </div>
                 </form>
 
-              </div> <!-- card header --> 
-            </div> <!-- card --> 
-          </div> <!-- col-12 --> 
-        </div> <!-- row --> 
-                
+              </div> <!-- card header -->
+            </div> <!-- card -->
+          </div> <!-- col-12 -->
+        </div> <!-- row -->
+
       </div>
     </div>
   </div>
@@ -93,16 +93,10 @@ include './layout/sidebar.php';
   <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
-  <!-- BEGIN PAGE VENDOR JS-->
-  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-  <!-- END PAGE VENDOR JS-->
   <!-- BEGIN CHAMELEON  JS-->
   <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
   <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
   <!-- END CHAMELEON  JS-->
-  <!-- BEGIN PAGE LEVEL JS-->
-  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-  <!-- END PAGE LEVEL JS-->
 
 </body>
 </html>
