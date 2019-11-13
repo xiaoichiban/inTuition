@@ -98,7 +98,7 @@ else {
     <br>
     <input type="radio" name="qns<?= $row[0]?>ans" value="d" <?php echo ($row[1] == 'd') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[5] ?>
     <br>
-    <?
+    <?php
     echo "<br>";
 
     if ($row[1] == $qnsRow[6]) {
