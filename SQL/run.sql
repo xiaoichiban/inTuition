@@ -345,8 +345,8 @@ VALUES
 INSERT INTO video
 (mod_id, name, description, filename, subtitles)
 VALUES
-('1', 'Tips on Differentiation', 'Watch and learn to improve your differentiation', '1572629571.mp4', 'blank.vtt'),
-('2', 'Interesting Science Stuff', 'Some science stuff that may make you love science more', 'devstories.webm', 'devstories-en.vtt');
+('4', 'Interesting Science Stuff', 'Watch the beautiful Earth', 'earth.mp4', 'blank.vtt'),
+('2', 'Interesting Google Stuff', 'Some science stuff that may make you love science more', 'devstories.webm', 'devstories-en.vtt');
 
 INSERT INTO file
 (mod_id, name, description, filename)
@@ -358,11 +358,11 @@ VALUES
 INSERT INTO enroll (student, mod_id, status)
 VALUES ('alice', '1', 'accepted');
 INSERT INTO enroll (student, mod_id, status)
-VALUES ('bob', '1', 'pending');
+VALUES ('bob', '1', 'accepted');
 INSERT INTO enroll (student, mod_id, status)
-VALUES ('alice', '3', 'pending');
+VALUES ('alice', '3', 'accepted');
 INSERT INTO enroll (student, mod_id, status)
-VALUES ('bob', '4', 'pending');
+VALUES ('bob', '4', 'accepted');
 
 INSERT INTO notification (content, sender, receiver, mod_id, datetimestamp, isRead)
 VALUES

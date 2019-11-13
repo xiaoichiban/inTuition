@@ -144,12 +144,9 @@
               if (mysqli_num_rows($nothingResult1) == 0) {
                 echo "<div class='col-lg-4 col-md-12'>".
                   "<div class='card>".
-                  "<div class='card-header'>".
-                  "<h4 class='card-title'>Pending modules></h4>".
                   "<div class='card-content'>".
                   "<div class='card-body'>".
-                    "<h6 style='color:white;'>There are no pending modules. </h6>".
-                  "</div>".
+                    "<h6>There are no pending modules. </h6>".
                   "</div>".
                   "</div>".
                   "</div>".
