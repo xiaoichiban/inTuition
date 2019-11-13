@@ -1,12 +1,12 @@
 <html>
 <head>
-  <title>Feedback</title>
+  <title>Register Module</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="layout/timetablestyle.css">
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
-  <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
