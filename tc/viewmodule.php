@@ -79,14 +79,14 @@ include './layout/sidebar.php';
                         echo
                         "<tr><th>Module Name</th><th>" . $row[1] . "</th></tr>" .
                         "<tr><th>Description</th><th>" . $row[2] . "</th></tr>" .
-                        "<tr><th>Tutored by</th><th>" . $row[4] . "</th></tr>" .
+                        "<tr><th>Tutored by</th><th>" . $row[7] . "</th></tr>" .
                         "<tr><th>Number of students</th><th>" . mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(*) FROM enroll where mod_id = '$module_id' AND status = 'accepted';"))[0] . "</th></tr>" .
                         "</table></div></div></div>";
                       }
 
-                      $sql = "SELECT * FROM enroll WHERE mod_id = '$module_id' AND status = 'accepted' ORDER BY student";
-                      $result = mysqli_query($db, $sql);
-                      $row = mysqli_fetch_row($result);
+                      $studentSQL = "SELECT * FROM enroll WHERE mod_id = '$module_id' AND status = 'accepted' ORDER BY student";
+                      $studentEnrollment = mysqli_query($db, $studentSQL);
+                      
 
 
                       ?>
@@ -103,30 +103,35 @@ include './layout/sidebar.php';
                     </div>
                     <div class="card-body">
                       <?php
-                      $rowCount = mysqli_num_rows($result);
+                      $studentCount = mysqli_num_rows($result);
 
-                      if ($rowCount == 0) {
-                        echo "<h6 class>No students enrolled yet.</h6>";
-                      } else {
-                        echo
-                          "<form method='post' action='removeStudentProcess.php'>
-                          <table class='table' style='font-size:14px; width: 80%;'>
-                          <thead>
-                          <tr>
-                          <th>Student Name</th>
-                          <th>Date of Enrollment</th>
-                          <th></th>
-                          <tr/>" .
-                          "<tr><th>" . $row[1] . "</th>" .
-                          "<th>" . $row[4] . "</th>" .
-                          "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$row[1]'>
-                          <input type='submit' class='btn btn-sm btn-dark' onclick='return confirm('Remove student $row[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
-                          </thead>
-                          </table>
-                          </form>";
-                        }
+                      if ($studentCount == 0) {
+                          echo "<h6 class>No students enrolled yet.</h6>";
+                        } else {
+                      echo "<table class='table' style='font-size:14px; width: 80%;'>";
+                      echo "<thead>
+                            <tr>
+                            <th>Student Name</th>
+                            <th>Date of Enrollment</th>
+                            <th></th>
+                            <tr/>";
 
-                      ?>
+                      while ($studentRow = mysqli_fetch_row($studentEnrollment)) {
+                        
+                          echo
+                            "<form method='post' action='removeStudentProcess.php'>".
+                            "<tr><th>" . $studentRow[1] . "</th>" .
+                            "<th>" . $studentRow[4] . "</th>" .
+                            "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$studentRow[1]'>
+                            <input type='submit' class='btn btn-sm btn-dark' onclick='return confirm('Remove student $studentRow[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
+                            </thead>
+                            
+                            </form>";
+                          
+                          }
+                          echo "</table>";
+                          } //end of else no student
+                        ?>
                     </div>
 
                   </div>

@@ -206,6 +206,7 @@
                 <?php 
                 if ($seecontent){
                 ?>
+                <br/>
                 <div class="content-header-left col-md-4 col-12 mb-2">
                   <h4 class="content-header-title" style="color: #464855;">Past quizzes</h4>
                 </div>

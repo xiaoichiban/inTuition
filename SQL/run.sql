@@ -336,7 +336,7 @@ VALUES
 'brightkids', 'johnny', 'active'),
 ('Science', 'Combined Physics and Chemistry for Secondary 3', '2', '2000', '2300',
 'brightkids', 'johnny', 'active'),
-('Science', 'TCombined Physics and Chemistry for Secondary 3', '0', '0900', '1800',
+('Science', 'Combined Physics and Chemistry for Secondary 3', '0', '0900', '1800',
 'brightkids', 'johnny', 'active');
 
 
