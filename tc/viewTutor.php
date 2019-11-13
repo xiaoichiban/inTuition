@@ -1,3 +1,8 @@
+<head>
+  <title>View Tutor</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
+</head>
+
 <?php
 include('../session.php');
 $thisuser = $_SESSION['login_user'];

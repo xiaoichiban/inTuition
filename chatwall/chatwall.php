@@ -6,12 +6,14 @@
 include('session.php');
 ?>
 
-<html>  
+<html>
     <head>
+    <title>Chat Wall</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Chat App</title>  
+        <title>Chat App</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
@@ -19,11 +21,11 @@ include('session.php');
   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   		<script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
-    </head>  
-    <body>  
+    </head>
+    <body>
         <div class="container">
 			<br />
-			
+
 			<h3 align="center">Chat App</h3><br />
 			<br />
 			<div class="row">
@@ -35,27 +37,27 @@ include('session.php');
 					<!---<button type="button" name="group_chat" id="group_chat" class="btn btn-warning btn-xs">Group Chat</button>-->
 				</div>
 				<div class="col-md-2 col-sm-3">
-					<p align="right">Hi - <?php echo $_SESSION['username']; ?> 
+					<p align="right">Hi - <?php echo $_SESSION['username']; ?>
 					 - <a href="../router.php">Back To App</a>
 					<br/> <br/>
-					
+
 					<!---<a href="logout.php" style="color:red">Logout</a>--->
-					
-					
+
+
 					</p>
 				</div>
 			</div>
 			<div class="table-responsive">
-				
+
 				<div id="user_details"></div>
 				<div id="user_model_details"></div>
 			</div>
 			<br />
 			<br />
-			
+
 		</div>
-		
-    </body>  
+
+    </body>
 </html>
 
 <style>
@@ -96,7 +98,7 @@ include('session.php');
     cursor: pointer;
 }
 
-</style>  
+</style>
 
 <div id="group_chat_dialog" title="Group Chat Window">
 	<div id="group_chat_history" style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;">
@@ -122,7 +124,7 @@ include('session.php');
 </div>
 
 
-<script>  
+<script>
 $(document).ready(function(){
 
 	fetch_user();
@@ -249,7 +251,7 @@ $(document).ready(function(){
 			data:{is_type:is_type},
 			success:function()
 			{
-				
+
 			}
 		})
 	});
@@ -326,6 +328,6 @@ $(document).ready(function(){
 			})
 		}
 	});
-	
-});  
+
+});
 </script>

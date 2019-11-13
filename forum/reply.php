@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TASK MASTER</title>
+        <title>Reply</title>
+        <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             * {
@@ -89,7 +90,7 @@
             }
 
             .dropdown .dropbtn {
-                font-size: 16px;    
+                font-size: 16px;
                 border: none;
                 outline: none;
                 color: white;
@@ -132,7 +133,7 @@
             }
 
             .imagecontainer {
-                position:absolute; 
+                position:absolute;
                 bottom:0;
             }
         </style>
@@ -146,7 +147,7 @@
             <b><a href = "welcome.php">Home</a></b>
             <b><a href = "myprofile.php">My Profile</a></b>
             <div class="dropdown">
-                <button class="dropbtn"><b>Social</b> 
+                <button class="dropbtn"><b>Social</b>
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
@@ -154,9 +155,9 @@
                     <b><a href = "inbox.php">Chat</a></b>
                     <b><a href = "new_conversation.php">New Chat</a></b>
                 </div>
-            </div> 
+            </div>
             <div class="dropdown">
-                <button class="dropbtn"><b>Search</b> 
+                <button class="dropbtn"><b>Search</b>
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
@@ -165,7 +166,7 @@
                     <b><a href = "searchGeneralTask.php">Search By Name/Description</a></b>
                     <b><a href = "searchTags.php">Search By Tags</a></b>
                 </div>
-            </div> 
+            </div>
             <div class="dropdown">
                 <button class="dropbtn"><b>My Tasks</b>
                     <i class="fa fa-caret-down"></i>
@@ -175,7 +176,7 @@
                     <b><a href = "mytasks.php">My Tasks</a></b>
                     <b><a href = "viewbidtask.php">My Bid Tasks</a></b>
                 </div>
-            </div> 
+            </div>
             <b><a href = "report.php">Report Problem</a></b>
             <b><a href = "logout.php">Sign Out</a></b>
         </div>
@@ -217,7 +218,7 @@ if(isset($_POST['to'],$_POST['subject'],$_POST['body'])){
 				$errors[]= '<div class="error">You cannot send message to yourself.</div>';
 			}
 		}
-		
+
 		$users = fetch_user_names($user_name);
 		if (count($users) !== count($user_name)){
 			$errors[]='<div class="error">The following users could not be found: '.implode(', ',array_diff($user_name,$users)).'</div><br>';
@@ -232,12 +233,12 @@ if(isset($_POST['to'],$_POST['subject'],$_POST['body'])){
 	}
 
 	if(empty($errors)){
-	
+
 	//echo 'subjuct',$_POST['subject'];
 	//echo 'body',$_POST['body'];
-		
+
 		create_conversation(array_unique($users),$_POST['subject'],$_POST['body'],$login_session);
-		
+
 	}
 }
 if(isset($errors)){
@@ -265,9 +266,9 @@ if(isset($errors)){
 	</div>
 	<div class="body">
 		<textarea name="body" rows="20" cols="110"><?php if(isset($_POST['body'])) echo htmlentities($_POST['body']); ?></textarea>
-	</div>	
+	</div>
 		<br><input type="submit" value="send" id="submit" />
 <div class="column">
                 <div class ="imagecontainer">
-                <img src="taskmaster.png" style="height: 700px; position: absolute;left: 700; top: 50%;margin-top: -480px;"> 
+                <img src="taskmaster.png" style="height: 700px; position: absolute;left: 700; top: 50%;margin-top: -480px;">
                 </div>
