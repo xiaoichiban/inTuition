@@ -178,10 +178,10 @@ else {
                 <div class="card-content"><br>
                   <?php
 
-                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
-                      echo "<h4 class='card-title'>No questions yet</h4>";
-                    } else if ($countAttemptRow == 0) {
-                      echo "<h4 class='card-title'>No attempts yet.";
+                    if ($countAttemptRow == 0) {
+                      echo "<h4 class='card-title'>No attempts yet.</h4>";
+                    } else if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
+                      echo "<h4 class='card-title'>No questions yet.</h4>";
                     } else {
 
                       $hardestQnsId = mysqli_fetch_row(mysqli_query($db, "SELECT questionid, COUNT(*) from attempts where quizid = '$quiz_id' and isCorrect = '0' group by questionid order by count(*) desc LIMIT 1;"))[0];
@@ -206,10 +206,10 @@ else {
                 <div class="card-content"><br>
                   <?php
 
-                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
-                      echo "<h4 class='card-title'>No questions yet</h4>";
-                    } else if ($countAttemptRow == 0) {
-                      echo "<h4 class='card-title'>No attempts yet.";
+                    if ($countAttemptRow == 0) {
+                      echo "<h4 class='card-title'>No attempts yet</h4>";
+                    } else if (mysqli_num_rows(mysqli_query($db, "SELECT * from question WHERE quizid = '$quiz_id';")) == 0) {
+                      echo "<h4 class='card-title'>No questions yet.";
                     } else {
                       $easiestQnsId = mysqli_fetch_row(mysqli_query($db, "SELECT questionid, COUNT(*) from attempts where quizid = '$quiz_id' and isCorrect = '1' group by questionid order by count(*) desc LIMIT 1;"))[0];
 
