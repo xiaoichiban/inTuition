@@ -4,7 +4,6 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="layout/timetablestyle.css">
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -105,16 +104,10 @@
   <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
-  <!-- BEGIN PAGE VENDOR JS-->
-  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-  <!-- END PAGE VENDOR JS-->
   <!-- BEGIN CHAMELEON  JS-->
   <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
   <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
   <!-- END CHAMELEON  JS-->
-  <!-- BEGIN PAGE LEVEL JS-->
-  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-  <!-- END PAGE LEVEL JS-->
 
 </body>
 </html>
