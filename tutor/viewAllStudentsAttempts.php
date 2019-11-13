@@ -4,7 +4,6 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="layout/timetablestyle.css">
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -25,14 +24,14 @@
 </head>
 <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-blue-cyan" data-col="2-columns">
 
-<?php 
+<?php
 include('session.php');
 $thisuser = $_SESSION['login_user'];
 $quiz_id = $_GET['quizid'];
 
 include './layout/sidebar.php';
 
-//view all students 
+//view all students
 $attemptSql = "SELECT DISTINCT(student) FROM attempts WHERE quizid = '$quiz_id'; ";
 $attemptResult = mysqli_query($db, $attemptSql);
 
@@ -46,7 +45,7 @@ $quizresult = mysqli_query($db, $sql1);
 $questionrow = mysqli_fetch_row($quizresult);
 
 
-?> 
+?>
 
 <div class="app-content content">
     <div class="content-wrapper">
@@ -71,7 +70,7 @@ $questionrow = mysqli_fetch_row($quizresult);
 
           <div class="row">
 
-            <?php 
+            <?php
             if(isset($_GET['search']) != "") {
               $search_value = $_GET['search'];
               // echo"$search_value";
@@ -95,12 +94,12 @@ $questionrow = mysqli_fetch_row($quizresult);
                   <div class="card-content">
                     <div class="card-body">
                       <?php
-                        
+
                         echo
                           "<table style='width:100%; font-size:14px;' class='table-borderless'>" .
                           "<tr><th>Number of attempts</th><th>" . $numAttempts1 . "</th></tr>";
 
-                          $attemptCounter1 = 0; 
+                          $attemptCounter1 = 0;
                           while ($attemptrow = mysqli_fetch_row($searchStudentResult)) {
 
                             $correctAnsSql = "SELECT count(*) FROM attempts WHERE student = '$foundStudent' and datetimestamp = '$attemptrow[6]' and isCorrect = 1;" ;
@@ -117,19 +116,19 @@ $questionrow = mysqli_fetch_row($quizresult);
                           }
 
                           echo "</table>";
-                        
+
                         ?>
                     </div>
                   </div>
-                </div> <!-- card header --> 
-              </div> <!-- card --> 
-            </div> <!-- col-12 --> 
+                </div> <!-- card header -->
+              </div> <!-- card -->
+            </div> <!-- col-12 -->
 
 
             <?php
             } //end of row
           } else if (mysqli_num_rows($attemptResult) > 0) {
-             
+
               while ($attemptRow = mysqli_fetch_row($attemptResult)) {
                 $studentName = $attemptRow[0];
 
@@ -137,7 +136,7 @@ $questionrow = mysqli_fetch_row($quizresult);
                 $result2 = mysqli_query($db, $sql2);
                 $numAttempts = mysqli_fetch_row(mysqli_query($db, "SELECT COUNT(quizid) from attempts where student = '$studentName' and quizid = '$quiz_id' and questionid = '$questionrow[0]';"))[0];
               }
-            
+
             ?>
             <div class="col-lg-4 col-md-12">
               <div class="card">
@@ -146,12 +145,12 @@ $questionrow = mysqli_fetch_row($quizresult);
                   <div class="card-content">
                     <div class="card-body">
                       <?php
-                        
+
                         echo
                           "<table style='width:100%; font-size:14px;' class='table-borderless'>" .
                           "<tr><th>Number of attempts</th><th>" . $numAttempts . "</th></tr>";
 
-                          $attemptCounter = 0; 
+                          $attemptCounter = 0;
                           while ($attemptrow = mysqli_fetch_row($result2)) {
 
                             $correctAnsSql = "SELECT count(*) FROM attempts WHERE student = '$studentName' and datetimestamp = '$attemptrow[6]' and isCorrect = 1;" ;
@@ -168,26 +167,26 @@ $questionrow = mysqli_fetch_row($quizresult);
                           }
 
                           echo "</table>";
-                        
+
                         ?>
                     </div>
                   </div>
-                </div> <!-- card header --> 
-              </div> <!-- card --> 
-            </div> <!-- col-12 --> 
-           <?php 
+                </div> <!-- card header -->
+              </div> <!-- card -->
+            </div> <!-- col-12 -->
+           <?php
               } else {
                 echo "<div class='col-12'>";
                 echo "<div class='card'>";
                 echo "<div class='card-body'>";
-                echo "<h4 class='card-title'>No students attempted this quiz yet.</h4>";                      
+                echo "<h4 class='card-title'>No students attempted this quiz yet.</h4>";
                 echo "</div></div></div>";
-              } //end of if 
+              } //end of if
             ?>
 
-          </div> <!--row --> 
+          </div> <!--row -->
 
-        </div> <!-- content body --> 
+        </div> <!-- content body -->
 
 <?php
 
