@@ -32,6 +32,7 @@
 <head>
 	<title>Register for InTuition Account</title>
 	<link rel="stylesheet" href="style_01.css">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  
   
   	<!----
@@ -42,6 +43,10 @@
 		.demoInputBox{padding:7px; border:#F0F0F0 1px solid; border-radius:4px;}
 		.status-available{color:#2FC332;}
 		.status-not-available{color:#D60202;}
+
+    body {
+      font-family: 'Comfortaa', cursive, 'Times New Roman', Times, serif;
+    }
 	</style>
 	
 	
@@ -104,7 +109,7 @@
   
   
   <form method="post" action="register_02.php" id="register_form">
-  	<h1>Register @ InTuition As Tuition Center</h1>
+  	<h1 style="padding:10px;">Register @ InTuition As Tuition Center</h1>
 	
 	
 
