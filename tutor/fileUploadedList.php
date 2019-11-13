@@ -64,6 +64,7 @@ include ('./layout/sidebar.php');
                         <th>Description</th>
                         <th>Date</th>
                         <th></th>
+                        <th></th>
                         </tr>";
 
                         while ($row = mysqli_fetch_assoc($result2)) {
@@ -75,6 +76,7 @@ include ('./layout/sidebar.php');
                           <th>". $row['name']."<br/>". $row['description']."</th>
                           <th>". $row['datetimestamp']."</th>
                           <th><a href = 'deleteFile.php?mod_id=".$row['mod_id']."&filename=".$row['filename']."'>Remove</a></th>
+                          <th><a class = 'btn btn-info' href = 'downloadFileProcess.php?filename=".$row['filename']."'>Download</a></th>
                           </tr>";
                         }
                         echo "</table></div>";
