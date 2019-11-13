@@ -9,28 +9,28 @@ include('session.php');
 
 <head>
 		<title> 7chan </title>
-		
+		<link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
 		<meta charset="utf-8">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		
-		
+
+
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   		<script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		
 
-		
-</head> 
+
+
+</head>
 
 
 
@@ -74,7 +74,7 @@ body {
 <div class="topnav">
 
   <a class="active"  href="myprofile.php">
-<text style=" color:white" > 
+<text style=" color:white" >
 <b> <?php  echo $_SESSION['login_user']; ?>  </b> </text>
 
 <?php
@@ -88,9 +88,9 @@ echo "<img src = './profile/$profilepicture' class='rounded-circle'  height='30p
 ?>
 </a>
 
-  
+
   <a href="#home"> | about |</a>
-    
+
 </div>
 
 
@@ -103,7 +103,7 @@ body {
   font-family: "Lato", sans-serif;
 }
 .sidenav {
-  height: 100%;  width: 0;  position: fixed;  z-index: 1;  top: 0;  left: 0;  
+  height: 100%;  width: 0;  position: fixed;  z-index: 1;  top: 0;  left: 0;
   background-color: #111;  overflow-x: hidden;  transition: 0.5s;  padding-top: 60px;
 }
 .sidenav a {
@@ -116,7 +116,7 @@ body {
   position: absolute;  top: 0;  right: 25px;  font-size: 36px;  margin-left: 50px;
 }
 
-@media screen and (max-height: 450px) {  
+@media screen and (max-height: 450px) {
 .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
@@ -138,8 +138,8 @@ body {
 }
 
 .button1 {
-  background-color: white; 
-  color: black; 
+  background-color: white;
+  color: black;
 }
 
 .button1:hover {
@@ -149,8 +149,8 @@ body {
 }
 
 .button2 {
-  background-color: white; 
-  color: black; 
+  background-color: white;
+  color: black;
   border: 2px solid #008CBA;
 }
 
@@ -161,8 +161,8 @@ body {
 }
 
 .button3 {
-  background-color: white; 
-  color: black; 
+  background-color: white;
+  color: black;
   border: 2px solid #f44336;
 }
 
@@ -235,7 +235,7 @@ body {
 #rcorners2 {
   border-radius: 25px;
   border: 2px solid #73AD21;
-  padding: 20px; 
+  padding: 20px;
   width: 80%;
 }
 
@@ -243,7 +243,7 @@ body {
 #rcorners3 {
   border-radius: 25px;
   border: 2px solid darkblue;
-  padding: 20px; 
+  padding: 20px;
   width: 80%;
 }
 
@@ -274,8 +274,8 @@ body {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="index.php"><button class="button button7">  All Tweets  </button>  </a>
   <a href="myFeed.php"><button class="button button1">  My Personal Feed  </button>  </a>
-  <a href="searchTweets.php"><button class="button button2">Search Tweets</button> </a>	
-  <a href="categories.php"><button class="button button2">Tweet Categories</button> </a>	
+  <a href="searchTweets.php"><button class="button button2">Search Tweets</button> </a>
+  <a href="categories.php"><button class="button button2">Tweet Categories</button> </a>
   <a href="createTweet.php"><button class="button button2">Create Tweet </button></a>
   <a href="myTweet.php"><button class="button button5">My Tweets </button></a>
   <a href="myProfile.php"><button class="button button5">My Profile </button></a>
@@ -316,4 +316,3 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 </script>
-   

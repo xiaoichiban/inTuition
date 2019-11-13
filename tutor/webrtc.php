@@ -6,9 +6,9 @@ include './layout/config.php';
 
 <html>
 <head>
-  <title>My Modules</title>
+  <title>Web Chat</title>
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
-  <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
@@ -47,11 +47,11 @@ include './layout/config.php';
 			         <div class="card-content">
                   <div class="card-body">
                   <h3 class="card-title">WebRTC services</h3>
-  				
+
                   <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 </div>
                 <div class="card-content collapse show">
-			  
+
                 <div class="table-responsive">
                   <table class="table table-striped">
                     <thead>
@@ -66,29 +66,29 @@ include './layout/config.php';
 
                       <tr>
                         <th scope="col">1</th>
-                        <th scope="col"> 
+                        <th scope="col">
 						<a href="https://localhost/pets/webrtc2/" target="_blank"> PHP </a>  </th>
                         <th scope="col">(Local) Basic 1-1</th>
-                      </tr>					  
-					  
+                      </tr>
+
 					  <tr>
                         <th scope="col">2</th>
-                        <th scope="col"> 
+                        <th scope="col">
 						<a href="http://localhost:9988" target="_blank"> PHP ext </a>  </th>
                         <th scope="col">(Local)Based on Workerman</th>
                       </tr>
-					  
+
 					  <tr>
                         <th scope="col">3</th>
-                        <th scope="col"> 
+                        <th scope="col">
 						<a href="https://localhost:8443" target="_blank"> Node JS </a>  </th>
                         <th scope="col">(Local)Node JS</th>
                       </tr>
-					  
+
 					  <tr>
                         <th scope="col">4</th>
-                        <th scope="col"> 
-						<a href="https://appr.tc/r/<?php echo rand(10000,99999999); ?>" 
+                        <th scope="col">
+						<a href="https://appr.tc/r/<?php echo rand(10000,99999999); ?>"
 						target="_blank"> APP RTC</a>  </th>
                         <th scope="col">(External) 3rd Party</th>
                       </tr>

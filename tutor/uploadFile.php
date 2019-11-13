@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Uploadd File</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
+</head>
 <body>
 
 <form action="uploadFileProcess.php" method="post" enctype="multipart/form-data">
