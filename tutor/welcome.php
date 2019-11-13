@@ -6,26 +6,29 @@ $loginlast = $_SESSION['last_login'];
 
 <!DOCTYPE html>
 <html>
-    
+
+<head>
+  <title>Welcome</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
+</head>
 
 
-	    
 <?php include("topheader.php"); ?>
 
 
-	
-	
+
+
 
     <body>
-	
-	
+
+
 	<?php include("topbody.php"); ?>
 
-		
-		
-		
-		
-		
+
+
+
+
+
         <div class="header">
             <?php
             $username = $_SESSION['login_user'];
@@ -76,4 +79,4 @@ $loginlast = $_SESSION['last_login'];
             </div>
         </div>
     </body>
-</html> 
+</html>

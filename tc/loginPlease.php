@@ -1,3 +1,8 @@
+<head>
+  <title>Error</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
+</head>
+
 
 <center>
 

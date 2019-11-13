@@ -5,33 +5,36 @@ $thisuser = $_SESSION['username'];
 
 <!DOCTYPE html>
 <html>
-    
+
+<head>
+  <title>Welcome</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
+</head>
 
 
-	    
 <?php include("topheader.php"); ?>
 
 
-	
-	
+
+
 
     <body>
-	
-	
+
+
 	<?php include("topbody.php"); ?>
 
-		
-		
-		
-		
-		
+
+
+
+
+
         <div class="header">
             <?php
             $username = $_SESSION['username'];
             $sql = "SELECT avatar_path FROM account WHERE username = '$username';";
             $result = mysqli_query($db, $sql);
             $row = mysqli_fetch_assoc($result);
-			
+
             echo '<h1>Welcome, $username &nbsp;&nbsp;&nbsp;<img src = "../profilepics/' . $row['avatar_path'] . '" style="height:40px;"></h1>';
             ?>
         </div>
@@ -76,4 +79,4 @@ $thisuser = $_SESSION['username'];
             </div>
         </div>
     </body>
-</html> 
+</html>

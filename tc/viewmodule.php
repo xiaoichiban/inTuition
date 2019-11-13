@@ -14,7 +14,7 @@ $row1 = mysqli_fetch_row($result1);
 <head>
   <title><?php echo $row1[1] ?></title>
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
-  <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
@@ -86,7 +86,7 @@ include './layout/sidebar.php';
 
                       $studentSQL = "SELECT * FROM enroll WHERE mod_id = '$module_id' AND status = 'accepted' ORDER BY student";
                       $studentEnrollment = mysqli_query($db, $studentSQL);
-                      
+
 
 
                       ?>
@@ -117,7 +117,7 @@ include './layout/sidebar.php';
                             <tr/>";
 
                       while ($studentRow = mysqli_fetch_row($studentEnrollment)) {
-                        
+
                           echo
                             "<form method='post' action='removeStudentProcess.php'>".
                             "<tr><th>" . $studentRow[1] . "</th>" .
@@ -125,9 +125,9 @@ include './layout/sidebar.php';
                             "<th><input type='hidden' name='mod_id' value='$module_id'><input type='hidden' name='username' value='$studentRow[1]'>
                             <input type='submit' class='btn btn-sm btn-dark' onclick='return confirm('Remove student $studentRow[1] from Module $module_id?')' name='submit' value='Remove'></th></tr>
                             </thead>
-                            
+
                             </form>";
-                          
+
                           }
                           echo "</table>";
                           } //end of else no student

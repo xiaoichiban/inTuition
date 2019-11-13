@@ -5,6 +5,7 @@ include 'session.php';
 <html>
   <head>
     <title>My Modules</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../lightbulb.ico">
   </head>
   <body>
 
