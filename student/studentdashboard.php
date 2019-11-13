@@ -43,7 +43,9 @@
       </div>
 
       <div class="content-body">
-
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h4 class="content-header-title">Enrolled Modules</h4>
+        </div>
         <div class="row">
           <?php
           $username = $_SESSION['login_user'];
@@ -57,11 +59,11 @@
               $nothingResult = mysqli_query($db, $sql2);
               
               if (mysqli_num_rows($nothingResult) == 0) {
-                echo "<div class='col-12'>".
-                  "<div class='card>".
+                echo "<div class='col-lg-4 col-md-12'>".
+                  "<div class='card'>".
                   "<div class='card-content'>".
                   "<div class='card-body'>".
-                    "<h6 style='color:white;'>You are not enrolled in any modules yet.</h6>".
+                    "<h6>You are not enrolled in any modules yet.</h6>".
                   "</div>".
                   "</div>".
                   "</div>".
@@ -117,11 +119,97 @@
                 </div>
                 <?php
               } //for while result2
-            } //for result1
+            } //for acctype == student
           } //end of while result1
           ?>
 
         </div>  <!-- end of class row -->
+
+        <!-- pending modules --> 
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h4 class="content-header-title" style="color: #464855;">Pending Modules</h4>
+        </div>
+        <div class="row">
+          <?php
+          
+          $accountSQL = "SELECT account_type FROM account WHERE username = '$username';";
+          $resultSQL = mysqli_query($db, $accountSQL);
+          while ($row2 = mysqli_fetch_row($resultSQL)) {
+            $acctype = $row2[0];
+            if ($acctype == "student"){
+              $sql3 = "SELECT * FROM module WHERE id IN (SELECT mod_id FROM enroll WHERE student = '$username' AND status='pending');";
+              $result3 = mysqli_query($db, $sql3);
+              $nothingResult1 = mysqli_query($db, $sql3);
+              
+              if (mysqli_num_rows($nothingResult1) == 0) {
+                echo "<div class='col-lg-4 col-md-12'>".
+                  "<div class='card>".
+                  "<div class='card-header'>".
+                  "<h4 class='card-title'>Pending modules></h4>".
+                  "<div class='card-content'>".
+                  "<div class='card-body'>".
+                    "<h6 style='color:white;'>There are no pending modules. </h6>".
+                  "</div>".
+                  "</div>".
+                  "</div>".
+                  "</div>".
+                  "</div>";
+              }
+              while ($rowPending = mysqli_fetch_row($result3)) {
+                $module_details = mysqli_query($db, "SELECT * FROM module m WHERE m.id = '$row[0]'");
+                $module_row = mysqli_fetch_row($module_details);
+                $enroll_details = mysqli_query($db, "SELECT * FROM enroll e WHERE e.mod_id = '$row[0]'");
+                $enroll_row = mysqli_fetch_row($enroll_details);
+                if ($rowPending[3] == 0){
+                  $day_label = "Sun";
+                }
+                elseif ($rowPending[3] == 1) {
+                  $day_label = "Mon";
+                }
+                elseif ($rowPending[3] == 2) {
+                  $day_label = "Tue";
+                }
+                elseif ($rowPending[3] == 3) {
+                  $day_label = "Wed";
+                }
+                elseif ($rowPending[3] == 4) {
+                  $day_label = "Thu";
+                }
+                elseif ($rowPending[3] == 5) {
+                  $day_label = "Fri";
+                }
+                else{
+                  $day_label = "Sat";
+                }
+                ?>
+
+                <div class="col-lg-4 col-md-12">
+                  <a href = 'viewmodule.php?module_id=<?php echo $rowPending[0]; ?>'>
+                    <div class="card pull-up ecom-card-1 bg-white">
+                      <div class="card-header">
+                        <h4 class="card-title"><?php echo $rowPending[1]; ?></h4>
+                        <div class="card-content">
+                          <div class="pt-2">
+                            <?php
+                            echo "<b>Time:</b> <br/>$day_label $rowPending[4] - $rowPending[5]";
+                            echo "<br/><br/>";
+                            echo "<b>Offered by:</b> <br/>$rowPending[6]";
+                            echo "<br/><br/>";
+                            echo "<b>Tutored by:</b> <br/>$rowPending[7]";
+                            ?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <?php
+              } //for while result2
+            } //for acctype == student
+          } //end of while result1
+          ?>
+        </div>
+
       </div>  <!-- end of content-body -->
       <div class="pl-2">
       <?php

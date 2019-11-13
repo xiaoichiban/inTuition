@@ -86,15 +86,13 @@
                       "<tr><th>" . $row[7] . "</th>" .
                       "<th>" . $day_label . " " . $row[4] . " to " . $row[5] . "</th>" .
                       "<th><form action = 'registermodule.php?module_id=$row[0]&module_name=$row[1]' method = 'post'>
-                      <input type = 'submit' class = 'btn btn-primary' value = ' Register '/>
+                      <input type = 'submit' class = 'btn-sm btn-primary' value = ' Register '/>
                       </form></th></tr>";
                     }
                     echo "</table>";
                     ?>
                     <hr/>
 
-
-                    <a class='btn btn-primary' href = 'studentdashboard.php'>Back</a>
                   </div>
                 </div>
               </div>
@@ -103,6 +101,7 @@
         </div>
 
       </div>  <!-- end of content-body -->
+      <a class='btn btn-primary' href = 'studentdashboard.php'>Back</a>
     </div>  <!-- end of content-wrapper -->
   </div>  <!-- end of app-content content -->
 
