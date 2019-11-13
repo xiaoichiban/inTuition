@@ -478,5 +478,5 @@ INSERT INTO question (questiontitle, optiona, optionb, optionc, optiond, answer,
 
 INSERT INTO attempts (attemptedans, quizid, questionid, student, isCorrect, datetimestamp) VALUES
 ('a', 1, 1, 'alice',	0, '2019-11-05 12:13:37'),
-('b', 1, 2, 'alice',	0, '2019-11-05 12:13:37'),
+('b', 1, 2, 'alice',	1, '2019-11-05 12:13:37'),
 ('c', 1, 3, 'alice',	0, '2019-11-05 12:13:37');
