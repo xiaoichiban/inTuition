@@ -16,15 +16,19 @@
   $status = 'active';
   // $tc_owner = mysqli_real_escape_string($db, $_POST['tc']);
 
-  $sql = "INSERT INTO account (username, password, name, email, status, date_registered) 
-  VALUES ('$username', '$password', '$name', '$email', '$status' , now())";
+  $sql = "INSERT INTO account (username, password, name, email, status, date_registered,account_type) 
+  VALUES ('$username', '$password', '$name', '$email', '$status' , now() , 'tutor')";
 
-  if ($db->query($sql) === TRUE) {
-      echo $username . " account created successfully!";
-      $sql = "INSERT INTO tutor (username, tc_owner) VALUES ('$name', '$tc')";
-      if ($db->query($sql) === TRUE) {
+  $sql222 = "INSERT INTO tutor (username , tc_owner) VALUES ('$username' , '$tc');";
+  //$sql = "INSERT INTO tutor (username, tc_owner) VALUES ('$name', '$tc')";
+      if ($db->query($sql222) === TRUE) {
         echo $username . " tutor created successfully!";
       }
+  
+  
+  if ($db->query($sql) === TRUE) {
+      echo $username . " account created successfully!";
+
   } else {
       echo "Error: " . $sql . "<br>" . $db->error;
   }
