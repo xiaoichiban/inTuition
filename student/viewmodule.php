@@ -126,26 +126,30 @@
                   <div class="card-content">
                     <div class="card-body">
                       <?php
-                      $thistutor = $_SESSION['username'];
-                      $sqlQuery = "SELECT * from video v  WHERE v.mod_id = '$module_id';";
+                      if ($seecontent){
+                        $thistutor = $_SESSION['username'];
+                        $sqlQuery = "SELECT * from video v  WHERE v.mod_id = '$module_id';";
 
-                      $result = mysqli_query($db, $sqlQuery);
-                      $vidcount = mysqli_num_rows($result);
+                        $result = mysqli_query($db, $sqlQuery);
+                        $vidcount = mysqli_num_rows($result);
 
-                      echo "<p>Number of Videos in this module: $vidcount</p>";
-                      echo "<table class='table'><thead><tr><th><b>Name</b></th><th><b>Description</b</th><th><b>Filename</b></th><th><b>Subtitles</b></th><th><b>Uploaded</b></th><th></th></tr></thead><tbody>";
-                      while ($row = mysqli_fetch_assoc($result)) {
-                        $subs = $row['subtitles'];
-                        $vid  = $row['filename'];
-                        echo "<td>".$row['name'] . "</td>";
-                        echo "<td>".$row['description'] . "</td>";
-                        echo "<td>".$row['filename'] . "</td>";
-                        echo "<td>".$row['subtitles'] . "</td>";
-                        echo "<td>".$row['datetimestamp'] . " </td>";
-                        echo "<td><a class='btn btn-sm btn-info' href='viewVideo.php?id=$vid&subs=$subs'>
-                        <b>WATCH</b></a> </td></tr>";
+                        echo "<p>Number of Videos in this module: $vidcount</p>";
+                        echo "<table class='table'><thead><tr><th><b>Name</b></th><th><b>Description</b</th><th><b>Filename</b></th><th><b>Subtitles</b></th><th><b>Uploaded</b></th><th></th></tr></thead><tbody>";
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          $subs = $row['subtitles'];
+                          $vid  = $row['filename'];
+                          echo "<td>".$row['name'] . "</td>";
+                          echo "<td>".$row['description'] . "</td>";
+                          echo "<td>".$row['filename'] . "</td>";
+                          echo "<td>".$row['subtitles'] . "</td>";
+                          echo "<td>".$row['datetimestamp'] . " </td>";
+                          echo "<td><a class='btn btn-sm btn-info' href='viewVideo.php?id=$vid&subs=$subs'>
+                          <b>WATCH</b></a> </td></tr>";
+                        }
+                        echo "</tbody></table><br/>";
+                      } else {
+                        echo "<h6>You are not enrolled in this module.</h6>";
                       }
-                      echo "</tbody></table><br/>";
                       ?>
                     </div>
                   </div>
@@ -155,12 +159,15 @@
             </div>  <!-- end of class row -->
 
             <!-- available quizzes --> 
+            <?php 
+            if ($seecontent){
+            ?>
             <div class="content-header-left col-md-4 col-12 mb-2">
               <h4 class="content-header-title" style="color: #464855;">Available quizzes</h4>
             </div>
 
             <?php
-            if ($seecontent){
+            
               $sql2 = "SELECT * FROM quiz WHERE moduleid = '$module_id' and status = 'active';";
               $result2 = mysqli_query($db, $sql2);
               if (mysqli_num_rows($result2) == 0) {
@@ -187,17 +194,24 @@
                     <?php
                   } //end of while
                 }
-              }
+              
                   ?>
                 </div>  <!-- end of class row -->
+                <?php 
+                } //end of see content
+                ?>
+
 
                 <!-- past quizzes --> 
+                <?php 
+                if ($seecontent){
+                ?>
                 <div class="content-header-left col-md-4 col-12 mb-2">
                   <h4 class="content-header-title" style="color: #464855;">Past quizzes</h4>
                 </div>
 
                 <?php
-                if ($seecontent){
+                
                   $sql2 = "SELECT quiz.quiztitle, attempts.student FROM quiz INNER JOIN attempts ON quiz.id = attempts.quizid WHERE moduleid = '$module_id' and status = 'expired' and student = '$username';";
                   $result2 = mysqli_query($db, $sql2);
                   if (mysqli_num_rows($result2) == 0) {
@@ -223,14 +237,13 @@
                         </div>
                         <?php
                       } //end of while
-                ?>
+                  ?>
                 </div>  <!-- end of class row -->
 
-
                 <?php
-
               }
             } //end of else
+
 
             $sql3 = "SELECT * FROM enroll WHERE mod_id = '$module_id' AND student = '$username'";
             $result3 = mysqli_query($db, $sql3);
