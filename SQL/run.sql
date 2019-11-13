@@ -337,6 +337,8 @@ VALUES
 ('Science', 'Combined Physics and Chemistry for Secondary 3', '2', '2000', '2300',
 'brightkids', 'johnny', 'active'),
 ('Science', 'Combined Physics and Chemistry for Secondary 3', '0', '0900', '1800',
+'brightkids', 'johnny', 'active'),
+('Maths', 'PSLE Maths', '4', '1300', '1500',
 'brightkids', 'johnny', 'active');
 
 
@@ -363,6 +365,8 @@ INSERT INTO enroll (student, mod_id, status)
 VALUES ('alice', '3', 'accepted');
 INSERT INTO enroll (student, mod_id, status)
 VALUES ('bob', '4', 'accepted');
+INSERT INTO enroll (student, mod_id, status)
+VALUES ('alice', '5', 'pending');
 
 INSERT INTO notification (content, sender, receiver, mod_id, datetimestamp, isRead)
 VALUES

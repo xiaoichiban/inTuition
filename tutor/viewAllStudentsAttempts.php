@@ -190,7 +190,7 @@ $questionrow = mysqli_fetch_row($quizresult);
 
 <?php
 
-echo "<h3><a class='btn btn-primary' href='javascript:history.back(1)'>Back</a></h3>";
+echo "<h3><a class='btn btn-primary' href='viewquiz.php?quizid=$quiz_id'>Back</a></h3>";
 
 ?>
 
