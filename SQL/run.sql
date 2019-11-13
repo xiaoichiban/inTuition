@@ -140,14 +140,14 @@ CREATE TABLE `chat_message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
-(1,	1,	1,	'aaaa',	'2019-10-12 20:53:31',	0),
-(2,	1,	7,	'john',	'2019-10-20 00:38:22',	0),
-(3,	7,	1,	'hello',	'2019-10-20 00:39:49',	0),
-(4,	1,	7,	'hello wojak',	'2019-10-20 00:40:32',	1),
-(5,	1,	7,	'ssssssssssssssss',	'2019-11-04 03:07:16',	1),
-(6,	1,	7,	'aaaaaaaaaaaaaaaaaaaaaaaaaaa',	'2019-11-04 03:08:30',	1),
-(7,	1,	7,	'hahahahaha',	'2019-11-08 17:58:09',	1),
-(8,	1,	7,	'hdhdhdhd',	'2019-11-08 17:58:17',	1);
+(1,	1,	2,	'Hello',	'2019-10-12 20:53:31',	0),
+(2,	1,	7,	'Nice to meet you!',	'2019-10-20 00:38:22',	0),
+(3,	7,	1,	'Hello there',	'2019-10-20 00:39:49',	0),
+(4,	1,	7,	'Hey how are you',	'2019-10-20 00:40:32',	1),
+(5,	1,	7,	'Why are you not replying',	'2019-11-04 03:07:16',	1),
+(6,	1,	7,	'Are you busy',	'2019-11-04 03:08:30',	1),
+(7,	1,	7,	'Dont ignore me',	'2019-11-08 17:58:09',	1),
+(8,	1,	7,	'OK bye',	'2019-11-08 17:58:17',	1);
 
 
 
@@ -201,10 +201,10 @@ FOREIGN KEY (username) REFERENCES account(username)
 INSERT INTO account
 (username, password, name, about_me, email, last_login, date_registered, status, account_type)
 VALUES
-('alice', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'alice', 'about me 0', 'nottynottyowl@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
-('bob', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'bob', 'about me 1', 'ZG.LDQSN@gmail.com', '1111-11-11', '1111-11-11', 'active', 'student'),
-('brightkids', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'brightkids', 'best tuition center', 'shirleyooi921997@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tc'),
-('danny', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'danny', 'I very lepak', 'yinghuiseah@gmail.com', '1111-11-11', '1111-11-11', 'active', 'tutor');
+('alice', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'Alice Tan', 'I love to travel', 'nottynottyowl@gmail.com', '2019-11-05', '2019-10-11', 'active', 'student'),
+('bob', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'Bob Lim', 'I love studying', 'ZG.LDQSN@gmail.com', '2019-11-11', '2019-10-11', 'active', 'student'),
+('brightkids', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'Bright Kids', 'best tuition center', 'shirleyooi921997@gmail.com', '2019-11-11', '2019-10-11', 'active', 'tc'),
+('johnny', '$2y$10$VxT2tpKYh1/3uWqQ9bsx4.gwdbWZenjNIG5nu0PqPLF2l1p/1ISkK', 'Johnny Bravo', 'I am a super tutor', 'yinghuiseah@gmail.com', '2019-11-11', '2019-10-11', 'active', 'tutor');
 
 
 
@@ -212,10 +212,10 @@ INSERT INTO student (username) VALUES ('alice');
 INSERT INTO student (username) VALUES ('bob');
 
 INSERT INTO tc (username, credit_card_num, valid_till, credit_card_name, cvv)
-VALUES ('brightkids' , '12345678912345' , '1220' , 'DR Danny Poo' , '123');
+VALUES ('brightkids' , '12345678912345' , '1220' , 'DR Johnny Bravo' , '123');
 
 
-INSERT INTO tutor (username,tc_owner) VALUES ('danny' , 'brightkids');
+INSERT INTO tutor (username,tc_owner) VALUES ('johnny' , 'brightkids');
 
 
 
@@ -330,14 +330,14 @@ FOREIGN KEY (mod_id) REFERENCES module(id)
 INSERT INTO module
 (name, description, class_day, class_startTime, class_endTime, tc, tutor, status)
 VALUES
-('IS2103', 'This is a killer module', '1', '1400', '1600',
-'brightkids', 'danny', 'active'),
-('IS2103', 'This is NOT a killer module', '5', '1000', '1200',
-'brightkids', 'danny', 'active'),
-('IS3103', 'This is a module that wastes time', '2', '2000', '2300',
-'brightkids', 'danny', 'active'),
-('IS3103', 'This is an online module', '0', '0900', '1800',
-'brightkids', 'danny', 'active');
+('English', 'This is a crash course for O levels English', '1', '1400', '1600',
+'brightkids', 'johnny', 'active'),
+('English', 'This is a crash course for O levels English', '5', '1000', '1200',
+'brightkids', 'johnny', 'active'),
+('Science', 'Combined Physics and Chemistry for Secondary 3', '2', '2000', '2300',
+'brightkids', 'johnny', 'active'),
+('Science', 'TCombined Physics and Chemistry for Secondary 3', '0', '0900', '1800',
+'brightkids', 'johnny', 'active');
 
 
 
@@ -345,13 +345,13 @@ VALUES
 INSERT INTO video
 (mod_id, name, description, filename, subtitles)
 VALUES
-('1', 'lecture_1', 'watch and learn', '1572629571.mp4', 'blank.vtt'),
-('2', 'devs of google', 'we love to dev software', 'devstories.webm', 'devstories-en.vtt');
+('1', 'Tips on Differentiation', 'Watch and learn to improve your differentiation', '1572629571.mp4', 'blank.vtt'),
+('2', 'Interesting Science Stuff', 'Some science stuff that may make you love science more', 'devstories.webm', 'devstories-en.vtt');
 
 INSERT INTO file
 (mod_id, name, description, filename)
 VALUES
-('1', 'lecture_1', 'Introduction', '1573020648.pdf');
+('1', 'Practice ', 'Introduction', '1573020648.pdf');
 
 
 
@@ -416,20 +416,20 @@ INSERT INTO announcement ( topic, body) VALUES
 ('System Downtime', 'Dear all, System will be down from UTC+8 1100-1500 on Monday for maintenance');
 
 INSERT INTO thread (id, creator, topic, body, status)
-VALUES ('1' , 'alice' , 'Gotta problem logging in' , 'Anyone knows how to solve this??', 'ok');
+VALUES ('1' , 'alice' , 'Gotta problem logging in', 'Anyone knows how to solve this??', 'ok');
 
 INSERT INTO reply (id , poster, body, threadid)
 VALUES
-(2, 'bob', 'This problem is quite annoying', 1),
-(3, 'bob', 'you just need to use your brainsThank You', 1);
+(2, 'bob', 'This problem is quite annoying, but try your best. ', 1),
+(3, 'bob', 'You just need to think harder, thank you.', 1);
 
 
 
 INSERT INTO complain (title, content, complainer, receiver)
-VALUES ('slow', 'everything is too slow', 'bob', 'brightkids');
+VALUES ('Enrollment', 'Can you accept me into your modules?', 'bob', 'brightkids');
 
 INSERT INTO complain (title, content, complainer, receiver)
-VALUES ('slow', 'everything is too slow', 'alice', 'brightkids');
+VALUES ('Cannot view file', 'Can you re-upload the file', 'alice', 'brightkids');
 
 
 CREATE TABLE quiz (
@@ -467,13 +467,13 @@ FOREIGN KEY (student) REFERENCES student(username)
 );
 
 INSERT INTO quiz (quiztitle, moduleid) VALUES
-('Revision quiz', 1),
-('Mid term quiz', 1);
+('English Revision Quiz', 1),
+('Grammar Quiz', 1);
 
 INSERT INTO question (questiontitle, optiona, optionb, optionc, optiond, answer, quizid) VALUES
-('How is Weeeee', 'Good', 'Not good', 'So so', 'Bad', 'c', 1),
-('How is Java? ', 'Very Good', 'Not good', 'So so', 'Bad', 'd', 1),
-('What is ejb?',	'Erm', 'I don\'t know', 'Beans', 'Bu zhi dao', 'd', 1);
+('What is not a synonym for whittle?', 'Diminish', 'Erode', 'Shave', 'Intensify', 'd', 1),
+('Which of the following sentences is correct?', 'The efforts of the cat to reach the cookie was in vain.', 'He, along with a few other officials, was charged in the paper leak case', 'The crowd are becoming increasingly unruly by the moment.', 'The scissors is in the top drawer.', 'b', 1),
+('What is the meaning of depreciate?',	'Unceasing', 'To rebuke at length', 'To expose the falseness of', 'To lessen in value', 'd', 1);
 
 
 INSERT INTO attempts (attemptedans, quizid, questionid, student, isCorrect, datetimestamp) VALUES
