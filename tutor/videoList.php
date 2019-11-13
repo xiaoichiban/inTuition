@@ -60,13 +60,11 @@
                       "<table class='table table-borderless' style='font-size:14px;'>" .
                       "<tr>
                       <thead>
-                      <th>Module</th>
-                      <th>Class</th>
-                      <th>Video Name</th>
-                      <th>Video Description</th>
-                      <th>Filename</th>
-                      <th>Subtitles</th>
-                      <th>Uploaded</th>
+                      <th>Module<br/>Class</th>
+                      <th>Video Name<br/>
+                      Description & time</th>
+                      <th>Filename
+                      Subtitles</th>
                       <th></th>
                       </tr>
                       </thead>";
@@ -104,13 +102,14 @@
                         }
                         echo
                         "<tr>
-                        <th>". $moduleName."</th>
-                        <th>". $day_label . " " . $rowrow[4] . " - " . $rowrow[5] ."</th>
-                        <th>". $row['name']."</th>
-                        <th>". $row['description']."</th>
-                        <th>". $row['filename']."</th>
-                        <th>". $row['subtitles']."</th>
-                        <th>". $row['datetimestamp']."</th>
+                        <th>". $moduleName.
+						"<br/>". $day_label . " " . $rowrow[4] . " - " . $rowrow[5] ."</th>
+                        <th>". $row['name'].
+							"<br/>". $row['description'].
+							"<br/>". $row['datetimestamp'].
+						"</th>
+                        <th>". $row['filename']."<br/>".$row['subtitles']."</th>
+                        
                         <th><a class='btn btn-info' href='viewVideo.php?id=$vid&subs=$subs'>
                         <b>Watch</b></a></th>
                         </tr>";
