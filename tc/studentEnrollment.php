@@ -66,7 +66,7 @@
                         echo
                         "<form method='post' action='registerStudentProcess.php'>
                         <div class='table-responsive'>
-                        <table class='table table-borderless' style='font-size:14px;'>
+                        <table class='table' style='font-size:14px;'>
                         <tr>
                         <th>Module</th>
                         <th>Class</th>
