@@ -48,7 +48,7 @@ include './layout/sidebar.php';
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-    
+
                 <form action="createModuleProcess.php" method="post">
                   <b>Name</b>
                   <br>
@@ -61,43 +61,45 @@ include './layout/sidebar.php';
                   <br>
                   <b>Class Day</b>
                   <br>
-				  
+
 					<select
 						style="width: 50%; display: inline;" class="form-control"
 						name="day">
+            <option value='0'>SUN</option>
 					  <option value='1'>MON</option>
 					  <option value='2'>TUES</option>
 					  <option value='3'>WED</option>
 					  <option value='4'>THURS</option>
 					  <option value='5'>FRI</option>
+            <option value='6'>SAT</option>
 					</select>
-									  
-				  
-				  
-				  
-				  
-				  
+
+
+
+
+
+
                   <br>
                   <br>
                   <b>Class Start Time</b>
                   <br>
-                  <input type="number" style="width: 50%; display: inline;" 
-				  class="form-control" placeholder="Class start timing" name="start" 
-				  min="0000" max="2359">
+                  <input type="number" style="width: 50%; display: inline;"
+				  class="form-control" placeholder="Class start timing" name="start"
+				  min="0800" max="2230">
                   <br>
                   <br>
                   <b>Class End Time</b>
                   <br>
-                  <input type="number" style="width: 50%; display: inline;" 
+                  <input type="number" style="width: 50%; display: inline;"
 				  class="form-control" placeholder="Class end timing" name="end"
-				  min="0000" max="2359">
+				  min="0830" max="2300">
                   <br>
                   <br>
 
-				  
+
 				  <?php
-				  
-				  
+
+
 				      $thisTC = $_SESSION['username'];
                       $sqlQuery = "SELECT username from tutor where tc_owner = '$thisTC' ";
                       $result = mysqli_query($db, $sqlQuery);
@@ -114,7 +116,7 @@ include './layout/sidebar.php';
                       else {
                         echo "<br/><label for='tutor'><b>Module Tutor</b></label><br/>";
                         echo "<select id='tutor'  required class='form-control'
-						style='width: 50%; display: inline;' name='tutor' 
+						style='width: 50%; display: inline;' name='tutor'
 						>";
 
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -124,50 +126,50 @@ include './layout/sidebar.php';
                         echo "</select>";
                       }
 
-				  
-				  
-				  
-				  
-				  
+
+
+
+
+
 				  ?>
-                  
-				  
-				  
-				                    
+
+
+
+
                   <br>
                   <br>
-				  
+
 				  <b>Status</b>
                   <br>
-                  <input type="text" 
+                  <input type="text"
 					  id="status"
 					  name="status"
-					  style="width: 50%; display: inline;" 
+					  style="width: 50%; display: inline;"
 					  class="form-control"
 					  value="active"
 					  disabled="true">
-                  
+
 				  <br><br>
-				  
-				  
+
+
                   <div class="row pl-1">
                     <div class="card" style="background: none;">
                         <input type="submit" class="btn btn-dark" value="Create" />
                     </div>
                   </div>
-				  
-				  
-				  
+
+
+
                 </form>
 
-				
-				
-				
-				
-              </div> <!-- card header --> 
-            </div> <!-- card --> 
-          </div> <!-- col-12 --> 
-        </div> <!-- row --> 
+
+
+
+
+              </div> <!-- card header -->
+            </div> <!-- card -->
+          </div> <!-- col-12 -->
+        </div> <!-- row -->
 
       </div>
       <a class='btn btn-secondary' href = 'tcModuleManagement.php'>Back to Module List</a>
