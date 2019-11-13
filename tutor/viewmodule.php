@@ -133,7 +133,22 @@
           $vidcount = mysqli_num_rows($result222);
 
           if ($vidcount < 1) {
-            echo "no videos available";
+            ?>
+            <div class="content-header-left col-md-4 col-12 mb-2">
+              <h3 class="content-header-title" style="color: #464855;">Videos</h3>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="card-body">
+                      <h6>There is no videos available.</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php
           }
           else{
 
@@ -185,8 +200,7 @@
                       }
                       echo "</table></div>";
 
-                    }
-
+                    
                     ?>
 
                   </div>
@@ -194,6 +208,11 @@
               </div> <!-- end of card -->
             </div> <!-- end of col-12 -->
           </div> <!-- end of row -->
+
+          <?php 
+          } //else got videos
+
+          ?>
 
 
 
@@ -277,6 +296,7 @@
           } // end of else got quizzes
           ?>
 
+
           <div style="text-align:center;">
             <a style="color:white;" class="btn btn-info"
               href = 'createQuiz.php?module_id=<?= $module_id; ?>'>Create quiz</a>
@@ -290,14 +310,11 @@
             <br/><br/>
 
           </div> <!-- content wrapper -->
-
-
-
         </div> <!-- app content -->
 
 
         <?php
-      } //end of else
+        } //end of else
       ?>
 
 
