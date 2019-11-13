@@ -25,7 +25,7 @@
       if ($db->query($sql) === TRUE) {
         echo $username . " tutor created successfully!";
       }
-
+  }
 
   if ($db->query($sql) === TRUE) {
       echo $username . " account created successfully!";
