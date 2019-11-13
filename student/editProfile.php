@@ -91,8 +91,9 @@
 															<input type='text' class='form-control' style='width:50%;' name='about_me' id='about_me' value='".$row['about_me']."' required>
 															</div>
 															<button type='submit' class='btn btn-info'>Change My Details</button>
-
 															</form>
+
+															<br><a type='submit' href='changePassword.php' class='btn btn-info'>Change Password</a>
 
 															<br/>
 															<br/>
