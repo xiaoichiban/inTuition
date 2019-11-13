@@ -4,7 +4,6 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="layout/timetablestyle.css">
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -34,14 +33,14 @@ $thisusername = $_SESSION['username'];
 
 include './layout/sidebar.php';
 
-if (isset($_GET['id'])) { 
-    
+if (isset($_GET['id'])) {
+
   $id = $_GET['id'];
-  
+
   // check if exists
   $sql = "SELECT * FROM question WHERE id = '$id';";
   $result = $db->query($sql);
-  
+
   // if does not exists
   if ($result->num_rows == 0) {
     echo "<h3>There is no such question. Nothing to delete.</h3>";
@@ -54,7 +53,7 @@ if (isset($_GET['id'])) {
       <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
-          
+
         </div>
 
         <div class="content-body">
@@ -69,31 +68,31 @@ if (isset($_GET['id'])) {
                     <?php
                       echo"<center class='p-5'>";
                       echo "<h3>Are you sure you want to delete this question?</h3>";
-                      
+
                       $row = $result->fetch_assoc();
-                      
+
                       echo "<br><h4 align='center'><i>"
                       .$row["questiontitle"]."</i></h4>";
 
-                          
+
                       echo "
                         <br>
                         <div align='center'>
                         <form action='./deleteQuestionProcess.php' method='post'>
-                        
-                        <a class='btn btn-secondary' href='javascript:history.back(1)'>Do Not Delete</a> 
-                        
+
+                        <a class='btn btn-secondary' href='javascript:history.back(1)'>Do Not Delete</a>
+
                         &nbsp;&nbsp;&nbsp;
-                        
+
                         <input type='hidden' id='id' name='id' value='$id'>
                         <button class='btn btn-danger' type='submit' name='Delete' value='Delete' class='btn btn-danger'>
-                        <i class='fa fa-trash'></i> 
+                        <i class='fa fa-trash'></i>
                         Confirm Delete
                         </button>
                         </form>
                         </div>
                       ";
-                        
+
                       echo"</center>";
 
                     }
@@ -109,10 +108,10 @@ if (isset($_GET['id'])) {
                 </div>
               </div> <!-- card -->
             </div> <!-- col-12 -->
-          </div> <!-- row --> 
+          </div> <!-- row -->
         </div> <!-- content body -->
- 
-  
+
+
 </div>
 </div>
 

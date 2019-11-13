@@ -4,7 +4,6 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="layout/timetablestyle.css">
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -76,7 +75,7 @@ else {
                   <div class="card-content">
                     <div class="card-body pt-0">
                       <?php
-  
+
   $qnscounter = 0;
   echo "<br>";
 
@@ -90,7 +89,7 @@ else {
 
     echo $qnsRow[1]; //questiontitle
     echo "<br>";
-    ?> 
+    ?>
     <input type="radio" name="qns<?= $row[0]?>ans" value="a" <?php echo ($row[1] == 'a') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[2] ?>
     <br>
     <input type="radio" name="qns<?= $row[0]?>ans" value="b" <?php echo ($row[1] == 'b') ?  "checked" : "disabled" ;  ?> /> <?= $qnsRow[3] ?>
@@ -106,7 +105,7 @@ else {
       echo "<span style='color: green;'>Correct.</span><br><br>";
     } else {
       echo "<span style='color: red;'>Wrong.</span> &nbsp; The correct answer is: ";
-      $correctAnsStr = ''; 
+      $correctAnsStr = '';
       if ($qnsRow[6] == 'a') {
         $correctAnsStr = $qnsRow[2];
       } else if ($qnsRow[6] == 'b') {
@@ -132,10 +131,10 @@ else {
           </div> <!-- end of row -->
 
           <a class='btn btn-primary' href = 'viewAllStudentsAttempts.php?quizid=<?=$quizid?>'>Back to all attempts</a>
-        </div> <!-- content-body --> 
+        </div> <!-- content-body -->
 
-      </div> <!-- content-wrapper --> 
-    </div> <!--app content --> 
+      </div> <!-- content-wrapper -->
+    </div> <!--app content -->
 
 <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>

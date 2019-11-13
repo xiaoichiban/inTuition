@@ -4,7 +4,6 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="layout/timetablestyle.css">
   <link rel="apple-touch-icon" href="./layout/theme-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="./layout/theme-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -75,8 +74,8 @@ else {
                 <h4 class="card-title">Quiz details</h4>
                 <div class="card-content">
                   <div class="card-body">
-                    
-                      <?php 
+
+                      <?php
                         echo
                           "<table style='width:40%; font-size:14px;' class='table table-borderless'>" .
                           "<tr><th>Quiz title</th><th>" . $row[1] . "</th></tr>" .
@@ -105,7 +104,7 @@ else {
                           echo "<button class='btn btn-secondary'><a style='color:white;' href='setQuizStatus.php?quizid=$quiz_id&status=active'>Activate</a></button>";
                         }
                       ?>
-                    
+
                       </div>
                     </div>
                 </div>
@@ -118,7 +117,7 @@ else {
           </div>
 
           <div class="row">
-            
+
           <div class="col-lg-3 col-md-12">
             <div class="card">
               <div class="card-header">
@@ -150,16 +149,16 @@ else {
               <div class="card-header">
                 <h4 class="card-title" style="color: #7B1FA2;">Lowest Score</h4>
                 <div class="card-content"><br>
-                  <?php 
+                  <?php
 
                     if ($countAttemptRow == 0) {
                       echo "<h4 class='card-title'>No attempts yet.";
                     } else {
                       $numOfWrong = mysqli_fetch_row(mysqli_query($db, "SELECT count(isCorrect) from attempts where quizid = '$quiz_id' and isCorrect = '0' group by datetimestamp order by count(isCorrect) DESC LIMIT 1;"))[0];
-                      
+
 
                       if ($numOfWrong != null) {
-                        $lowestScore = $totalQuestions - $numOfWrong; 
+                        $lowestScore = $totalQuestions - $numOfWrong;
                         echo "<h4 class='card-title'>$lowestScore/$totalQuestions</h4>";
                       } else {
                         echo "<h4 class='card-title'>0/0</h4>";
@@ -228,18 +227,18 @@ else {
           </div> <!-- end of col-12 -->
 
         </div> <!-- end of row -->
-            
-          
+
+
 
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <?php 
+          <?php
             if ($countAttemptRow == 0) {
               echo "<h3 class='content-header-title' style='color: #464855;'>Questions</h3>";
             } else {
               echo "<h3 class='content-header-title' style='color: #464855;'>Question Statistics</h3>";
             }
           ?>
-          
+
         </div>
 
           <div class="row">
@@ -270,7 +269,7 @@ else {
                 <h4 class="card-title">Question <?= ++$qnscounter ?></h4>
                 <h6 class="pt-1"><?= $row2[1] ?></h6>
                 <div class="card-content"><br>
-                  <?php 
+                  <?php
                     if ($countAttemptRow == 0) {
                       echo "<a class='btn btn-secondary' style='color:white; float:right;' href='deleteQuestion.php?id=$row2[0]'>Remove</a>";
                     } else {
@@ -288,7 +287,7 @@ else {
                         <th>Chose A</th>
                         <th><?= $countOptionA ?></th>
                       </tr>
-                      <tr>  
+                      <tr>
                         <th>Chose B</th>
                         <th><?= $countOptionB ?></th>
                       </tr>
@@ -300,18 +299,18 @@ else {
                         <th>Chose D</th>
                         <th><?= $countOptionD ?></th>
                       </tr>
-                    
+
                   </table>
-                  <?php 
+                  <?php
                   }
                   ?>
                 </div>
               </div>
             </div> <!-- end of card -->
           </div> <!-- end of col-12 -->
-          <?php 
+          <?php
 
-            } // end of while 
+            } // end of while
           } //end of if
           ?>
         </div> <!-- end of row -->
