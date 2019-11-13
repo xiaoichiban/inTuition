@@ -1,9 +1,15 @@
+<head>
+  <title>Intuition Login</title>
+  <link rel="shortcut icon" type="image/x-icon" href="lightbulb.ico">
+</head>
 
-<center>
+<body>
+  <center>
 
-<h2>Sorry Your Login Has FAILED</h2>
+  <h2>Sorry Your Login Has FAILED</h2>
 
 
-<a href='login.html' > <<Back<< </a>
+  <a href='login.html' > <<Back<< </a>
 
-</center>
+  </center>
+</body>

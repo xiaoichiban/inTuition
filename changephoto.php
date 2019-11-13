@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Change Avatar</title>
+        <link rel="shortcut icon" type="image/x-icon" href="lightbulb.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             * {
@@ -87,7 +88,7 @@
             }
 
             .dropdown .dropbtn {
-                font-size: 16px;    
+                font-size: 16px;
                 border: none;
                 outline: none;
                 color: white;
@@ -130,7 +131,7 @@
             }
 
             .imagecontainer {
-                position:absolute; 
+                position:absolute;
                 bottom:0;
             }
 
@@ -138,11 +139,11 @@
                 align:center;
                 text-align: center;
                 background-color:#D7DBDD;
-                border-radius: 4px; 
+                border-radius: 4px;
                 max-width: 80%;
                 margin: auto;
             }
-            
+
             input[type=file] {
                 border-radius: 4px;
             }
@@ -153,7 +154,7 @@
                 cursor: pointer;
 
             }
-            
+
             input[type=submit] {
                 border-radius: 4px;
             }
@@ -171,16 +172,16 @@
             <b><a href = "welcome.php">Home</a></b>
             <b><a href = "myprofile.php">My Profile</a></b>
             <div class="dropdown">
-                <button class="dropbtn"><b>Social</b> 
+                <button class="dropbtn"><b>Social</b>
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                     <b><a href = "forum.php">Forum</a></b>
                     <b><a href = "inbox.php">Chat</a></b>
                 </div>
-            </div> 
+            </div>
             <div class="dropdown">
-                <button class="dropbtn"><b>Search</b> 
+                <button class="dropbtn"><b>Search</b>
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
@@ -188,7 +189,7 @@
                     <b><a href = "searchGeneralTask.php">Search By Name/Description</a></b>
                     <b><a href = "searchTags.php">Search By Tags</a></b>
                 </div>
-            </div> 
+            </div>
             <div class="dropdown">
                 <button class="dropbtn"><b>My Tasks</b>
                     <i class="fa fa-caret-down"></i>
@@ -198,13 +199,13 @@
                     <b><a href = "mytasks.php">My Tasks</a></b>
                     <b><a href = "viewbidtask.php">My Bid Tasks</a></b>
                 </div>
-            </div> 
+            </div>
             <b><a href = "report.php">Report Problem</a></b>
             <b><a href = "logout.php">Sign Out</a></b>
         </div>
         <br/>
         <br/>
-       
+
         <form action="changephoto.php" method="post" enctype="multipart/form-data">
             <div align='center'>
                 <h4>Image Allowed:&nbsp;Not larger than 2MB,&nbsp;File type is JPG, PNG, JPEG OR GIF.</h4>
@@ -235,7 +236,7 @@
             if (isset($_POST["submit"])) {
                 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
                 if ($check !== false) {
-                    
+
                     $uploadOk = 1;
                 } else {
                     echo "<script type = 'text/javascript'> alert ('Error: File is not an image.')</script>";
@@ -244,7 +245,7 @@
             }
 // Check if file already exists
             if (file_exists($target_file)) {
-                
+
                 //delete($target_file);
                 $uploadOk = 1;
             }
@@ -284,4 +285,3 @@
         <div align='center'><h3><a href = 'myprofile.php' style='font-family:Old Standard;font-size: 18px'>Back</a></h3></div>
     </body>
 </html>
-

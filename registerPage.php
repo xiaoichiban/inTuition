@@ -1,24 +1,24 @@
 
 
-<?php 
+<?php
   if (isset($_GET['status'])) {
   	$statusCode = $_GET['status'];
-	
+
 	if($statusCode == 'failedUsername'){
-		
-		echo '<br/> <br/> <br/> <h3 align="center" style="color:red"> Failed Username <br/> already taken <br/> Please Try Again </h3>';	
-		
+
+		echo '<br/> <br/> <br/> <h3 align="center" style="color:red"> Failed Username <br/> already taken <br/> Please Try Again </h3>';
+
 	}
 	else if($statusCode == 'failedPassword'){
-		
-		echo '<br/> <br/> <br/> <h3 align="center" style="color:red"> Failed Password <br/> do not match <br/> Please Try Again </h3>';	
-	}	
+
+		echo '<br/> <br/> <br/> <h3 align="center" style="color:red"> Failed Password <br/> do not match <br/> Please Try Again </h3>';
+	}
 	else if($statusCode == 'failedEmail'){
-		
-		echo '<br/> <br/> <br/> <h3 align="center" style="color:red"> Failed email <br/> already taken <br/> Please Try Again  </h3>';	
+
+		echo '<br/> <br/> <br/> <h3 align="center" style="color:red"> Failed email <br/> already taken <br/> Please Try Again  </h3>';
 	}
 	else{
-		echo '<br/> <br/> <br/> <h3 align="center" style="color:red"> Failed Registration <br/> Please Try Again </h3>';	
+		echo '<br/> <br/> <br/> <h3 align="center" style="color:red"> Failed Registration <br/> Please Try Again </h3>';
 	}
 
   }
@@ -30,11 +30,12 @@
 
 <html>
 <head>
-	<title>Register for InTuition Account</title>
+	<title>Student Registration</title>
+  <link rel="shortcut icon" type="image/x-icon" href="lightbulb.ico">
 	<link rel="stylesheet" href="style_01.css">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  
-  
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
   	<!--
 	--->
 
@@ -48,10 +49,10 @@
       font-family: 'Comfortaa', cursive, 'Times New Roman', Times, serif;
     }
 	</style>
-	
-	
-	
-	
+
+
+
+
 	<script>
 	function checkAvailability() {
 		$("#loaderIcon").show();
@@ -67,10 +68,10 @@
 		error:function (){}
 		});
 	}
-	
-	
+
+
 	var check = function() {
-	  if (document.getElementById('password').value == document.getElementById('confirm_password').value && document.getElementById('password').value !== '') 
+	  if (document.getElementById('password').value == document.getElementById('confirm_password').value && document.getElementById('password').value !== '')
 	  {
 		document.getElementById('message').style.color = 'green';
 		document.getElementById('message').innerHTML = '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#9989; good passwords match ';
@@ -80,9 +81,9 @@
 		document.getElementById('message').innerHTML = '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &#10060; passwords not matching';
 	  }
 	}
-	
-	
-	
+
+
+
 	function wait(ms){
 	   var start = new Date().getTime();
 	   var end = start;
@@ -99,7 +100,7 @@
 
 
 
-<body style='background-image: 
+<body style='background-image:
 url("https://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/Desktop-Wallpaper-4.jpg");'>
 
 
@@ -108,52 +109,51 @@ url("https://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/Desktop-Wal
 
   <form method="post" action="registerProcess.php" id="register_form">
   	<h1 style="padding:10px;">Register @ InTuition As Student</h1>
-	
-	
+
+
 
 	<div id="frmCheckUsername" >
-	  <input type="text" placeholder="Username" name="username" 
+	  <input type="text" placeholder="Username" name="username"
 	  id="username" class="demoInputBox" onBlur="checkAvailability()" value=""  required >
-		
-		<span id="user-availability-status"></span>   
-		
-		
-		<p align="center"><img src="./image/loadbar.gif" 
+
+		<span id="user-availability-status"></span>
+
+
+		<p align="center"><img src="./image/loadbar.gif"
 		id="loaderIcon" height="50px" width="50px" style="display:none" /></p>
 	</div>
-	
-	
-		
+
+
+
 	<div>
       <input type="text" name="name_field" id="name_field" placeholder="Name" value=""  required >
   	</div>
-	
+
   	<div >
       <input type="email" name="email" id="email" placeholder="Email" value=""  required >
   	</div>
-	
-	
+
+
   	<div>
   		<input type="password"  placeholder="Password" name="password" id="password" onkeyup="check();" required>
   	</div>
-	
+
 	<div>
   		<input type="password"  placeholder="Confirm Password"
 		name="confirm_password"
 		id="confirm_password" onkeyup="check();" required>
 		<span id="message"></span>
   	</div>
-	
 
-	
-	
+
+
+
   	<div>
   		<button type="submit" name="registerButton" id="reg_btn">Register</button>
   	</div>
-	
-	
+
+
   </form>
-  
+
   </body>
 </html>
-
