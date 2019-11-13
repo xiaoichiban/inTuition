@@ -69,7 +69,10 @@ include './layout/sidebar.php';
                   <br><br><br>
                   <b><h4>Status</h4></b>
                   <br>
-                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="default is active" name="status" size="48"></input>
+                  <input type="text" style="width: 50%; display: inline;" 
+				  class="form-control" value="active" name="status" 
+				  disabled
+				  size="48"></input>
                   <br><br>
                   <div class="row pl-1">
                     <div class="card" style="background: none;">

@@ -102,13 +102,14 @@
                       <br/>
                       <br/>
 
+					  <!---
                       <label for="videscript">Module Code</label>
                       <br/>
                       <input type="text" style="width: 40%;" id="modcode" name="modcode"
                       maxlength="5" class="form-control" required> </input>
-
                       <br/>
                       <br/>
+					  -->
 
                       <div class="form-group">
                         <script src="./js/jslib.js"></script>

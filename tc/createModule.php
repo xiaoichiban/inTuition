@@ -61,35 +61,109 @@ include './layout/sidebar.php';
                   <br>
                   <b>Class Day</b>
                   <br>
-                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class Day" name="day" size="48">
+				  
+					<select
+						style="width: 50%; display: inline;" class="form-control"
+						name="day">
+					  <option value='1'>MON</option>
+					  <option value='2'>TUES</option>
+					  <option value='3'>WED</option>
+					  <option value='4'>THURS</option>
+					  <option value='5'>FRI</option>
+					</select>
+									  
+				  
+				  
+				  
+				  
+				  
                   <br>
                   <br>
                   <b>Class Start Time</b>
                   <br>
-                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class start timing" name="start" size="48">
+                  <input type="number" style="width: 50%; display: inline;" 
+				  class="form-control" placeholder="Class start timing" name="start" 
+				  min="0000" max="2359">
                   <br>
                   <br>
                   <b>Class End Time</b>
                   <br>
-                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Class end timing" name="end" size="48">
+                  <input type="number" style="width: 50%; display: inline;" 
+				  class="form-control" placeholder="Class end timing" name="end"
+				  min="0000" max="2359">
                   <br>
                   <br>
-                  <b>Module Tutor</b>
+
+				  
+				  <?php
+				  
+				  
+				      $thisTC = $_SESSION['username'];
+                      $sqlQuery = "SELECT username from tutor where tc_owner = '$thisTC' ";
+                      $result = mysqli_query($db, $sqlQuery);
+                      $count = mysqli_num_rows($result);
+
+                      $hidden = '';
+
+                      if ($count < 1){
+                        echo "<br/><p> You have no Tutors here;</p>";
+                        $hidden = 'hidden';
+                      }
+
+
+                      else {
+                        echo "<br/><label for='tutor'><b>Module Tutor</b></label><br/>";
+                        echo "<select id='tutor'  required class='form-control'
+						style='width: 50%; display: inline;' name='tutor' 
+						>";
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          $tutor = $row['username'];
+                          echo "<option value='$tutor'>$tutor</option>";
+                        }
+                        echo "</select>";
+                      }
+
+				  
+				  
+				  
+				  
+				  
+				  ?>
+                  
+				  
+				  
+				                    
                   <br>
-                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Tutor name" name="tutor" size="48">
                   <br>
+				  
+				  <b>Status</b>
                   <br>
-                  <b>Status</b>
-                  <br>
-                  <input type="text" style="width: 50%; display: inline;" class="form-control" placeholder="Default is active" name="status" size="48">
-                  <br><br>
+                  <input type="text" 
+					  id="status"
+					  name="status"
+					  style="width: 50%; display: inline;" 
+					  class="form-control"
+					  value="active"
+					  disabled="true">
+                  
+				  <br><br>
+				  
+				  
                   <div class="row pl-1">
                     <div class="card" style="background: none;">
                         <input type="submit" class="btn btn-dark" value="Create" />
                     </div>
                   </div>
+				  
+				  
+				  
                 </form>
 
+				
+				
+				
+				
               </div> <!-- card header --> 
             </div> <!-- card --> 
           </div> <!-- col-12 --> 
