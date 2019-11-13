@@ -73,7 +73,8 @@ $result = mysqli_query($db, $query);
 <script>
   setTimeout(function(){
     document.getElementById('info-message').style.display = 'none';
-    /* or
+    /* 
+	// or this
     var item = document.getElementById('info-message')
     item.parentNode.removeChild(item); 
     */
@@ -101,8 +102,9 @@ $result = mysqli_query($db, $query);
   <tr>
     <th width='10%'>Thread Creator</th>
 	<th width='20%'>Date-Time</th>
-	<th width='25%'>Topic</th>
-	<th  width='30%'>Content</th><th  width='10%'> VIEW </th>
+	<th width='20%'>Topic</th>
+	<th  width='30%'>Content</th>
+	<th  width='15%'> VIEW </th>
   </tr>
   
 <?php 
@@ -113,7 +115,8 @@ $result = mysqli_query($db, $query);
     echo"<td>"; echo "$row[2]"; echo"</td>";
 	echo"<td>"; echo "$row[3]"; echo"</td>";
 	echo"<td>"; echo "$row[4]"; echo"</td>";
-	echo"<td>"; echo "<a href='viewforum.php?id=$thisID'> VIEW THREAD </a>"; echo"</td>";
+	echo"<td>"; echo "<a class='btn btn-primary' 
+	href='viewforum.php?id=$thisID'> VIEW THREAD </a>"; echo"</td>";
   echo"</tr>";
 }
 ?>
