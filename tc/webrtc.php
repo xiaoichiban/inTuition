@@ -42,9 +42,9 @@ include './layout/session.php';
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-			  
+
                 <h3 class="card-title">WebRTC services</h3>
-				
+
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
               </div>
               <div class="card-content collapse show">
@@ -63,35 +63,35 @@ include './layout/session.php';
 
                       <tr>
                         <th scope="col">1</th>
-                        <th scope="col"> 
+                        <th scope="col">
 						<a href="https://localhost/pets/webrtc2/" target="_blank"> PHP </a>  </th>
                         <th scope="col">(Local) Basic 1-1</th>
                       </tr>
-					  
-					  
-					  
+
+
+
 					  <tr>
                         <th scope="col">2</th>
-                        <th scope="col"> 
+                        <th scope="col">
 						<a href="http://localhost:9988" target="_blank"> PHP ext </a>  </th>
                         <th scope="col">(Local)Based on Workerman</th>
                       </tr>
-					  
-					  
-					  
+
+
+
 					  <tr>
                         <th scope="col">3</th>
-                        <th scope="col"> 
+                        <th scope="col">
 						<a href="https://localhost:8443" target="_blank"> Node JS </a>  </th>
                         <th scope="col">(Local)Node JS</th>
                       </tr>
-					  
-					  
-					  
+
+
+
 					  <tr>
                         <th scope="col">4</th>
-                        <th scope="col"> 
-						<a href="https://appr.tc/r/<?php echo rand(10000,99999999); ?>" 
+                        <th scope="col">
+						<a href="https://appr.tc/r/<?php echo rand(10000,99999999); ?>"
 						target="_blank"> APP RTC</a>  </th>
                         <th scope="col">(External) 3rd Party</th>
                       </tr>
@@ -115,16 +115,10 @@ include './layout/session.php';
   <!-- BEGIN VENDOR JS-->
   <script src="./layout/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
-  <!-- BEGIN PAGE VENDOR JS-->
-  <script src="./layout/theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script>
-  <!-- END PAGE VENDOR JS-->
   <!-- BEGIN CHAMELEON  JS-->
   <script src="./layout/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
   <script src="./layout/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
   <!-- END CHAMELEON  JS-->
-  <!-- BEGIN PAGE LEVEL JS-->
-  <script src="./layout/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-  <!-- END PAGE LEVEL JS-->
 
 </body>
 </html>
